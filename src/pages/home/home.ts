@@ -29,7 +29,7 @@ export class HomePage {
       if( !authorization ){
         this.autho.getKey().subscribe((data:any) =>{
           localStorage.setItem('authorization', data.authorization);
-          localStorage.setItem('idTokenUser', data.patientId);
+          // localStorage.setItem('idTokenUser', data.patientId);
           localStorage.setItem('role', data.role);
         });
       }

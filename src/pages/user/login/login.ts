@@ -50,10 +50,10 @@ export class LoginPage {
         localStorage.setItem('role', data.role);
         // XXX: Send event for login user. This is for trigger event in app.component for show menus when user is logged.
         this.events.publish('user:logged', 'logged');
-        if( this.hora !== '' )
-        this.navCtrl.push(FinancerPage , {hora: this.hora, available: this.available , doctor:this.doctor })
+        if( !this.hora )
+        this.navCtrl.push(HomePage )
         else
-          this.navCtrl.push(HomePage);
+          this.navCtrl.push(FinancerPage, {hora: this.hora, available: this.available , doctor:this.doctor });
       },
       err => {
         this.msg = "Usuario o contraseña incorrecta."

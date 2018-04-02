@@ -37,12 +37,14 @@ export class MyApp {
               public statusBar: StatusBar, 
               public splashScreen: SplashScreen,
               public menuCtrl: MenuController,
-              public events: Events) {
+              public events: Events
+              ) {
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
       statusBar.styleDefault();
       splashScreen.hide();
+      
     });
 
     this.userToken = localStorage.getItem('idTokenUser');
@@ -69,6 +71,7 @@ export class MyApp {
     localStorage.removeItem('emailUser');
     localStorage.removeItem('passUser');
     localStorage.removeItem('authorization');
+    localStorage.removeItem('role');
     this.userToken = null;
     this.menu.setRoot(HomePage);
     this.menuCtrl.close();

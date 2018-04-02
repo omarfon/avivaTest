@@ -77,7 +77,6 @@ import { DatosPage } from '../pages/datos/datos';
 
 
 
-
 @NgModule({
   declarations: [
     MyApp,
@@ -97,7 +96,7 @@ import { DatosPage } from '../pages/datos/datos';
     ExpandableComponent,
     MasterDetailPage,
     MyDateModalPage,
-    DatosPage
+    DatosPage,
   ],
   imports: [
     BrowserModule,
@@ -109,7 +108,7 @@ import { DatosPage } from '../pages/datos/datos';
     IonicModule.forRoot(MyApp),
     FormsModule,
     BrowserAnimationsModule,
-    MaterialModule,
+    MaterialModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [

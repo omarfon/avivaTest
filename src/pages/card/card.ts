@@ -1,3 +1,4 @@
+import { DatosPage } from './../datos/datos';
 import { MyDateModalPage } from './../optionals-devs/my-dates/my-date-modal/my-date-modal';
 import { RegisterPage } from './../user/register/register';
 import { Component, ElementRef, Renderer2, ViewChild } from '@angular/core';
@@ -130,7 +131,7 @@ expandedItem(doctor, available){
   
 }
 goToFinancer(doctor, available, hora){
-  this.navCtrl.push(FinancerPage,{ doctor:doctor , available:this.fromDate , hora:hora});
+  this.navCtrl.push(DatosPage,{ doctor:doctor , available:this.fromDate , hora:hora});
 }
 
   }
