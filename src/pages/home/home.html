@@ -1,0 +1,134 @@
+<ion-header>
+    <ion-navbar color="primary" hideBackButton="true" persistent="true">
+        <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title> Home </ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+    <ion-card button class="principal" (click)="irACard()">
+        <ion-item>
+            <ion-row>
+                <ion-col col-2>
+                    <ion-icon name="contact"></ion-icon>
+                </ion-col>
+                <ion-col col-9>
+                    <p class="reserve">Reservar cita</p>
+                </ion-col>
+                <ion-col col-1>
+                    <ion-icon name="arrow-dropright"></ion-icon>
+                </ion-col>
+            </ion-row>
+        </ion-item>
+    </ion-card>
+
+    <div class="down30">
+        <mat-accordion padding>
+
+            <mat-expansion-panel (click)="obtenerUltimaFecha()">
+                <mat-expansion-panel-header>
+                    <ion-col col-2>
+                        <ion-icon name="alarm"></ion-icon>
+                    </ion-col>
+                    <ion-col col-10>
+                        <p class="font11">Próxima Cita</p>
+                    </ion-col>
+
+                </mat-expansion-panel-header>
+                <p *ngIf="ensenar === 0" class="textoRecetas">Aun no tienes citas programadas</p>
+                <div class="containerExpand">
+                    <div *ngIf="tasks">
+                        <div *ngFor="let task of tasks; index as i; first as isFirst">
+                            <ion-row class="down10" *ngIf="isFirst">
+                                <ion-col col-3>
+                                    <ion-avatar item-start>
+                                        <img src="http://dappapache02.eastus.cloudapp.azure.com:4200/img/professionals/{{task.professional.id}}.png">
+                                    </ion-avatar>
+                                </ion-col>
+                                <ion-col col-9>
+                                    <h3 class="tituloCitas" [ngClass]="{celeste:''}">Dr.{{task.professional.fullName | slice:0:25 | uppercase}}</h3>
+                                    <p class="especialidad">{{ task.service.basicService.description | lowercase }}</p>
+                                    <p class="sede">{{ task.service.center.name | lowercase }}</p>
+                                    <p class="day">{{ task.appointmentDateTime | date:'EEEE d , MMMM ' : 'es' }} </p>
+                                    <p class="hour">{{ task.appointmentDateTime | date: 'HH:mm' }}</p>
+                                </ion-col>
+                            </ion-row>
+                        </div>
+                    </div>
+
+                </div>
+            </mat-expansion-panel>
+
+            <!-- <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                    <ion-col col-2>
+                        <ion-icon name="filing"></ion-icon>
+                    </ion-col>
+                    <ion-col col-10>
+                        <p class="font11">Mi Historia Médica</p>
+                    </ion-col>
+
+                </mat-expansion-panel-header>
+                <div class="containerExpand">
+
+                    <h3>contenido Historia médica</h3>
+
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad vitae, saepe dolore odio recusandae quibusdam corporis mollitia a quod, suscipit modi nobis quo culpa in eveniet, sed officiis. Dignissimos, tempora.
+                </div>
+            </mat-expansion-panel> -->
+
+            <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                    <ion-col col-2>
+                        <ion-icon name="medkit"></ion-icon>
+                    </ion-col>
+                    <ion-col col-10>
+                        <p class="font11">Recetas y Medicamentos</p>
+                    </ion-col>
+                </mat-expansion-panel-header>
+                <div class="containerExpand">
+                    <p class="textoRecetas">Las recetas y médicamentos de sus últimas citas aparecerán aquí proximamente</p>
+                </div>
+            </mat-expansion-panel>
+
+            <!-- <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                    <ion-col col-2>
+                        <ion-icon name="list-box"></ion-icon>
+                    </ion-col>
+                    <ion-col col-10>
+                        <p class="font11">Recomendaciones</p>
+                    </ion-col>
+
+                </mat-expansion-panel-header>
+                <div class="containerExpand">
+
+                    <h3>contenido Recomendaciones</h3>
+
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad vitae, saepe dolore odio recusandae quibusdam corporis mollitia a quod, suscipit modi nobis quo culpa in eveniet, sed officiis. Dignissimos, tempora.
+                </div>
+            </mat-expansion-panel> -->
+
+            <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                    <ion-col col-2>
+                        <ion-icon name="flask"></ion-icon>
+                    </ion-col>
+                    <ion-col col-10>
+                        <p class="font11">Resultados</p>
+                    </ion-col>
+
+                </mat-expansion-panel-header>
+                <div class="containerExpand">
+                    <p class="textoRecetas">Aqui aparecerán los resultados de tus últimas citas proximamente</p>
+                </div>
+            </mat-expansion-panel>
+
+        </mat-accordion>
+
+    </div>
+    <!-- <h1>home</h1>
+    <p (click)="irACard()">Ir a Card</p> -->
+</ion-content>

@@ -1,0 +1,64 @@
+page-login {
+    .bajar {
+        padding-top: 30px;
+        padding-bottom: 10px;
+    }
+    // .gris {
+    //     background-color: #F5F5F5;
+    // }
+    .textoAzul {
+        color: #287195;
+        font-size: 1.1em;
+        width: 75%;
+        margin-left: 12.5%;
+        margin-top: 30px;
+        font-weight: 400;
+    }
+    // .white {
+    //     padding-top: 40px;
+    //     background-color: #fff;
+    //     height: 42vh;
+    // }
+    ion-input {
+        margin-top: .5em;
+    }
+    .row {
+        margin-left: 0!important;
+    }
+    .inicioSesion {
+        margin-top: 2em;
+        background-color: #00B6A3!important;
+        box-shadow: 0 2px 2px 0 #C8C7C7;
+        height: 50px;
+    }
+    .alto50 {
+        height: 50px!important;
+    }
+    .item-ios.item-block .item-inner {
+        border: 1px solid grey;
+        margin-bottom: .5em;
+    }
+    // .item-ios {
+    //     background-color: transparent;
+    // }
+    .item-input ion-label {
+        // margin-left: 10px;
+        color: grey;
+    }
+    .noMargin {
+        margin: 0;
+        padding: 0;
+    }
+    .noLogin {
+        color: #287195;
+        text-align: center;
+        width: 60%;
+        margin-left: 20%;
+        padding: .5em 2em;
+        border-radius: 20px;
+        background: rgba(0, 182, 164, 0.021);
+    }
+    .noLogin:active {
+        background: rgba(0, 182, 164, 0.103);
+    }
+}

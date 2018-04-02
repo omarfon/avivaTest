@@ -1,0 +1,155 @@
+<ion-header>
+
+    <ion-navbar color="primary">
+        <ion-title>Financiador</ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+    <h4 class="parrafoFinanciador">lo que nos queda es escoger el financiador y el pago, ya casí terminamos…</h4>
+    <ion-list>
+
+        <ion-card class="evaluate">
+            <ion-list>
+                <ion-item color="light" item-start (click)="evaluateEnsurance($event)">
+                    <p>¿Cuenta con seguro?</p>
+                    <ion-icon item-end name="arrow-dropdown"></ion-icon>
+                </ion-item>
+
+                <ion-list class="nombresLista" *ngIf="firtClick">
+                    <button ion-item *ngFor="let quest of questions" (click)="validateSelected(quest.id)">
+                {{ quest.name }}
+              </button>
+                </ion-list>
+            </ion-list>
+        </ion-card>
+
+        <ion-card class="seguroList">
+            <ion-list>
+                <ion-item color="light" *ngIf="isInsuranceName" (click)="selectEnsurance($event)">
+                    {{ myEnsuranceName }}
+                </ion-item>
+                <ion-list *ngIf="isInsurance">
+                    <button ion-item *ngFor="let item of items" (click)="insuranceSelected(item.cod_pagador_pk, item.nombre_garante)">
+                {{ item.nombre_garante }}
+              </button>
+                </ion-list>
+            </ion-list>
+        </ion-card>
+
+        <div text-right class="precio" *ngIf="price!=undefined">
+            <p>Precio de la Consulta: {{ 'S/. ' + price }}.00</p>
+        </div>
+    </ion-list>
+
+    <div class="container-gris" *ngIf="open == true">
+        <div padding>
+            <h4 text-center class="tituloMetodos">Metodos de Pago</h4>
+            <ion-segment [(ngModel)]="pago">
+                <ion-segment-button value="enLocal">
+                    En local
+                </ion-segment-button>
+                <ion-segment-button value="enClinica" [disabled]="true">
+                    Con tarjeta (proximamente)
+                </ion-segment-button>
+            </ion-segment>
+        </div>
+        <div [ngSwitch]="pago">
+            <ion-list *ngSwitchCase="'enLocal'">
+                <p class="pagoEfectivo">Recuerde que puede pagar su reserva en la clinica, solamente con el número de dni es sencillo!!</p>
+                <div padding>
+                    <button ion-button color="secondary" class="botonAccept" [class.button-disabled]="true" block (click)="next()">Confirmar cita</button>
+                </div>
+
+            </ion-list>
+
+            <ion-list *ngSwitchCase="'enClinica'">
+
+                <div padding>
+
+                    <form [formGroup]="myForm" (ngSubmit)="saveData(myForm.value)" novalidate>
+                        <ion-list>
+                            <ion-item>
+                                <ion-label floating>Nombre:</ion-label>
+                                <ion-input formControlName="name" type="text" maxlength="40" onSelect="this.value=''"></ion-input>
+                            </ion-item>
+
+                            <ion-item>
+                                <ion-label floating>Numero de tarjeta:</ion-label>
+                                <ion-input formControlName="card" id="card" type="tel" minLength="16" maxlength="16" onSelect="this.value=''" required></ion-input>
+                                <ion-icon item-end>
+                                    <i class="fa fa-cc-visa" *ngIf="myForm.get('card').hasError('visa')" aria-hidden="true"></i>
+                                    <i class="fa fa-cc-mastercard" *ngIf="myForm.get('card').hasError('mastercard')" aria-hidden="true"></i>
+                                </ion-icon>
+                            </ion-item>
+
+                            <ion-item *ngIf="myForm.get('card').errors && myForm.get('card').dirty">
+                                <p color="danger" ion-text *ngIf="myForm.get('card').hasError('required')">Campo requerido</p>
+                                <p color="danger" ion-text *ngIf="myForm.get('card').hasError('minlength')">Tarjeta invalida</p>
+                                <p color="danger" ion-text *ngIf="myForm.get('card').hasError('maxlength')">SOLO 16 DIGITOS POR FAVOR</p>
+                            </ion-item>
+                        </ion-list>
+
+                        <ion-row>
+                            <ion-col col-4>
+                                <ion-item>
+                                    <ion-label required floating>Mes</ion-label>
+                                    <ion-select required formControlName="month">
+                                        <ion-option value="01">ENERO </ion-option>
+                                        <ion-option value="02">FEBRERO</ion-option>
+                                        <ion-option value="03">MARZO</ion-option>
+                                        <ion-option value="04">ABRIL</ion-option>
+                                        <ion-option value="05">MAYO</ion-option>
+                                        <ion-option value="06">JUNIO</ion-option>
+                                        <ion-option value="07">JULIO</ion-option>
+                                        <ion-option value="08">AGOSTO</ion-option>
+                                        <ion-option value="09">SEPTIEMBRE</ion-option>
+                                        <ion-option value="10">OCTUBRE</ion-option>
+                                        <ion-option value="11">NOVIEMBRE</ion-option>
+                                        <ion-option value="12">DICIEMBRE</ion-option>
+                                    </ion-select>
+                                </ion-item>
+                            </ion-col>
+                            <ion-col col-4>
+                                <ion-item>
+                                    <ion-label floating>Año</ion-label>
+                                    <ion-select required formControlName="year">
+                                        <ion-option value="2017">2017</ion-option>
+                                        <ion-option value="2018">2018</ion-option>
+                                        <ion-option value="2019">2019</ion-option>
+                                        <ion-option value="2020">2020</ion-option>
+                                        <ion-option value="2021">2021</ion-option>
+                                        <ion-option value="2022">2022</ion-option>
+                                        <ion-option value="2023">2023</ion-option>
+                                        <ion-option value="2024">2024</ion-option>
+                                    </ion-select>
+                                </ion-item>
+                            </ion-col>
+                            <ion-col col-4>
+                                <ion-item>
+                                    <ion-label floating>Codigo</ion-label>
+                                    <ion-input type="tel" minLength="3" maxlength="3" clearInput formControlName="cvv" onSelect="this.value=''"></ion-input>
+                                </ion-item>
+                            </ion-col>
+                            <ion-col col-12>
+                                <ion-item>
+                                    <ion-label class="tiny">Guardar tarjeta</ion-label>
+                                    <ion-checkbox></ion-checkbox>
+                                </ion-item>
+                            </ion-col>
+                        </ion-row>
+                        <div padding>
+                            <button ion-button color="secondary" block type="submit" [disabled]="myForm.invalid">Confirmar y Pagar cita</button>
+                        </div>
+
+                    </form>
+                </div>
+            </ion-list>
+        </div>
+    </div>
+
+
+
+</ion-content>

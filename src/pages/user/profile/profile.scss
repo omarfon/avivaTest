@@ -1,0 +1,29 @@
+page-profile {
+    .cargaImagen {
+        background-color: red;
+        border-radius: 10%;
+        height: 90px;
+        margin-left: calc( 50% - 45px);
+        margin-top: 10px;
+        width: 90px;
+        background-image: url('https://2.bp.blogspot.com/-XAKF8wOcXO0/Vz2j93PBZGI/AAAAAAAEHkA/idzUNuD0AxISY46OSl8iyap09BtwuyIrQCLcB/s1600/rostros-bonitos-de-mujeres-desconocidas_25.jpg');
+        background-size: cover;
+    }
+    h4 {
+        text-align: center;
+    }
+    ion-input {
+        height: 25px;
+        // border-bottom: 1px solid #287195;
+    }
+    .item-iner,
+    .item-input-has-focus,
+    .item-block .item-md .item-input .item-label-stacked .input-has-value .item-input-has-value {
+        border-bottom-color: none!important;
+    }
+    .alto50 {
+        height: 50px!important;
+        margin-top: 15px;
+        background: #00B6A3;
+    }
+}

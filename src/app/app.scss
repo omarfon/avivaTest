@@ -1,0 +1,165 @@
+// http://ionicframework.com/docs/theming/
+// App Global Sass
+// --------------------------------------------------
+// Put style rules here that you want to apply globally. These
+// styles are for the entire app and not just one component.
+// Additionally, this file can be also used as an entry point
+// to import other Sass files to be included in the output CSS.
+//
+// Shared Sass variables, which can be used to adjust Ionic's
+// default Sass variables, belong in "theme/variables.scss".
+//
+// To declare rules for a specific mode, create a child rule
+// for the .md, .ios, or .wp mode classes. The mode class is
+// automatically applied to the <body> element in the app.
+page-app {
+    .fondoColor,
+    .scroll-content {
+        background: #007198!important;
+        background-image: url(assets/imgs/fondo.png);
+        background-repeat: no-repeat;
+        background-size: cover;
+        .list-md {
+            margin-top: 80px!important;
+        }
+        .item-md {
+            background-color: #00B6A3!important;
+            color: #fff;
+            margin-left: 20px;
+        }
+        .list-md .item-block .item-inner {
+            border-bottom: none;
+            line-height: 1.4em;
+        }
+        //agregando margen a los elementos//
+        .list-ios {
+            margin-top: 80px;
+        }
+        //quitandole las lineas en IOS
+        .list-ios .item-block .item-inner {
+            border-bottom: none!important;
+        }
+        .list-ios>.item-block:first-child {
+            border-top: none!important;
+        }
+        .list-ios>.item-block:last-child {
+            border-bottom: none!important;
+        }
+        .item-ios {
+            background-color: #00B6A3!important;
+            color: #fff;
+            line-height: 1.5em;
+            border: none;
+        }
+    }
+    .lista {
+        background: transparent;
+    }
+}
+
+date-picker .top-banner {
+    background-color: transparent!important;
+    color: transparent !important;
+    min-height: 100px !important;
+    .dayofweek,
+    .day,
+    .text-center {
+        display: none;
+    }
+}
+
+.modal-wrapper {
+    background-color: transparent !important;
+}
+
+.day-item {
+    background-color: #f5f5f5;
+    border-radius: 100%;
+    height: 51px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 3px;
+}
+
+.calendar-item-container .day-item:nth-child(3n) {
+    border: 2px solid #00B6A3;
+    color: #0D74AB;
+    border-radius: 100%;
+    height: 51px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.calendar-item-container {
+    background-color: #fff;
+}
+
+.horizontal-center {
+    background-color: transparent;
+}
+
+date-picker .selected {
+    background-color: #0D74AB!important;
+    color: #fff!important;
+}
+
+date-picker .disabled {
+    visibility: hidden;
+}
+
+.imagen {
+    width: 100px;
+    height: 100px;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    margin-left: calc(50% - 50px);
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.imagen:tap {
+    width: 90%;
+}
+
+.iconAdd {
+    color: #00B6A3;
+    font-size: 2em;
+    font-weight: bold;
+}
+
+.fondoColor {
+    background-image: url("../assets/imgs/fondo.png");
+    background-repeat: no-repeat;
+    background-color: #00B6A3!important;
+    width: 100%;
+    height: 100%;
+}
+
+.flecha {
+    padding-left: 0;
+}
+
+.lista {
+    margin-top: 40px;
+}
+
+.lista .item {
+    margin-top: .5em;
+    background: transparent!important;
+    color: #fff;
+}
+
+.lista .item .item-icon {
+    padding-left: 20px;
+}
+
+// .lista .list-md .item-block .item-inner .list-md {
+//     // border-bottom: none!important;
+// }
+// .outLine .lista .list-md .item-block .item-inner .list-md {
+//     border-bottom: none!important;
+// }

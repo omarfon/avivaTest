@@ -1,0 +1,100 @@
+<ion-header>
+    <ion-navbar color="primary" hideBackButton="true" persistent="true">
+        <button ion-button menuToggle>
+<ion-icon name="menu"></ion-icon>
+</button>
+        <ion-title> Home Page </ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+
+    <div id="busqueda">
+        <ion-list padding>
+            <!-- <ion-item>
+                <ion-label floating>Busqueda por Sede</ion-label>
+                <ion-select [(ngModel)]="sede" (click)="allMedicsForCenter()">
+                    <ion-option value="{{center.id}}" *ngFor="let center of centers">{{center.name}}</ion-option>
+                </ion-select>
+            </ion-item> -->
+            <ion-item>
+                <ion-label floating>Busca por Especialidad</ion-label>
+                <ion-select [(ngModel)]="id" #specialty (ionChange)="onChangueSpecialty(specialty.value)">
+                    <ion-option [value]="specialty.id" *ngFor="let specialty of servicios">{{specialty.description}}</ion-option>
+                </ion-select>
+            </ion-item>
+
+            <ion-item>
+                <ion-label floating>Busca por doctor</ion-label>
+                <ion-input type="text" (keyup)="buscarDoctor()" [(ngModel)]="search"></ion-input>
+            </ion-item>
+
+
+            <ion-item>
+                <ion-label floating>Busca por Fecha</ion-label>
+                <ion-input type="date" (ionChange)="getDoctorsPerDay()" [(ngModel)]="fromDate"></ion-input>
+            </ion-item>
+        </ion-list>
+
+    </div>
+
+    <div>
+        <ion-card *ngFor="let doctor of doctors ">
+            <div [ngStyle]="{'display': doctor.hasAvailable ? 'block' : 'none'}">
+                <ion-row>
+                    <ion-col col-4 class="imageDoctor">
+                        <img src="http://dappapache02.eastus.cloudapp.azure.com:4200/img/professionals/{{doctor.id}}.png" alt="">
+                    </ion-col>
+                    <ion-col col-8 right>
+                        <p class="doctor">Dr. {{ doctor.fullName}}</p>
+                        <p class="especialidad">{{doctor.service.description | lowercase}}</p>
+                        <p>{{doctor.cmp}}</p>
+                        <p class="centro">Centro: Mendiola</p>
+                    </ion-col>
+
+                    <ion-col col-12>
+                    </ion-col>
+                    <div class="containerDays">
+                        <ion-slides>
+                            <ion-slide *ngFor="let available of doctor.availables">
+                                <div class="centerItemsDays">
+                                    <a (click)="expandedItem(doctor, available)">{{ available.date | date:'fullDate' :'es' | slice:0:3}}</a>
+                                    <p>{{ available.date | date:'dd':'es'}}</p>
+                                </div>
+                            </ion-slide>
+                        </ion-slides>
+                    </div>
+                    <ion-col col-12>
+                        <expandable [expandHeight]="itemExpandHeight" [expanded]="doctor.expanded" [doctor]="doctor" [available]="available" [horas]="horas">
+                            <div class="row">
+                                <!-- <div col-12 class="diasLibres">
+                                    <h6>{{dia | date:'EEEE d , MMMM ' : 'es'}}</h6>
+                                </div> -->
+                                <div col-1 class="icono">
+                                    <ion-icon item-start name="arrow-dropleft"></ion-icon>
+                                </div>
+                                <div col-10>
+                                    <ion-slides class="dentroExpandable">
+                                        <ion-slide *ngFor="let hora of horas">
+                                            <div (click)="goToFinancer(doctor, available, hora)" class="horas">
+                                                <p>
+                                                    {{ hora.hour | slice:0:5}}
+                                                </p>
+                                            </div>
+                                        </ion-slide>
+                                    </ion-slides>
+                                </div>
+                                <div col-1 class="icono">
+                                    <ion-icon item-end name="arrow-dropright"></ion-icon>
+                                </div>
+                            </div>
+                        </expandable>
+                    </ion-col>
+                </ion-row>
+            </div>
+        </ion-card>
+
+    </div>
+</ion-content>

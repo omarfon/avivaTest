@@ -1,0 +1,14 @@
+expandable {
+    .expand-wrapper {
+        height: 0;
+        transition: 0.3s linear;
+    }
+    .expanded {
+        height: 60px !important;
+        //    position: absolute;
+        //    top:20px;
+    }
+    .blue {
+        background: red;
+    }
+}

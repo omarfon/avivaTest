@@ -1,0 +1,117 @@
+page-home {
+    .down30 {
+        padding-top: 20%;
+    }
+    // ion-content {
+    //     background: #EDEDF0!important;
+    // }
+    .nextDay {
+        border-radius: 0;
+        color: grey;
+        ion-icon {
+            color: grey;
+        }
+    }
+    .history {
+        border-radius: 0;
+        color: grey;
+        ion-icon {
+            color: grey;
+        }
+    }
+    .recipes {
+        border-radius: 0;
+        border-left: 15px solid #92DCE8;
+        color: grey;
+        ion-icon {
+            color: grey;
+        }
+    }
+    .principal {
+        background-color: #00B6A3!important;
+        color: #fff;
+        border-radius: none!important;
+        height: 80px;
+        ion-icon {
+            color: #fff;
+        }
+        ion-item {
+            margin-top: 10px;
+            font-size: 1.2em;
+        }
+        .card-ios {
+            background-color: #00B6A3!important;
+            border-radius: 0!important;
+            height: 90px;
+        }
+        .item-ios {
+            background: transparent;
+        }
+        .item-md {
+            background: transparent;
+        }
+    }
+    .reserve {
+        color: #fff;
+        font-size: 1em;
+    }
+    .font11 {
+        font-size: 1.2em;
+        color: #A7A9AC;
+    }
+    mat-expansion-panel-header ion-col {
+        display: flex;
+        align-items: center;
+        // justify-content: center;
+        ion-icon {
+            color: #00B6A3;
+            font-size: 1.3em;
+        }
+    }
+    .mat-expansion-panel-content {
+        background: #F3F6F6!important;
+    }
+    mat-expansion-panel-header {
+        height: 70px!important;
+    }
+    mat-expansion-panel {
+        ion-icon {
+            font-size: 1.5em!important;
+        }
+    }
+    .mat-expansion-indicator {
+        color: #A7A9AC!important;
+    }
+    img {
+        width: 120px;
+        border-radius: 10%;
+    }
+    .down10 {
+        padding-top: 30px!important;
+    }
+    .tituloCitas {
+        text-align: right;
+        color: #287195!important;
+    }
+    .especialidad {
+        text-align: right;
+        color: #00B6A3;
+        font-size: 1.2em;
+        margin-top: -5px;
+    }
+    .sede,
+    .day,
+    .hour {
+        text-align: right;
+        color: #A7A9AC;
+        font-size: 1.2em;
+        margin-top: -8px;
+    }
+    .textoRecetas {
+        text-align: center;
+        color: #287195;
+        width: 80%;
+        margin-left: 10%;
+        padding-top: 20px;
+    }
+}

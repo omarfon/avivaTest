@@ -1,0 +1,30 @@
+page-register {
+    .bajas {
+        text-transform: lowercase;
+        font-size: .8em;
+    }
+    button {
+        padding: 0 !important;
+    }
+    .derecha {
+        text-align: right;
+    }
+    ion-col {
+        padding: 0!important;
+    }
+    .select-md {
+        padding-left: 0;
+    }
+    .text-input-md,
+    .label-md {
+        margin-left: 5px;
+        font-size: .8em;
+    }
+    input .text-input .text-input-md {
+        font-size: 1.2em!important;
+    }
+    .alto50 {
+        height: 50px!important;
+        margin-top: 15px;
+    }
+}
