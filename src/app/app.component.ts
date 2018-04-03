@@ -13,6 +13,8 @@ import { MyDatesPage } from '../pages/optionals-devs/my-dates/my-dates';
 import { RegisterPage } from '../pages/user/register/register';
 
 
+
+
 @Component({
   templateUrl: 'app.html'
 })
@@ -44,7 +46,6 @@ export class MyApp {
       // Here you can do any higher level native things you might need.
       statusBar.styleDefault();
       splashScreen.hide();
-      
     });
 
     this.userToken = localStorage.getItem('idTokenUser');

@@ -131,7 +131,19 @@ expandedItem(doctor, available){
   
 }
 goToFinancer(doctor, available, hora){
-  this.navCtrl.push(DatosPage,{ doctor:doctor , available:this.fromDate , hora:hora});
+  let role = localStorage.getItem('role');
+
+  if(  role === 'guest'){
+       console.log('no hay mail');
+       let datos = this.navCtrl.push(DatosPage, 
+        {hora : hora, 
+        doctor: this.doctor, 
+        available: this.fromDate});
+        // datos.present();
+
+  }else{
+      this.navCtrl.push(FinancerPage ,{ doctor:doctor , available:this.fromDate , hora:hora})
+  }
 }
 
   }

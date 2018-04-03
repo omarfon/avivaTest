@@ -73,6 +73,7 @@ import { MatFormField} from '@angular/material';
 import { MasterDetailPage } from './../pages/appointment/master-detail/master-detail';
 import { HelloProvider } from '../providers/hello/hello';
 import { DatosPage } from '../pages/datos/datos';
+import { ScreenOrientation } from '@ionic-native/screen-orientation';
 
 
 
@@ -96,7 +97,7 @@ import { DatosPage } from '../pages/datos/datos';
     ExpandableComponent,
     MasterDetailPage,
     MyDateModalPage,
-    DatosPage,
+    DatosPage
   ],
   imports: [
     BrowserModule,
