@@ -137,7 +137,7 @@ goToFinancer(doctor, available, hora){
        console.log('no hay mail');
        let datos = this.navCtrl.push(DatosPage, 
         {hora : hora, 
-        doctor: this.doctor, 
+        doctor: doctor, 
         available: this.fromDate});
         // datos.present();
 

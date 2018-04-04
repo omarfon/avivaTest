@@ -80,6 +80,7 @@ export class FinancerPage {
           {hora : this.hora, 
           doctor: this.doctor, 
           available: this.available});
+          console.log('datos de financer:', this.hora, this.doctor , this.available)
           // datos.present();
 
     }else{

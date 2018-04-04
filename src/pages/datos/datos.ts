@@ -31,8 +31,8 @@ export class DatosPage {
       doctor: this.doctor
       
     });
+    console.log('datos de datos:',this.hora, this.available, this.doctor);
       //aqui tiene que ir el dismiss
-    console.log('hora que va de modal a login:', this.hora);
   }
   goToCard(){
     this.navCtrl.push(CardPage);
