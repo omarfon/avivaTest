@@ -13,7 +13,7 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class FinancierProvider {
 
-  private apiUrl = 'http://dappapache02.eastus.cloudapp.azure.com:4000/api/ebooking/';
+  private apiUrl = 'http://dappapache02.eastus.cloudapp.azure.com:4200/api/v2/ebooking/';
 
   constructor(public http:Http) {
   }
