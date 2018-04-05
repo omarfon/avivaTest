@@ -1,8 +1,9 @@
 {
-  "name": "Ionic",
-  "short_name": "Ionic",
-  "start_url": "index.html",
+  "name": "Aviva Booking",
+  "short_name": "aviva-booking",
+  "start_url": "./",
   "display": "standalone",
+  "orientation": "portrait",
   "icons": [{
     "src": "assets/imgs/logo.png",
     "sizes": "512x512",

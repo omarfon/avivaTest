@@ -19,7 +19,7 @@ export class FinancierProvider {
   }
 
   getFinanciers(): Observable<string[]> {
-    return this.http.post(this.apiUrl + 'payers', {})
+    return this.http.get(this.apiUrl + 'payers', {})
                     .map(this.extractData)
                     .catch(this.handleError);
   }
@@ -31,9 +31,9 @@ export class FinancierProvider {
   }
 
   getPrice(center_id, basic_service_id, doctor_id, proposed_date) {
-    let params = { proposed_date: proposed_date, center_id: center_id, basic_service_id: basic_service_id, doctor_id: doctor_id }
+    // let params = { proposed_date: proposed_date, center_id: center_id, basic_service_id: basic_service_id, doctor_id: doctor_id }
     
-    return this.http.post(this.apiUrl + 'appointments/price', params)
+    return this.http.get(this.apiUrl + `appointments/price/${center_id}/${basic_service_id}/${doctor_id}/${proposed_date}`)
                     .map(this.extractData)
                     .catch(this.handleError);
   }
