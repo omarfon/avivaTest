@@ -7,7 +7,7 @@ page-login {
     //     background-color: #F5F5F5;
     // }
     .textoAzul {
-        color: #287195;
+        color: color($colors, gris);
         font-size: 1.1em;
         width: 75%;
         margin-left: 12.5%;
@@ -27,7 +27,7 @@ page-login {
     }
     .inicioSesion {
         margin-top: 2em;
-        background-color: #00B6A3!important;
+        background-color: color($colors, verde)!important;
         box-shadow: 0 2px 2px 0 #C8C7C7;
         height: 50px;
     }
@@ -35,7 +35,7 @@ page-login {
         height: 50px!important;
     }
     .item-ios.item-block .item-inner {
-        border: 1px solid grey;
+        border: 1px solid color($colors, gris);
         margin-bottom: .5em;
     }
     // .item-ios {

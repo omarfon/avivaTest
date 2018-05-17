@@ -1,8 +1,9 @@
+import { LoginPage } from './../user/login/login';
 import { DatosPage } from './../datos/datos';
 import { MyDateModalPage } from './../optionals-devs/my-dates/my-date-modal/my-date-modal';
 import { RegisterPage } from './../user/register/register';
 import { Component, ElementRef, Renderer2, ViewChild } from '@angular/core';
-import { NavController, NavParams, ModalController, ViewController } from 'ionic-angular';
+import { NavController, NavParams, ModalController, ViewController, AlertController } from 'ionic-angular';
 import { FinancerPage } from '../appointment/financer/financer';
 
 
@@ -11,11 +12,13 @@ import * as moment from 'moment';
 import { ExpandableComponent } from '../../components/expandable/expandable.component';
 
 import { HelloProvider } from '../../providers/hello/hello';
+import { CapitalizePipe } from '../../pipes/capitalize/capitalize';
+
 
 
 @Component({
   selector: 'page-card',
-  templateUrl: 'card.html',
+  templateUrl: 'card.html'
 })
 export class CardPage {
 @ViewChild('MyDays') MyDays: ElementRef;
@@ -62,7 +65,8 @@ export class CardPage {
               public helloPvr: HelloProvider,
               public elementRef: ElementRef,
               public render: Renderer2,
-              public viewCtrl: ViewController
+              public viewCtrl: ViewController,
+              public alertContrl: AlertController
 
        
 ){
@@ -72,10 +76,24 @@ export class CardPage {
 
   this.helloPvr.getServicios().subscribe ( servicios =>{
     this.servicios = servicios;
-   
+    if(servicios.length > 0){
+      this.getDoctorsList();
+    }
+    if(servicios.length == 0){
+      let alert = this.alertContrl.create({
+        title:'Sesión expirada',
+        subTitle:'necesitas reiniciar sesión',
+        buttons: [{
+          text:'Ok',
+          handler: ()=>{
+            this.navCtrl.push(LoginPage);
+          }
+        }
+        ]
+      });
+      alert.present();
+    }
   });
-
-  this.getDoctorsList();
 }
 
 getDoctorsList(){
@@ -106,13 +124,11 @@ getDoctorsList(){
   }
 
 buscarDoctor(){
-
   if(this.search.length == 1){
     return
   }
   this.doctors = this._doctors;
   this.doctors = this.doctors.filter(doctor => {
-
     const isOk = doctor.fullName.toLowerCase().indexOf((this.search).toLowerCase()) != -1 ;
     return isOk;
   });
@@ -134,13 +150,11 @@ goToFinancer(doctor, available, hora){
   let role = localStorage.getItem('role');
 
   if(  role === 'guest'){
-       console.log('no hay mail');
-       let datos = this.navCtrl.push(DatosPage, 
+       let datos = this.navCtrl.push(LoginPage, 
         {hora : hora, 
         doctor: doctor, 
         available: this.fromDate});
         // datos.present();
-
   }else{
       this.navCtrl.push(FinancerPage ,{ doctor:doctor , available:this.fromDate , hora:hora})
   }

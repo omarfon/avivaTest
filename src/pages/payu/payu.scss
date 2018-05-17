@@ -1,0 +1,85 @@
+page-payu {
+    background: rgba(0,0,0,.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    ion-content{
+        height: 350px!important;
+        margin-top: 20vh;
+        width: 80%!important;
+        margin-left:10%;
+        border-radius:5px;
+        padding:0;
+    }
+    .visa {
+        background-repeat: no-repeat;
+        background-position:center;
+        background-image: url('./../../assets/img/card/visa.png');
+      }
+    
+      .mastercard {
+        background-repeat: no-repeat;
+        background-position:center;
+        background-image: url('./../../assets/img/card/mastercard.gif');
+      }
+      .backCabecera{
+          background: rgb(249, 249, 249);
+          border-bottom:1px solid rgba(151, 151, 151, 0.4);
+          padding-top:12px;
+          padding-bottom:12px;
+          height: 100px;
+      }
+      ion-row{
+          margin:0;
+          padding:0;
+      }
+      .scroll-content{
+          padding:0!important;
+          border-radius:5px;
+      }
+      .item-md{
+          background: #fff;
+          border:1px solid #dedede;
+      }
+      .backCuerpoModal{
+          background: #F5F5F5;
+          height: 250px;
+      }
+      .sinpading{
+          padding:0 5px!important;
+      }
+      .item-inner{
+          border-bottom:none!important;
+      }
+    //   ion-label{
+    // }
+    ion-input{
+        font-size:.85em;
+        color: #4A4A4A!important;
+      }
+      ion-icon{
+        font-size:1.2em!important;
+        color: #007198!important;
+      }
+      .tituloDeCita{
+          font-size:1.5em;
+          padding-top:10px;
+          color: #4A4A4A!important;
+      }
+      .resumenCita{
+          font-size:.8em;
+          margin-top:-5px;
+          color: #4A4A4A!important;
+      }
+      .imagenCheckout{
+          width: 75px;
+          height: 75px;
+          border: 2px solid grey;
+      }
+      .top10{
+          margin-top:10px;
+      }
+      .item-inner{
+          margin-left:0!important;
+      }
+}

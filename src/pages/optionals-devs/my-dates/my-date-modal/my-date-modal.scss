@@ -29,10 +29,11 @@ page-my-date-modal {
     }
     .nombreDoctor {
         color: #00B6A3;
-        font-weight: 400;
+        font-weight: 200;
         width: 90%;
         margin-left: 5%;
-        font-size: 1.3em;
+        font-size: 1.4em;
+        text-transform: capitalize;
     }
     ion-label {
         color: #4A4A4A;
@@ -44,6 +45,7 @@ page-my-date-modal {
         text-align: left;
         font-size: 1em;
         font-weight: 400;
+        text-transform: capitalize;
     }
     ion-icon {
         color: #A7A9AB;

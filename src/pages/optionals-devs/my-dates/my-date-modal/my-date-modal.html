@@ -1,6 +1,6 @@
 <ion-header>
 
-    <ion-navbar color="primary">
+    <ion-navbar color="azul">
         <ion-title class="titleHeader">Mis citas - {{ task.service.basicService.description | slice:0:6 }}</ion-title>
         <!-- <ion-buttons end>
             <button ion-button icon-only color="royal" (click)="dismiss()">
@@ -15,7 +15,7 @@
 
         <img id="profile-image" src="http://dappapache02.eastus.cloudapp.azure.com:4200/img/professionals/{{task.professional.id}}.png">
 
-        <h3 class="nombreDoctor" text-center>{{ task.professional.fullName }} </h3>
+        <h3 class="nombreDoctor" text-center>{{ task.professional.fullName | lowercase }} </h3>
 
         <ion-item>
             <ion-icon item-start><i class="fa fa-hospital-o" aria-hidden="true"></i></ion-icon>

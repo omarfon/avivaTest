@@ -18,7 +18,7 @@
                         </ion-avatar>
                     </ion-col>
                     <ion-col col-8>
-                        <h3 class="tituloCitas">Dr. {{task.professional.fullName | slice:0:25 | uppercase}}</h3>
+                        <h3 class="tituloCitas">Dr. {{task.professional.fullName | slice:0:25 | lowercase}}</h3>
                         <p class="especialidad">{{ task.service.basicService.description | lowercase }}</p>
                         <p class="sede">{{ task.service.center.name | lowercase }}</p>
                     </ion-col>

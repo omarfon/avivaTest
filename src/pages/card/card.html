@@ -40,7 +40,7 @@
 
     </div>
 
-    <div>
+    <div >
         <ion-card *ngFor="let doctor of doctors ">
             <div [ngStyle]="{'display': doctor.hasAvailable ? 'block' : 'none'}">
                 <ion-row>
@@ -48,7 +48,7 @@
                         <img src="http://dappapache02.eastus.cloudapp.azure.com:4200/img/professionals/{{doctor.id}}.png" alt="">
                     </ion-col>
                     <ion-col col-8 right>
-                        <p class="doctor">Dr. {{ doctor.fullName}}</p>
+                        <p class="doctor">{{ doctor.fullName | lowercase}}</p>
                         <p class="especialidad">{{doctor.service.description | lowercase}}</p>
                         <p>{{doctor.cmp}}</p>
                         <p class="centro">Centro: Mendiola</p>

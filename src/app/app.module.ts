@@ -1,3 +1,4 @@
+import { PayuPage } from './../pages/payu/payu';
 import { BrowserModule } from '@angular/platform-browser';
 import { LOCALE_ID, ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
@@ -60,7 +61,7 @@ import { AuthorizationPublicProvider } from '../providers/authorization-public/a
 
 //widgets
 import * as moment from 'moment';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
@@ -74,7 +75,8 @@ import { MasterDetailPage } from './../pages/appointment/master-detail/master-de
 import { HelloProvider } from '../providers/hello/hello';
 import { DatosPage } from '../pages/datos/datos';
 import { ScreenOrientation } from '@ionic-native/screen-orientation';
-
+import { PayuTestProvider } from '../providers/payu-test/payu-test';
+import {NgxMaskModule} from 'ngx-mask'
 
 
 
@@ -97,19 +99,22 @@ import { ScreenOrientation } from '@ionic-native/screen-orientation';
     ExpandableComponent,
     MasterDetailPage,
     MyDateModalPage,
-    DatosPage
+    DatosPage,
+    PayuPage
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
+    IonicModule.forRoot(MyApp),
     Ng2SearchPipeModule,
     HttpClientModule,
     HttpModule,
     ApolloModule,
     HttpLinkModule,
-    IonicModule.forRoot(MyApp),
     FormsModule,
-    BrowserAnimationsModule,
-    MaterialModule
+    MaterialModule,
+    ReactiveFormsModule,
+    NgxMaskModule,
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -129,7 +134,9 @@ import { ScreenOrientation } from '@ionic-native/screen-orientation';
     RecomendationsPage,
     MasterDetailPage,
     MyDateModalPage,
-    DatosPage
+    DatosPage,
+    ExpandableComponent,
+    PayuPage
   ],
   providers: [
     StatusBar,
@@ -140,7 +147,8 @@ import { ScreenOrientation } from '@ionic-native/screen-orientation';
     UserProvider,
     AppointmentProvider,
     HelloProvider,
-    AuthorizationPublicProvider
+    AuthorizationPublicProvider,
+    PayuTestProvider
   ]
 })
 export class AppModule {

@@ -21,21 +21,6 @@
              <ion-icon item-start name="clipboard"></ion-icon>
              Mis Citas</button>
 
-            <!-- <button ion-item *ngIf="userToken">
-                <ion-icon item-start name="people" ></ion-icon>
-            Familiares</button> -->
-
-
-            <!-- <button ion-item (click)="goPage(irm)" *ngIf="userToken">
-                <ion-icon item-start name="image"></ion-icon> 
-            Mis Imagenes</button> -->
-
-
-            <!-- <button ion-item (click)="goPage(rep)" *ngIf="userToken">
-                <ion-icon item-start name="bookmarks"></ion-icon> 
-                Recetas</button> -->
-
-
             <button ion-item (click)="goPage(log)" *ngIf="!userToken" class="outLine">
             <ion-icon item-start name="key"></ion-icon>
             Login</button>
@@ -49,4 +34,5 @@
     </ion-content>
 </ion-menu>
 
+<!-- regresarlo ap homePage -->
 <ion-nav [root]="hom" #contenido></ion-nav>

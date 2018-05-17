@@ -1,3 +1,4 @@
+import { PayuPage } from './../../payu/payu';
 import { Component } from '@angular/core';
 import { NavController, NavParams, AlertController, Events, ViewController } from 'ionic-angular';
 import { RegisterPage } from '../register/register';
@@ -32,6 +33,11 @@ export class LoginPage {
       this.hora = this.navParams.get('hora');
       this.doctor = this.navParams.get('doctor');
       this.available = this.navParams.get('available');
+
+      localStorage.removeItem('idTokenUser');
+      localStorage.removeItem('emailUser');
+      localStorage.removeItem('authorization');
+      localStorage.removeItem('role');
   }
 
   ionViewDidLoad() {
@@ -42,13 +48,10 @@ export class LoginPage {
     .subscribe( 
       data => {
         this.msg = "";
-        console.log('data login', data);
         localStorage.setItem('idTokenUser', data.patientId);
         localStorage.setItem('emailUser', formulario.value.email);
-        // localStorage.setItem('passUser', formulario.value.password);
         localStorage.setItem('authorization', data.authorization);
         localStorage.setItem('role', data.role);
-        // XXX: Send event for login user. This is for trigger event in app.component for show menus when user is logged.
         this.events.publish('user:logged', 'logged');
         if( !this.hora )
         this.navCtrl.push(HomePage )

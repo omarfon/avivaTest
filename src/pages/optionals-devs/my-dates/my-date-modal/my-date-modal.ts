@@ -33,7 +33,7 @@ export class MyDateModalPage {
 
     let confirm = this.alertCtrl.create({
       title: 'ELMINAR',
-      message: '¿Estas seguro de eliminar esta cita?',
+      message: '¿Estas seguro que quieres eliminar esta cita?',
       buttons: [
         {
           text: 'SI',

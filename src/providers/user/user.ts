@@ -6,19 +6,14 @@ import 'rxjs/add/operator/map';
 
 import * as shajs from 'sha.js';
 
-/*
-  Generated class for the UserProvider provider.
 
-  See https://angular.io/docs/ts/latest/guide/dependency-injection.html
-  for more info on providers and Angular DI.
-*/
 @Injectable()
 export class UserProvider {
 
-  // private apiUrl = 'http://dappapache02.eastus.cloudapp.azure.com:4000/api/ebooking/';
-  private apiUrl = 'http://dappapache02.eastus.cloudapp.azure.com:4200/api/v2/users/';
-  // private signUp = 'http://45.55.174.40/auth/';
-  // private relatives = 'http://45.55.174.40/users/';
+  private SERVER = "http://dappapache02.eastus.cloudapp.azure.com:4200";
+  private apiUrl = `${this.SERVER}/api/v2/users/`;
+  // private apiUrl = 'http://dappapache02.eastus.cloudapp.azure.com:4000/api/v2/users/';
+
 
   constructor(public http: Http) { }
 
@@ -30,7 +25,8 @@ export class UserProvider {
   }
 
   doSignIn(email, password){
-    let params = {email:email, password: shajs('sha256').update(password).digest('hex')}
+    let params = {email:email, password: shajs('sha256').update(password).digest('hex') , captchaId: "4dbc9e7e-a921-4d1f-8e36-1021a670c47a"}
+    // let params = {email:email, password: shajs('sha256').update(password).digest('hex') }
     return this.http.post(this.apiUrl + 'login', params)
                     .map(this.extractData)
                     .catch(this.handleError);

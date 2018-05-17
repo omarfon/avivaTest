@@ -8,7 +8,7 @@
 
 
 <ion-content>
-    <h4 class="parrafoFinanciador">lo que nos queda es escoger el financiador y el pago, ya casí terminamos…</h4>
+    <h4 class="parrafoFinanciador">Lo que nos queda es escoger el financiador y el pago, ya casi terminamos…</h4>
     <ion-list>
 
         <ion-card class="evaluate">
@@ -20,8 +20,8 @@
 
                 <ion-list class="nombresLista" *ngIf="firtClick">
                     <button ion-item *ngFor="let quest of questions" (click)="validateSelected(quest.id)">
-                {{ quest.name }}
-              </button>
+                        {{ quest.name }}
+                    </button>
                 </ion-list>
             </ion-list>
         </ion-card>
@@ -33,14 +33,14 @@
                 </ion-item>
                 <ion-list *ngIf="isInsurance">
                     <button ion-item *ngFor="let item of items" (click)="insuranceSelected(item.cod_pagador_pk, item.nombre_garante)">
-                {{ item.nombre_garante }}
-              </button>
+                        {{ item.nombre_garante }}
+                    </button>
                 </ion-list>
             </ion-list>
         </ion-card>
 
         <div text-right class="precio" *ngIf="price!=undefined">
-            <p>Precio de la Consulta: {{ 'S/. ' + price }}.00</p>
+            <p>Precio de la Consulta: {{ 'S/. ' + price }}</p>
         </div>
     </ion-list>
 
@@ -51,101 +51,127 @@
                 <ion-segment-button value="enLocal">
                     En local
                 </ion-segment-button>
-                <ion-segment-button value="enClinica" [disabled]="true">
-                    Con tarjeta (proximamente)
+                <ion-segment-button value="enClinica">
+                    Con tarjeta 
                 </ion-segment-button>
             </ion-segment>
         </div>
         <div [ngSwitch]="pago">
             <ion-list *ngSwitchCase="'enLocal'">
-                <p class="pagoEfectivo">Recuerde que puede pagar su reserva en la clinica, solamente con el número de dni es sencillo!!</p>
+                <div class="resumen" >
+                        <ion-card>
+                                <div class="containerTextoPago">
+                                    <h3 class="titleCardPago">Lo que has escogido hasta el momento</h3>
+                                </div>
+                                <div>
+                                    <ion-row class="centrar">   
+                                        <ion-col col-4>
+                                            <img id="profile-image" src="http://dappapache02.eastus.cloudapp.azure.com:4200/img/professionals/{{doctor.id}}.png">
+                                        </ion-col>
+                                        <ion-col col-8>
+                                            <h3 class="nombreDoctor" text-center>
+                                                {{ doctor.fullName }}
+                                            </h3>
+                                        </ion-col>
+                                    </ion-row>
+                                </div>
+                                    <div class="centrar">
+                                        <p bold class="izquierda">Sede:</p>
+                                        <p class="blue" type="text" disabled="true">Mendiola</p>
+                                    </div>
+                                    <div  class="centrar">
+                                        <p class="izquierda">Especialidad:</p>
+                                        <p item-end class="blue" disabled="true"> {{ doctor.service.description }}</p>
+                                    </div>
+                                    <div  class="centrar">
+                                        <p class="izquierda">Fecha:</p> 
+                                        <p item-end class="blue" disabled="true">
+                                            {{ date | date:'EEEE d , MMMM ' : 'es' }}
+                                        </p>
+                                    </div>
+                                    <div  class="centrar">
+                                        <p class="izquierda">Hora:</p>
+                                        <p class="blue" type="text" disabled="true">
+                                            {{ hora.hour | slice:0:5}}
+                                        </p>
+                                    </div>
+                                    <div  class="centrar">
+                                        <p class="izquierda">Costo:</p>
+                                        <p class="blue" item-end type="text" disabled="true">
+                                            {{ 'S/. ' + price }}
+                                        </p>
+                                    </div>
+                            </ion-card>
+                    
+                
                 <div padding>
                     <button ion-button color="secondary" class="botonAccept" [class.button-disabled]="true" block (click)="next()">Confirmar cita</button>
                 </div>
 
-            </ion-list>
+                
+            </div>
+        </ion-list>
+                        
 
+            
             <ion-list *ngSwitchCase="'enClinica'">
 
-                <div padding>
-
-                    <form [formGroup]="myForm" (ngSubmit)="saveData(myForm.value)" novalidate>
-                        <ion-list>
-                            <ion-item>
-                                <ion-label floating>Nombre:</ion-label>
-                                <ion-input formControlName="name" type="text" maxlength="40" onSelect="this.value=''"></ion-input>
-                            </ion-item>
-
-                            <ion-item>
-                                <ion-label floating>Numero de tarjeta:</ion-label>
-                                <ion-input formControlName="card" id="card" type="tel" minLength="16" maxlength="16" onSelect="this.value=''" required></ion-input>
-                                <ion-icon item-end>
-                                    <i class="fa fa-cc-visa" *ngIf="myForm.get('card').hasError('visa')" aria-hidden="true"></i>
-                                    <i class="fa fa-cc-mastercard" *ngIf="myForm.get('card').hasError('mastercard')" aria-hidden="true"></i>
-                                </ion-icon>
-                            </ion-item>
-
-                            <ion-item *ngIf="myForm.get('card').errors && myForm.get('card').dirty">
-                                <p color="danger" ion-text *ngIf="myForm.get('card').hasError('required')">Campo requerido</p>
-                                <p color="danger" ion-text *ngIf="myForm.get('card').hasError('minlength')">Tarjeta invalida</p>
-                                <p color="danger" ion-text *ngIf="myForm.get('card').hasError('maxlength')">SOLO 16 DIGITOS POR FAVOR</p>
-                            </ion-item>
-                        </ion-list>
-
-                        <ion-row>
-                            <ion-col col-4>
-                                <ion-item>
-                                    <ion-label required floating>Mes</ion-label>
-                                    <ion-select required formControlName="month">
-                                        <ion-option value="01">ENERO </ion-option>
-                                        <ion-option value="02">FEBRERO</ion-option>
-                                        <ion-option value="03">MARZO</ion-option>
-                                        <ion-option value="04">ABRIL</ion-option>
-                                        <ion-option value="05">MAYO</ion-option>
-                                        <ion-option value="06">JUNIO</ion-option>
-                                        <ion-option value="07">JULIO</ion-option>
-                                        <ion-option value="08">AGOSTO</ion-option>
-                                        <ion-option value="09">SEPTIEMBRE</ion-option>
-                                        <ion-option value="10">OCTUBRE</ion-option>
-                                        <ion-option value="11">NOVIEMBRE</ion-option>
-                                        <ion-option value="12">DICIEMBRE</ion-option>
-                                    </ion-select>
-                                </ion-item>
-                            </ion-col>
-                            <ion-col col-4>
-                                <ion-item>
-                                    <ion-label floating>Año</ion-label>
-                                    <ion-select required formControlName="year">
-                                        <ion-option value="2017">2017</ion-option>
-                                        <ion-option value="2018">2018</ion-option>
-                                        <ion-option value="2019">2019</ion-option>
-                                        <ion-option value="2020">2020</ion-option>
-                                        <ion-option value="2021">2021</ion-option>
-                                        <ion-option value="2022">2022</ion-option>
-                                        <ion-option value="2023">2023</ion-option>
-                                        <ion-option value="2024">2024</ion-option>
-                                    </ion-select>
-                                </ion-item>
-                            </ion-col>
-                            <ion-col col-4>
-                                <ion-item>
-                                    <ion-label floating>Codigo</ion-label>
-                                    <ion-input type="tel" minLength="3" maxlength="3" clearInput formControlName="cvv" onSelect="this.value=''"></ion-input>
-                                </ion-item>
-                            </ion-col>
-                            <ion-col col-12>
-                                <ion-item>
-                                    <ion-label class="tiny">Guardar tarjeta</ion-label>
-                                    <ion-checkbox></ion-checkbox>
-                                </ion-item>
-                            </ion-col>
-                        </ion-row>
-                        <div padding>
-                            <button ion-button color="secondary" block type="submit" [disabled]="myForm.invalid">Confirmar y Pagar cita</button>
+                <div class="resumen" >
+                    <ion-card>
+                        <div class="containerTextoPago">
+                            <h3 class="titleCardPago">Lo que has escogido hasta el momento</h3>
                         </div>
+                        <div>
+                            <ion-row class="centrar">   
+                                <ion-col col-4>
+                                    <img id="profile-image" src="http://dappapache02.eastus.cloudapp.azure.com:4200/img/professionals/{{doctor.id}}.png">
+                                </ion-col>
+                                <ion-col col-8>
+                                    <h3 class="nombreDoctor" text-center>
+                                        {{ doctor.fullName }}
+                                    </h3>
+                                </ion-col>
+                            </ion-row>
+                        </div>
+                            <div class="centrar">
+                                <p bold class="izquierda">Sede:</p>
+                                <p class="blue" type="text" disabled="true">Mendiola</p>
+                            </div>
+                            <div  class="centrar">
+                                <p class="izquierda">Especialidad:</p>
+                                <p item-end class="blue" disabled="true"> {{ doctor.service.description }}</p>
+                            </div>
+                            <div  class="centrar">
+                                <p class="izquierda">Fecha:</p> 
+                                <p item-end class="blue" disabled="true">
+                                    {{ date | date:'EEEE d , MMMM ' : 'es' }}
+                                </p>
+                            </div>
+                            <div  class="centrar">
+                                <p class="izquierda">Hora:</p>
+                                <p class="blue" type="text" disabled="true">
+                                    {{ hora.hour | slice:0:5}}
+                                </p>
+                            </div>
+                            <div  class="centrar">
+                                <p class="izquierda">Costo:</p>
+                                <p class="blue" item-end type="text" disabled="true">
+                                    {{ 'S/. ' + price }}
+                                </p>
+                            </div>
+                    </ion-card>
+                    
+            
+            <div padding>
+                <button ion-button color="secondary" class="botonAccept" [class.button-disabled]="true" block (click)="payCulqi()">Pagar ahora con culqi</button>
+            </div>
 
-                    </form>
+            <div padding>
+                    <button ion-button color="secondary" class="botonAccept" [class.button-disabled]="true" block (click)="openModalPayu()">Pagar ahora con payu</button>
                 </div>
+
+            
+        </div>
             </ion-list>
         </div>
     </div>

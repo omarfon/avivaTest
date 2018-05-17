@@ -14,8 +14,8 @@ export class HelloProvider {
   servicios: any[] = [];
   doctores: any[] = [];
 
-
- private apiUrl = "http://dappapache02.eastus.cloudapp.azure.com:4200/graphql"; 
+ private SERVER = "http://dappapache02.eastus.cloudapp.azure.com:4200";
+ private apiUrl = `${this.SERVER}/graphql`; 
 
 
   constructor(public http: HttpClient) {
@@ -31,9 +31,11 @@ export class HelloProvider {
     let params = {query: "query {centers{ services{id, description }}}"};
     return this.http.post(this.apiUrl, params, {headers})
                     .map((resp:any)=>{
-                      if(!resp.data.centers ){
+                      // console.log('resp:', resp.data.centers);
+                      if(!resp.data.centers || resp.data.centers.length == 0 ){
                         return [];
                       }
+                      // console.log('resp2:', resp)
                       this.servicios = resp.data.centers[0].services;
                       return this.servicios;
                     });           

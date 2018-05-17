@@ -44,9 +44,59 @@
        It contains all of the dependencies in node_modules -->
     <script src="build/vendor.js"></script>
 
-    <!-- The main bundle js is generated during the build process -->
-    <script src="build/main.js"></script>
-
+    
+    
+    
+    <!-- Incluye el Checkout de Culqi en tu sitio web-->
+    <script src="https://checkout.culqi.com/v2"></script>
+    
+    <script>
+        var SERVER = "http://dappapache02.eastus.cloudapp.azure.com:4000";
+        </script>
+    <script>
+        var culqiData = {
+            source_id: "",
+            amount: 0,
+            currency_code: "PEN",
+            email: "",
+            status:""
+        }
+        var authorization = localStorage.getItem('authorization');
+        function culqi(token) {
+            console.log("enviar datos de pago al servidor", token, Culqi.token);
+            const url = `${SERVER}/api/v2/ebooking/culqi-charges`;
+            // const url = `http://dappapache02.eastus.cloudapp.azure.com:4000/api/v2/ebooking/hello`;
+            const headers = {
+                Accept: "application/json, text/plain, */*",
+                "Content-Type": "application/json",
+                Authorization: authorization
+            };
+            const method = "POST";
+            culqiData.source_id = Culqi.token.id;
+            culqiData.email = Culqi.token.email;
+            return fetch(url, {
+                headers: new Headers(headers),
+                method,
+                body: JSON.stringify(culqiData)
+            })
+            .then(res => res.json())
+            .then(data => {
+                console.log('Culqi charges ok', culqiData);
+                if(data.object = "error"){
+                    culqiData.status = "error";
+                }
+                else{
+                    culqiData.status = "ok";
+                }
+            })
+            .catch(err => {
+                console.log('Culqui charges ko', err)
+               
+            });
+        }
+        </script>
+<!-- The main bundle js is generated during the build process -->
+<script src="build/main.js"></script>
 </body>
 
 </html>

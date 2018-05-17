@@ -4,8 +4,8 @@ import 'rxjs/add/operator/map';
 
 @Injectable()
 export class AuthorizationPublicProvider {
-
-  apiUrl = "http://dappapache02.eastus.cloudapp.azure.com:4200/api/v2/users/public-authorization"
+  private SERVER = "http://dappapache02.eastus.cloudapp.azure.com:4200";
+  apiUrl = `${this.SERVER}/api/v2/users/public-authorization`;
 
   constructor(public http: HttpClient) {
     console.log('Hello AuthorizationPublicProvider Provider');

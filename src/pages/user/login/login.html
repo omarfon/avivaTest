@@ -1,17 +1,17 @@
-<!-- <ion-header>
-    <ion-navbar color="primary" hideBackButton="true">
-         <button ion-button menuToggle>
-            <ion-icon name="menu"></ion-icon>
-          </button> 
-        <ion-title> Login </ion-title>
-    </ion-navbar>
-</ion-header> -->
-
 
 <ion-content class="gris">
 
-    <h5 class="bajar textoAzul" text-center>Vamos a comenzar, ahora necesitamos tus datos para iniciar una reserva. Si no tienes cuenta aún, registrate ¡es súper fácil!</h5>
+    <h5 class="bajar textoAzul" text-center> Ahora necesitamos tus datos para iniciar una reserva. Si no tienes cuenta aún, registrate ¡es súper fácil!</h5>
 
+    
+    <div class="white">
+        <div padding>
+            <button ion-button (click)="registrarUsuario()" full color="primary" class="alto50">Registrarse</button>
+        </div>
+        
+    </div>
+    
+    <h3 text-center class="noMargin">ó</h3>
     <div padding>
         <p style="text-align: center">{{msg}}</p>
 
@@ -19,7 +19,10 @@
 
             <ion-item>
                 <ion-label stacked>Email</ion-label>
-                <ion-input type="text" required name="email" ngModel></ion-input>
+                <ion-input type="text" 
+                           required    
+                           name="email" 
+                           ngModel></ion-input>
             </ion-item>
 
             <ion-item>
@@ -29,15 +32,6 @@
         </form>
         <button ion-button (click)="startSesion(formulario)" block class="inicioSesion">iniciar Sesión</button>
     </div>
-
-    <div class="white">
-        <h3 text-center class="noMargin">ó</h3>
-        <div padding>
-            <button ion-button (click)="registrarUsuario()" full color="primary" class="alto50" class="disabled">Registrarse</button>
-        </div>
-
-    </div>
-
     <p class="noLogin" (click)="goToHome()">Continuar como invitado</p>
 
 </ion-content>

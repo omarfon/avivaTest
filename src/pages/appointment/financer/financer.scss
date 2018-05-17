@@ -32,9 +32,10 @@ page-financer {
         height: auto;
         p {
             color: #00B6A3;
-            font-weight: 1.2em;
+            font-size: 1.2em;
+            font-weight: 400;
             margin-top: 8px;
-            text-transform: uppercase;
+            text-transform: capitalize;
         }
     }
     .item-md,
@@ -104,7 +105,6 @@ page-financer {
     }
     .botonAccept {
         height: 50px!important;
-        margin-top: -50px;
     }
     .segment-md .segment-button {
         border-bottom: none;
@@ -113,5 +113,51 @@ page-financer {
     .segment-md .segment-button.segment-activated {
         color: #00B6A3;
         border-bottom: 1px solid #00B6A3;
+    }
+    .nombreDoctor{
+        color:#00B6A3;
+        font-size:1.3em;
+        text-align: right!important;
+        margin-right:10px;
+    }
+    .blue{
+        color:#979797;
+        font-weight: 600;
+        text-align: right;
+        margin-right: 40px!important;
+    }
+    
+    ion-label{
+        margin-top:5px!important;
+        margin-bottom:5px!important;
+    }
+    img{
+        width:100px;
+        margin-left: calc( 50% - 50px);
+    }
+    .resumen{
+        padding-bottom:1em;
+        background-color: #fff;
+    }
+    .centrar{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom:5px;
+        .izquierda{
+            color:#062F51;
+            margin-left:40px;
+        }
+    }
+    .containerTextoPago{
+        background: #007198;
+        h3{
+            color:#fff !important;
+            font-weight:400;
+            padding: 10px 0;
+            margin-top:0;
+            font-size:1.1em;
+            text-align: center;
+            }
     }
 }

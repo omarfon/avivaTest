@@ -38,34 +38,37 @@ page-card {
         }
     }
     .doctor {
-        font-weight: 500;
-        color: #00B6A3;
-        font-size: 1.4em;
+        font-weight: 200;
+        color: color($colors,verde);
+        font-size: 1.5em;
         text-align: right;
         margin-right: 15px;
         line-height: 1.2em;
         margin-top: 10px;
+        text-transform: capitalize;
     }
     .especialidad {
         text-align: right;
-        color: #a7a9ab;
+        color: color($colors,gris);
         margin-right: 15px;
-        font-size: 1.3em;
+        font-size: 1.2em;
         font-weight: lighter;
         margin-top: 0!important;
+        text-transform: capitalize;
     }
     .centro {
         text-align: right;
         margin-right: 15px;
-        color: #a7a9ab;
-        font-weight: bold;
+        font-size:1.2em;
+        color: color($colors,gris);
+        font-weight: 300;
     }
     .diasLibres {
         // margin-bottom: 0!important;
         text-align: center;
         h6 {
             font-size: 1.1em;
-            color: #a7a9ab;
+            color: color($colors,gris);
             text-align: center;
             // margin-right: 10px;
         }
@@ -89,7 +92,7 @@ page-card {
         margin: 8%;
     }
     a {
-        background: #10A7C1;
+        background: color($colors,celeste);
         height: 30px;
         width: 30px;
         border-radius: 50%;
@@ -125,7 +128,7 @@ page-card {
         font-size: 1em;
         margin-top: 10px;
         p {
-            background: #C5C5C5;
+            background: color($colors,gris);
             border-radius: 20px;
             padding: 8 25px;
             color: #fff;
@@ -134,10 +137,10 @@ page-card {
     }
     .icono {
         margin-top: 15px;
-        color: #a7a9ab;
+        color: color($colors,gris);
     }
     .textoCitas {
-        color: #007198;
+        color: color($colors,azul);
         margin-top: 50px;
         text-align: center;
     }

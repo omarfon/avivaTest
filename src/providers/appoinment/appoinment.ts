@@ -8,22 +8,14 @@ import 'rxjs/add/operator/map';
 
 @Injectable()
 export class AppointmentProvider {
-
-  private apiUrl = 'http://dappapache02.eastus.cloudapp.azure.com:4200/api/v2/ebooking/';
+ 
+  private SERVER = "http://dappapache02.eastus.cloudapp.azure.com:4200";
+  private apiUrl = `${this.SERVER}/api/v2/ebooking/`;
 
 
   constructor(public http: HttpClient) { }
 
-  getAppointmentsPeruser(): Observable<string[]> {  
-    const authorization = localStorage.getItem('authorization');
-    let headers = new HttpHeaders({"Authorization": authorization});
-    	
-    return this.http.get(this.apiUrl + 'appointments/patient', {headers})
-                    .map((resp:any) =>{
-                        return resp;
-                    }); 
-  }
-
+  
   createAppointment(subida){
     const authorization = localStorage.getItem('authorization');
     let headers = new HttpHeaders({"Authorization": authorization});
@@ -34,11 +26,20 @@ export class AppointmentProvider {
     
     // console.log('appointment:',subida, params);
     return this.http.post(this.apiUrl + 'appointments/create', params, {headers})
-                    .map(data =>{
-                        return data;
+    .map(data =>{
+      return data;
+    }); 
+  }
+  
+  getAppointmentsPeruser(): Observable<string[]> {  
+    const authorization = localStorage.getItem('authorization');
+    let headers = new HttpHeaders({"Authorization": authorization});
+      
+    return this.http.get(this.apiUrl + 'appointments/patient', {headers})
+                    .map((resp:any) =>{
+                        return resp;
                     }); 
   }
-
   destroyAppointment(appointment) {
     const authorization = localStorage.getItem('authorization');
     let headers = new HttpHeaders({"Authorization": authorization});

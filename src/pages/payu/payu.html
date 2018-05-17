@@ -1,0 +1,159 @@
+<ion-content padding>
+    <form [formGroup]="myForm" (ngSubmit)="saveData(myForm)" novalidate>
+      <ion-row>
+        <!-- cabecera del modal -->
+        <ion-col col-12
+                  class="backCabecera">
+          <ion-row>
+            <!-- espacio para las imagenes -->
+            <ion-col col-4>
+             <div class="imagenCheckout">
+
+             </div>
+            </ion-col>
+            <!-- div para el texto de titulo y subtitulo -->
+            <ion-col col-8>
+              <h5 class="tituloDeCita">Titulo de la cita</h5>
+              <p class="resumenCita">algún resumen</p>
+            </ion-col>
+          </ion-row>
+        </ion-col>
+        <!-- cuerpo del modal -->
+        <ion-col col-12
+                 class="backCuerpoModal">
+          <ion-row>
+            <ion-col 
+                    col-12
+                    class="sinpading top10">
+              <ion-item>
+                  <ion-icon name="card" item-left></ion-icon>
+                <ion-input type="tel" 
+                            placeholder="Número de tarjeta"
+                            formControlName="numero"
+                            required
+                            maxlength="16"
+                            name="numero">
+                </ion-input>
+              </ion-item>
+            </ion-col>
+            <ion-col
+                    col-6
+                    class="sinpading">
+              <ion-item>
+                  <ion-icon name="calendar" item-left></ion-icon>
+                <ion-input type="text" 
+                            date="yyyy-mm"
+                            placeholder="YYYY/MM"
+                            formControlName="month"
+                            required 
+                            maxlength="6"
+                            name="month">        
+                </ion-input>
+              </ion-item>
+            </ion-col>
+            <ion-col 
+                    col-6
+                    class="sinpading">
+              <ion-item>
+                  <ion-icon name="unlock" item-left></ion-icon>
+                <ion-input type="tel" 
+                            placeholder="CVV"
+                            formControlName="cvv"
+                            minLength="3" 
+                            maxlength="3"
+                            name="cvv"
+                            required>
+                </ion-input>
+              </ion-item>
+            </ion-col>
+
+            <ion-col 
+                    col-12
+                    class="sinpading top10">
+              <ion-item>
+                  <ion-icon name="at" item-left></ion-icon>
+                <ion-input type="email" 
+                            formControlName = "mail"
+                            placeholder="Correo electrónico"
+                            name="mail">
+                </ion-input>
+                </ion-item>
+            </ion-col>
+            
+          </ion-row>
+          <div padding>
+              <button ion-button color="secondary" block type="submit" [disabled]="!myForm.valid" >Pagar S/ 45.50</button>
+            </div>
+        </ion-col>
+      </ion-row>
+        <!-- <ion-list>
+          <ion-item>
+            <ion-label floating>Nombre:</ion-label>
+            <ion-input formControlName="name" type="text" maxlength="40"  onSelect="this.value=''"></ion-input>
+          </ion-item>
+  
+          <ion-item>
+            <ion-label floating>Numero de tarjeta:</ion-label>
+            <ion-input formControlName="card" id="card" type="tel" minLength="16" maxlength="16" onSelect="this.value=''" required></ion-input>
+            <ion-icon  item-end>
+              <i class="fa fa-cc-visa"  *ngIf="myForm.get('card').hasError('visa')" aria-hidden="true"></i>
+              <i class="fa fa-cc-mastercard"  *ngIf="myForm.get('card').hasError('mastercard')" aria-hidden="true"></i>
+            </ion-icon>
+          </ion-item>
+  
+          <ion-item *ngIf="myForm.get('card').errors && myForm.get('card').dirty">
+            <p color="danger" ion-text *ngIf="myForm.get('card').hasError('required')">Campo requerido</p>
+            <p color="danger" ion-text *ngIf="myForm.get('card').hasError('minlength')">Tarjeta invalida</p>
+            <p color="danger" ion-text *ngIf="myForm.get('card').hasError('maxlength')">SOLO 16 DIGITOS POR FAVOR</p>
+          </ion-item>
+        </ion-list> -->
+      
+      <!-- <ion-row>
+        <ion-col col-4>
+          <ion-item>
+            <ion-label required floating>Mes</ion-label>
+            <ion-select required formControlName="month" >
+              <ion-option value="01">ENERO </ion-option>
+              <ion-option value="02">FEBRERO</ion-option>
+              <ion-option value="03">MARZO</ion-option>
+              <ion-option value="04">ABRIL</ion-option>
+              <ion-option value="05">MAYO</ion-option>
+              <ion-option value="06">JUNIO</ion-option>
+              <ion-option value="07">JULIO</ion-option>
+              <ion-option value="08">AGOSTO</ion-option>
+              <ion-option value="09">SEPTIEMBRE</ion-option>
+              <ion-option value="10">OCTUBRE</ion-option>
+              <ion-option value="11">NOVIEMBRE</ion-option>
+              <ion-option value="12">DICIEMBRE</ion-option>
+            </ion-select>
+          </ion-item>
+        </ion-col>
+        <ion-col col-4>
+          <ion-item>
+            <ion-label floating>Año</ion-label>
+            <ion-select required formControlName="year">
+              <ion-option value="2017">2017</ion-option>
+              <ion-option value="2018">2018</ion-option>
+              <ion-option value="2019">2019</ion-option>
+              <ion-option value="2020">2020</ion-option>
+              <ion-option value="2021">2021</ion-option>
+              <ion-option value="2022">2022</ion-option>
+              <ion-option value="2023">2023</ion-option>
+              <ion-option value="2024">2024</ion-option>
+            </ion-select>
+          </ion-item>
+        </ion-col>
+        <ion-col col-4>
+          <ion-item>
+            <ion-label floating>Codigo</ion-label>
+            <ion-input   type="tel"  minLength="3" maxlength="3" clearInput formControlName="cvv" onSelect="this.value=''" ></ion-input>
+          </ion-item>
+        </ion-col>
+     
+      </ion-row>
+      <div padding>
+        <button ion-button color="secondary" block type="submit" [disabled]="myForm.invalid" >Confirmar y Pagar cita</button>
+      </div>
+       -->
+    </form>
+</ion-content>

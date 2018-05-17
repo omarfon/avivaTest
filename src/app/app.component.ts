@@ -11,6 +11,7 @@ import { ProfilePage } from './../pages/user/profile/profile';
 import { IrmPage } from '../pages/optionals-devs/irm/irm';
 import { MyDatesPage } from '../pages/optionals-devs/my-dates/my-dates';
 import { RegisterPage } from '../pages/user/register/register';
+import { PayuPage } from '../pages/payu/payu';
 
 
 
@@ -20,6 +21,7 @@ import { RegisterPage } from '../pages/user/register/register';
 })
 export class MyApp {
   @ViewChild('contenido') menu : NavController;
+  //aqui regresarlo al HomePage
   rootPage:any = HomePage;
   showedAlert: boolean;
   confirmAlert;
@@ -32,7 +34,8 @@ export class MyApp {
   irm   = IrmPage;
   rep   = RecipesPage;
   myd   = MyDatesPage;
-  reg   = RegisterPage
+  reg   = RegisterPage;
+  pay   = PayuPage;
   
 
   constructor(public platform: Platform, 
@@ -47,6 +50,8 @@ export class MyApp {
       statusBar.styleDefault();
       splashScreen.hide();
     });
+
+    const SERVER = "http://dappapache02.eastus.cloudapp.azure.com:4000";
 
     this.userToken = localStorage.getItem('idTokenUser');
 
@@ -74,8 +79,10 @@ export class MyApp {
     localStorage.removeItem('authorization');
     localStorage.removeItem('role');
     this.userToken = null;
-    this.menu.setRoot(HomePage);
+    this.menu.setRoot(LoginPage);
     this.menuCtrl.close();
   }
+
+  
 }
 
