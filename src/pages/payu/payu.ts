@@ -33,7 +33,9 @@ export class PayuPage {
 
 
       this.myForm = this.fb.group({
-        numero: ['',[Validators.required]],
+        numero: ['',[Validators.required,
+                     Validators.minLength(16),
+                    Validators.maxLength(16)]],
         month: ['', [Validators.required, 
                     Validators.minLength(6),
                     Validators.maxLength(6)]],

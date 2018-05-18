@@ -81,8 +81,8 @@
             })
             .then(res => res.json())
             .then(data => {
-                console.log('Culqi charges ok', culqiData);
-                if(data.object = "error"){
+                console.log('Culqi charges ok', data);
+                if(data.data && data.data.object === "error"){
                     culqiData.status = "error";
                 }
                 else{

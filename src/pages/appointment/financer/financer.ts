@@ -2,7 +2,7 @@ import { PayuPage } from './../../payu/payu';
 import { HomePage } from './../../home/home';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { AlertController, NavController, NavParams, Platform, ModalController, ViewController, ActionSheetController } from 'ionic-angular';
+import { AlertController, NavController, NavParams, Platform, ModalController, ViewController, ActionSheetController, LoadingController } from 'ionic-angular';
 import { CardPage } from '../../card/card';
 
 import { FinancierProvider } from './../../../providers/financier/financier';
@@ -62,6 +62,7 @@ export class FinancerPage {
   private hour;
   private subida;
   pay;
+  currentAppointment = null;
 
 
   constructor(public navCtrl: NavController,
@@ -73,7 +74,8 @@ export class FinancerPage {
     public modalCtrl: ModalController,
     public appointmentProvider: AppointmentProvider,
     public actionSheet: ActionSheetController,
-    public viewCtrl: ViewController) {
+    public viewCtrl: ViewController,
+    public loadingCtrl: LoadingController) {
 
     this.isAndroid = platform.is('android');
 
@@ -96,8 +98,8 @@ export class FinancerPage {
           doctor: this.doctor,
           available: this.available
         });
-      // console.log('datos de financer:', this.hora, this.doctor , this.available)
-      // datos.present();
+      console.log('datos de financer:', this.hora, this.doctor , this.available)
+      datos.present();
 
     } else {
       console.log("si hay constraseña. que pase");
@@ -191,9 +193,49 @@ export class FinancerPage {
     }
   }
 
-  openCulqi(data:any){
-    let appointment = data;
-  console.log("this.openCulqi");
+  next(){
+    if(this.currentAppointment === null){
+
+      this.appointmentProvider.createAppointment(this.subida).subscribe(data=>{
+          console.log("se ha creado la cita");
+          let loading = this.loadingCtrl.create({
+              content:"creando cita"
+          });
+          loading.present();
+          let alert = this.alertCtrl.create({
+            title:"Creación de cita",
+            subTitle:"la cita que reservaste ha sido creada satisfactoriamente.",
+            buttons:[
+              {
+                text:"Ok",
+                role:"Cancel"
+              }
+            ]
+          });
+          loading.dismiss();
+          alert.present();
+          this.navCtrl.setRoot(HomePage);
+      });
+    }else{
+      let alert = this.alertCtrl.create({
+        title:"Creación de cita",
+        subTitle:"la cita que reservaste ha sido creada satisfactoriamente.",
+        buttons:[
+          {
+            text:"Ok",
+            role:"Cancel"
+          }
+        ]
+      });
+      alert.present();
+    }
+    this.navCtrl.setRoot(HomePage);
+  }
+
+  openCulqi(){
+    
+    let appointment = this.currentAppointment;
+    console.log("this.openCulqi");
     const settings = {
       title: 'Cita para' ,
       description: "prueba",
@@ -203,16 +245,35 @@ export class FinancerPage {
     culqiData.amount = this.price * 100;
     Culqi.settings(settings);
 
+    let loadingPago = this.loadingCtrl.create({
+      content:"Haciendo el cobro...",
+      });
+    loadingPago.present();
 
     const i = setInterval(function(){
+      // si se puede realizar el pago con culqi
       if(culqiData.status == "ok" ){
         clearInterval(i);
+        loadingPago.dismiss();
+        let alert = this.alertCtrl.create({
+            title:"Creación de cita",
+            subTitle:"la cita que reservaste ha sido creada satisfactoriamente.",
+            buttons:[
+              {
+                text:"OK",
+                role:'cancel'
+              }
+            ]
+        });
+        alert.present();
         this.navCtrl.setRoot(HomePage);
       }
+      // si no se puede realizar el pago con culqi
       else if(culqiData.status == "error"){
         const self = this;
         clearInterval(i);
-         let action = this.alertCtrl.create({
+        loadingPago.dismiss();
+         let action = this.actionSheet.create({
               title:"EL PAGO NO PUDO REALIZARSE",
               buttons:[
                 {
@@ -221,7 +282,7 @@ export class FinancerPage {
                   handler: ()=>{
                     action.dismiss().then(()=>{
                       culqiData.status = "";
-                      self.openCulqi(data);
+                      self.openCulqi();
                     });
                     return false;
                   }
@@ -237,20 +298,26 @@ export class FinancerPage {
                         text:"OK",
                         role:'cancel'
                       }]
-                      
                     });
+                    alert.present();
                   }
                 },
                 {
                   text: "Cancelar cita",
                   handler: ()=>{
                     this.appointmentProvider.destroyAppointment(appointment).subscribe(data =>{
+                      this.navCtrl.setRoot(HomePage);
                       let alert = this.alertCtrl.create({
                           title:"su cita fue cancelada",
-                      })
+                          buttons:[
+                            {
+                              text:"OK",
+                              role:"cancel"
+                            }
+                          ]
+                      });
                       alert.present();
                     });
-                    this.navCtrl.setRoot(HomePage);
                   }
                 }
               ]
@@ -261,14 +328,21 @@ export class FinancerPage {
   1000);
   console.log("open CUlqi");
   Culqi.open();
+  loadingPago.dismiss();
   }
 
   payCulqi() {
-
+   
     this.appointmentProvider.createAppointment(this.subida)
-                            .subscribe((data:any)=> 
-                            this.openCulqi(data)
+                            .subscribe((data:any)=> {
+                            this.currentAppointment = data;
+                            this.openCulqi();
+                          }                       
     ,err =>{
+      if(this.currentAppointment !== null){
+        this.openCulqi();
+        return;
+      }
       console.log('err',err);
            if(!err){
              return

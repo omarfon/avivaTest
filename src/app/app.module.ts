@@ -76,8 +76,6 @@ import { HelloProvider } from '../providers/hello/hello';
 import { DatosPage } from '../pages/datos/datos';
 import { ScreenOrientation } from '@ionic-native/screen-orientation';
 import { PayuTestProvider } from '../providers/payu-test/payu-test';
-import {NgxMaskModule} from 'ngx-mask'
-
 
 
 @NgModule({
@@ -113,8 +111,7 @@ import {NgxMaskModule} from 'ngx-mask'
     HttpLinkModule,
     FormsModule,
     MaterialModule,
-    ReactiveFormsModule,
-    NgxMaskModule,
+    ReactiveFormsModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
