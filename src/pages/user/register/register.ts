@@ -4,9 +4,6 @@ import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { LoginPage } from '../login/login';
 import { UserProvider } from '../../../providers/user/user';
 
-
-
-
 @Component({
   selector: 'page-register',
   templateUrl: 'register.html',
@@ -25,20 +22,20 @@ export class RegisterPage {
 
 cambio:boolean = false;
 
-  constructor(public navCtrl: NavController, 
+  constructor(public navCtrl: NavController,
               public navParams: NavParams,
               public alertCtrl: AlertController,
               public fb: FormBuilder,
               public userProvider: UserProvider) {
 
-    if(navParams.get('pageFrom')){
-      this.headquarterId = navParams.get('headquarter');
-      this.specialty = navParams.get('specialty');
-      this.pageFrom = navParams.get('pageFrom');
-      this.doctor = navParams.get('doctor');
-      this.date = navParams.get('date');
-      this.hour = navParams.get('hour');
-    }
+    // if(navParams.get('pageFrom')){
+    //   this.headquarterId = navParams.get('headquarter');
+    //   this.specialty = navParams.get('specialty');
+    //   this.pageFrom = navParams.get('pageFrom');
+    //   this.doctor = navParams.get('doctor');
+    //   this.date = navParams.get('date');
+    //   this.hour = navParams.get('hour');
+    // }
 
     this.registerForm = this.fb.group({
       name: ['',  [ Validators.required ]],
@@ -50,14 +47,15 @@ cambio:boolean = false;
       documentNumber: ['',  [ Validators.required]],
       phone: ['',  [ Validators.required, Validators.minLength(9), Validators.maxLength(9) ]],
       email: ['',  [ Validators.required, Validators.email ]],
-      password: ['',  [ Validators.required, Validators.minLength(8) ]],
-      password_confirmation: ['',  [ Validators.required ]]
-    }, {validator: this.areEqual('password', 'password_confirmation')});
+      password: ['',  [ Validators.required, Validators.minLength(8) ]]
+      // password_confirmation: ['',  [ Validators.required ]]
+    });
+    // , {validator: this.areEqual('password', 'password_confirmation')}
   }
 
   registrarUsuario(formModel){
     this.userProvider.doSignUp(formModel)
-     .subscribe( 
+     .subscribe(
         data => {
           this.msg = "";
           if(this.pageFrom == 'payment')
@@ -94,7 +92,7 @@ cambio:boolean = false;
       }
     }
   }
-  
+
   changue(){
     this.cambio = true;
   }

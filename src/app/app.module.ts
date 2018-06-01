@@ -76,6 +76,7 @@ import { HelloProvider } from '../providers/hello/hello';
 import { DatosPage } from '../pages/datos/datos';
 import { ScreenOrientation } from '@ionic-native/screen-orientation';
 import { PayuTestProvider } from '../providers/payu-test/payu-test';
+import { RecipesProvider } from '../providers/recipes/recipes';
 
 
 @NgModule({
@@ -145,7 +146,8 @@ import { PayuTestProvider } from '../providers/payu-test/payu-test';
     AppointmentProvider,
     HelloProvider,
     AuthorizationPublicProvider,
-    PayuTestProvider
+    PayuTestProvider,
+    RecipesProvider
   ]
 })
 export class AppModule {

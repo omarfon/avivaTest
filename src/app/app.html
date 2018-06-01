@@ -21,6 +21,10 @@
              <ion-icon item-start name="clipboard"></ion-icon>
              Mis Citas</button>
 
+             <button ion-item (click)="goPage(rep)" *ngIf="userToken" class="outLine">
+              <ion-icon item-start name="document"></ion-icon>
+              Mis Recetas</button>
+
             <button ion-item (click)="goPage(log)" *ngIf="!userToken" class="outLine">
             <ion-icon item-start name="key"></ion-icon>
             Login</button>

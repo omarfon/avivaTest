@@ -13,6 +13,7 @@
         <p color="danger" ion-text>{{ msg }}</p>
     </ion-item>
 
+    <h4 class="registroDeUsuarioTitulo">Completa tu registro para obtener una cuenta...así de facil..</h4>
 
     <form [formGroup]="registerForm" (ngSubmit)="registrarUsuario(registerForm.value)" role="form" novalidate>
 
@@ -102,12 +103,12 @@
             <p color="danger" ion-text *ngIf="registerForm.get('password').hasError('required')">Contraseña requerida</p>
             <p color="danger" ion-text *ngIf="registerForm.get('password').hasError('minLength')">Minimo 8 caracteres</p>
         </ion-item>
-
+<!--
         <ion-item>
             <ion-label stacked>Repetir contraseña:</ion-label>
             <ion-input type="password" formControlName="password_confirmation" name="password_confirmation"></ion-input>
             <p color="danger" ion-text *ngIf="registerForm.get('password_confirmation').hasError('required')">No coincide con la contraseña</p>
-        </ion-item>
+        </ion-item> -->
 
 
 

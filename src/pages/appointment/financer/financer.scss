@@ -126,7 +126,7 @@ page-financer {
         text-align: right;
         margin-right: 40px!important;
     }
-    
+
     ion-label{
         margin-top:5px!important;
         margin-bottom:5px!important;
@@ -159,5 +159,25 @@ page-financer {
             font-size:1.1em;
             text-align: center;
             }
+    }
+    .cuadrado{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .me, .fam{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 80px;
+      height: 80px;
+      border: solid 4px #00B6A3;
+      color:#007198;
+      text-align:center;
+      font-size:1.2em;
+    }
+    .medio{
+      position: absolute;
+      top:40vh;
     }
 }

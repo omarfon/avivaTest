@@ -1,4 +1,3 @@
-import { RecipesPage } from './../pages/optionals-devs/recipes/recipes';
 import { CardPage } from './../pages/card/card';
 import { Component, ViewChild } from '@angular/core';
 import { Platform, NavController, MenuController, Events } from 'ionic-angular';
@@ -12,6 +11,9 @@ import { IrmPage } from '../pages/optionals-devs/irm/irm';
 import { MyDatesPage } from '../pages/optionals-devs/my-dates/my-dates';
 import { RegisterPage } from '../pages/user/register/register';
 import { PayuPage } from '../pages/payu/payu';
+import { RecipesPage } from '../pages/optionals-devs/recipes/recipes';
+import { PayPage } from '../pages/appointment/pay/pay';
+
 
 
 
@@ -35,11 +37,11 @@ export class MyApp {
   rep   = RecipesPage;
   myd   = MyDatesPage;
   reg   = RegisterPage;
-  pay   = PayuPage;
-  
+  pay   = PayPage;
 
-  constructor(public platform: Platform, 
-              public statusBar: StatusBar, 
+
+  constructor(public platform: Platform,
+              public statusBar: StatusBar,
               public splashScreen: SplashScreen,
               public menuCtrl: MenuController,
               public events: Events
@@ -68,7 +70,7 @@ export class MyApp {
     if( pagina == this.hom)
       this.menu.setRoot(pagina)
     else
-      this.menu.push(pagina);  
+      this.menu.push(pagina);
     this.menuCtrl.close();
   }
 
@@ -83,6 +85,6 @@ export class MyApp {
     this.menuCtrl.close();
   }
 
-  
+
 }
 

@@ -1,18 +1,143 @@
-<!--
-  Generated template for the PayPage page.
 
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
-
-  <ion-navbar>
-    <ion-title>pay</ion-title>
+  <ion-navbar color="primary">
+    <ion-title>Pago</ion-title>
   </ion-navbar>
-
 </ion-header>
 
 
-<ion-content padding>
+<ion-content >
+    <div class="container-gris" >
+      <h4 class="tituloPagos">Terminemos... escoge la forma en la que vas a pagar y listo...</h4>
+    <div padding>
+        <h4 text-center class="tituloMetodos">Metodos de Pago</h4>
+        <ion-segment [(ngModel)]="pago">
+            <ion-segment-button value="enLocal">
+                En local
+            </ion-segment-button>
+            <ion-segment-button value="enClinica">
+                Con tarjeta
+            </ion-segment-button>
+        </ion-segment>
+    </div>
+    <div [ngSwitch]="pago">
+        <ion-list *ngSwitchCase="'enLocal'">
+            <div class="resumen" >
+                    <ion-card>
+                            <div class="containerTextoPago">
+                                <h3 class="titleCardPago">Lo que has escogido hasta el momento</h3>
+                            </div>
+                            <div>
+                                <ion-row class="centrar">
+                                    <ion-col col-4>
+                                        <img id="profile-image" src="http://dappapache02.eastus.cloudapp.azure.com:4200/img/professionals/{{doctor.id}}.png">
+                                    </ion-col>
+                                    <ion-col col-8>
+                                        <h3 class="nombreDoctor" text-center>
+                                            {{ doctor.fullName }}
+                                        </h3>
+                                    </ion-col>
+                                </ion-row>
+                            </div>
+                                <div class="centrar">
+                                    <p bold class="izquierda">Sede:</p>
+                                    <p class="blue" type="text" disabled="true">Mendiola</p>
+                                </div>
+                                <div  class="centrar">
+                                    <p class="izquierda">Especialidad:</p>
+                                    <p item-end class="blue" disabled="true"> {{ doctor.service.description }}</p>
+                                </div>
+                                <div  class="centrar">
+                                    <p class="izquierda">Fecha:</p>
+                                    <p item-end class="blue" disabled="true">
+                                        {{ date | date:'EEEE d , MMMM ' : 'es' }}
+                                    </p>
+                                </div>
+                                <div  class="centrar">
+                                    <p class="izquierda">Hora:</p>
+                                    <p class="blue" type="text" disabled="true">
+                                        {{ hora.hour | slice:0:5}}
+                                    </p>
+                                </div>
+                                <div  class="centrar">
+                                    <p class="izquierda">Costo:</p>
+                                    <p class="blue" item-end type="text" disabled="true">
+                                        {{ 'S/. ' + price }}
+                                    </p>
+                                </div>
+                        </ion-card>
+
+
+            <div padding>
+                <button ion-button color="secondary" class="botonAccept" [class.button-disabled]="true" block (click)="next()">Confirmar cita</button>
+            </div>
+
+
+        </div>
+    </ion-list>
+
+
+
+        <ion-list *ngSwitchCase="'enClinica'">
+
+            <div class="resumen" >
+                <ion-card>
+                    <div class="containerTextoPago">
+                        <h3 class="titleCardPago">Lo que has escogido hasta el momento</h3>
+                    </div>
+                    <div>
+                        <ion-row class="centrar">
+                            <ion-col col-4>
+                                <img id="profile-image" src="http://dappapache02.eastus.cloudapp.azure.com:4200/img/professionals/{{doctor.id}}.png">
+                            </ion-col>
+                            <ion-col col-8>
+                                <h3 class="nombreDoctor" text-center>
+                                    {{ doctor.fullName }}
+                                </h3>
+                            </ion-col>
+                        </ion-row>
+                    </div>
+                        <div class="centrar">
+                            <p bold class="izquierda">Sede:</p>
+                            <p class="blue" type="text" disabled="true">Mendiola</p>
+                        </div>
+                        <div  class="centrar">
+                            <p class="izquierda">Especialidad:</p>
+                            <p item-end class="blue" disabled="true"> {{ doctor.service.description }}</p>
+                        </div>
+                        <div  class="centrar">
+                            <p class="izquierda">Fecha:</p>
+                            <p item-end class="blue" disabled="true">
+                                {{ date | date:'EEEE d , MMMM ' : 'es' }}
+                            </p>
+                        </div>
+                        <div  class="centrar">
+                            <p class="izquierda">Hora:</p>
+                            <p class="blue" type="text" disabled="true">
+                                {{ hora.hour | slice:0:5}}
+                            </p>
+                        </div>
+                        <div  class="centrar">
+                            <p class="izquierda">Costo:</p>
+                            <p class="blue" item-end type="text" disabled="true">
+                                {{ 'S/. ' + price }}
+                            </p>
+                        </div>
+                </ion-card>
+
+
+        <div padding>
+            <button ion-button color="secondary" class="botonAccept" [class.button-disabled]="true" block (click)="payCulqi()">Pagar ahora con culqi</button>
+        </div>
+
+        <!-- <div padding>
+                <button ion-button color="secondary" class="botonAccept" [class.button-disabled]="true" block (click)="openModalPayu()">Pagar ahora con payu</button>
+            </div> -->
+
+
+    </div>
+        </ion-list>
+    </div>
+</div>
 
 </ion-content>
