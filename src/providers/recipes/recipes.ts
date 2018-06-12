@@ -3,15 +3,35 @@ import { Http, Response, RequestOptions, Headers } from '@angular/http';
 import { Injectable } from '@angular/core';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/filter';
 
 @Injectable()
 export class RecipesProvider {
 
-  private apiUrl = "http://dappapache02.eastus.cloudapp.azure.com:4000/api/v2/ebooking/getPrescripcionesEncuentro?encuentroId=";
+  private apiUrl = "http://dappapache02.eastus.cloudapp.azure.com:4200/api/v2/ebooking/getPrescripcionesEncuentro?encuentroId=";
 
 
   constructor(public http: Http) {
     console.log('Hello RecipesProvider Provider');
+  }
+
+  getAllRecipes(){
+    let headers = new Headers({'Content-Type': 'application/json', 'Authorization': localStorage.getItem('authorization')});
+    let options = new RequestOptions({headers});
+
+    return this.http.get(this.apiUrl , options)
+                    .map(this.extractData)
+                    .catch(this.handleError);
+
+  }
+
+  getFilterRecipes(){
+    let headers = new Headers({'Content-Type': 'application/json', 'Authorization': localStorage.getItem('authorization')});
+    let options = new RequestOptions({headers});
+
+    return this.http.get(this.apiUrl , options)
+                    .map(this.extractData)
+                    .catch(this.handleError);
   }
 
   getRecipes(id){

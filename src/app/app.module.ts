@@ -1,3 +1,5 @@
+import { MyparentsPage } from './../pages/myparents/myparents';
+import { CreateparentPage } from './../pages/createparent/createparent';
 import { PayuPage } from './../pages/payu/payu';
 import { BrowserModule } from '@angular/platform-browser';
 import { LOCALE_ID, ErrorHandler, NgModule } from '@angular/core';
@@ -77,6 +79,8 @@ import { DatosPage } from '../pages/datos/datos';
 import { ScreenOrientation } from '@ionic-native/screen-orientation';
 import { PayuTestProvider } from '../providers/payu-test/payu-test';
 import { RecipesProvider } from '../providers/recipes/recipes';
+import { DependentsProvider } from '../providers/dependents/dependents';
+import { CrudparentProvider } from '../providers/crudparent/crudparent';
 
 
 @NgModule({
@@ -99,7 +103,9 @@ import { RecipesProvider } from '../providers/recipes/recipes';
     MasterDetailPage,
     MyDateModalPage,
     DatosPage,
-    PayuPage
+    PayuPage,
+    CreateparentPage,
+    MyparentsPage
   ],
   imports: [
     BrowserModule,
@@ -134,7 +140,9 @@ import { RecipesProvider } from '../providers/recipes/recipes';
     MyDateModalPage,
     DatosPage,
     ExpandableComponent,
-    PayuPage
+    PayuPage,
+    CreateparentPage,
+    MyparentsPage
   ],
   providers: [
     StatusBar,
@@ -147,7 +155,9 @@ import { RecipesProvider } from '../providers/recipes/recipes';
     HelloProvider,
     AuthorizationPublicProvider,
     PayuTestProvider,
-    RecipesProvider
+    RecipesProvider,
+    DependentsProvider,
+    CrudparentProvider
   ]
 })
 export class AppModule {

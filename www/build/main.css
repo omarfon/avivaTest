@@ -36654,7 +36654,7 @@ page-financer .parrafoFinanciador {
   color: #062F51;
   text-align: center;
   margin-bottom: 2em;
-  font-size: 1.2em;
+  font-size: 1.1em;
   font-weight: 300;
   padding-top: 1em;
   width: 90%;
@@ -36853,6 +36853,11 @@ page-financer .cuadrado {
   align-items: center;
 }
 
+page-financer .cuadrado button {
+  height: 50px;
+  width: 90%;
+}
+
 page-financer .me, page-financer .fam {
   display: -webkit-box;
   display: -webkit-flex;
@@ -36875,8 +36880,65 @@ page-financer .me, page-financer .fam {
 }
 
 page-financer .medio {
-  position: absolute;
-  top: 40vh;
+  margin-top: 5vh;
+}
+
+page-financer .buttonAddFamily {
+  margin-top: 20px;
+  height: 50px;
+}
+
+page-financer .botonPagar {
+  width: 90%;
+  margin-left: 5%;
+  height: 50px;
+}
+
+page-financer .nombrePariente {
+  color: #00B6A3;
+  font-size: 1.3em;
+  margin-top: 5px;
+  text-align: right;
+  margin-right: 10px;
+}
+
+page-financer .parentesco {
+  color: #4A4A4A;
+  text-align: right;
+  margin-right: 10px;
+}
+
+page-financer .edad {
+  text-align: right;
+  margin-right: 10px;
+}
+
+page-financer .center {
+  text-align: center;
+  margin-top: 30px;
+}
+
+page-financer .down20 {
+  margin-top: 30px;
+}
+
+page-financer .cardEscogidoImg img {
+  width: 50px !important;
+}
+
+page-financer .containerNombre {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
 page-master-detail #content {
@@ -37051,12 +37113,12 @@ page-pay .tituloPagos {
   margin-left: 10%;
   margin-top: 0 !important;
   font-size: 1.1em;
-  padding-top: 2em;
+  padding-top: 1em;
   font-weight: 200;
 }
 
 page-pay .tituloMetodos {
-  color: #062F51;
+  color: #9B9B9B;
   padding-top: 1em;
   font-weight: 300;
   text-align: center;
@@ -37096,6 +37158,7 @@ page-pay .item-md.item-block .item-inner {
 
 page-pay .botonAccept {
   height: 50px !important;
+  margin-top: -10px;
 }
 
 page-pay .segment-md .segment-button {
@@ -37112,14 +37175,14 @@ page-pay .nombreDoctor {
   color: #00B6A3;
   font-size: 1.3em;
   text-align: right !important;
-  margin-right: 10px;
+  margin-right: 20px;
 }
 
 page-pay .blue {
   color: #979797;
   font-weight: 600;
   text-align: right;
-  margin-right: 40px !important;
+  margin-right: 20px !important;
 }
 
 page-pay ion-label {
@@ -37169,6 +37232,16 @@ page-pay .containerTextoPago h3 {
   margin-top: 0;
   font-size: 1.1em;
   text-align: center;
+}
+
+page-pay .sedeContainer {
+  text-align: right;
+}
+
+page-pay .sede {
+  color: #062F51;
+  font-size: 1.4em;
+  margin-right: 20px;
 }
 
 page-card ion-content {
@@ -37374,6 +37447,67 @@ page-card .list-md .item-input.ng-valid.input-has-value:not(.input-has-focus):no
   box-shadow: none !important;
 }
 
+page-createparent {
+  background: rgba(0, 0, 0, 0.5);
+}
+
+page-createparent ion-content {
+  width: 90%;
+  margin-left: 5%;
+  margin-top: 30px;
+  height: 90%;
+  text-align: center;
+  border-radius: 10px;
+}
+
+page-createparent .tituloFamiliar {
+  color: #00B6A3;
+  text-align: left;
+  margin-bottom: 10px;
+  margin-top: 10px !important;
+  margin-left: 10px;
+}
+
+page-createparent .cienPorCiento {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+page-createparent .buttonClose {
+  border-radius: 50% !important;
+  margin-top: 0;
+  height: 28px;
+  width: 25px;
+}
+
+page-createparent .buttonClose ion-icon {
+  color: #fff;
+}
+
+page-createparent .contenedorButton {
+  text-align: right;
+}
+
+page-createparent ion-label {
+  font-size: 0.8em !important;
+  color: #336E81 !important;
+  padding-top: 15px !important;
+}
+
+page-createparent .guardaryContinuar {
+  margin-top: -25px;
+}
+
 page-datos {
   background: rgba(0, 0, 0, 0.5);
 }
@@ -37554,6 +37688,80 @@ page-home .textoRecetas {
   padding-top: 20px;
 }
 
+page-myparents .nombrePariente {
+  color: #00B6A3;
+  font-size: 1.3em;
+  margin-top: 5px;
+  text-align: right;
+  margin-right: 10px;
+}
+
+page-myparents .parentesco {
+  color: #4A4A4A;
+  text-align: right;
+  margin-right: 10px;
+}
+
+page-myparents .edad {
+  text-align: right;
+  margin-right: 10px;
+}
+
+page-myparents .center {
+  text-align: center;
+  margin-top: 30px;
+}
+
+page-myparents .down20 {
+  margin-top: 30px;
+}
+
+page-myparents .tituloFamiliar {
+  color: #00B6A3;
+  margin-bottom: 10px;
+  margin-top: 10px !important;
+}
+
+page-myparents .cienPorCiento {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+page-myparents .buttonClose {
+  border-radius: 50% !important;
+  margin-top: 0;
+  height: 28px;
+  width: 25px;
+}
+
+page-myparents .buttonClose ion-icon {
+  color: #fff;
+}
+
+page-myparents .contenedorButton {
+  text-align: right;
+}
+
+page-myparents ion-label {
+  font-size: 0.8em !important;
+  color: #336E81 !important;
+  padding-top: 15px !important;
+}
+
+page-myparents .guardaryContinuar {
+  margin-top: -25px;
+}
+
 page-my-dates ion-avatar {
   width: 100%;
   height: 100%;
@@ -37725,6 +37933,74 @@ page-my-date-modal .item-inner {
 
 page-my-date-modal .heightNoventa {
   margin-right: 0 !important;
+}
+
+page-recipes .cuadrados {
+  height: 80px;
+  background: #F5F5F5;
+  width: 95%;
+  margin-left: 5%;
+  color: #444D4D;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+page-recipes .cuadrados p {
+  font-size: .8em;
+  margin-top: 15px;
+}
+
+page-recipes .cuadrados .cantidad {
+  color: #9483C8;
+  font-size: 1.8em;
+  margin-top: 10px;
+}
+
+page-recipes .nombrePastilla {
+  color: #00B6A3;
+  font-size: 1.3em;
+  font-weight: 400;
+  margin-top: 10px;
+  text-align: right;
+  margin-right: 30px;
+}
+
+page-recipes .cantidadDeDias, page-recipes .inicio {
+  color: #444D4D;
+}
+
+page-recipes .tituloDeLasTomas {
+  color: #00B6A3;
+  font-size: 1.2em !important;
+  font-weight: 600;
+  text-align: center;
+  margin-top: 30px !important;
+  margin-bottom: 0;
+}
+
+page-recipes img {
+  width: 50px !important;
+  height: auto;
+}
+
+page-recipes .down {
+  margin-bottom: 30px;
+  border-bottom: .5px solid #DFDFDF;
 }
 
 page-payu {

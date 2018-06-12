@@ -12,7 +12,7 @@ import 'rxjs/add/operator/map';
 */
 @Injectable()
 export class FinancierProvider {
-  
+
   private SERVER = "http://dappapache02.eastus.cloudapp.azure.com:4200";
   private apiUrl = `${this.SERVER}/api/v2/ebooking/`;
 
@@ -33,7 +33,7 @@ export class FinancierProvider {
 
   getPrice(center_id, basic_service_id, doctor_id, proposed_date) {
     // let params = { proposed_date: proposed_date, center_id: center_id, basic_service_id: basic_service_id, doctor_id: doctor_id }
-    
+
     return this.http.get(this.apiUrl + `appointments/price/${center_id}/${basic_service_id}/${doctor_id}/${proposed_date}`)
                     .map(this.extractData)
                     .catch(this.handleError);

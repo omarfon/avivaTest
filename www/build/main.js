@@ -1,16 +1,14 @@
 webpackJsonp([0],{
 
-/***/ 103:
+/***/ 149:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PayuPage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__providers_payu_test_payu_test__ = __webpack_require__(176);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_forms__ = __webpack_require__(13);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_ionic_angular__ = __webpack_require__(15);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__home_home__ = __webpack_require__(63);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__providers_appoinment_appoinment__ = __webpack_require__(57);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CreateparentPage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_dependents_dependents__ = __webpack_require__(93);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -24,102 +22,69 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-
-
-var PayuPage = (function () {
-    function PayuPage(navCtrl, navParams, fb, payu, appointmanetProvider, viewCtrl, alertCtrl) {
+var CreateparentPage = (function () {
+    function CreateparentPage(navCtrl, navParams, fb, viewCtrl, dependentsPvr) {
+        var _this = this;
         this.navCtrl = navCtrl;
         this.navParams = navParams;
         this.fb = fb;
-        this.payu = payu;
-        this.appointmanetProvider = appointmanetProvider;
         this.viewCtrl = viewCtrl;
-        this.alertCtrl = alertCtrl;
-        this.subida = navParams.get('subida');
-        this.doctor = navParams.get('doctor');
-        console.log('data que viene de financer a payu:', this.subida, this.doctor);
-        this.myForm = this.fb.group({
-            numero: ['', [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["j" /* Validators */].required,
-                    __WEBPACK_IMPORTED_MODULE_1__angular_forms__["j" /* Validators */].minLength(16),
-                    __WEBPACK_IMPORTED_MODULE_1__angular_forms__["j" /* Validators */].maxLength(16)]],
-            month: ['', [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["j" /* Validators */].required,
-                    __WEBPACK_IMPORTED_MODULE_1__angular_forms__["j" /* Validators */].minLength(6),
-                    __WEBPACK_IMPORTED_MODULE_1__angular_forms__["j" /* Validators */].maxLength(6)]],
-            mail: ['', [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["j" /* Validators */].required, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["j" /* Validators */].email]],
-            cvv: ['', [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["j" /* Validators */].required,
-                    __WEBPACK_IMPORTED_MODULE_1__angular_forms__["j" /* Validators */].minLength(3),
-                    __WEBPACK_IMPORTED_MODULE_1__angular_forms__["j" /* Validators */].maxLength(3)]]
+        this.dependentsPvr = dependentsPvr;
+        this.dependentsPvr.getDependens().subscribe(function (data) {
+            _this.parents = data;
+        });
+        this.formFamily = this.fb.group({
+            name: ['', [__WEBPACK_IMPORTED_MODULE_2__angular_forms__["j" /* Validators */].required]],
+            paternal_surname: ['', [__WEBPACK_IMPORTED_MODULE_2__angular_forms__["j" /* Validators */].required]],
+            maternal_surname: ['', [__WEBPACK_IMPORTED_MODULE_2__angular_forms__["j" /* Validators */].required]],
+            gender: ['', [__WEBPACK_IMPORTED_MODULE_2__angular_forms__["j" /* Validators */].required]],
+            date_of_birth: ['', [__WEBPACK_IMPORTED_MODULE_2__angular_forms__["j" /* Validators */].required]],
+            type_document: ['', [__WEBPACK_IMPORTED_MODULE_2__angular_forms__["j" /* Validators */].required]],
+            dni: ['', [__WEBPACK_IMPORTED_MODULE_2__angular_forms__["j" /* Validators */].required, __WEBPACK_IMPORTED_MODULE_2__angular_forms__["j" /* Validators */].minLength(8), __WEBPACK_IMPORTED_MODULE_2__angular_forms__["j" /* Validators */].maxLength(8)]],
+            user_id: [localStorage.getItem('idTokenUser')],
+            kindred: ['', [__WEBPACK_IMPORTED_MODULE_2__angular_forms__["j" /* Validators */].required]]
+            // email           : [ String(Math.floor(Math.random() * 9e15)) + '@ipsum.com' ],
+            // password        : [ String(Math.floor(Math.random() * 9e15)) ]
         });
     }
-    PayuPage.prototype.saveData = function (myForm) {
-        var _this = this;
-        var datos = myForm.value;
-        var numero = datos.numero;
-        var cvv = datos.cvv;
-        console.log('los datos:', datos);
-        // this.payu.command(numero, cvv).subscribe(data=>{
-        //   this.datosTarje = data;
-        //   if(this.datosTarje.code == "SUCCESS"){
-        //     this.appointmanetProvider.createAppointment(this.subida).subscribe((data: any)=>{
-        //       this.viewCtrl.dismiss();
-        //         this.navCtrl.setRoot(HomePage);
-        //     })
-        //   }
-        // });
-        this.appointmanetProvider.createAppointment(this.subida).subscribe(function (data) {
-            _this.payu.command(numero, cvv).subscribe(function (data) {
-                _this.datosTarje = data;
-                if (_this.datosTarje.code === "SUCCESS") {
-                    var satisfactoria = _this.alertCtrl.create({
-                        title: "Creación de cita",
-                        subTitle: "se creo su cita satisfactoriamente",
-                        buttons: [
-                            {
-                                text: "OK",
-                                handler: function () {
-                                    _this.viewCtrl.dismiss();
-                                    _this.navCtrl.setRoot(__WEBPACK_IMPORTED_MODULE_4__home_home__["a" /* HomePage */]);
-                                }
-                            }
-                        ]
-                    });
-                    satisfactoria.present();
-                }
-            });
-        });
+    CreateparentPage.prototype.closeModal = function () {
+        this.viewCtrl.dismiss();
     };
-    PayuPage.prototype.ionViewDidLoad = function () {
-        console.log('ionViewDidLoad PayuPage');
+    CreateparentPage.prototype.saveData = function () {
+        var data = this.formFamily.value;
+        this.viewCtrl.dismiss(data);
+        console.log('data de modal:', data);
     };
-    PayuPage = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_2__angular_core__["m" /* Component */])({
-            selector: 'page-payu',template:/*ion-inline-start:"/proyectos/IonicPruebas/ApolloIonicVersionOne/src/pages/payu/payu.html"*/'<ion-content padding>\n    <form [formGroup]="myForm" (ngSubmit)="saveData(myForm)" novalidate>\n      <ion-row>\n        <!-- cabecera del modal -->\n        <ion-col col-12\n                  class="backCabecera">\n          <ion-row>\n            <!-- espacio para las imagenes -->\n            <ion-col col-4>\n             <div class="imagenCheckout">\n\n             </div>\n            </ion-col>\n            <!-- div para el texto de titulo y subtitulo -->\n            <ion-col col-8>\n              <h5 class="tituloDeCita">Titulo de la cita</h5>\n              <p class="resumenCita">algún resumen</p>\n            </ion-col>\n          </ion-row>\n        </ion-col>\n        <!-- cuerpo del modal -->\n        <ion-col col-12\n                 class="backCuerpoModal">\n          <ion-row>\n            <ion-col \n                    col-12\n                    class="sinpading top10">\n              <ion-item>\n                  <ion-icon name="card" item-left></ion-icon>\n                <ion-input type="tel" \n                            placeholder="4111-1111-1111-1111"\n                            formControlName="numero"\n                            required\n                            minlength="16"\n                            maxlength="16"\n                            name="numero"\n                            >\n                </ion-input>\n              </ion-item>\n            </ion-col>\n            <ion-col\n                    col-6\n                    class="sinpading">\n              <ion-item>\n                  <ion-icon name="calendar" item-left></ion-icon>\n                <ion-input type="text" \n                            date="yyyy-mm"\n                            placeholder="YYYY/MM"\n                            formControlName="month"\n                            required \n                            maxlength="6">        \n                </ion-input>\n              </ion-item>\n            </ion-col>\n            <ion-col \n                    col-6\n                    class="sinpading">\n              <ion-item>\n                  <ion-icon name="unlock" item-left></ion-icon>\n                <ion-input type="tel" \n                            placeholder="CVV"\n                            formControlName="cvv"\n                            minLength="3" \n                            maxlength="3"\n                            name="cvv"\n                            required>\n                </ion-input>\n              </ion-item>\n            </ion-col>\n\n            <ion-col \n                    col-12\n                    class="sinpading top10">\n              <ion-item>\n                  <ion-icon name="at" item-left></ion-icon>\n                <ion-input type="email" \n                            formControlName = "mail"\n                            placeholder="Correo electrónico"\n                            name="mail">\n                </ion-input>\n                </ion-item>\n            </ion-col>\n            \n          </ion-row>\n          <div padding>\n              <button ion-button color="secondary" block type="submit" [disabled]="!myForm.valid" >Pagar S/ 45.50</button>\n            </div>\n        </ion-col>\n      </ion-row>\n    </form>\n</ion-content>\n'/*ion-inline-end:"/proyectos/IonicPruebas/ApolloIonicVersionOne/src/pages/payu/payu.html"*/,
+    CreateparentPage.prototype.ionViewDidLoad = function () {
+        console.log('ionViewDidLoad CreateparentPage');
+    };
+    CreateparentPage = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
+            selector: 'page-createparent',template:/*ion-inline-start:"/proyectos/IonicPruebas/ApolloIonicVersionOne/src/pages/createparent/createparent.html"*/'\n<ion-content padding class="gris">\n<div class="cienPorCiento">\n  <ion-row>\n    <ion-col col-9>\n      <h3 class="tituloFamiliar">Creación de cuenta Adicional</h3>\n    </ion-col>\n    <ion-col col-3 class="contenedorButton">\n      <button ion-button class="buttonClose">\n        <ion-icon name="close" color="secondary" class="close" round (click)="closeModal()">\n        </ion-icon>\n      </button>\n    </ion-col>\n  </ion-row>\n</div>\n\n<form [formGroup]="formFamily" (ngSubmit)="saveData(formFamily.value)" novalidate>\n  <ion-list>\n    <ion-grid>\n\n      <ion-item>\n        <ion-label fixed>Nombre:</ion-label>\n        <ion-input formControlName="name" type="text" maxlength="40">\n        </ion-input>\n      </ion-item>\n\n<ion-item>\n  <ion-label fixed>Apellido Paterno:</ion-label>\n  <ion-input formControlName="paternal_surname" type="text" maxlength="40">\n  </ion-input>\n</ion-item>\n\n<ion-item>\n  <ion-label fixed>Apellido Materno:</ion-label>\n  <ion-input formControlName="maternal_surname" type="text" maxlength="40">\n  </ion-input>\n</ion-item>\n\n\n<ion-row>\n  <ion-col col-6>\n    <ion-item>\n      <ion-label fixed>Sexo:</ion-label>\n      <ion-select formControlName="gender" name="gender">\n        <ion-option value="M">M</ion-option>\n        <ion-option value="F">F</ion-option>\n      </ion-select>\n    </ion-item>\n  </ion-col>\n\n<ion-col col-6>\n  <ion-item>\n    <ion-label fixed>Nacimiento:</ion-label>\n    <ion-input type="date" formControlName="date_of_birth" name="date_of_birth"></ion-input>\n  </ion-item>\n</ion-col>\n\n<ion-col col-6>\n  <ion-item>\n    <ion-label fixed>Documento:</ion-label>\n    <ion-select [(ngModel)]="change" formControlName="type_document" name="type_document" floating>\n      <ion-option value="dni">DNI</ion-option>\n      <ion-option value="carne_extranjeria">Carne de Extranjeria</ion-option>\n      <ion-option value="pasaporte">Pasaporte</ion-option>\n    </ion-select>\n  </ion-item>\n</ion-col>\n\n<ion-col col-6>\n  <ion-item>\n    <ion-label floating> Nº Documento:</ion-label>\n    <ion-input *ngIf="change === \'dni\'" type="number" formControlName="dni" name="dni" minlength="8" maxlength="8" floating></ion-input>\n    <ion-input *ngIf="change === \'carne_extranjeria\'" type="tel" formControlName="dni" name="dni" minlength="12" maxlength="12"\n      floating></ion-input>\n    <ion-input *ngIf="change === \'pasaporte\'" type="tel" formControlName="dni" name="dni" minlength="12" maxlength="12" floating></ion-input>\n    <!-- <p color="danger" ion-text *ngIf="registerForm.get(\'dni\').hasError(\'required\')">DNI requerido</p> -->\n  </ion-item>\n</ion-col>\n</ion-row>\n</ion-grid>\n\n<ion-col col-12>\n  <ion-item>\n    <ion-label fixed>Parentesco:</ion-label>\n    <ion-select formControlName="kindred" name="kindred" floating>\n      <ion-option value="father">Padre</ion-option>\n      <ion-option value="mother">Madre</ion-option>\n      <ion-option value="son">hijo</ion-option>\n      <ion-option value="daughter">Hija</ion-option>\n      <ion-option value="uncle">Tio</ion-option>\n      <ion-option value="aunt">Tia</ion-option>\n    </ion-select>\n  </ion-item>\n</ion-col>\n\n    </ion-list>\n\n    <button ion-button type="submit" [disabled]="!formFamily.valid" block color="secondary" class="guardaryContinuar">Guardar y continuar</button>\n  </form>\n\n</ion-content>\n'/*ion-inline-end:"/proyectos/IonicPruebas/ApolloIonicVersionOne/src/pages/createparent/createparent.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_3_ionic_angular__["j" /* NavController */],
-            __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["k" /* NavParams */],
-            __WEBPACK_IMPORTED_MODULE_1__angular_forms__["b" /* FormBuilder */],
-            __WEBPACK_IMPORTED_MODULE_0__providers_payu_test_payu_test__["a" /* PayuTestProvider */],
-            __WEBPACK_IMPORTED_MODULE_5__providers_appoinment_appoinment__["a" /* AppointmentProvider */],
-            __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["n" /* ViewController */],
-            __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["b" /* AlertController */]])
-    ], PayuPage);
-    return PayuPage;
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */],
+            __WEBPACK_IMPORTED_MODULE_2__angular_forms__["b" /* FormBuilder */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* ViewController */],
+            __WEBPACK_IMPORTED_MODULE_3__providers_dependents_dependents__["a" /* DependentsProvider */]])
+    ], CreateparentPage);
+    return CreateparentPage;
 }());
 
-//# sourceMappingURL=payu.js.map
+//# sourceMappingURL=createparent.js.map
 
 /***/ }),
 
-/***/ 148:
+/***/ 150:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return RegisterPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(14);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(13);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__login_login__ = __webpack_require__(76);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_user_user__ = __webpack_require__(149);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__login_login__ = __webpack_require__(77);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_user_user__ = __webpack_require__(151);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -136,20 +101,20 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 var RegisterPage = (function () {
     function RegisterPage(navCtrl, navParams, alertCtrl, fb, userProvider) {
+        // if(navParams.get('pageFrom')){
+        //   this.headquarterId = navParams.get('headquarter');
+        //   this.specialty = navParams.get('specialty');
+        //   this.pageFrom = navParams.get('pageFrom');
+        //   this.doctor = navParams.get('doctor');
+        //   this.date = navParams.get('date');
+        //   this.hour = navParams.get('hour');
+        // }
         this.navCtrl = navCtrl;
         this.navParams = navParams;
         this.alertCtrl = alertCtrl;
         this.fb = fb;
         this.userProvider = userProvider;
         this.cambio = false;
-        if (navParams.get('pageFrom')) {
-            this.headquarterId = navParams.get('headquarter');
-            this.specialty = navParams.get('specialty');
-            this.pageFrom = navParams.get('pageFrom');
-            this.doctor = navParams.get('doctor');
-            this.date = navParams.get('date');
-            this.hour = navParams.get('hour');
-        }
         this.registerForm = this.fb.group({
             name: ['', [__WEBPACK_IMPORTED_MODULE_2__angular_forms__["j" /* Validators */].required]],
             surname1: ['', [__WEBPACK_IMPORTED_MODULE_2__angular_forms__["j" /* Validators */].required]],
@@ -160,9 +125,10 @@ var RegisterPage = (function () {
             documentNumber: ['', [__WEBPACK_IMPORTED_MODULE_2__angular_forms__["j" /* Validators */].required]],
             phone: ['', [__WEBPACK_IMPORTED_MODULE_2__angular_forms__["j" /* Validators */].required, __WEBPACK_IMPORTED_MODULE_2__angular_forms__["j" /* Validators */].minLength(9), __WEBPACK_IMPORTED_MODULE_2__angular_forms__["j" /* Validators */].maxLength(9)]],
             email: ['', [__WEBPACK_IMPORTED_MODULE_2__angular_forms__["j" /* Validators */].required, __WEBPACK_IMPORTED_MODULE_2__angular_forms__["j" /* Validators */].email]],
-            password: ['', [__WEBPACK_IMPORTED_MODULE_2__angular_forms__["j" /* Validators */].required, __WEBPACK_IMPORTED_MODULE_2__angular_forms__["j" /* Validators */].minLength(8)]],
-            password_confirmation: ['', [__WEBPACK_IMPORTED_MODULE_2__angular_forms__["j" /* Validators */].required]]
-        }, { validator: this.areEqual('password', 'password_confirmation') });
+            password: ['', [__WEBPACK_IMPORTED_MODULE_2__angular_forms__["j" /* Validators */].required, __WEBPACK_IMPORTED_MODULE_2__angular_forms__["j" /* Validators */].minLength(8)]]
+            // password_confirmation: ['',  [ Validators.required ]]
+        });
+        // , {validator: this.areEqual('password', 'password_confirmation')}
     }
     RegisterPage.prototype.registrarUsuario = function (formModel) {
         var _this = this;
@@ -217,20 +183,20 @@ var RegisterPage = (function () {
 
 /***/ }),
 
-/***/ 149:
+/***/ 151:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return UserProvider; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__(93);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__(94);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Observable__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Observable___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_Observable__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_catch__ = __webpack_require__(77);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_catch__ = __webpack_require__(58);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_catch___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_catch__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_map__ = __webpack_require__(64);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_map__ = __webpack_require__(51);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_map__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_sha_js__ = __webpack_require__(483);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_sha_js__ = __webpack_require__(489);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_sha_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_sha_js__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -336,18 +302,18 @@ var UserProvider = (function () {
 
 /***/ }),
 
-/***/ 150:
+/***/ 152:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return FinancerPage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_forms__ = __webpack_require__(13);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(15);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_financier_financier__ = __webpack_require__(264);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__datos_datos__ = __webpack_require__(265);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__providers_appoinment_appoinment__ = __webpack_require__(57);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__pay_pay__ = __webpack_require__(504);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PayPage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__providers_crudparent_crudparent__ = __webpack_require__(270);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__home_home__ = __webpack_require__(65);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_ionic_angular__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__providers_appoinment_appoinment__ = __webpack_require__(52);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__card_card__ = __webpack_require__(66);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -364,274 +330,272 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-var FinancerPage = (function () {
-    function FinancerPage(navCtrl, navParams, platform, fb, alertCtrl, financierProvider, modalCtrl, appointmentProvider, actionSheet, viewCtrl, loadingCtrl) {
-        var _this = this;
+var PayPage = (function () {
+    function PayPage(navCtrl, navParams, fb, alertCtrl, modalCtrl, appointmentProvider, actionSheet, viewCtrl, loadingCtrl, crudPvr) {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
-        this.platform = platform;
         this.fb = fb;
         this.alertCtrl = alertCtrl;
-        this.financierProvider = financierProvider;
         this.modalCtrl = modalCtrl;
         this.appointmentProvider = appointmentProvider;
         this.actionSheet = actionSheet;
         this.viewCtrl = viewCtrl;
         this.loadingCtrl = loadingCtrl;
-        this.isAndroid = false;
+        this.crudPvr = crudPvr;
+        this.currentAppointment = null;
         this.nots = [
             { "id": "1", "name": "En local" },
             { "id": "2", "name": "Con tarjeta" },
         ];
-        this.questions = [
-            { "id": 1, "name": "Si tengo" },
-            { "id": 2, "name": "No tengo" },
-        ];
-        this.firtClick = false;
-        this.isInsurance = false;
-        this.isInsuranceName = false;
-        this.isCard = false;
-        this.isPlace = false;
-        this.payment = false;
-        this.open = false;
-        this.currentAppointment = null;
-        this.isAndroid = platform.is('android');
-        this.financierProvider.getFinanciers().subscribe(function (data) { _this.items = data; _this.items.shift(); });
+        this.pago = 'enLocal';
         this.doctor = this.navParams.get('doctor');
         this.available = this.navParams.get('available');
         this.hora = this.navParams.get('hora');
-        // this.subida = this.hora.listjson;
-        var role = localStorage.getItem('role');
-        if (role === 'guest') {
-            //  console.log('no hay mail');
-            var datos = this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_4__datos_datos__["a" /* DatosPage */], {
-                hora: this.hora,
-                doctor: this.doctor,
-                available: this.available
-            });
-            console.log('datos de financer:', this.hora, this.doctor, this.available);
-            datos.present();
-        }
-        else {
-            console.log("si hay constraseña. que pase");
-        }
-        // this.myForm = this.fb.group({
-        //   name: ['', [Validators.required]],
-        //   card: ['', [Validators.required, Validators.minLength(16), Validators.maxLength(16)]],
-        //   cvv: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(3)]],
-        //   month: ['', [Validators.required]],
-        //   year: ['', [Validators.required]]
-        // }, { validator: this.dateValid('month', 'year') });
-        // Culqi.publicKey = 'pk_test_e85SD7RVrWlW0u7z';
+        this.depe = this.navParams.get('depe');
+        this.price = this.navParams.get('price');
+        this.subida = this.hora.listjson;
+        console.log('la hora', this.hora);
+        this.myForm = this.fb.group({
+            name: ['', [__WEBPACK_IMPORTED_MODULE_2__angular_forms__["j" /* Validators */].required]],
+            card: ['', [__WEBPACK_IMPORTED_MODULE_2__angular_forms__["j" /* Validators */].required, __WEBPACK_IMPORTED_MODULE_2__angular_forms__["j" /* Validators */].minLength(16), __WEBPACK_IMPORTED_MODULE_2__angular_forms__["j" /* Validators */].maxLength(16)]],
+            cvv: ['', [__WEBPACK_IMPORTED_MODULE_2__angular_forms__["j" /* Validators */].required, __WEBPACK_IMPORTED_MODULE_2__angular_forms__["j" /* Validators */].minLength(3), __WEBPACK_IMPORTED_MODULE_2__angular_forms__["j" /* Validators */].maxLength(3)]],
+            month: ['', [__WEBPACK_IMPORTED_MODULE_2__angular_forms__["j" /* Validators */].required]],
+            year: ['', [__WEBPACK_IMPORTED_MODULE_2__angular_forms__["j" /* Validators */].required]]
+        }, { validator: this.dateValid('month', 'year') });
+        Culqi.publicKey = 'pk_test_e85SD7RVrWlW0u7z';
     }
-    FinancerPage.prototype.evaluateEnsurance = function () {
-        this.firtClick = !this.firtClick;
-        this.isInsurance = false;
-        this.isInsuranceName = true;
-        this.payment = false;
-        this.isPlace = false;
-        this.isCard = false;
+    PayPage.prototype.ionViewDidLoad = function () {
+        console.log('ionViewDidLoad PayPage');
     };
-    FinancerPage.prototype.validateSelected = function (item) {
+    // personalSelected(item) {
+    //   // console.log("Selected Item", item);
+    //   if (item == 1) {
+    //     this.isPlace = true;
+    //     this.paymentName = "En local";
+    //   } else {
+    //     this.paymentName = "Con tarjeta";
+    //     this.isPlace = false;
+    //   }
+    // }
+    PayPage.prototype.dateValid = function (month, year) {
+        return function (group) {
+            var date = new Date();
+            var monthInput = group.controls[month];
+            var yearInput = group.controls[year];
+            if (yearInput.value == date.getFullYear())
+                if (monthInput.value < ("0" + (date.getMonth() + 1)).slice(-2))
+                    return monthInput.setErrors({ notEquivalent: true });
+        };
+    };
+    PayPage.prototype.openCulqi = function () {
+        var appointment = this.currentAppointment;
+        console.log("this.openCulqi");
+        var settings = {
+            title: 'Cita para',
+            description: "prueba",
+            currency: "PEN",
+            amount: this.price * 100
+        };
+        culqiData.amount = this.price * 100;
+        Culqi.settings(settings);
+        var loadingPago = this.loadingCtrl.create({
+            content: "Haciendo el cobro...",
+        });
+        loadingPago.present();
+        var i = setInterval(function () {
+            var _this = this;
+            // si se puede realizar el pago con culqi
+            if (culqiData.status == "ok") {
+                clearInterval(i);
+                loadingPago.dismiss();
+                var alert = this.alertCtrl.create({
+                    title: "Creación de cita",
+                    subTitle: "la cita que reservaste ha sido creada satisfactoriamente.",
+                    buttons: [
+                        {
+                            text: "OK",
+                            role: 'cancel'
+                        }
+                    ]
+                });
+                alert.present();
+                this.navCtrl.setRoot(__WEBPACK_IMPORTED_MODULE_1__home_home__["a" /* HomePage */]);
+            }
+            else if (culqiData.status == "error") {
+                var self_1 = this;
+                clearInterval(i);
+                loadingPago.dismiss();
+                var action_1 = this.actionSheet.create({
+                    title: "EL PAGO NO PUDO REALIZARSE",
+                    buttons: [
+                        {
+                            text: "Intentar de nuevo",
+                            role: 'destructive',
+                            handler: function () {
+                                action_1.dismiss().then(function () {
+                                    culqiData.status = "";
+                                    self_1.openCulqi();
+                                });
+                                return false;
+                            }
+                        },
+                        {
+                            text: "Pagar en clínica",
+                            handler: function () {
+                                _this.navCtrl.setRoot(__WEBPACK_IMPORTED_MODULE_1__home_home__["a" /* HomePage */]);
+                                var alert = _this.alertCtrl.create({
+                                    title: "La Cita que pediste ha sido creada",
+                                    subTitle: "recuerda que tendras que pagar en la clínica",
+                                    buttons: [{
+                                            text: "OK",
+                                            role: 'cancel'
+                                        }]
+                                });
+                                alert.present();
+                            }
+                        },
+                        {
+                            text: "Cancelar cita",
+                            handler: function () {
+                                _this.appointmentProvider.destroyAppointment(appointment).subscribe(function (data) {
+                                    _this.navCtrl.setRoot(__WEBPACK_IMPORTED_MODULE_1__home_home__["a" /* HomePage */]);
+                                    var alert = _this.alertCtrl.create({
+                                        title: "su cita fue cancelada",
+                                        buttons: [
+                                            {
+                                                text: "OK",
+                                                role: "cancel"
+                                            }
+                                        ]
+                                    });
+                                    alert.present();
+                                });
+                            }
+                        }
+                    ]
+                });
+                action_1.present();
+            }
+        }.bind(this), 1000);
+        console.log("open CUlqi");
+        Culqi.open();
+        loadingPago.dismiss();
+    };
+    PayPage.prototype.payCulqi = function () {
         var _this = this;
-        if (item == 1) {
-            this.firtClick = false;
-            this.isInsurance = true;
-            this.secure = true;
-            this.open = true;
+        if (this.depe) {
+            var id = this.depe._id;
+            console.log('lo que mando al proivider:', this.subida, id);
+            this.crudPvr.createParentDate(this.subida, id)
+                .subscribe(function (data) {
+                _this.currentAppointment = data;
+                _this.openCulqi();
+            }, function (err) {
+                if (_this.currentAppointment !== null) {
+                    _this.openCulqi();
+                    return;
+                }
+                console.log('err', err);
+                if (!err) {
+                    return;
+                }
+                var code = err.error.data.errorCode;
+                var alert;
+                switch (code) {
+                    case 15006:
+                        // case 15035:
+                        alert = _this.alertCtrl.create({
+                            title: 'Aviso al Cliente',
+                            subTitle: 'Ya tienes una cita en una hora cercana a esta.',
+                            buttons: [
+                                {
+                                    text: 'Buscar otra hora',
+                                    handler: function (data) {
+                                        _this.navCtrl.setRoot(__WEBPACK_IMPORTED_MODULE_6__card_card__["a" /* CardPage */]);
+                                    }
+                                }
+                            ]
+                        });
+                        alert.present();
+                        break;
+                    case 15009:
+                    case 15035:
+                        alert = _this.alertCtrl.create({
+                            title: 'Aviso al Cliente',
+                            subTitle: 'El horario escogido ya fue tomado .',
+                            buttons: [
+                                {
+                                    text: 'Buscar otra hora',
+                                    handler: function (data) {
+                                        _this.navCtrl.setRoot(__WEBPACK_IMPORTED_MODULE_6__card_card__["a" /* CardPage */]);
+                                    }
+                                }
+                            ],
+                            enableBackdropDismiss: true
+                        });
+                        alert.present();
+                        break;
+                    default:
+                        break;
+                }
+            });
         }
-        else if (item == 2) {
-            // PARTICULAR
-            this.financierProvider.getPrice(1, this.doctor.service.id, this.doctor.service.id, this.available).subscribe(function (data) {
-                _this.price = Math.round(parseFloat(data[0].prest_precio_val) * 100 + Number.EPSILON) / 100;
-                // console.log('available.date:', this.available.date);
-                _this.isPlace = false;
-                _this.isCard = false;
-                _this.firtClick = false;
-                _this.payment = true;
-                _this.open = true;
-                _this.secure = false;
-                _this.isInsuranceName = false;
-                _this.isInsurance = false;
+        else {
+            this.appointmentProvider.createAppointment(this.subida)
+                .subscribe(function (data) {
+                _this.currentAppointment = data;
+                _this.openCulqi();
+            }, function (err) {
+                if (_this.currentAppointment !== null) {
+                    _this.openCulqi();
+                    return;
+                }
+                console.log('err', err);
+                if (!err) {
+                    return;
+                }
+                var code = err.error.data.errorCode;
+                var alert;
+                switch (code) {
+                    case 15006:
+                        // case 15035:
+                        alert = _this.alertCtrl.create({
+                            title: 'Aviso al Cliente',
+                            subTitle: 'Ya tienes una cita en una hora cercana a esta.',
+                            buttons: [
+                                {
+                                    text: 'Buscar otra hora',
+                                    handler: function (data) {
+                                        _this.navCtrl.setRoot(__WEBPACK_IMPORTED_MODULE_6__card_card__["a" /* CardPage */]);
+                                    }
+                                }
+                            ]
+                        });
+                        alert.present();
+                        break;
+                    case 15009:
+                    case 15035:
+                        alert = _this.alertCtrl.create({
+                            title: 'Aviso al Cliente',
+                            subTitle: 'El horario escogido ya fue tomado .',
+                            buttons: [
+                                {
+                                    text: 'Buscar otra hora',
+                                    handler: function (data) {
+                                        _this.navCtrl.setRoot(__WEBPACK_IMPORTED_MODULE_6__card_card__["a" /* CardPage */]);
+                                    }
+                                }
+                            ],
+                            enableBackdropDismiss: true
+                        });
+                        alert.present();
+                        break;
+                    default:
+                        break;
+                }
             });
         }
     };
-    FinancerPage.prototype.insuranceSelected = function (item, itemName) {
-        var _this = this;
-        // SEGUROS
-        this.financierProvider.getPrice(1, this.doctor.service.id, this.doctor.service.id, this.available).subscribe(function (data) {
-            _this.price = Math.round(parseFloat(data[0].prest_precio_val) * 100 + Number.EPSILON) / 100;
-            _this.myEnsuranceName = itemName;
-            _this.isInsuranceName = true;
-            _this.isInsurance = false;
-            _this.payment = true;
-            _this.nameSecure = itemName;
-            _this.financier_id = item;
-        });
-        this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_6__pay_pay__["a" /* PayPage */], {
-            doctor: this.doctor,
-            available: this.available,
-            hora: this.hora
-        });
-    };
-    FinancerPage.prototype.selectEnsurance = function () {
-        this.isInsurance = !this.isInsurance;
-        this.isInsuranceName = !this.isInsuranceName;
-        this.myEnsuranceName = null;
-    };
-    FinancerPage.prototype.personalSelected = function (item) {
-        // console.log("Selected Item", item);
-        if (item == 1) {
-            this.isPlace = true;
-            this.paymentName = "En local";
-        }
-        else {
-            this.paymentName = "Con tarjeta";
-            this.isPlace = false;
-        }
-    };
-    // dateValid(month: string, year: string) {
-    //   return (group: FormGroup) => {
-    //     let date = new Date();
-    //     let monthInput = group.controls[month];
-    //     let yearInput = group.controls[year];
-    //     if (yearInput.value == date.getFullYear())
-    //       if (monthInput.value < ("0" + (date.getMonth() + 1)).slice(-2))
-    //         return monthInput.setErrors({ notEquivalent: true })
-    //   }
-    // }
-    // next(){
-    //   if(this.currentAppointment === null){
-    //     this.appointmentProvider.createAppointment(this.subida).subscribe(data=>{
-    //         console.log("se ha creado la cita");
-    //         let loading = this.loadingCtrl.create({
-    //             content:"creando cita"
-    //         });
-    //         loading.present();
-    //         let alert = this.alertCtrl.create({
-    //           title:"Creación de cita",
-    //           subTitle:"la cita que reservaste ha sido creada satisfactoriamente.",
-    //           buttons:[
-    //             {
-    //               text:"Ok",
-    //               role:"Cancel"
-    //             }
-    //           ]
-    //         });
-    //         loading.dismiss();
-    //         alert.present();
-    //         this.navCtrl.setRoot(HomePage);
-    //     });
-    //   }else{
-    //     let alert = this.alertCtrl.create({
-    //       title:"Creación de cita",
-    //       subTitle:"la cita que reservaste ha sido creada satisfactoriamente.",
-    //       buttons:[
-    //         {
-    //           text:"Ok",
-    //           role:"Cancel"
-    //         }
-    //       ]
-    //     });
-    //     alert.present();
-    //   }
-    //   this.navCtrl.setRoot(HomePage);
-    // }
-    // openCulqi(){
-    //   let appointment = this.currentAppointment;
-    //   console.log("this.openCulqi");
-    //   const settings = {
-    //     title: 'Cita para' ,
-    //     description: "prueba",
-    //     currency: "PEN",
-    //     amount: this.price * 100
-    //   };
-    //   culqiData.amount = this.price * 100;
-    //   Culqi.settings(settings);
-    //   let loadingPago = this.loadingCtrl.create({
-    //     content:"Haciendo el cobro...",
-    //     });
-    //   loadingPago.present();
-    //   const i = setInterval(function(){
-    //     // si se puede realizar el pago con culqi
-    //     if(culqiData.status == "ok" ){
-    //       clearInterval(i);
-    //       loadingPago.dismiss();
-    //       let alert = this.alertCtrl.create({
-    //           title:"Creación de cita",
-    //           subTitle:"la cita que reservaste ha sido creada satisfactoriamente.",
-    //           buttons:[
-    //             {
-    //               text:"OK",
-    //               role:'cancel'
-    //             }
-    //           ]
-    //       });
-    //       alert.present();
-    //       this.navCtrl.setRoot(HomePage);
-    //     }
-    //     // si no se puede realizar el pago con culqi
-    //     else if(culqiData.status == "error"){
-    //       const self = this;
-    //       clearInterval(i);
-    //       loadingPago.dismiss();
-    //        let action = this.actionSheet.create({
-    //             title:"EL PAGO NO PUDO REALIZARSE",
-    //             buttons:[
-    //               {
-    //                 text: "Intentar de nuevo",
-    //                 role: 'destructive',
-    //                 handler: ()=>{
-    //                   action.dismiss().then(()=>{
-    //                     culqiData.status = "";
-    //                     self.openCulqi();
-    //                   });
-    //                   return false;
-    //                 }
-    //               },
-    //               {
-    //                 text: "Pagar en clínica",
-    //                 handler: ()=>{
-    //                   this.navCtrl.setRoot(HomePage);
-    //                   let alert = this.alertCtrl.create({
-    //                     title:"La Cita que pediste ha sido creada",
-    //                     subTitle:"recuerda que tendras que pagar en la clínica",
-    //                     buttons:[{
-    //                       text:"OK",
-    //                       role:'cancel'
-    //                     }]
-    //                   });
-    //                   alert.present();
-    //                 }
-    //               },
-    //               {
-    //                 text: "Cancelar cita",
-    //                 handler: ()=>{
-    //                   this.appointmentProvider.destroyAppointment(appointment).subscribe(data =>{
-    //                     this.navCtrl.setRoot(HomePage);
-    //                     let alert = this.alertCtrl.create({
-    //                         title:"su cita fue cancelada",
-    //                         buttons:[
-    //                           {
-    //                             text:"OK",
-    //                             role:"cancel"
-    //                           }
-    //                         ]
-    //                     });
-    //                     alert.present();
-    //                   });
-    //                 }
-    //               }
-    //             ]
-    //        });
-    //        action.present();
-    //      }
-    //   }.bind(this),
-    // 1000);
-    // console.log("open CUlqi");
-    // Culqi.open();
-    // loadingPago.dismiss();
-    // }
     // payCulqi() {
     //   this.appointmentProvider.createAppointment(this.subida)
     //                           .subscribe((data:any)=> {
@@ -688,34 +652,93 @@ var FinancerPage = (function () {
     //       }
     //   });
     // }
-    FinancerPage.prototype.openModalPayu = function () {
-        var payuModal = this.modalCtrl.create(PayuPage, { subida: this.subida, });
-        console.log('this subida de financer:', this.subida);
-        payuModal.present();
+    PayPage.prototype.next = function () {
+        var _this = this;
+        if (this.currentAppointment === null) {
+            this.appointmentProvider.createAppointment(this.subida).subscribe(function (data) {
+                // console.log("se ha creado la cita");
+                var loading = _this.loadingCtrl.create({
+                    content: "creando cita"
+                });
+                loading.present();
+                var alert = _this.alertCtrl.create({
+                    title: "Creación de cita",
+                    subTitle: "la cita que reservaste ha sido creada satisfactoriamente.",
+                    buttons: [
+                        {
+                            text: "Ok",
+                            role: "Cancel"
+                        }
+                    ]
+                });
+                loading.dismiss();
+                alert.present();
+                _this.navCtrl.setRoot(__WEBPACK_IMPORTED_MODULE_1__home_home__["a" /* HomePage */]);
+            });
+        }
+        else {
+            var alert = this.alertCtrl.create({
+                title: "Creación de cita",
+                subTitle: "la cita que reservaste ha sido creada satisfactoriamente.",
+                buttons: [
+                    {
+                        text: "Ok",
+                        role: "Cancel"
+                    }
+                ]
+            });
+            alert.present();
+        }
+        this.navCtrl.setRoot(__WEBPACK_IMPORTED_MODULE_1__home_home__["a" /* HomePage */]);
     };
-    FinancerPage = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-financer',template:/*ion-inline-start:"/proyectos/IonicPruebas/ApolloIonicVersionOne/src/pages/appointment/financer/financer.html"*/'<ion-header>\n\n    <ion-navbar color="primary">\n        <ion-title>Financiador</ion-title>\n    </ion-navbar>\n\n</ion-header>\n\n\n<ion-content>\n    <h4 class="parrafoFinanciador">Lo que nos queda es escoger para quien es la cita y el financiador, ya casi terminamos…</h4>\n    <div>\n      <ion-row>\n        <ion-col class="cuadrado">\n          <div class="me">\n            para mi\n          </div>\n        </ion-col>\n        <ion-col class="cuadrado">\n          <div class="fam">\n            un familiar\n          </div>\n        </ion-col>\n      </ion-row>\n    </div>\n\n\n    <ion-list class="medio">\n\n        <ion-card class="evaluate">\n            <ion-list>\n                <ion-item color="light" item-start (click)="evaluateEnsurance($event)">\n                    <p>¿Cuenta con seguro?</p>\n                    <ion-icon item-end name="arrow-dropdown"></ion-icon>\n                </ion-item>\n\n                <ion-list class="nombresLista" *ngIf="firtClick">\n                    <button ion-item *ngFor="let quest of questions" (click)="validateSelected(quest.id)">\n                        {{ quest.name }}\n                    </button>\n                </ion-list>\n            </ion-list>\n        </ion-card>\n\n        <ion-card class="seguroList">\n            <ion-list>\n                <ion-item color="light" *ngIf="isInsuranceName" (click)="selectEnsurance($event)">\n                    {{ myEnsuranceName }}\n                </ion-item>\n                <ion-list *ngIf="isInsurance">\n                    <button ion-item *ngFor="let item of items" (click)="insuranceSelected(item.cod_pagador_pk, item.nombre_garante)">\n                        {{ item.nombre_garante }}\n                    </button>\n                </ion-list>\n            </ion-list>\n        </ion-card>\n\n        <div text-right class="precio" *ngIf="price!=undefined">\n            <p>Precio de la Consulta: {{ \'S/. \' + price }}</p>\n        </div>\n    </ion-list>\n\n    <!-- <div class="container-gris" *ngIf="open == true">\n        <div padding>\n            <h4 text-center class="tituloMetodos">Metodos de Pago</h4>\n            <ion-segment [(ngModel)]="pago">\n                <ion-segment-button value="enLocal">\n                    En local\n                </ion-segment-button>\n                <ion-segment-button value="enClinica">\n                    Con tarjeta\n                </ion-segment-button>\n            </ion-segment>\n        </div>\n        <div [ngSwitch]="pago">\n            <ion-list *ngSwitchCase="\'enLocal\'">\n                <div class="resumen" >\n                        <ion-card>\n                                <div class="containerTextoPago">\n                                    <h3 class="titleCardPago">Lo que has escogido hasta el momento</h3>\n                                </div>\n                                <div>\n                                    <ion-row class="centrar">\n                                        <ion-col col-4>\n                                            <img id="profile-image" src="http://dappapache02.eastus.cloudapp.azure.com:4200/img/professionals/{{doctor.id}}.png">\n                                        </ion-col>\n                                        <ion-col col-8>\n                                            <h3 class="nombreDoctor" text-center>\n                                                {{ doctor.fullName }}\n                                            </h3>\n                                        </ion-col>\n                                    </ion-row>\n                                </div>\n                                    <div class="centrar">\n                                        <p bold class="izquierda">Sede:</p>\n                                        <p class="blue" type="text" disabled="true">Mendiola</p>\n                                    </div>\n                                    <div  class="centrar">\n                                        <p class="izquierda">Especialidad:</p>\n                                        <p item-end class="blue" disabled="true"> {{ doctor.service.description }}</p>\n                                    </div>\n                                    <div  class="centrar">\n                                        <p class="izquierda">Fecha:</p>\n                                        <p item-end class="blue" disabled="true">\n                                            {{ date | date:\'EEEE d , MMMM \' : \'es\' }}\n                                        </p>\n                                    </div>\n                                    <div  class="centrar">\n                                        <p class="izquierda">Hora:</p>\n                                        <p class="blue" type="text" disabled="true">\n                                            {{ hora.hour | slice:0:5}}\n                                        </p>\n                                    </div>\n                                    <div  class="centrar">\n                                        <p class="izquierda">Costo:</p>\n                                        <p class="blue" item-end type="text" disabled="true">\n                                            {{ \'S/. \' + price }}\n                                        </p>\n                                    </div>\n                            </ion-card>\n\n\n                <div padding>\n                    <button ion-button color="secondary" class="botonAccept" [class.button-disabled]="true" block (click)="next()">Confirmar cita</button>\n                </div>\n\n\n            </div>\n        </ion-list>\n\n\n\n            <ion-list *ngSwitchCase="\'enClinica\'">\n\n                <div class="resumen" >\n                    <ion-card>\n                        <div class="containerTextoPago">\n                            <h3 class="titleCardPago">Lo que has escogido hasta el momento</h3>\n                        </div>\n                        <div>\n                            <ion-row class="centrar">\n                                <ion-col col-4>\n                                    <img id="profile-image" src="http://dappapache02.eastus.cloudapp.azure.com:4200/img/professionals/{{doctor.id}}.png">\n                                </ion-col>\n                                <ion-col col-8>\n                                    <h3 class="nombreDoctor" text-center>\n                                        {{ doctor.fullName }}\n                                    </h3>\n                                </ion-col>\n                            </ion-row>\n                        </div>\n                            <div class="centrar">\n                                <p bold class="izquierda">Sede:</p>\n                                <p class="blue" type="text" disabled="true">Mendiola</p>\n                            </div>\n                            <div  class="centrar">\n                                <p class="izquierda">Especialidad:</p>\n                                <p item-end class="blue" disabled="true"> {{ doctor.service.description }}</p>\n                            </div>\n                            <div  class="centrar">\n                                <p class="izquierda">Fecha:</p>\n                                <p item-end class="blue" disabled="true">\n                                    {{ date | date:\'EEEE d , MMMM \' : \'es\' }}\n                                </p>\n                            </div>\n                            <div  class="centrar">\n                                <p class="izquierda">Hora:</p>\n                                <p class="blue" type="text" disabled="true">\n                                    {{ hora.hour | slice:0:5}}\n                                </p>\n                            </div>\n                            <div  class="centrar">\n                                <p class="izquierda">Costo:</p>\n                                <p class="blue" item-end type="text" disabled="true">\n                                    {{ \'S/. \' + price }}\n                                </p>\n                            </div>\n                    </ion-card>\n\n\n            <div padding>\n                <button ion-button color="secondary" class="botonAccept" [class.button-disabled]="true" block (click)="payCulqi()">Pagar ahora con culqi</button>\n            </div> -->\n\n            <!-- <div padding>\n                    <button ion-button color="secondary" class="botonAccept" [class.button-disabled]="true" block (click)="openModalPayu()">Pagar ahora con payu</button>\n                </div> -->\n\n<!--\n        </div>\n            </ion-list>\n        </div>\n    </div> -->\n\n\n\n</ion-content>\n'/*ion-inline-end:"/proyectos/IonicPruebas/ApolloIonicVersionOne/src/pages/appointment/financer/financer.html"*/,
+    PayPage.prototype.nextDepe = function () {
+        var _this = this;
+        var id = this.depe._id;
+        console.log('el id que va para creacion de familiar:', id);
+        this.crudPvr.createParentDate(this.subida, id).subscribe(function (data) {
+            var loading = _this.loadingCtrl.create({
+                content: "creando cita"
+            });
+            loading.present();
+            var alert = _this.alertCtrl.create({
+                title: "Creación de cita",
+                subTitle: "la cita que reservaste ha sido creada satisfactoriamente.",
+                buttons: [
+                    {
+                        text: "Ok",
+                        role: "Cancel"
+                    }
+                ]
+            });
+            loading.dismiss();
+            alert.present();
+            _this.navCtrl.setRoot(__WEBPACK_IMPORTED_MODULE_1__home_home__["a" /* HomePage */]);
+        });
+        // queda pendiente el error, sino crea la cita
+    };
+    PayPage = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_3__angular_core__["m" /* Component */])({
+            selector: 'page-pay',template:/*ion-inline-start:"/proyectos/IonicPruebas/ApolloIonicVersionOne/src/pages/appointment/pay/pay.html"*/'\n<ion-header>\n  <ion-navbar color="primary">\n    <ion-title>Pago</ion-title>\n  </ion-navbar>\n</ion-header>\n\n\n<ion-content >\n    <div class="container-gris" >\n      <h4 class="tituloPagos">Terminemos... escoge la forma en la que vas a pagar y listo...</h4>\n    <div padding>\n        <h4 text-center class="tituloMetodos">Metodos de Pago</h4>\n        <ion-segment [(ngModel)]="pago">\n            <ion-segment-button value="enLocal">\n                En local\n            </ion-segment-button>\n            <ion-segment-button value="enClinica">\n                Con tarjeta\n            </ion-segment-button>\n        </ion-segment>\n    </div>\n    <div [ngSwitch]="pago">\n        <ion-list *ngSwitchCase="\'enLocal\'">\n            <div class="resumen" >\n                    <ion-card>\n                            <div class="containerTextoPago">\n                                <h3 class="titleCardPago">Lo que has escogido hasta el momento</h3>\n                            </div>\n                            <div>\n                                <ion-row class="centrar">\n                                    <ion-col col-4>\n                                        <img id="profile-image" src="http://dappapache02.eastus.cloudapp.azure.com:4200/img/professionals/{{doctor.id}}.png">\n                                    </ion-col>\n                                    <ion-col col-8>\n                                        <h3 class="nombreDoctor" text-center>\n                                            {{ doctor.fullName }}\n                                        </h3>\n                                        <div class="sedeContainer">\n                                            <!-- <p bold class="izquierda">Sede:</p> -->\n                                            <p class="sede" type="text" disabled="true">Mendiola</p>\n                                        </div>\n                                    </ion-col>\n                                </ion-row>\n                            </div>\n                                <div  class="centrar">\n                                    <p class="izquierda">Especialidad:</p>\n                                    <p item-end class="blue" disabled="true"> {{ doctor.service.description }}</p>\n                                </div>\n                                <div  class="centrar">\n                                    <p class="izquierda">Fecha:</p>\n                                    <p item-end class="blue" disabled="true">\n                                        {{ available | date:\'EEEE d , MMMM \' : \'es\' }}\n                                    </p>\n                                </div>\n                                <div  class="centrar">\n                                    <p class="izquierda">Hora:</p>\n                                    <p class="blue" type="text" disabled="true">\n                                        {{ hora.hour | slice:0:5}}\n                                    </p>\n                                </div>\n                                <div  class="centrar">\n                                    <p class="izquierda">Costo:</p>\n                                    <p class="blue" item-end type="text" disabled="true">\n                                        {{ \'S/. \' + price + \'.00\'}}\n                                    </p>\n                                </div>\n                        </ion-card>\n            <div padding>\n                <button *ngIf="!depe"\n                        ion-button color="secondary"\n                        class="botonAccept"\n                        [class.button-disabled]="true"\n                        block\n                        (click)="next()">Confirmar cita</button>\n                <button *ngIf="depe"\n                      ion-button\n                      color="secondary"\n                      class="botonAccept"\n                      [class.button-disabled]="true"\n                      block (click)="nextDepe()">Confirmar cita para</button>\n            </div>\n\n\n        </div>\n    </ion-list>\n\n\n\n        <ion-list *ngSwitchCase="\'enClinica\'">\n            <div class="resumen" >\n                <ion-card>\n                    <div class="containerTextoPago">\n                        <h3 class="titleCardPago">Lo que has escogido hasta el momento</h3>\n                    </div>\n                    <div>\n                        <ion-row class="centrar">\n                            <ion-col col-4>\n                                <img id="profile-image" src="http://dappapache02.eastus.cloudapp.azure.com:4200/img/professionals/{{doctor.id}}.png">\n                            </ion-col>\n                            <ion-col col-8>\n                                <h3 class="nombreDoctor" text-center>\n                                    {{ doctor.fullName }}\n                                </h3>\n                                <div class="sedeContainer">\n                                    <!-- <p bold class="izquierda">Sede:</p> -->\n                                    <p class="sede" type="text" disabled="true">Mendiola</p>\n                                </div>\n                            </ion-col>\n                        </ion-row>\n                    </div>\n                        <div  class="centrar">\n                            <p class="izquierda">Especialidad:</p>\n                            <p item-end class="blue" disabled="true"> {{ doctor.service.description }}</p>\n                        </div>\n                        <div  class="centrar">\n                            <p class="izquierda">Fecha:</p>\n                            <p item-end class="blue" disabled="true">\n                                {{ available | date:\'EEEE d , MMMM \' : \'es\' }}\n                            </p>\n                        </div>\n                        <div  class="centrar">\n                            <p class="izquierda">Hora:</p>\n                            <p class="blue" type="text" disabled="true">\n                                {{ hora.hour | slice:0:5}}\n                            </p>\n                        </div>\n                        <div  class="centrar">\n                            <p class="izquierda">Costo:</p>\n                            <p class="blue" item-end type="text" disabled="true">\n                                {{ \'S/. \' + price + \'.00\'}}\n                            </p>\n                        </div>\n                </ion-card>\n\n\n        <div padding>\n            <button ion-button color="secondary" class="botonAccept" [class.button-disabled]="true" block (click)="payCulqi()">Pagar ahora con culqi</button>\n        </div>\n\n        <!-- <div padding>\n                <button ion-button color="secondary" class="botonAccept" [class.button-disabled]="true" block (click)="openModalPayu()">Pagar ahora con payu</button>\n            </div> -->\n\n\n    </div>\n        </ion-list>\n    </div>\n</div>\n\n</ion-content>\n'/*ion-inline-end:"/proyectos/IonicPruebas/ApolloIonicVersionOne/src/pages/appointment/pay/pay.html"*/,
         }),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["j" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["j" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["k" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["k" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["l" /* Platform */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["l" /* Platform */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_1__angular_forms__["b" /* FormBuilder */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_forms__["b" /* FormBuilder */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["b" /* AlertController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["b" /* AlertController */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_3__providers_financier_financier__["a" /* FinancierProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__providers_financier_financier__["a" /* FinancierProvider */]) === "function" && _f || Object, typeof (_g = typeof __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["i" /* ModalController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["i" /* ModalController */]) === "function" && _g || Object, typeof (_h = typeof __WEBPACK_IMPORTED_MODULE_5__providers_appoinment_appoinment__["a" /* AppointmentProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__providers_appoinment_appoinment__["a" /* AppointmentProvider */]) === "function" && _h || Object, typeof (_j = typeof __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["a" /* ActionSheetController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["a" /* ActionSheetController */]) === "function" && _j || Object, typeof (_k = typeof __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["n" /* ViewController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["n" /* ViewController */]) === "function" && _k || Object, typeof (_l = typeof __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["g" /* LoadingController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["g" /* LoadingController */]) === "function" && _l || Object])
-    ], FinancerPage);
-    return FinancerPage;
-    var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l;
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["j" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["j" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["k" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["k" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__angular_forms__["b" /* FormBuilder */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_forms__["b" /* FormBuilder */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["b" /* AlertController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["b" /* AlertController */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["i" /* ModalController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["i" /* ModalController */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_5__providers_appoinment_appoinment__["a" /* AppointmentProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__providers_appoinment_appoinment__["a" /* AppointmentProvider */]) === "function" && _f || Object, typeof (_g = typeof __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["a" /* ActionSheetController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["a" /* ActionSheetController */]) === "function" && _g || Object, typeof (_h = typeof __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["n" /* ViewController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["n" /* ViewController */]) === "function" && _h || Object, typeof (_j = typeof __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["g" /* LoadingController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["g" /* LoadingController */]) === "function" && _j || Object, typeof (_k = typeof __WEBPACK_IMPORTED_MODULE_0__providers_crudparent_crudparent__["a" /* CrudparentProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__providers_crudparent_crudparent__["a" /* CrudparentProvider */]) === "function" && _k || Object])
+    ], PayPage);
+    return PayPage;
+    var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k;
 }());
 
-//# sourceMappingURL=financer.js.map
+//# sourceMappingURL=pay.js.map
 
 /***/ }),
 
-/***/ 152:
+/***/ 154:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MyDatesPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(15);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_appoinment_appoinment__ = __webpack_require__(57);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__my_date_modal_my_date_modal__ = __webpack_require__(394);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_appoinment_appoinment__ = __webpack_require__(52);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__my_date_modal_my_date_modal__ = __webpack_require__(400);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -768,7 +791,7 @@ var MyDatesPage = (function () {
 
 /***/ }),
 
-/***/ 175:
+/***/ 177:
 /***/ (function(module, exports) {
 
 function webpackEmptyAsyncContext(req) {
@@ -781,16 +804,213 @@ function webpackEmptyAsyncContext(req) {
 webpackEmptyAsyncContext.keys = function() { return []; };
 webpackEmptyAsyncContext.resolve = webpackEmptyAsyncContext;
 module.exports = webpackEmptyAsyncContext;
-webpackEmptyAsyncContext.id = 175;
+webpackEmptyAsyncContext.id = 177;
 
 /***/ }),
 
-/***/ 176:
+/***/ 178:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MyparentsPage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_dependents_dependents__ = __webpack_require__(93);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+var MyparentsPage = (function () {
+    function MyparentsPage(navCtrl, navParams, fb, dependentsPvr) {
+        var _this = this;
+        this.navCtrl = navCtrl;
+        this.navParams = navParams;
+        this.fb = fb;
+        this.dependentsPvr = dependentsPvr;
+        this.openForm = false;
+        this.dependentsPvr.getDependens().subscribe(function (data) {
+            _this.dependens = data;
+        });
+        this.formFamily = this.fb.group({
+            name: ['', [__WEBPACK_IMPORTED_MODULE_2__angular_forms__["j" /* Validators */].required]],
+            paternal_surname: ['', [__WEBPACK_IMPORTED_MODULE_2__angular_forms__["j" /* Validators */].required]],
+            maternal_surname: ['', [__WEBPACK_IMPORTED_MODULE_2__angular_forms__["j" /* Validators */].required]],
+            gender: ['', [__WEBPACK_IMPORTED_MODULE_2__angular_forms__["j" /* Validators */].required]],
+            date_of_birth: ['', [__WEBPACK_IMPORTED_MODULE_2__angular_forms__["j" /* Validators */].required]],
+            type_document: ['', [__WEBPACK_IMPORTED_MODULE_2__angular_forms__["j" /* Validators */].required]],
+            dni: ['', [__WEBPACK_IMPORTED_MODULE_2__angular_forms__["j" /* Validators */].required, __WEBPACK_IMPORTED_MODULE_2__angular_forms__["j" /* Validators */].minLength(8), __WEBPACK_IMPORTED_MODULE_2__angular_forms__["j" /* Validators */].maxLength(8)]],
+            user_id: [localStorage.getItem('idTokenUser')],
+            kindred: ['', [__WEBPACK_IMPORTED_MODULE_2__angular_forms__["j" /* Validators */].required]]
+            // email           : [ String(Math.floor(Math.random() * 9e15)) + '@ipsum.com' ],
+            // password        : [ String(Math.floor(Math.random() * 9e15)) ]
+        });
+    }
+    MyparentsPage.prototype.ionViewDidLoad = function () {
+        console.log('ionViewDidLoad MyparentsPage');
+    };
+    MyparentsPage.prototype.showForm = function () {
+        this.openForm = !this.openForm;
+        // this.openForm = true;
+    };
+    MyparentsPage = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
+            selector: 'page-myparents',template:/*ion-inline-start:"/proyectos/IonicPruebas/ApolloIonicVersionOne/src/pages/myparents/myparents.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title>Mis Parientes</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n\n  <div>\n    <ion-card *ngFor="let depe of dependens">\n      <ion-row>\n        <ion-col col-4>\n          <ion-avatar>\n            <img src="../assets/imgs/avatars/nino.png" alt="">\n          </ion-avatar>\n        </ion-col>\n        <ion-col col-8>\n            <h3 class="nombrePariente">{{depe.name}}</h3>\n            <p class="parentesco">{{depe.type}}</p>\n            <p class="edad">7 años</p>\n        </ion-col>\n      </ion-row>\n    </ion-card>\n  </div>\n  <div class="center">\n    <button ion-button\n            color="secondary"\n            (click)="showForm()">\n     Agregar familiar\n    </button>\n  </div>\n  <div *ngIf="openForm == true"\n        class="down20">\n      <div class="cienPorCiento">\n        <h3 class="tituloFamiliar">Creación de cuenta Adicional</h3>\n      </div>\n\n        <form [formGroup]="formFamily" (ngSubmit)="saveData(formFamily.value)" novalidate>\n          <ion-list>\n            <ion-grid>\n\n              <ion-item>\n                <ion-label fixed>Nombre:</ion-label>\n                <ion-input formControlName="name" type="text" maxlength="40">\n                </ion-input>\n              </ion-item>\n\n        <ion-item>\n          <ion-label fixed>Apellido Paterno:</ion-label>\n          <ion-input formControlName="paternal_surname" type="text" maxlength="40">\n          </ion-input>\n        </ion-item>\n\n        <ion-item>\n          <ion-label fixed>Apellido Materno:</ion-label>\n          <ion-input formControlName="maternal_surname" type="text" maxlength="40">\n          </ion-input>\n        </ion-item>\n\n\n        <ion-row>\n          <ion-col col-6>\n            <ion-item>\n              <ion-label fixed>Sexo:</ion-label>\n              <ion-select formControlName="gender" name="gender">\n                <ion-option value="M">M</ion-option>\n                <ion-option value="F">F</ion-option>\n              </ion-select>\n            </ion-item>\n          </ion-col>\n\n        <ion-col col-6>\n          <ion-item>\n            <ion-label fixed>Nacimiento:</ion-label>\n            <ion-input type="date" formControlName="date_of_birth" name="date_of_birth"></ion-input>\n          </ion-item>\n        </ion-col>\n\n        <ion-col col-6>\n          <ion-item>\n            <ion-label fixed>Documento:</ion-label>\n            <ion-select [(ngModel)]="change" formControlName="type_document" name="type_document" floating>\n              <ion-option value="dni">DNI</ion-option>\n              <ion-option value="carne_extranjeria">Carne de Extranjeria</ion-option>\n              <ion-option value="pasaporte">Pasaporte</ion-option>\n            </ion-select>\n          </ion-item>\n        </ion-col>\n\n        <ion-col col-6>\n          <ion-item>\n            <ion-label floating> Nº Documento:</ion-label>\n            <ion-input *ngIf="change === \'dni\'" type="number" formControlName="dni" name="dni" minlength="8" maxlength="8" floating></ion-input>\n            <ion-input *ngIf="change === \'carne_extranjeria\'" type="tel" formControlName="dni" name="dni" minlength="12" maxlength="12"\n              floating></ion-input>\n            <ion-input *ngIf="change === \'pasaporte\'" type="tel" formControlName="dni" name="dni" minlength="12" maxlength="12" floating></ion-input>\n            <!-- <p color="danger" ion-text *ngIf="registerForm.get(\'dni\').hasError(\'required\')">DNI requerido</p> -->\n          </ion-item>\n        </ion-col>\n        </ion-row>\n        </ion-grid>\n\n        <ion-col col-12>\n          <ion-item>\n            <ion-label fixed>Parentesco:</ion-label>\n            <ion-select formControlName="kindred" name="kindred" floating>\n              <ion-option value="father">Padre</ion-option>\n              <ion-option value="mother">Madre</ion-option>\n              <ion-option value="son">hijo</ion-option>\n              <ion-option value="daughter">Hija</ion-option>\n              <ion-option value="uncle">Tio</ion-option>\n              <ion-option value="aunt">Tia</ion-option>\n            </ion-select>\n          </ion-item>\n        </ion-col>\n\n            </ion-list>\n\n            <button ion-button type="submit" [disabled]="!formFamily.valid" block color="secondary" class="guardaryContinuar">Guardar y continuar</button>\n          </form>\n  </div>\n\n</ion-content>\n'/*ion-inline-end:"/proyectos/IonicPruebas/ApolloIonicVersionOne/src/pages/myparents/myparents.html"*/,
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */],
+            __WEBPACK_IMPORTED_MODULE_2__angular_forms__["b" /* FormBuilder */],
+            __WEBPACK_IMPORTED_MODULE_3__providers_dependents_dependents__["a" /* DependentsProvider */]])
+    ], MyparentsPage);
+    return MyparentsPage;
+}());
+
+//# sourceMappingURL=myparents.js.map
+
+/***/ }),
+
+/***/ 221:
+/***/ (function(module, exports) {
+
+function webpackEmptyAsyncContext(req) {
+	// Here Promise.resolve().then() is used instead of new Promise() to prevent
+	// uncatched exception popping up in devtools
+	return Promise.resolve().then(function() {
+		throw new Error("Cannot find module '" + req + "'.");
+	});
+}
+webpackEmptyAsyncContext.keys = function() { return []; };
+webpackEmptyAsyncContext.resolve = webpackEmptyAsyncContext;
+module.exports = webpackEmptyAsyncContext;
+webpackEmptyAsyncContext.id = 221;
+
+/***/ }),
+
+/***/ 263:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PayuPage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__providers_payu_test_payu_test__ = __webpack_require__(264);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_forms__ = __webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_ionic_angular__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__home_home__ = __webpack_require__(65);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__providers_appoinment_appoinment__ = __webpack_require__(52);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+
+var PayuPage = (function () {
+    function PayuPage(navCtrl, navParams, fb, payu, appointmanetProvider, viewCtrl, alertCtrl) {
+        this.navCtrl = navCtrl;
+        this.navParams = navParams;
+        this.fb = fb;
+        this.payu = payu;
+        this.appointmanetProvider = appointmanetProvider;
+        this.viewCtrl = viewCtrl;
+        this.alertCtrl = alertCtrl;
+        this.subida = navParams.get('subida');
+        this.doctor = navParams.get('doctor');
+        console.log('data que viene de financer a payu:', this.subida, this.doctor);
+        this.myForm = this.fb.group({
+            numero: ['', [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["j" /* Validators */].required,
+                    __WEBPACK_IMPORTED_MODULE_1__angular_forms__["j" /* Validators */].minLength(16),
+                    __WEBPACK_IMPORTED_MODULE_1__angular_forms__["j" /* Validators */].maxLength(16)]],
+            month: ['', [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["j" /* Validators */].required,
+                    __WEBPACK_IMPORTED_MODULE_1__angular_forms__["j" /* Validators */].minLength(6),
+                    __WEBPACK_IMPORTED_MODULE_1__angular_forms__["j" /* Validators */].maxLength(6)]],
+            mail: ['', [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["j" /* Validators */].required, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["j" /* Validators */].email]],
+            cvv: ['', [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["j" /* Validators */].required,
+                    __WEBPACK_IMPORTED_MODULE_1__angular_forms__["j" /* Validators */].minLength(3),
+                    __WEBPACK_IMPORTED_MODULE_1__angular_forms__["j" /* Validators */].maxLength(3)]]
+        });
+    }
+    PayuPage.prototype.saveData = function (myForm) {
+        var _this = this;
+        var datos = myForm.value;
+        var numero = datos.numero;
+        var cvv = datos.cvv;
+        console.log('los datos:', datos);
+        // this.payu.command(numero, cvv).subscribe(data=>{
+        //   this.datosTarje = data;
+        //   if(this.datosTarje.code == "SUCCESS"){
+        //     this.appointmanetProvider.createAppointment(this.subida).subscribe((data: any)=>{
+        //       this.viewCtrl.dismiss();
+        //         this.navCtrl.setRoot(HomePage);
+        //     })
+        //   }
+        // });
+        this.appointmanetProvider.createAppointment(this.subida).subscribe(function (data) {
+            _this.payu.command(numero, cvv).subscribe(function (data) {
+                _this.datosTarje = data;
+                if (_this.datosTarje.code === "SUCCESS") {
+                    var satisfactoria = _this.alertCtrl.create({
+                        title: "Creación de cita",
+                        subTitle: "se creo su cita satisfactoriamente",
+                        buttons: [
+                            {
+                                text: "OK",
+                                handler: function () {
+                                    _this.viewCtrl.dismiss();
+                                    _this.navCtrl.setRoot(__WEBPACK_IMPORTED_MODULE_4__home_home__["a" /* HomePage */]);
+                                }
+                            }
+                        ]
+                    });
+                    satisfactoria.present();
+                }
+            });
+        });
+    };
+    PayuPage.prototype.ionViewDidLoad = function () {
+        console.log('ionViewDidLoad PayuPage');
+    };
+    PayuPage = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_2__angular_core__["m" /* Component */])({
+            selector: 'page-payu',template:/*ion-inline-start:"/proyectos/IonicPruebas/ApolloIonicVersionOne/src/pages/payu/payu.html"*/'<ion-content padding>\n    <form [formGroup]="myForm" (ngSubmit)="saveData(myForm)" novalidate>\n      <ion-row>\n        <!-- cabecera del modal -->\n        <ion-col col-12\n                  class="backCabecera">\n          <ion-row>\n            <!-- espacio para las imagenes -->\n            <ion-col col-4>\n             <div class="imagenCheckout">\n\n             </div>\n            </ion-col>\n            <!-- div para el texto de titulo y subtitulo -->\n            <ion-col col-8>\n              <h5 class="tituloDeCita">Titulo de la cita</h5>\n              <p class="resumenCita">algún resumen</p>\n            </ion-col>\n          </ion-row>\n        </ion-col>\n        <!-- cuerpo del modal -->\n        <ion-col col-12\n                 class="backCuerpoModal">\n          <ion-row>\n            <ion-col \n                    col-12\n                    class="sinpading top10">\n              <ion-item>\n                  <ion-icon name="card" item-left></ion-icon>\n                <ion-input type="tel" \n                            placeholder="4111-1111-1111-1111"\n                            formControlName="numero"\n                            required\n                            minlength="16"\n                            maxlength="16"\n                            name="numero"\n                            >\n                </ion-input>\n              </ion-item>\n            </ion-col>\n            <ion-col\n                    col-6\n                    class="sinpading">\n              <ion-item>\n                  <ion-icon name="calendar" item-left></ion-icon>\n                <ion-input type="text" \n                            date="yyyy-mm"\n                            placeholder="YYYY/MM"\n                            formControlName="month"\n                            required \n                            maxlength="6">        \n                </ion-input>\n              </ion-item>\n            </ion-col>\n            <ion-col \n                    col-6\n                    class="sinpading">\n              <ion-item>\n                  <ion-icon name="unlock" item-left></ion-icon>\n                <ion-input type="tel" \n                            placeholder="CVV"\n                            formControlName="cvv"\n                            minLength="3" \n                            maxlength="3"\n                            name="cvv"\n                            required>\n                </ion-input>\n              </ion-item>\n            </ion-col>\n\n            <ion-col \n                    col-12\n                    class="sinpading top10">\n              <ion-item>\n                  <ion-icon name="at" item-left></ion-icon>\n                <ion-input type="email" \n                            formControlName = "mail"\n                            placeholder="Correo electrónico"\n                            name="mail">\n                </ion-input>\n                </ion-item>\n            </ion-col>\n            \n          </ion-row>\n          <div padding>\n              <button ion-button color="secondary" block type="submit" [disabled]="!myForm.valid" >Pagar S/ 45.50</button>\n            </div>\n        </ion-col>\n      </ion-row>\n    </form>\n</ion-content>\n'/*ion-inline-end:"/proyectos/IonicPruebas/ApolloIonicVersionOne/src/pages/payu/payu.html"*/,
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_3_ionic_angular__["j" /* NavController */],
+            __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["k" /* NavParams */],
+            __WEBPACK_IMPORTED_MODULE_1__angular_forms__["b" /* FormBuilder */],
+            __WEBPACK_IMPORTED_MODULE_0__providers_payu_test_payu_test__["a" /* PayuTestProvider */],
+            __WEBPACK_IMPORTED_MODULE_5__providers_appoinment_appoinment__["a" /* AppointmentProvider */],
+            __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["n" /* ViewController */],
+            __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["b" /* AlertController */]])
+    ], PayuPage);
+    return PayuPage;
+}());
+
+//# sourceMappingURL=payu.js.map
+
+/***/ }),
+
+/***/ 264:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PayuTestProvider; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_common_http__ = __webpack_require__(52);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_common_http__ = __webpack_require__(42);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -900,31 +1120,14 @@ var PayuTestProvider = (function () {
 
 /***/ }),
 
-/***/ 220:
-/***/ (function(module, exports) {
-
-function webpackEmptyAsyncContext(req) {
-	// Here Promise.resolve().then() is used instead of new Promise() to prevent
-	// uncatched exception popping up in devtools
-	return Promise.resolve().then(function() {
-		throw new Error("Cannot find module '" + req + "'.");
-	});
-}
-webpackEmptyAsyncContext.keys = function() { return []; };
-webpackEmptyAsyncContext.resolve = webpackEmptyAsyncContext;
-module.exports = webpackEmptyAsyncContext;
-webpackEmptyAsyncContext.id = 220;
-
-/***/ }),
-
-/***/ 260:
+/***/ 265:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AuthorizationPublicProvider; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_common_http__ = __webpack_require__(52);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_common_http__ = __webpack_require__(42);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__ = __webpack_require__(64);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__ = __webpack_require__(51);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -962,18 +1165,18 @@ var AuthorizationPublicProvider = (function () {
 
 /***/ }),
 
-/***/ 264:
+/***/ 268:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return FinancierProvider; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__(93);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__(94);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Observable__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Observable___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_Observable__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_catch__ = __webpack_require__(77);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_catch__ = __webpack_require__(58);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_catch___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_catch__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_map__ = __webpack_require__(64);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_map__ = __webpack_require__(51);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_map__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -1045,15 +1248,15 @@ var FinancierProvider = (function () {
 
 /***/ }),
 
-/***/ 265:
+/***/ 269:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DatosPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(15);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__user_login_login__ = __webpack_require__(76);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__card_card__ = __webpack_require__(65);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__user_login_login__ = __webpack_require__(77);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__card_card__ = __webpack_require__(66);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1104,18 +1307,70 @@ var DatosPage = (function () {
 
 /***/ }),
 
-/***/ 386:
+/***/ 270:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CrudparentProvider; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_common_http__ = __webpack_require__(42);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__ = __webpack_require__(51);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_catch__ = __webpack_require__(58);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_catch___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_catch__);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+var CrudparentProvider = (function () {
+    function CrudparentProvider(http) {
+        this.http = http;
+        this.apiUrl = "http://dappapache02.eastus.cloudapp.azure.com:4200/api/v2/ebooking/appointments/createForUser/";
+        console.log('Hello CrudparentProvider Provider');
+    }
+    CrudparentProvider.prototype.createParentDate = function (subida, id) {
+        var authorization = localStorage.getItem('authorization');
+        var headers = new __WEBPACK_IMPORTED_MODULE_0__angular_common_http__["c" /* HttpHeaders */]({ "Authorization": authorization });
+        var params = JSON.parse(subida);
+        params.provisions = [{ "tipoPrestacion": "CONSULTA", "instructions": "", "name": "CONSULTA AMBULATORIA POR MEDICO ESPECIALISTA", "default": false, "id": 44 }];
+        return this.http.post(this.apiUrl + ("" + id), params, { headers: headers })
+            .map(function (resp) {
+            return resp;
+        });
+    };
+    CrudparentProvider = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["B" /* Injectable */])(),
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_common_http__["a" /* HttpClient */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_common_http__["a" /* HttpClient */]) === "function" && _a || Object])
+    ], CrudparentProvider);
+    return CrudparentProvider;
+    var _a;
+}());
+
+//# sourceMappingURL=crudparent.js.map
+
+/***/ }),
+
+/***/ 391:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HelloProvider; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_common_http__ = __webpack_require__(52);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_common_http__ = __webpack_require__(42);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__ = __webpack_require__(64);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__ = __webpack_require__(51);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_filter__ = __webpack_require__(493);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_filter__ = __webpack_require__(392);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_filter___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_filter__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_catch__ = __webpack_require__(77);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_catch__ = __webpack_require__(58);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_catch___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_catch__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -1209,13 +1464,13 @@ var HelloProvider = (function () {
 
 /***/ }),
 
-/***/ 392:
+/***/ 398:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ProfilePage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(14);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1258,13 +1513,13 @@ var ProfilePage = (function () {
 
 /***/ }),
 
-/***/ 393:
+/***/ 399:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return IrmPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(14);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1297,15 +1552,15 @@ var IrmPage = (function () {
 
 /***/ }),
 
-/***/ 394:
+/***/ 400:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MyDateModalPage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__providers_appoinment_appoinment__ = __webpack_require__(57);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__providers_appoinment_appoinment__ = __webpack_require__(52);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(15);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__my_dates__ = __webpack_require__(152);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__my_dates__ = __webpack_require__(154);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1380,14 +1635,14 @@ var MyDateModalPage = (function () {
 
 /***/ }),
 
-/***/ 395:
+/***/ 401:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return RecipesPage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__providers_recipes_recipes__ = __webpack_require__(396);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__providers_recipes_recipes__ = __webpack_require__(402);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(14);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1404,46 +1659,51 @@ var RecipesPage = (function () {
     function RecipesPage(navCtrl, navParams, recipesPvr) {
         // ahora esta implementado así.... pero no funcionará
         // porque lo que tiene que pasar es tener un endpoint que me traiga todos las recetas
+        var _this = this;
         this.navCtrl = navCtrl;
         this.navParams = navParams;
         this.recipesPvr = recipesPvr;
-        this.id = 15421;
-        // this.recipesPvr.getRecipes(this.id).subscribe(data=>{
+        this.id = 18439;
+        // this.recipesPvr.getAllRecipes().subscribe(data=>{
         //   this.recipes = data;
         //   console.log(this.recipes);
-        // });
+        this.recipesPvr.getRecipes(this.id).subscribe(function (data) {
+            _this.recipes = data;
+            console.log(_this.recipes);
+        });
     }
     RecipesPage.prototype.ionViewDidLoad = function () {
         console.log('ionViewDidLoad RecipesPage');
     };
     RecipesPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["m" /* Component */])({
-            selector: 'page-recipes',template:/*ion-inline-start:"/proyectos/IonicPruebas/ApolloIonicVersionOne/src/pages/optionals-devs/recipes/recipes.html"*/'<ion-header>\n  <ion-navbar >\n    <ion-title>Mis Recetas</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content >\n  <div >\n    <ion-card >\n        <p>{{recipes.nombre_cod}}</p>\n    </ion-card>\n  </div>\n</ion-content>\n'/*ion-inline-end:"/proyectos/IonicPruebas/ApolloIonicVersionOne/src/pages/optionals-devs/recipes/recipes.html"*/,
+            selector: 'page-recipes',template:/*ion-inline-start:"/proyectos/IonicPruebas/ApolloIonicVersionOne/src/pages/optionals-devs/recipes/recipes.html"*/'<ion-header>\n  <ion-navbar color="primary">\n    <ion-title>Mis Recetas</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content >\n  <div padding *ngIf="recipes">\n            <div *ngFor="let recipe of recipes">\n              <ion-row>\n                <ion-col col-3>\n                    <img src="assets/imgs/recipes/{{recipe.formasfar_pk}}.png" alt="">\n                </ion-col>\n                <ion-col col-9 >\n                    <p class="nombrePastilla"\n                      *ngIf="recipe.marca_comercial">\n                      {{recipe.marca_comercial}}\n                    </p>\n                    <p class="nombrePastilla"\n                       *ngIf="recipe.marca_comercial == null">\n                       {{recipe.nombre_generico}}\n                      </p>\n                </ion-col>\n              </ion-row>\n                 <!-- inicio de los datos de la pastilla -->\n\n              <p class="cantidadDeDias">Tratamiento de 5 dias</p>\n              <p class="inicio">Inicio de Tratamiento: {{recipe.inicio_prescripcion | date: "dd MMMM yyyy"}}</p>\n               <!-- fin de los datos de la pastilla -->\n\n             <!-- inicio de los cuadros para las toma de pastilla -->\n              <div *ngIf="recipes && recipe.cada_x_horas == 8"\n                    class="down">\n                <h4 class="tituloDeLasTomas"> tomas de 3 veces por día</h4>\n                <ion-row padding>\n                  <ion-col class="cuadrados">\n                    <p> 6am - 9am</p>\n                    <p class="cantidad">{{recipe.cantidad_dosis}}</p>\n                    </ion-col>\n                  <ion-col class="cuadrados">\n                    <p> 2pm - 4pm</p>\n                    <p class="cantidad"> {{recipe.cantidad_dosis}} </p>\n                  </ion-col>\n                  <ion-col class="cuadrados">\n                    <p>10pm - 12m</p>\n                    <p class="cantidad"> {{recipe.cantidad_dosis}} </p>\n                  </ion-col>\n                </ion-row>\n            </div>\n\n            <div *ngIf="recipes && recipe.cada_x_horas == 12"\n                  class="down">\n              <p class="tituloDeLasTomas"> tomas de 2 veces por día</p>\n              <ion-row padding>\n                <ion-col class="cuadrados">\n                  <p> 6am-9am</p>\n                  <p class="cantidad">{{recipe.cantidad_dosis}}</p>\n                </ion-col>\n                <ion-col class="cuadrados">\n                  <p>6pm-9m</p>\n                  <p class="cantidad"> {{recipe.cantidad_dosis}} </p>\n                </ion-col>\n              </ion-row>\n            </div>\n\n            <div *ngIf="recipes && recipe.cada_x_horas == 6"\n            class="down">\n                <p class="tituloDeLasTomas"> tomas de 4 veces por día</p>\n                <ion-row padding>\n                  <ion-col class="cuadrados">\n                    <p> 6am-8am</p>\n                    <p class="cantidad">{{recipe.cantidad_dosis}}</p>\n                  </ion-col>\n                  <ion-col class="cuadrados">\n                      <p> 12m-2pm</p>\n                      <p class="cantidad">{{recipe.cantidad_dosis}}</p>\n                    </ion-col>\n                    <ion-col class="cuadrados">\n                        <p> 6pm-8pm</p>\n                        <p class="cantidad">{{recipe.cantidad_dosis}}</p>\n                      </ion-col>\n                  <ion-col class="cuadrados">\n                    <p>12m-2am</p>\n                    <p class="cantidad"> {{recipe.cantidad_dosis}} </p>\n                  </ion-col>\n                </ion-row>\n              </div>\n\n          </div>\n        </div>\n</ion-content>\n'/*ion-inline-end:"/proyectos/IonicPruebas/ApolloIonicVersionOne/src/pages/optionals-devs/recipes/recipes.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["j" /* NavController */],
-            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["k" /* NavParams */],
-            __WEBPACK_IMPORTED_MODULE_0__providers_recipes_recipes__["a" /* RecipesProvider */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["j" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["j" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["k" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["k" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_0__providers_recipes_recipes__["a" /* RecipesProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__providers_recipes_recipes__["a" /* RecipesProvider */]) === "function" && _c || Object])
     ], RecipesPage);
     return RecipesPage;
+    var _a, _b, _c;
 }());
 
 //# sourceMappingURL=recipes.js.map
 
 /***/ }),
 
-/***/ 396:
+/***/ 402:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return RecipesProvider; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_rxjs_Observable__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_rxjs_Observable___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_rxjs_Observable__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__(93);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__(94);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_catch__ = __webpack_require__(77);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_catch__ = __webpack_require__(58);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_catch___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_catch__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_map__ = __webpack_require__(64);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_map__ = __webpack_require__(51);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_map__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_filter__ = __webpack_require__(392);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_filter___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_filter__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1458,12 +1718,27 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var RecipesProvider = (function () {
     function RecipesProvider(http) {
         this.http = http;
-        this.apiUrl = "http://dappapache02.eastus.cloudapp.azure.com:4000/api/v2/ebooking/getPrescripcionesEncuentro?encuentroId=";
+        this.apiUrl = "http://dappapache02.eastus.cloudapp.azure.com:4200/api/v2/ebooking/getPrescripcionesEncuentro?encuentroId=";
         console.log('Hello RecipesProvider Provider');
     }
+    RecipesProvider.prototype.getAllRecipes = function () {
+        var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Headers */]({ 'Content-Type': 'application/json', 'Authorization': localStorage.getItem('authorization') });
+        var options = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["d" /* RequestOptions */]({ headers: headers });
+        return this.http.get(this.apiUrl, options)
+            .map(this.extractData)
+            .catch(this.handleError);
+    };
+    RecipesProvider.prototype.getFilterRecipes = function () {
+        var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Headers */]({ 'Content-Type': 'application/json', 'Authorization': localStorage.getItem('authorization') });
+        var options = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["d" /* RequestOptions */]({ headers: headers });
+        return this.http.get(this.apiUrl, options)
+            .map(this.extractData)
+            .catch(this.handleError);
+    };
     RecipesProvider.prototype.getRecipes = function (id) {
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Headers */]({ 'Content-Type': 'application/json', 'Authorization': localStorage.getItem('authorization') });
         var options = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["d" /* RequestOptions */]({ headers: headers });
@@ -1499,14 +1774,14 @@ var RecipesProvider = (function () {
 
 /***/ }),
 
-/***/ 428:
+/***/ 434:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__ = __webpack_require__(429);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__app_module__ = __webpack_require__(442);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_hammerjs__ = __webpack_require__(601);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__ = __webpack_require__(435);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__app_module__ = __webpack_require__(448);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_hammerjs__ = __webpack_require__(605);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_hammerjs___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_hammerjs__);
 
 
@@ -1516,53 +1791,57 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 
 /***/ }),
 
-/***/ 442:
+/***/ 448:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppModule; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__pages_payu_payu__ = __webpack_require__(103);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser__ = __webpack_require__(29);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_ionic_angular__ = __webpack_require__(15);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_splash_screen__ = __webpack_require__(387);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_native_status_bar__ = __webpack_require__(391);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__angular_http__ = __webpack_require__(93);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__angular_common_locales_es__ = __webpack_require__(500);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__angular_common__ = __webpack_require__(5);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__app_component__ = __webpack_require__(501);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__pages_home_home__ = __webpack_require__(63);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__pages_card_card__ = __webpack_require__(65);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__pages_charge_charge__ = __webpack_require__(502);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__pages_user_login_login__ = __webpack_require__(76);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__pages_user_register_register__ = __webpack_require__(148);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__pages_user_profile_profile__ = __webpack_require__(392);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__pages_appointment_search_search__ = __webpack_require__(503);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__pages_appointment_financer_financer__ = __webpack_require__(150);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__pages_appointment_pay_pay__ = __webpack_require__(504);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__pages_optionals_devs_my_dates_my_dates__ = __webpack_require__(152);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__pages_optionals_devs_irm_irm__ = __webpack_require__(393);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__pages_optionals_devs_recipes_recipes__ = __webpack_require__(395);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__pages_optionals_devs_recomendations_recomendations__ = __webpack_require__(505);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__pages_optionals_devs_my_dates_my_date_modal_my_date_modal__ = __webpack_require__(394);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__angular_common_http__ = __webpack_require__(52);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25_apollo_angular_link_http__ = __webpack_require__(506);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26_apollo_cache_inmemory__ = __webpack_require__(521);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_27_apollo_angular__ = __webpack_require__(530);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_28__providers_financier_financier__ = __webpack_require__(264);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_29__providers_user_user__ = __webpack_require__(149);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_30__providers_appoinment_appoinment__ = __webpack_require__(57);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_31__providers_authorization_public_authorization_public__ = __webpack_require__(260);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_32__angular_forms__ = __webpack_require__(13);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_33_ng2_search_filter__ = __webpack_require__(555);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_34__components_expandable_expandable_component__ = __webpack_require__(556);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_35__angular_platform_browser_animations__ = __webpack_require__(557);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_36__material_module__ = __webpack_require__(559);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_37__pages_appointment_master_detail_master_detail__ = __webpack_require__(600);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_38__providers_hello_hello__ = __webpack_require__(386);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_39__pages_datos_datos__ = __webpack_require__(265);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_40__providers_payu_test_payu_test__ = __webpack_require__(176);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_41__providers_recipes_recipes__ = __webpack_require__(396);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__pages_myparents_myparents__ = __webpack_require__(178);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__pages_createparent_createparent__ = __webpack_require__(149);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__pages_payu_payu__ = __webpack_require__(263);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_platform_browser__ = __webpack_require__(29);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_ionic_angular__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__ionic_native_splash_screen__ = __webpack_require__(393);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__ionic_native_status_bar__ = __webpack_require__(397);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__angular_http__ = __webpack_require__(94);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__angular_common_locales_es__ = __webpack_require__(505);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__angular_common__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__app_component__ = __webpack_require__(506);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__pages_home_home__ = __webpack_require__(65);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__pages_card_card__ = __webpack_require__(66);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__pages_charge_charge__ = __webpack_require__(507);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__pages_user_login_login__ = __webpack_require__(77);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__pages_user_register_register__ = __webpack_require__(150);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__pages_user_profile_profile__ = __webpack_require__(398);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__pages_appointment_search_search__ = __webpack_require__(508);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__pages_appointment_financer_financer__ = __webpack_require__(95);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__pages_appointment_pay_pay__ = __webpack_require__(152);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__pages_optionals_devs_my_dates_my_dates__ = __webpack_require__(154);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__pages_optionals_devs_irm_irm__ = __webpack_require__(399);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__pages_optionals_devs_recipes_recipes__ = __webpack_require__(401);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__pages_optionals_devs_recomendations_recomendations__ = __webpack_require__(509);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__pages_optionals_devs_my_dates_my_date_modal_my_date_modal__ = __webpack_require__(400);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__angular_common_http__ = __webpack_require__(42);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_27_apollo_angular_link_http__ = __webpack_require__(510);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_28_apollo_cache_inmemory__ = __webpack_require__(525);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_29_apollo_angular__ = __webpack_require__(534);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_30__providers_financier_financier__ = __webpack_require__(268);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_31__providers_user_user__ = __webpack_require__(151);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_32__providers_appoinment_appoinment__ = __webpack_require__(52);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_33__providers_authorization_public_authorization_public__ = __webpack_require__(265);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_34__angular_forms__ = __webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_35_ng2_search_filter__ = __webpack_require__(559);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_36__components_expandable_expandable_component__ = __webpack_require__(560);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_37__angular_platform_browser_animations__ = __webpack_require__(561);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_38__material_module__ = __webpack_require__(563);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_39__pages_appointment_master_detail_master_detail__ = __webpack_require__(604);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_40__providers_hello_hello__ = __webpack_require__(391);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_41__pages_datos_datos__ = __webpack_require__(269);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_42__providers_payu_test_payu_test__ = __webpack_require__(264);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_43__providers_recipes_recipes__ = __webpack_require__(402);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_44__providers_dependents_dependents__ = __webpack_require__(93);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_45__providers_crudparent_crudparent__ = __webpack_require__(270);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1581,7 +1860,9 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-Object(__WEBPACK_IMPORTED_MODULE_8__angular_common__["i" /* registerLocaleData */])(__WEBPACK_IMPORTED_MODULE_7__angular_common_locales_es__["a" /* default */]);
+
+
+Object(__WEBPACK_IMPORTED_MODULE_10__angular_common__["i" /* registerLocaleData */])(__WEBPACK_IMPORTED_MODULE_9__angular_common_locales_es__["a" /* default */]);
 // aqui las importaciones de las imagenes
 
 
@@ -1623,6 +1904,8 @@ Object(__WEBPACK_IMPORTED_MODULE_8__angular_common__["i" /* registerLocaleData *
 
 
 
+
+
 var AppModule = (function () {
     function AppModule(apollo, httpLink) {
         // const schema = makeExecutableSchema({ typeDefs });
@@ -1630,84 +1913,90 @@ var AppModule = (function () {
         apollo.create({
             link: httpLink.create({ uri: "http://localhost:3000/graphql" }),
             // link: new SchemaLink({ schema }),
-            cache: new __WEBPACK_IMPORTED_MODULE_26_apollo_cache_inmemory__["a" /* InMemoryCache */]()
+            cache: new __WEBPACK_IMPORTED_MODULE_28_apollo_cache_inmemory__["a" /* InMemoryCache */]()
         });
     }
     AppModule = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_2__angular_core__["J" /* NgModule */])({
+        Object(__WEBPACK_IMPORTED_MODULE_4__angular_core__["J" /* NgModule */])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_9__app_component__["a" /* MyApp */],
-                __WEBPACK_IMPORTED_MODULE_10__pages_home_home__["a" /* HomePage */],
-                __WEBPACK_IMPORTED_MODULE_11__pages_card_card__["a" /* CardPage */],
-                __WEBPACK_IMPORTED_MODULE_12__pages_charge_charge__["a" /* ChargePage */],
-                __WEBPACK_IMPORTED_MODULE_13__pages_user_login_login__["a" /* LoginPage */],
-                __WEBPACK_IMPORTED_MODULE_14__pages_user_register_register__["a" /* RegisterPage */],
-                __WEBPACK_IMPORTED_MODULE_15__pages_user_profile_profile__["a" /* ProfilePage */],
-                __WEBPACK_IMPORTED_MODULE_16__pages_appointment_search_search__["a" /* SearchPage */],
-                __WEBPACK_IMPORTED_MODULE_17__pages_appointment_financer_financer__["a" /* FinancerPage */],
-                __WEBPACK_IMPORTED_MODULE_18__pages_appointment_pay_pay__["a" /* PayPage */],
-                __WEBPACK_IMPORTED_MODULE_19__pages_optionals_devs_my_dates_my_dates__["a" /* MyDatesPage */],
-                __WEBPACK_IMPORTED_MODULE_20__pages_optionals_devs_irm_irm__["a" /* IrmPage */],
-                __WEBPACK_IMPORTED_MODULE_21__pages_optionals_devs_recipes_recipes__["a" /* RecipesPage */],
-                __WEBPACK_IMPORTED_MODULE_22__pages_optionals_devs_recomendations_recomendations__["a" /* RecomendationsPage */],
-                __WEBPACK_IMPORTED_MODULE_34__components_expandable_expandable_component__["a" /* ExpandableComponent */],
-                __WEBPACK_IMPORTED_MODULE_37__pages_appointment_master_detail_master_detail__["a" /* MasterDetailPage */],
-                __WEBPACK_IMPORTED_MODULE_23__pages_optionals_devs_my_dates_my_date_modal_my_date_modal__["a" /* MyDateModalPage */],
-                __WEBPACK_IMPORTED_MODULE_39__pages_datos_datos__["a" /* DatosPage */],
-                __WEBPACK_IMPORTED_MODULE_0__pages_payu_payu__["a" /* PayuPage */]
+                __WEBPACK_IMPORTED_MODULE_11__app_component__["a" /* MyApp */],
+                __WEBPACK_IMPORTED_MODULE_12__pages_home_home__["a" /* HomePage */],
+                __WEBPACK_IMPORTED_MODULE_13__pages_card_card__["a" /* CardPage */],
+                __WEBPACK_IMPORTED_MODULE_14__pages_charge_charge__["a" /* ChargePage */],
+                __WEBPACK_IMPORTED_MODULE_15__pages_user_login_login__["a" /* LoginPage */],
+                __WEBPACK_IMPORTED_MODULE_16__pages_user_register_register__["a" /* RegisterPage */],
+                __WEBPACK_IMPORTED_MODULE_17__pages_user_profile_profile__["a" /* ProfilePage */],
+                __WEBPACK_IMPORTED_MODULE_18__pages_appointment_search_search__["a" /* SearchPage */],
+                __WEBPACK_IMPORTED_MODULE_19__pages_appointment_financer_financer__["a" /* FinancerPage */],
+                __WEBPACK_IMPORTED_MODULE_20__pages_appointment_pay_pay__["a" /* PayPage */],
+                __WEBPACK_IMPORTED_MODULE_21__pages_optionals_devs_my_dates_my_dates__["a" /* MyDatesPage */],
+                __WEBPACK_IMPORTED_MODULE_22__pages_optionals_devs_irm_irm__["a" /* IrmPage */],
+                __WEBPACK_IMPORTED_MODULE_23__pages_optionals_devs_recipes_recipes__["a" /* RecipesPage */],
+                __WEBPACK_IMPORTED_MODULE_24__pages_optionals_devs_recomendations_recomendations__["a" /* RecomendationsPage */],
+                __WEBPACK_IMPORTED_MODULE_36__components_expandable_expandable_component__["a" /* ExpandableComponent */],
+                __WEBPACK_IMPORTED_MODULE_39__pages_appointment_master_detail_master_detail__["a" /* MasterDetailPage */],
+                __WEBPACK_IMPORTED_MODULE_25__pages_optionals_devs_my_dates_my_date_modal_my_date_modal__["a" /* MyDateModalPage */],
+                __WEBPACK_IMPORTED_MODULE_41__pages_datos_datos__["a" /* DatosPage */],
+                __WEBPACK_IMPORTED_MODULE_2__pages_payu_payu__["a" /* PayuPage */],
+                __WEBPACK_IMPORTED_MODULE_1__pages_createparent_createparent__["a" /* CreateparentPage */],
+                __WEBPACK_IMPORTED_MODULE_0__pages_myparents_myparents__["a" /* MyparentsPage */]
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser__["a" /* BrowserModule */],
-                __WEBPACK_IMPORTED_MODULE_35__angular_platform_browser_animations__["a" /* BrowserAnimationsModule */],
-                __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["f" /* IonicModule */].forRoot(__WEBPACK_IMPORTED_MODULE_9__app_component__["a" /* MyApp */], {}, {
+                __WEBPACK_IMPORTED_MODULE_3__angular_platform_browser__["a" /* BrowserModule */],
+                __WEBPACK_IMPORTED_MODULE_37__angular_platform_browser_animations__["a" /* BrowserAnimationsModule */],
+                __WEBPACK_IMPORTED_MODULE_5_ionic_angular__["f" /* IonicModule */].forRoot(__WEBPACK_IMPORTED_MODULE_11__app_component__["a" /* MyApp */], {}, {
                     links: []
                 }),
-                __WEBPACK_IMPORTED_MODULE_33_ng2_search_filter__["a" /* Ng2SearchPipeModule */],
-                __WEBPACK_IMPORTED_MODULE_24__angular_common_http__["b" /* HttpClientModule */],
-                __WEBPACK_IMPORTED_MODULE_6__angular_http__["c" /* HttpModule */],
-                __WEBPACK_IMPORTED_MODULE_27_apollo_angular__["b" /* ApolloModule */],
-                __WEBPACK_IMPORTED_MODULE_25_apollo_angular_link_http__["b" /* HttpLinkModule */],
-                __WEBPACK_IMPORTED_MODULE_32__angular_forms__["d" /* FormsModule */],
-                __WEBPACK_IMPORTED_MODULE_36__material_module__["a" /* MaterialModule */],
-                __WEBPACK_IMPORTED_MODULE_32__angular_forms__["i" /* ReactiveFormsModule */]
+                __WEBPACK_IMPORTED_MODULE_35_ng2_search_filter__["a" /* Ng2SearchPipeModule */],
+                __WEBPACK_IMPORTED_MODULE_26__angular_common_http__["b" /* HttpClientModule */],
+                __WEBPACK_IMPORTED_MODULE_8__angular_http__["c" /* HttpModule */],
+                __WEBPACK_IMPORTED_MODULE_29_apollo_angular__["b" /* ApolloModule */],
+                __WEBPACK_IMPORTED_MODULE_27_apollo_angular_link_http__["b" /* HttpLinkModule */],
+                __WEBPACK_IMPORTED_MODULE_34__angular_forms__["d" /* FormsModule */],
+                __WEBPACK_IMPORTED_MODULE_38__material_module__["a" /* MaterialModule */],
+                __WEBPACK_IMPORTED_MODULE_34__angular_forms__["i" /* ReactiveFormsModule */]
             ],
-            bootstrap: [__WEBPACK_IMPORTED_MODULE_3_ionic_angular__["d" /* IonicApp */]],
+            bootstrap: [__WEBPACK_IMPORTED_MODULE_5_ionic_angular__["d" /* IonicApp */]],
             entryComponents: [
-                __WEBPACK_IMPORTED_MODULE_9__app_component__["a" /* MyApp */],
-                __WEBPACK_IMPORTED_MODULE_10__pages_home_home__["a" /* HomePage */],
-                __WEBPACK_IMPORTED_MODULE_11__pages_card_card__["a" /* CardPage */],
-                __WEBPACK_IMPORTED_MODULE_12__pages_charge_charge__["a" /* ChargePage */],
-                __WEBPACK_IMPORTED_MODULE_13__pages_user_login_login__["a" /* LoginPage */],
-                __WEBPACK_IMPORTED_MODULE_14__pages_user_register_register__["a" /* RegisterPage */],
-                __WEBPACK_IMPORTED_MODULE_15__pages_user_profile_profile__["a" /* ProfilePage */],
-                __WEBPACK_IMPORTED_MODULE_16__pages_appointment_search_search__["a" /* SearchPage */],
-                __WEBPACK_IMPORTED_MODULE_17__pages_appointment_financer_financer__["a" /* FinancerPage */],
-                __WEBPACK_IMPORTED_MODULE_18__pages_appointment_pay_pay__["a" /* PayPage */],
-                __WEBPACK_IMPORTED_MODULE_19__pages_optionals_devs_my_dates_my_dates__["a" /* MyDatesPage */],
-                __WEBPACK_IMPORTED_MODULE_20__pages_optionals_devs_irm_irm__["a" /* IrmPage */],
-                __WEBPACK_IMPORTED_MODULE_21__pages_optionals_devs_recipes_recipes__["a" /* RecipesPage */],
-                __WEBPACK_IMPORTED_MODULE_22__pages_optionals_devs_recomendations_recomendations__["a" /* RecomendationsPage */],
-                __WEBPACK_IMPORTED_MODULE_37__pages_appointment_master_detail_master_detail__["a" /* MasterDetailPage */],
-                __WEBPACK_IMPORTED_MODULE_23__pages_optionals_devs_my_dates_my_date_modal_my_date_modal__["a" /* MyDateModalPage */],
-                __WEBPACK_IMPORTED_MODULE_39__pages_datos_datos__["a" /* DatosPage */],
-                __WEBPACK_IMPORTED_MODULE_34__components_expandable_expandable_component__["a" /* ExpandableComponent */],
-                __WEBPACK_IMPORTED_MODULE_0__pages_payu_payu__["a" /* PayuPage */]
+                __WEBPACK_IMPORTED_MODULE_11__app_component__["a" /* MyApp */],
+                __WEBPACK_IMPORTED_MODULE_12__pages_home_home__["a" /* HomePage */],
+                __WEBPACK_IMPORTED_MODULE_13__pages_card_card__["a" /* CardPage */],
+                __WEBPACK_IMPORTED_MODULE_14__pages_charge_charge__["a" /* ChargePage */],
+                __WEBPACK_IMPORTED_MODULE_15__pages_user_login_login__["a" /* LoginPage */],
+                __WEBPACK_IMPORTED_MODULE_16__pages_user_register_register__["a" /* RegisterPage */],
+                __WEBPACK_IMPORTED_MODULE_17__pages_user_profile_profile__["a" /* ProfilePage */],
+                __WEBPACK_IMPORTED_MODULE_18__pages_appointment_search_search__["a" /* SearchPage */],
+                __WEBPACK_IMPORTED_MODULE_19__pages_appointment_financer_financer__["a" /* FinancerPage */],
+                __WEBPACK_IMPORTED_MODULE_20__pages_appointment_pay_pay__["a" /* PayPage */],
+                __WEBPACK_IMPORTED_MODULE_21__pages_optionals_devs_my_dates_my_dates__["a" /* MyDatesPage */],
+                __WEBPACK_IMPORTED_MODULE_22__pages_optionals_devs_irm_irm__["a" /* IrmPage */],
+                __WEBPACK_IMPORTED_MODULE_23__pages_optionals_devs_recipes_recipes__["a" /* RecipesPage */],
+                __WEBPACK_IMPORTED_MODULE_24__pages_optionals_devs_recomendations_recomendations__["a" /* RecomendationsPage */],
+                __WEBPACK_IMPORTED_MODULE_39__pages_appointment_master_detail_master_detail__["a" /* MasterDetailPage */],
+                __WEBPACK_IMPORTED_MODULE_25__pages_optionals_devs_my_dates_my_date_modal_my_date_modal__["a" /* MyDateModalPage */],
+                __WEBPACK_IMPORTED_MODULE_41__pages_datos_datos__["a" /* DatosPage */],
+                __WEBPACK_IMPORTED_MODULE_36__components_expandable_expandable_component__["a" /* ExpandableComponent */],
+                __WEBPACK_IMPORTED_MODULE_2__pages_payu_payu__["a" /* PayuPage */],
+                __WEBPACK_IMPORTED_MODULE_1__pages_createparent_createparent__["a" /* CreateparentPage */],
+                __WEBPACK_IMPORTED_MODULE_0__pages_myparents_myparents__["a" /* MyparentsPage */]
             ],
             providers: [
-                __WEBPACK_IMPORTED_MODULE_5__ionic_native_status_bar__["a" /* StatusBar */],
-                __WEBPACK_IMPORTED_MODULE_4__ionic_native_splash_screen__["a" /* SplashScreen */],
-                { provide: __WEBPACK_IMPORTED_MODULE_2__angular_core__["H" /* LOCALE_ID */], useValue: "es" },
-                { provide: __WEBPACK_IMPORTED_MODULE_2__angular_core__["v" /* ErrorHandler */], useClass: __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["e" /* IonicErrorHandler */] },
-                __WEBPACK_IMPORTED_MODULE_28__providers_financier_financier__["a" /* FinancierProvider */],
-                __WEBPACK_IMPORTED_MODULE_29__providers_user_user__["a" /* UserProvider */],
-                __WEBPACK_IMPORTED_MODULE_30__providers_appoinment_appoinment__["a" /* AppointmentProvider */],
-                __WEBPACK_IMPORTED_MODULE_38__providers_hello_hello__["a" /* HelloProvider */],
-                __WEBPACK_IMPORTED_MODULE_31__providers_authorization_public_authorization_public__["a" /* AuthorizationPublicProvider */],
-                __WEBPACK_IMPORTED_MODULE_40__providers_payu_test_payu_test__["a" /* PayuTestProvider */],
-                __WEBPACK_IMPORTED_MODULE_41__providers_recipes_recipes__["a" /* RecipesProvider */]
+                __WEBPACK_IMPORTED_MODULE_7__ionic_native_status_bar__["a" /* StatusBar */],
+                __WEBPACK_IMPORTED_MODULE_6__ionic_native_splash_screen__["a" /* SplashScreen */],
+                { provide: __WEBPACK_IMPORTED_MODULE_4__angular_core__["H" /* LOCALE_ID */], useValue: "es" },
+                { provide: __WEBPACK_IMPORTED_MODULE_4__angular_core__["v" /* ErrorHandler */], useClass: __WEBPACK_IMPORTED_MODULE_5_ionic_angular__["e" /* IonicErrorHandler */] },
+                __WEBPACK_IMPORTED_MODULE_30__providers_financier_financier__["a" /* FinancierProvider */],
+                __WEBPACK_IMPORTED_MODULE_31__providers_user_user__["a" /* UserProvider */],
+                __WEBPACK_IMPORTED_MODULE_32__providers_appoinment_appoinment__["a" /* AppointmentProvider */],
+                __WEBPACK_IMPORTED_MODULE_40__providers_hello_hello__["a" /* HelloProvider */],
+                __WEBPACK_IMPORTED_MODULE_33__providers_authorization_public_authorization_public__["a" /* AuthorizationPublicProvider */],
+                __WEBPACK_IMPORTED_MODULE_42__providers_payu_test_payu_test__["a" /* PayuTestProvider */],
+                __WEBPACK_IMPORTED_MODULE_43__providers_recipes_recipes__["a" /* RecipesProvider */],
+                __WEBPACK_IMPORTED_MODULE_44__providers_dependents_dependents__["a" /* DependentsProvider */],
+                __WEBPACK_IMPORTED_MODULE_45__providers_crudparent_crudparent__["a" /* CrudparentProvider */]
             ]
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_27_apollo_angular__["a" /* Apollo */], __WEBPACK_IMPORTED_MODULE_25_apollo_angular_link_http__["a" /* HttpLink */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_29_apollo_angular__["a" /* Apollo */], __WEBPACK_IMPORTED_MODULE_27_apollo_angular_link_http__["a" /* HttpLink */]])
     ], AppModule);
     return AppModule;
 }());
@@ -1716,248 +2005,248 @@ var AppModule = (function () {
 
 /***/ }),
 
-/***/ 492:
+/***/ 498:
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
-	"./af": 267,
-	"./af.js": 267,
-	"./ar": 268,
-	"./ar-dz": 269,
-	"./ar-dz.js": 269,
-	"./ar-kw": 270,
-	"./ar-kw.js": 270,
-	"./ar-ly": 271,
-	"./ar-ly.js": 271,
-	"./ar-ma": 272,
-	"./ar-ma.js": 272,
-	"./ar-sa": 273,
-	"./ar-sa.js": 273,
-	"./ar-tn": 274,
-	"./ar-tn.js": 274,
-	"./ar.js": 268,
-	"./az": 275,
-	"./az.js": 275,
-	"./be": 276,
-	"./be.js": 276,
-	"./bg": 277,
-	"./bg.js": 277,
-	"./bm": 278,
-	"./bm.js": 278,
-	"./bn": 279,
-	"./bn.js": 279,
-	"./bo": 280,
-	"./bo.js": 280,
-	"./br": 281,
-	"./br.js": 281,
-	"./bs": 282,
-	"./bs.js": 282,
-	"./ca": 283,
-	"./ca.js": 283,
-	"./cs": 284,
-	"./cs.js": 284,
-	"./cv": 285,
-	"./cv.js": 285,
-	"./cy": 286,
-	"./cy.js": 286,
-	"./da": 287,
-	"./da.js": 287,
-	"./de": 288,
-	"./de-at": 289,
-	"./de-at.js": 289,
-	"./de-ch": 290,
-	"./de-ch.js": 290,
-	"./de.js": 288,
-	"./dv": 291,
-	"./dv.js": 291,
-	"./el": 292,
-	"./el.js": 292,
-	"./en-au": 293,
-	"./en-au.js": 293,
-	"./en-ca": 294,
-	"./en-ca.js": 294,
-	"./en-gb": 295,
-	"./en-gb.js": 295,
-	"./en-ie": 296,
-	"./en-ie.js": 296,
-	"./en-nz": 297,
-	"./en-nz.js": 297,
-	"./eo": 298,
-	"./eo.js": 298,
-	"./es": 299,
-	"./es-do": 300,
-	"./es-do.js": 300,
-	"./es-us": 301,
-	"./es-us.js": 301,
-	"./es.js": 299,
-	"./et": 302,
-	"./et.js": 302,
-	"./eu": 303,
-	"./eu.js": 303,
-	"./fa": 304,
-	"./fa.js": 304,
-	"./fi": 305,
-	"./fi.js": 305,
-	"./fo": 306,
-	"./fo.js": 306,
-	"./fr": 307,
-	"./fr-ca": 308,
-	"./fr-ca.js": 308,
-	"./fr-ch": 309,
-	"./fr-ch.js": 309,
-	"./fr.js": 307,
-	"./fy": 310,
-	"./fy.js": 310,
-	"./gd": 311,
-	"./gd.js": 311,
-	"./gl": 312,
-	"./gl.js": 312,
-	"./gom-latn": 313,
-	"./gom-latn.js": 313,
-	"./gu": 314,
-	"./gu.js": 314,
-	"./he": 315,
-	"./he.js": 315,
-	"./hi": 316,
-	"./hi.js": 316,
-	"./hr": 317,
-	"./hr.js": 317,
-	"./hu": 318,
-	"./hu.js": 318,
-	"./hy-am": 319,
-	"./hy-am.js": 319,
-	"./id": 320,
-	"./id.js": 320,
-	"./is": 321,
-	"./is.js": 321,
-	"./it": 322,
-	"./it.js": 322,
-	"./ja": 323,
-	"./ja.js": 323,
-	"./jv": 324,
-	"./jv.js": 324,
-	"./ka": 325,
-	"./ka.js": 325,
-	"./kk": 326,
-	"./kk.js": 326,
-	"./km": 327,
-	"./km.js": 327,
-	"./kn": 328,
-	"./kn.js": 328,
-	"./ko": 329,
-	"./ko.js": 329,
-	"./ky": 330,
-	"./ky.js": 330,
-	"./lb": 331,
-	"./lb.js": 331,
-	"./lo": 332,
-	"./lo.js": 332,
-	"./lt": 333,
-	"./lt.js": 333,
-	"./lv": 334,
-	"./lv.js": 334,
-	"./me": 335,
-	"./me.js": 335,
-	"./mi": 336,
-	"./mi.js": 336,
-	"./mk": 337,
-	"./mk.js": 337,
-	"./ml": 338,
-	"./ml.js": 338,
-	"./mr": 339,
-	"./mr.js": 339,
-	"./ms": 340,
-	"./ms-my": 341,
-	"./ms-my.js": 341,
-	"./ms.js": 340,
-	"./mt": 342,
-	"./mt.js": 342,
-	"./my": 343,
-	"./my.js": 343,
-	"./nb": 344,
-	"./nb.js": 344,
-	"./ne": 345,
-	"./ne.js": 345,
-	"./nl": 346,
-	"./nl-be": 347,
-	"./nl-be.js": 347,
-	"./nl.js": 346,
-	"./nn": 348,
-	"./nn.js": 348,
-	"./pa-in": 349,
-	"./pa-in.js": 349,
-	"./pl": 350,
-	"./pl.js": 350,
-	"./pt": 351,
-	"./pt-br": 352,
-	"./pt-br.js": 352,
-	"./pt.js": 351,
-	"./ro": 353,
-	"./ro.js": 353,
-	"./ru": 354,
-	"./ru.js": 354,
-	"./sd": 355,
-	"./sd.js": 355,
-	"./se": 356,
-	"./se.js": 356,
-	"./si": 357,
-	"./si.js": 357,
-	"./sk": 358,
-	"./sk.js": 358,
-	"./sl": 359,
-	"./sl.js": 359,
-	"./sq": 360,
-	"./sq.js": 360,
-	"./sr": 361,
-	"./sr-cyrl": 362,
-	"./sr-cyrl.js": 362,
-	"./sr.js": 361,
-	"./ss": 363,
-	"./ss.js": 363,
-	"./sv": 364,
-	"./sv.js": 364,
-	"./sw": 365,
-	"./sw.js": 365,
-	"./ta": 366,
-	"./ta.js": 366,
-	"./te": 367,
-	"./te.js": 367,
-	"./tet": 368,
-	"./tet.js": 368,
-	"./th": 369,
-	"./th.js": 369,
-	"./tl-ph": 370,
-	"./tl-ph.js": 370,
-	"./tlh": 371,
-	"./tlh.js": 371,
-	"./tr": 372,
-	"./tr.js": 372,
-	"./tzl": 373,
-	"./tzl.js": 373,
-	"./tzm": 374,
-	"./tzm-latn": 375,
-	"./tzm-latn.js": 375,
-	"./tzm.js": 374,
-	"./uk": 376,
-	"./uk.js": 376,
-	"./ur": 377,
-	"./ur.js": 377,
-	"./uz": 378,
-	"./uz-latn": 379,
-	"./uz-latn.js": 379,
-	"./uz.js": 378,
-	"./vi": 380,
-	"./vi.js": 380,
-	"./x-pseudo": 381,
-	"./x-pseudo.js": 381,
-	"./yo": 382,
-	"./yo.js": 382,
-	"./zh-cn": 383,
-	"./zh-cn.js": 383,
-	"./zh-hk": 384,
-	"./zh-hk.js": 384,
-	"./zh-tw": 385,
-	"./zh-tw.js": 385
+	"./af": 272,
+	"./af.js": 272,
+	"./ar": 273,
+	"./ar-dz": 274,
+	"./ar-dz.js": 274,
+	"./ar-kw": 275,
+	"./ar-kw.js": 275,
+	"./ar-ly": 276,
+	"./ar-ly.js": 276,
+	"./ar-ma": 277,
+	"./ar-ma.js": 277,
+	"./ar-sa": 278,
+	"./ar-sa.js": 278,
+	"./ar-tn": 279,
+	"./ar-tn.js": 279,
+	"./ar.js": 273,
+	"./az": 280,
+	"./az.js": 280,
+	"./be": 281,
+	"./be.js": 281,
+	"./bg": 282,
+	"./bg.js": 282,
+	"./bm": 283,
+	"./bm.js": 283,
+	"./bn": 284,
+	"./bn.js": 284,
+	"./bo": 285,
+	"./bo.js": 285,
+	"./br": 286,
+	"./br.js": 286,
+	"./bs": 287,
+	"./bs.js": 287,
+	"./ca": 288,
+	"./ca.js": 288,
+	"./cs": 289,
+	"./cs.js": 289,
+	"./cv": 290,
+	"./cv.js": 290,
+	"./cy": 291,
+	"./cy.js": 291,
+	"./da": 292,
+	"./da.js": 292,
+	"./de": 293,
+	"./de-at": 294,
+	"./de-at.js": 294,
+	"./de-ch": 295,
+	"./de-ch.js": 295,
+	"./de.js": 293,
+	"./dv": 296,
+	"./dv.js": 296,
+	"./el": 297,
+	"./el.js": 297,
+	"./en-au": 298,
+	"./en-au.js": 298,
+	"./en-ca": 299,
+	"./en-ca.js": 299,
+	"./en-gb": 300,
+	"./en-gb.js": 300,
+	"./en-ie": 301,
+	"./en-ie.js": 301,
+	"./en-nz": 302,
+	"./en-nz.js": 302,
+	"./eo": 303,
+	"./eo.js": 303,
+	"./es": 304,
+	"./es-do": 305,
+	"./es-do.js": 305,
+	"./es-us": 306,
+	"./es-us.js": 306,
+	"./es.js": 304,
+	"./et": 307,
+	"./et.js": 307,
+	"./eu": 308,
+	"./eu.js": 308,
+	"./fa": 309,
+	"./fa.js": 309,
+	"./fi": 310,
+	"./fi.js": 310,
+	"./fo": 311,
+	"./fo.js": 311,
+	"./fr": 312,
+	"./fr-ca": 313,
+	"./fr-ca.js": 313,
+	"./fr-ch": 314,
+	"./fr-ch.js": 314,
+	"./fr.js": 312,
+	"./fy": 315,
+	"./fy.js": 315,
+	"./gd": 316,
+	"./gd.js": 316,
+	"./gl": 317,
+	"./gl.js": 317,
+	"./gom-latn": 318,
+	"./gom-latn.js": 318,
+	"./gu": 319,
+	"./gu.js": 319,
+	"./he": 320,
+	"./he.js": 320,
+	"./hi": 321,
+	"./hi.js": 321,
+	"./hr": 322,
+	"./hr.js": 322,
+	"./hu": 323,
+	"./hu.js": 323,
+	"./hy-am": 324,
+	"./hy-am.js": 324,
+	"./id": 325,
+	"./id.js": 325,
+	"./is": 326,
+	"./is.js": 326,
+	"./it": 327,
+	"./it.js": 327,
+	"./ja": 328,
+	"./ja.js": 328,
+	"./jv": 329,
+	"./jv.js": 329,
+	"./ka": 330,
+	"./ka.js": 330,
+	"./kk": 331,
+	"./kk.js": 331,
+	"./km": 332,
+	"./km.js": 332,
+	"./kn": 333,
+	"./kn.js": 333,
+	"./ko": 334,
+	"./ko.js": 334,
+	"./ky": 335,
+	"./ky.js": 335,
+	"./lb": 336,
+	"./lb.js": 336,
+	"./lo": 337,
+	"./lo.js": 337,
+	"./lt": 338,
+	"./lt.js": 338,
+	"./lv": 339,
+	"./lv.js": 339,
+	"./me": 340,
+	"./me.js": 340,
+	"./mi": 341,
+	"./mi.js": 341,
+	"./mk": 342,
+	"./mk.js": 342,
+	"./ml": 343,
+	"./ml.js": 343,
+	"./mr": 344,
+	"./mr.js": 344,
+	"./ms": 345,
+	"./ms-my": 346,
+	"./ms-my.js": 346,
+	"./ms.js": 345,
+	"./mt": 347,
+	"./mt.js": 347,
+	"./my": 348,
+	"./my.js": 348,
+	"./nb": 349,
+	"./nb.js": 349,
+	"./ne": 350,
+	"./ne.js": 350,
+	"./nl": 351,
+	"./nl-be": 352,
+	"./nl-be.js": 352,
+	"./nl.js": 351,
+	"./nn": 353,
+	"./nn.js": 353,
+	"./pa-in": 354,
+	"./pa-in.js": 354,
+	"./pl": 355,
+	"./pl.js": 355,
+	"./pt": 356,
+	"./pt-br": 357,
+	"./pt-br.js": 357,
+	"./pt.js": 356,
+	"./ro": 358,
+	"./ro.js": 358,
+	"./ru": 359,
+	"./ru.js": 359,
+	"./sd": 360,
+	"./sd.js": 360,
+	"./se": 361,
+	"./se.js": 361,
+	"./si": 362,
+	"./si.js": 362,
+	"./sk": 363,
+	"./sk.js": 363,
+	"./sl": 364,
+	"./sl.js": 364,
+	"./sq": 365,
+	"./sq.js": 365,
+	"./sr": 366,
+	"./sr-cyrl": 367,
+	"./sr-cyrl.js": 367,
+	"./sr.js": 366,
+	"./ss": 368,
+	"./ss.js": 368,
+	"./sv": 369,
+	"./sv.js": 369,
+	"./sw": 370,
+	"./sw.js": 370,
+	"./ta": 371,
+	"./ta.js": 371,
+	"./te": 372,
+	"./te.js": 372,
+	"./tet": 373,
+	"./tet.js": 373,
+	"./th": 374,
+	"./th.js": 374,
+	"./tl-ph": 375,
+	"./tl-ph.js": 375,
+	"./tlh": 376,
+	"./tlh.js": 376,
+	"./tr": 377,
+	"./tr.js": 377,
+	"./tzl": 378,
+	"./tzl.js": 378,
+	"./tzm": 379,
+	"./tzm-latn": 380,
+	"./tzm-latn.js": 380,
+	"./tzm.js": 379,
+	"./uk": 381,
+	"./uk.js": 381,
+	"./ur": 382,
+	"./ur.js": 382,
+	"./uz": 383,
+	"./uz-latn": 384,
+	"./uz-latn.js": 384,
+	"./uz.js": 383,
+	"./vi": 385,
+	"./vi.js": 385,
+	"./x-pseudo": 386,
+	"./x-pseudo.js": 386,
+	"./yo": 387,
+	"./yo.js": 387,
+	"./zh-cn": 388,
+	"./zh-cn.js": 388,
+	"./zh-hk": 389,
+	"./zh-hk.js": 389,
+	"./zh-tw": 390,
+	"./zh-tw.js": 390
 };
 function webpackContext(req) {
 	return __webpack_require__(webpackContextResolve(req));
@@ -1973,28 +2262,31 @@ webpackContext.keys = function webpackContextKeys() {
 };
 webpackContext.resolve = webpackContextResolve;
 module.exports = webpackContext;
-webpackContext.id = 492;
+webpackContext.id = 498;
 
 /***/ }),
 
-/***/ 501:
+/***/ 506:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MyApp; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__pages_card_card__ = __webpack_require__(65);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(15);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_status_bar__ = __webpack_require__(391);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_splash_screen__ = __webpack_require__(387);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__pages_home_home__ = __webpack_require__(63);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__pages_user_login_login__ = __webpack_require__(76);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__pages_user_profile_profile__ = __webpack_require__(392);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__pages_optionals_devs_irm_irm__ = __webpack_require__(393);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__pages_optionals_devs_my_dates_my_dates__ = __webpack_require__(152);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__pages_user_register_register__ = __webpack_require__(148);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__pages_payu_payu__ = __webpack_require__(103);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__pages_optionals_devs_recipes_recipes__ = __webpack_require__(395);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__pages_myparents_myparents__ = __webpack_require__(178);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__pages_createparent_createparent__ = __webpack_require__(149);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__pages_card_card__ = __webpack_require__(66);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_ionic_angular__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_native_status_bar__ = __webpack_require__(397);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__ionic_native_splash_screen__ = __webpack_require__(393);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__pages_home_home__ = __webpack_require__(65);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__pages_user_login_login__ = __webpack_require__(77);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__pages_user_profile_profile__ = __webpack_require__(398);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__pages_optionals_devs_irm_irm__ = __webpack_require__(399);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__pages_optionals_devs_my_dates_my_dates__ = __webpack_require__(154);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__pages_user_register_register__ = __webpack_require__(150);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__pages_optionals_devs_recipes_recipes__ = __webpack_require__(401);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__pages_appointment_pay_pay__ = __webpack_require__(152);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__pages_appointment_financer_financer__ = __webpack_require__(95);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -2017,6 +2309,9 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
+
+
 var MyApp = (function () {
     function MyApp(platform, statusBar, splashScreen, menuCtrl, events) {
         var _this = this;
@@ -2026,23 +2321,25 @@ var MyApp = (function () {
         this.menuCtrl = menuCtrl;
         this.events = events;
         //aqui regresarlo al HomePage
-        this.rootPage = __WEBPACK_IMPORTED_MODULE_5__pages_home_home__["a" /* HomePage */];
-        this.hom = __WEBPACK_IMPORTED_MODULE_5__pages_home_home__["a" /* HomePage */];
-        this.car = __WEBPACK_IMPORTED_MODULE_0__pages_card_card__["a" /* CardPage */];
-        this.log = __WEBPACK_IMPORTED_MODULE_6__pages_user_login_login__["a" /* LoginPage */];
-        this.pro = __WEBPACK_IMPORTED_MODULE_7__pages_user_profile_profile__["a" /* ProfilePage */];
-        this.irm = __WEBPACK_IMPORTED_MODULE_8__pages_optionals_devs_irm_irm__["a" /* IrmPage */];
-        this.rep = __WEBPACK_IMPORTED_MODULE_12__pages_optionals_devs_recipes_recipes__["a" /* RecipesPage */];
-        this.myd = __WEBPACK_IMPORTED_MODULE_9__pages_optionals_devs_my_dates_my_dates__["a" /* MyDatesPage */];
-        this.reg = __WEBPACK_IMPORTED_MODULE_10__pages_user_register_register__["a" /* RegisterPage */];
-        this.pay = __WEBPACK_IMPORTED_MODULE_11__pages_payu_payu__["a" /* PayuPage */];
+        this.rootPage = __WEBPACK_IMPORTED_MODULE_7__pages_home_home__["a" /* HomePage */];
+        this.hom = __WEBPACK_IMPORTED_MODULE_7__pages_home_home__["a" /* HomePage */];
+        this.car = __WEBPACK_IMPORTED_MODULE_2__pages_card_card__["a" /* CardPage */];
+        this.log = __WEBPACK_IMPORTED_MODULE_8__pages_user_login_login__["a" /* LoginPage */];
+        this.pro = __WEBPACK_IMPORTED_MODULE_9__pages_user_profile_profile__["a" /* ProfilePage */];
+        this.irm = __WEBPACK_IMPORTED_MODULE_10__pages_optionals_devs_irm_irm__["a" /* IrmPage */];
+        this.rep = __WEBPACK_IMPORTED_MODULE_13__pages_optionals_devs_recipes_recipes__["a" /* RecipesPage */];
+        this.myd = __WEBPACK_IMPORTED_MODULE_11__pages_optionals_devs_my_dates_my_dates__["a" /* MyDatesPage */];
+        this.reg = __WEBPACK_IMPORTED_MODULE_12__pages_user_register_register__["a" /* RegisterPage */];
+        this.pay = __WEBPACK_IMPORTED_MODULE_14__pages_appointment_pay_pay__["a" /* PayPage */];
+        this.fin = __WEBPACK_IMPORTED_MODULE_15__pages_appointment_financer_financer__["a" /* FinancerPage */];
+        this.crea = __WEBPACK_IMPORTED_MODULE_1__pages_createparent_createparent__["a" /* CreateparentPage */];
+        this.mypa = __WEBPACK_IMPORTED_MODULE_0__pages_myparents_myparents__["a" /* MyparentsPage */];
         platform.ready().then(function () {
             // Okay, so the platform is ready and our plugins are available.
             // Here you can do any higher level native things you might need.
             statusBar.styleDefault();
             splashScreen.hide();
         });
-        var SERVER = "http://dappapache02.eastus.cloudapp.azure.com:4000";
         this.userToken = localStorage.getItem('idTokenUser');
         // XXX: Listen for events. Specialy for user logged.
         events.subscribe('user:logged', function (userLogged) {
@@ -2065,21 +2362,21 @@ var MyApp = (function () {
         localStorage.removeItem('authorization');
         localStorage.removeItem('role');
         this.userToken = null;
-        this.menu.setRoot(__WEBPACK_IMPORTED_MODULE_6__pages_user_login_login__["a" /* LoginPage */]);
+        this.menu.setRoot(__WEBPACK_IMPORTED_MODULE_8__pages_user_login_login__["a" /* LoginPage */]);
         this.menuCtrl.close();
     };
     __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["_9" /* ViewChild */])('contenido'),
-        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["j" /* NavController */])
+        Object(__WEBPACK_IMPORTED_MODULE_3__angular_core__["_9" /* ViewChild */])('contenido'),
+        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["j" /* NavController */])
     ], MyApp.prototype, "menu", void 0);
     MyApp = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["m" /* Component */])({template:/*ion-inline-start:"/proyectos/IonicPruebas/ApolloIonicVersionOne/src/app/app.html"*/'<ion-menu [content]="contenido" persistent="true">\n    <ion-header color="primary">\n        <!-- <ion-toolbar>\n            <ion-title>More Health</ion-title>\n        </ion-toolbar>     -->\n    </ion-header>\n    <ion-content class="fondoColor">\n        <button ion-button text-center class="imagen" (click)="goPage(pro)">\n            <ion-icon class="iconAdd flecha" name="add"></ion-icon>\n        </button>\n        <ion-list class="lista">\n            <button ion-item (click)="goPage(hom)" class="outLine">\n            <ion-icon item-start name="home"></ion-icon>\n            Home</button>\n\n            <button ion-item (click)="goPage(car)" class="outLine">\n            <ion-icon item-start name="medkit"></ion-icon>\n            Reservar</button>\n\n            <button ion-item (click)="goPage(myd)" *ngIf="userToken" class="outLine">\n             <ion-icon item-start name="clipboard"></ion-icon>\n             Mis Citas</button>\n\n             <button ion-item (click)="goPage(rep)" *ngIf="userToken" class="outLine">\n              <ion-icon item-start name="document"></ion-icon>\n              Mis Recetas</button>\n\n            <button ion-item (click)="goPage(log)" *ngIf="!userToken" class="outLine">\n            <ion-icon item-start name="key"></ion-icon>\n            Login</button>\n\n\n            <button ion-item (click)="logout()" *ngIf="userToken" class="outLine">\n            <ion-icon item-start name="close-circle"></ion-icon>\n            terminar sesion</button>\n\n        </ion-list>\n    </ion-content>\n</ion-menu>\n\n<!-- regresarlo ap homePage -->\n<ion-nav [root]="hom" #contenido></ion-nav>\n'/*ion-inline-end:"/proyectos/IonicPruebas/ApolloIonicVersionOne/src/app/app.html"*/
+        Object(__WEBPACK_IMPORTED_MODULE_3__angular_core__["m" /* Component */])({template:/*ion-inline-start:"/proyectos/IonicPruebas/ApolloIonicVersionOne/src/app/app.html"*/'<ion-menu [content]="contenido" persistent="true">\n    <ion-header color="primary">\n        <!-- <ion-toolbar>\n            <ion-title>More Health</ion-title>\n        </ion-toolbar>     -->\n    </ion-header>\n    <ion-content class="fondoColor">\n        <button ion-button text-center class="imagen" (click)="goPage(pro)">\n            <ion-icon class="iconAdd flecha" name="add"></ion-icon>\n        </button>\n        <ion-list class="lista">\n            <button ion-item (click)="goPage(hom)" class="outLine">\n            <ion-icon item-start name="home"></ion-icon>\n            Home</button>\n\n            <button ion-item (click)="goPage(car)" class="outLine">\n            <ion-icon item-start name="medkit"></ion-icon>\n            Reservar</button>\n\n            <button ion-item (click)="goPage(myd)" *ngIf="userToken" class="outLine">\n             <ion-icon item-start name="clipboard"></ion-icon>\n             Mis Citas</button>\n\n             <button ion-item (click)="goPage(rep)" *ngIf="userToken" class="outLine">\n              <ion-icon item-start name="document"></ion-icon>\n              Mis Recetas</button>\n\n              <button ion-item (click)="goPage(mypa)" *ngIf="userToken" class="outLine">\n              <ion-icon item-start name="people"></ion-icon>\n              Mis Parientes</button>\n\n            <button ion-item (click)="goPage(log)" *ngIf="!userToken" class="outLine">\n            <ion-icon item-start name="key"></ion-icon>\n            Login</button>\n\n\n            <button ion-item (click)="logout()" *ngIf="userToken" class="outLine">\n            <ion-icon item-start name="close-circle"></ion-icon>\n            terminar sesion</button>\n\n        </ion-list>\n    </ion-content>\n</ion-menu>\n\n<!-- regresarlo ap homePage -->\n<ion-nav [root]="hom" #contenido></ion-nav>\n'/*ion-inline-end:"/proyectos/IonicPruebas/ApolloIonicVersionOne/src/app/app.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["l" /* Platform */],
-            __WEBPACK_IMPORTED_MODULE_3__ionic_native_status_bar__["a" /* StatusBar */],
-            __WEBPACK_IMPORTED_MODULE_4__ionic_native_splash_screen__["a" /* SplashScreen */],
-            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["h" /* MenuController */],
-            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["c" /* Events */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_4_ionic_angular__["l" /* Platform */],
+            __WEBPACK_IMPORTED_MODULE_5__ionic_native_status_bar__["a" /* StatusBar */],
+            __WEBPACK_IMPORTED_MODULE_6__ionic_native_splash_screen__["a" /* SplashScreen */],
+            __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["h" /* MenuController */],
+            __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["c" /* Events */]])
     ], MyApp);
     return MyApp;
 }());
@@ -2088,13 +2385,13 @@ var MyApp = (function () {
 
 /***/ }),
 
-/***/ 502:
+/***/ 507:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ChargePage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(14);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -2127,13 +2424,13 @@ var ChargePage = (function () {
 
 /***/ }),
 
-/***/ 503:
+/***/ 508:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SearchPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(14);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -2166,295 +2463,13 @@ var SearchPage = (function () {
 
 /***/ }),
 
-/***/ 504:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PayPage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__home_home__ = __webpack_require__(63);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_forms__ = __webpack_require__(13);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_ionic_angular__ = __webpack_require__(15);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_appoinment_appoinment__ = __webpack_require__(57);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__card_card__ = __webpack_require__(65);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-
-
-
-var PayPage = (function () {
-    function PayPage(navCtrl, navParams, fb, alertCtrl, modalCtrl, appointmentProvider, actionSheet, viewCtrl, loadingCtrl) {
-        this.navCtrl = navCtrl;
-        this.navParams = navParams;
-        this.fb = fb;
-        this.alertCtrl = alertCtrl;
-        this.modalCtrl = modalCtrl;
-        this.appointmentProvider = appointmentProvider;
-        this.actionSheet = actionSheet;
-        this.viewCtrl = viewCtrl;
-        this.loadingCtrl = loadingCtrl;
-        this.currentAppointment = null;
-        this.nots = [
-            { "id": "1", "name": "En local" },
-            { "id": "2", "name": "Con tarjeta" },
-        ];
-        this.pago = 'enLocal';
-        this.doctor = this.navParams.get('doctor');
-        this.available = this.navParams.get('available');
-        this.hora = this.navParams.get('hora');
-        this.subida = this.hora.listjson;
-        this.myForm = this.fb.group({
-            name: ['', [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["j" /* Validators */].required]],
-            card: ['', [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["j" /* Validators */].required, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["j" /* Validators */].minLength(16), __WEBPACK_IMPORTED_MODULE_1__angular_forms__["j" /* Validators */].maxLength(16)]],
-            cvv: ['', [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["j" /* Validators */].required, __WEBPACK_IMPORTED_MODULE_1__angular_forms__["j" /* Validators */].minLength(3), __WEBPACK_IMPORTED_MODULE_1__angular_forms__["j" /* Validators */].maxLength(3)]],
-            month: ['', [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["j" /* Validators */].required]],
-            year: ['', [__WEBPACK_IMPORTED_MODULE_1__angular_forms__["j" /* Validators */].required]]
-        }, { validator: this.dateValid('month', 'year') });
-        Culqi.publicKey = 'pk_test_e85SD7RVrWlW0u7z';
-    }
-    PayPage.prototype.ionViewDidLoad = function () {
-        console.log('ionViewDidLoad PayPage');
-    };
-    // personalSelected(item) {
-    //   // console.log("Selected Item", item);
-    //   if (item == 1) {
-    //     this.isPlace = true;
-    //     this.paymentName = "En local";
-    //   } else {
-    //     this.paymentName = "Con tarjeta";
-    //     this.isPlace = false;
-    //   }
-    // }
-    PayPage.prototype.dateValid = function (month, year) {
-        return function (group) {
-            var date = new Date();
-            var monthInput = group.controls[month];
-            var yearInput = group.controls[year];
-            if (yearInput.value == date.getFullYear())
-                if (monthInput.value < ("0" + (date.getMonth() + 1)).slice(-2))
-                    return monthInput.setErrors({ notEquivalent: true });
-        };
-    };
-    PayPage.prototype.openCulqi = function () {
-        var appointment = this.currentAppointment;
-        console.log("this.openCulqi");
-        var settings = {
-            title: 'Cita para',
-            description: "prueba",
-            currency: "PEN",
-            amount: this.price * 100
-        };
-        culqiData.amount = this.price * 100;
-        Culqi.settings(settings);
-        var loadingPago = this.loadingCtrl.create({
-            content: "Haciendo el cobro...",
-        });
-        loadingPago.present();
-        var i = setInterval(function () {
-            var _this = this;
-            // si se puede realizar el pago con culqi
-            if (culqiData.status == "ok") {
-                clearInterval(i);
-                loadingPago.dismiss();
-                var alert = this.alertCtrl.create({
-                    title: "Creación de cita",
-                    subTitle: "la cita que reservaste ha sido creada satisfactoriamente.",
-                    buttons: [
-                        {
-                            text: "OK",
-                            role: 'cancel'
-                        }
-                    ]
-                });
-                alert.present();
-                this.navCtrl.setRoot(__WEBPACK_IMPORTED_MODULE_0__home_home__["a" /* HomePage */]);
-            }
-            else if (culqiData.status == "error") {
-                var self_1 = this;
-                clearInterval(i);
-                loadingPago.dismiss();
-                var action_1 = this.actionSheet.create({
-                    title: "EL PAGO NO PUDO REALIZARSE",
-                    buttons: [
-                        {
-                            text: "Intentar de nuevo",
-                            role: 'destructive',
-                            handler: function () {
-                                action_1.dismiss().then(function () {
-                                    culqiData.status = "";
-                                    self_1.openCulqi();
-                                });
-                                return false;
-                            }
-                        },
-                        {
-                            text: "Pagar en clínica",
-                            handler: function () {
-                                _this.navCtrl.setRoot(__WEBPACK_IMPORTED_MODULE_0__home_home__["a" /* HomePage */]);
-                                var alert = _this.alertCtrl.create({
-                                    title: "La Cita que pediste ha sido creada",
-                                    subTitle: "recuerda que tendras que pagar en la clínica",
-                                    buttons: [{
-                                            text: "OK",
-                                            role: 'cancel'
-                                        }]
-                                });
-                                alert.present();
-                            }
-                        },
-                        {
-                            text: "Cancelar cita",
-                            handler: function () {
-                                _this.appointmentProvider.destroyAppointment(appointment).subscribe(function (data) {
-                                    _this.navCtrl.setRoot(__WEBPACK_IMPORTED_MODULE_0__home_home__["a" /* HomePage */]);
-                                    var alert = _this.alertCtrl.create({
-                                        title: "su cita fue cancelada",
-                                        buttons: [
-                                            {
-                                                text: "OK",
-                                                role: "cancel"
-                                            }
-                                        ]
-                                    });
-                                    alert.present();
-                                });
-                            }
-                        }
-                    ]
-                });
-                action_1.present();
-            }
-        }.bind(this), 1000);
-        console.log("open CUlqi");
-        Culqi.open();
-        loadingPago.dismiss();
-    };
-    PayPage.prototype.payCulqi = function () {
-        var _this = this;
-        this.appointmentProvider.createAppointment(this.subida)
-            .subscribe(function (data) {
-            _this.currentAppointment = data;
-            _this.openCulqi();
-        }, function (err) {
-            if (_this.currentAppointment !== null) {
-                _this.openCulqi();
-                return;
-            }
-            console.log('err', err);
-            if (!err) {
-                return;
-            }
-            var code = err.error.data.errorCode;
-            var alert;
-            switch (code) {
-                case 15006:
-                    // case 15035:
-                    alert = _this.alertCtrl.create({
-                        title: 'Aviso al Cliente',
-                        subTitle: 'Ya tienes una cita en una hora cercana a esta.',
-                        buttons: [
-                            {
-                                text: 'Buscar otra hora',
-                                handler: function (data) {
-                                    _this.navCtrl.setRoot(__WEBPACK_IMPORTED_MODULE_5__card_card__["a" /* CardPage */]);
-                                }
-                            }
-                        ]
-                    });
-                    alert.present();
-                    break;
-                case 15009:
-                case 15035:
-                    alert = _this.alertCtrl.create({
-                        title: 'Aviso al Cliente',
-                        subTitle: 'El horario escogido ya fue tomado .',
-                        buttons: [
-                            {
-                                text: 'Buscar otra hora',
-                                handler: function (data) {
-                                    _this.navCtrl.setRoot(__WEBPACK_IMPORTED_MODULE_5__card_card__["a" /* CardPage */]);
-                                }
-                            }
-                        ],
-                        enableBackdropDismiss: true
-                    });
-                    alert.present();
-                    break;
-                default:
-                    break;
-            }
-        });
-    };
-    PayPage.prototype.next = function () {
-        var _this = this;
-        if (this.currentAppointment === null) {
-            this.appointmentProvider.createAppointment(this.subida).subscribe(function (data) {
-                console.log("se ha creado la cita");
-                var loading = _this.loadingCtrl.create({
-                    content: "creando cita"
-                });
-                loading.present();
-                var alert = _this.alertCtrl.create({
-                    title: "Creación de cita",
-                    subTitle: "la cita que reservaste ha sido creada satisfactoriamente.",
-                    buttons: [
-                        {
-                            text: "Ok",
-                            role: "Cancel"
-                        }
-                    ]
-                });
-                loading.dismiss();
-                alert.present();
-                _this.navCtrl.setRoot(__WEBPACK_IMPORTED_MODULE_0__home_home__["a" /* HomePage */]);
-            });
-        }
-        else {
-            var alert = this.alertCtrl.create({
-                title: "Creación de cita",
-                subTitle: "la cita que reservaste ha sido creada satisfactoriamente.",
-                buttons: [
-                    {
-                        text: "Ok",
-                        role: "Cancel"
-                    }
-                ]
-            });
-            alert.present();
-        }
-        this.navCtrl.setRoot(__WEBPACK_IMPORTED_MODULE_0__home_home__["a" /* HomePage */]);
-    };
-    PayPage = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_2__angular_core__["m" /* Component */])({
-            selector: 'page-pay',template:/*ion-inline-start:"/proyectos/IonicPruebas/ApolloIonicVersionOne/src/pages/appointment/pay/pay.html"*/'\n<ion-header>\n  <ion-navbar color="primary">\n    <ion-title>Pago</ion-title>\n  </ion-navbar>\n</ion-header>\n\n\n<ion-content >\n    <div class="container-gris" >\n      <h4 class="tituloPagos">Terminemos... escoge la forma en la que vas a pagar y listo...</h4>\n    <div padding>\n        <h4 text-center class="tituloMetodos">Metodos de Pago</h4>\n        <ion-segment [(ngModel)]="pago">\n            <ion-segment-button value="enLocal">\n                En local\n            </ion-segment-button>\n            <ion-segment-button value="enClinica">\n                Con tarjeta\n            </ion-segment-button>\n        </ion-segment>\n    </div>\n    <div [ngSwitch]="pago">\n        <ion-list *ngSwitchCase="\'enLocal\'">\n            <div class="resumen" >\n                    <ion-card>\n                            <div class="containerTextoPago">\n                                <h3 class="titleCardPago">Lo que has escogido hasta el momento</h3>\n                            </div>\n                            <div>\n                                <ion-row class="centrar">\n                                    <ion-col col-4>\n                                        <img id="profile-image" src="http://dappapache02.eastus.cloudapp.azure.com:4200/img/professionals/{{doctor.id}}.png">\n                                    </ion-col>\n                                    <ion-col col-8>\n                                        <h3 class="nombreDoctor" text-center>\n                                            {{ doctor.fullName }}\n                                        </h3>\n                                    </ion-col>\n                                </ion-row>\n                            </div>\n                                <div class="centrar">\n                                    <p bold class="izquierda">Sede:</p>\n                                    <p class="blue" type="text" disabled="true">Mendiola</p>\n                                </div>\n                                <div  class="centrar">\n                                    <p class="izquierda">Especialidad:</p>\n                                    <p item-end class="blue" disabled="true"> {{ doctor.service.description }}</p>\n                                </div>\n                                <div  class="centrar">\n                                    <p class="izquierda">Fecha:</p>\n                                    <p item-end class="blue" disabled="true">\n                                        {{ date | date:\'EEEE d , MMMM \' : \'es\' }}\n                                    </p>\n                                </div>\n                                <div  class="centrar">\n                                    <p class="izquierda">Hora:</p>\n                                    <p class="blue" type="text" disabled="true">\n                                        {{ hora.hour | slice:0:5}}\n                                    </p>\n                                </div>\n                                <div  class="centrar">\n                                    <p class="izquierda">Costo:</p>\n                                    <p class="blue" item-end type="text" disabled="true">\n                                        {{ \'S/. \' + price }}\n                                    </p>\n                                </div>\n                        </ion-card>\n\n\n            <div padding>\n                <button ion-button color="secondary" class="botonAccept" [class.button-disabled]="true" block (click)="next()">Confirmar cita</button>\n            </div>\n\n\n        </div>\n    </ion-list>\n\n\n\n        <ion-list *ngSwitchCase="\'enClinica\'">\n\n            <div class="resumen" >\n                <ion-card>\n                    <div class="containerTextoPago">\n                        <h3 class="titleCardPago">Lo que has escogido hasta el momento</h3>\n                    </div>\n                    <div>\n                        <ion-row class="centrar">\n                            <ion-col col-4>\n                                <img id="profile-image" src="http://dappapache02.eastus.cloudapp.azure.com:4200/img/professionals/{{doctor.id}}.png">\n                            </ion-col>\n                            <ion-col col-8>\n                                <h3 class="nombreDoctor" text-center>\n                                    {{ doctor.fullName }}\n                                </h3>\n                            </ion-col>\n                        </ion-row>\n                    </div>\n                        <div class="centrar">\n                            <p bold class="izquierda">Sede:</p>\n                            <p class="blue" type="text" disabled="true">Mendiola</p>\n                        </div>\n                        <div  class="centrar">\n                            <p class="izquierda">Especialidad:</p>\n                            <p item-end class="blue" disabled="true"> {{ doctor.service.description }}</p>\n                        </div>\n                        <div  class="centrar">\n                            <p class="izquierda">Fecha:</p>\n                            <p item-end class="blue" disabled="true">\n                                {{ date | date:\'EEEE d , MMMM \' : \'es\' }}\n                            </p>\n                        </div>\n                        <div  class="centrar">\n                            <p class="izquierda">Hora:</p>\n                            <p class="blue" type="text" disabled="true">\n                                {{ hora.hour | slice:0:5}}\n                            </p>\n                        </div>\n                        <div  class="centrar">\n                            <p class="izquierda">Costo:</p>\n                            <p class="blue" item-end type="text" disabled="true">\n                                {{ \'S/. \' + price }}\n                            </p>\n                        </div>\n                </ion-card>\n\n\n        <div padding>\n            <button ion-button color="secondary" class="botonAccept" [class.button-disabled]="true" block (click)="payCulqi()">Pagar ahora con culqi</button>\n        </div>\n\n        <!-- <div padding>\n                <button ion-button color="secondary" class="botonAccept" [class.button-disabled]="true" block (click)="openModalPayu()">Pagar ahora con payu</button>\n            </div> -->\n\n\n    </div>\n        </ion-list>\n    </div>\n</div>\n\n</ion-content>\n'/*ion-inline-end:"/proyectos/IonicPruebas/ApolloIonicVersionOne/src/pages/appointment/pay/pay.html"*/,
-        }),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["j" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["j" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["k" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["k" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1__angular_forms__["b" /* FormBuilder */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_forms__["b" /* FormBuilder */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["b" /* AlertController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["b" /* AlertController */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["i" /* ModalController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["i" /* ModalController */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_4__providers_appoinment_appoinment__["a" /* AppointmentProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__providers_appoinment_appoinment__["a" /* AppointmentProvider */]) === "function" && _f || Object, typeof (_g = typeof __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["a" /* ActionSheetController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["a" /* ActionSheetController */]) === "function" && _g || Object, typeof (_h = typeof __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["n" /* ViewController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["n" /* ViewController */]) === "function" && _h || Object, typeof (_j = typeof __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["g" /* LoadingController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["g" /* LoadingController */]) === "function" && _j || Object])
-    ], PayPage);
-    return PayPage;
-    var _a, _b, _c, _d, _e, _f, _g, _h, _j;
-}());
-
-//# sourceMappingURL=pay.js.map
-
-/***/ }),
-
-/***/ 505:
+/***/ 509:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return RecomendationsPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(14);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -2487,135 +2502,16 @@ var RecomendationsPage = (function () {
 
 /***/ }),
 
-/***/ 556:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ExpandableComponent; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(15);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-var ExpandableComponent = (function () {
-    function ExpandableComponent(navParams) {
-        this.navParams = navParams;
-        this.currentHeight = 0;
-    }
-    __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */])('expanded'),
-        __metadata("design:type", Object)
-    ], ExpandableComponent.prototype, "expanded", void 0);
-    __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */])('expandedlow'),
-        __metadata("design:type", Object)
-    ], ExpandableComponent.prototype, "expandedlow", void 0);
-    __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */])('expandHeight'),
-        __metadata("design:type", Object)
-    ], ExpandableComponent.prototype, "expandHeight", void 0);
-    __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */])('doctor'),
-        __metadata("design:type", Object)
-    ], ExpandableComponent.prototype, "doctor", void 0);
-    __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */])('available'),
-        __metadata("design:type", Object)
-    ], ExpandableComponent.prototype, "available", void 0);
-    __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */])('horas'),
-        __metadata("design:type", Object)
-    ], ExpandableComponent.prototype, "horas", void 0);
-    ExpandableComponent = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'expandable',template:/*ion-inline-start:"/proyectos/IonicPruebas/ApolloIonicVersionOne/src/components/expandable/expandable.component.html"*/'<div class="expand-wrapper" [class.expanded]="expanded">\n    <ng-content>\n\n    </ng-content>\n\n</div>'/*ion-inline-end:"/proyectos/IonicPruebas/ApolloIonicVersionOne/src/components/expandable/expandable.component.html"*/
-        }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */]])
-    ], ExpandableComponent);
-    return ExpandableComponent;
-}());
-
-//# sourceMappingURL=expandable.component.js.map
-
-/***/ }),
-
-/***/ 559:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MaterialModule; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_material__ = __webpack_require__(560);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-
-
-var MaterialModule = (function () {
-    function MaterialModule() {
-    }
-    MaterialModule = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["J" /* NgModule */])({
-            imports: [__WEBPACK_IMPORTED_MODULE_1__angular_material__["a" /* MatButtonModule */],
-                __WEBPACK_IMPORTED_MODULE_1__angular_material__["m" /* MatTabsModule */],
-                __WEBPACK_IMPORTED_MODULE_1__angular_material__["g" /* MatInputModule */],
-                __WEBPACK_IMPORTED_MODULE_1__angular_material__["h" /* MatMenuModule */],
-                __WEBPACK_IMPORTED_MODULE_1__angular_material__["f" /* MatIconModule */],
-                __WEBPACK_IMPORTED_MODULE_1__angular_material__["c" /* MatDatepickerModule */],
-                __WEBPACK_IMPORTED_MODULE_1__angular_material__["i" /* MatNativeDateModule */],
-                __WEBPACK_IMPORTED_MODULE_1__angular_material__["e" /* MatFormFieldModule */],
-                __WEBPACK_IMPORTED_MODULE_1__angular_material__["n" /* MatToolbarModule */],
-                __WEBPACK_IMPORTED_MODULE_1__angular_material__["k" /* MatSelectModule */],
-                __WEBPACK_IMPORTED_MODULE_1__angular_material__["l" /* MatSidenavModule */],
-                __WEBPACK_IMPORTED_MODULE_1__angular_material__["j" /* MatRadioModule */],
-                __WEBPACK_IMPORTED_MODULE_1__angular_material__["b" /* MatCardModule */],
-                __WEBPACK_IMPORTED_MODULE_1__angular_material__["a" /* MatButtonModule */],
-                __WEBPACK_IMPORTED_MODULE_1__angular_material__["d" /* MatExpansionModule */]],
-            exports: [__WEBPACK_IMPORTED_MODULE_1__angular_material__["a" /* MatButtonModule */],
-                __WEBPACK_IMPORTED_MODULE_1__angular_material__["m" /* MatTabsModule */],
-                __WEBPACK_IMPORTED_MODULE_1__angular_material__["g" /* MatInputModule */],
-                __WEBPACK_IMPORTED_MODULE_1__angular_material__["h" /* MatMenuModule */],
-                __WEBPACK_IMPORTED_MODULE_1__angular_material__["f" /* MatIconModule */],
-                __WEBPACK_IMPORTED_MODULE_1__angular_material__["c" /* MatDatepickerModule */],
-                __WEBPACK_IMPORTED_MODULE_1__angular_material__["i" /* MatNativeDateModule */],
-                __WEBPACK_IMPORTED_MODULE_1__angular_material__["e" /* MatFormFieldModule */],
-                __WEBPACK_IMPORTED_MODULE_1__angular_material__["n" /* MatToolbarModule */],
-                __WEBPACK_IMPORTED_MODULE_1__angular_material__["k" /* MatSelectModule */],
-                __WEBPACK_IMPORTED_MODULE_1__angular_material__["l" /* MatSidenavModule */],
-                __WEBPACK_IMPORTED_MODULE_1__angular_material__["j" /* MatRadioModule */],
-                __WEBPACK_IMPORTED_MODULE_1__angular_material__["b" /* MatCardModule */],
-                __WEBPACK_IMPORTED_MODULE_1__angular_material__["a" /* MatButtonModule */],
-                __WEBPACK_IMPORTED_MODULE_1__angular_material__["d" /* MatExpansionModule */]],
-        })
-    ], MaterialModule);
-    return MaterialModule;
-}());
-
-//# sourceMappingURL=material.module.js.map
-
-/***/ }),
-
-/***/ 57:
+/***/ 52:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppointmentProvider; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common_http__ = __webpack_require__(52);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_catch__ = __webpack_require__(77);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common_http__ = __webpack_require__(42);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_catch__ = __webpack_require__(58);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_catch___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_catch__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map__ = __webpack_require__(64);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map__ = __webpack_require__(51);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -2677,16 +2573,135 @@ var AppointmentProvider = (function () {
 
 /***/ }),
 
-/***/ 600:
+/***/ 560:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ExpandableComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(14);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var ExpandableComponent = (function () {
+    function ExpandableComponent(navParams) {
+        this.navParams = navParams;
+        this.currentHeight = 0;
+    }
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */])('expanded'),
+        __metadata("design:type", Object)
+    ], ExpandableComponent.prototype, "expanded", void 0);
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */])('expandedlow'),
+        __metadata("design:type", Object)
+    ], ExpandableComponent.prototype, "expandedlow", void 0);
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */])('expandHeight'),
+        __metadata("design:type", Object)
+    ], ExpandableComponent.prototype, "expandHeight", void 0);
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */])('doctor'),
+        __metadata("design:type", Object)
+    ], ExpandableComponent.prototype, "doctor", void 0);
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */])('available'),
+        __metadata("design:type", Object)
+    ], ExpandableComponent.prototype, "available", void 0);
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Input */])('horas'),
+        __metadata("design:type", Object)
+    ], ExpandableComponent.prototype, "horas", void 0);
+    ExpandableComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
+            selector: 'expandable',template:/*ion-inline-start:"/proyectos/IonicPruebas/ApolloIonicVersionOne/src/components/expandable/expandable.component.html"*/'<div class="expand-wrapper" [class.expanded]="expanded">\n    <ng-content>\n\n    </ng-content>\n\n</div>'/*ion-inline-end:"/proyectos/IonicPruebas/ApolloIonicVersionOne/src/components/expandable/expandable.component.html"*/
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */]])
+    ], ExpandableComponent);
+    return ExpandableComponent;
+}());
+
+//# sourceMappingURL=expandable.component.js.map
+
+/***/ }),
+
+/***/ 563:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MaterialModule; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_material__ = __webpack_require__(564);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+
+var MaterialModule = (function () {
+    function MaterialModule() {
+    }
+    MaterialModule = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["J" /* NgModule */])({
+            imports: [__WEBPACK_IMPORTED_MODULE_1__angular_material__["a" /* MatButtonModule */],
+                __WEBPACK_IMPORTED_MODULE_1__angular_material__["m" /* MatTabsModule */],
+                __WEBPACK_IMPORTED_MODULE_1__angular_material__["g" /* MatInputModule */],
+                __WEBPACK_IMPORTED_MODULE_1__angular_material__["h" /* MatMenuModule */],
+                __WEBPACK_IMPORTED_MODULE_1__angular_material__["f" /* MatIconModule */],
+                __WEBPACK_IMPORTED_MODULE_1__angular_material__["c" /* MatDatepickerModule */],
+                __WEBPACK_IMPORTED_MODULE_1__angular_material__["i" /* MatNativeDateModule */],
+                __WEBPACK_IMPORTED_MODULE_1__angular_material__["e" /* MatFormFieldModule */],
+                __WEBPACK_IMPORTED_MODULE_1__angular_material__["n" /* MatToolbarModule */],
+                __WEBPACK_IMPORTED_MODULE_1__angular_material__["k" /* MatSelectModule */],
+                __WEBPACK_IMPORTED_MODULE_1__angular_material__["l" /* MatSidenavModule */],
+                __WEBPACK_IMPORTED_MODULE_1__angular_material__["j" /* MatRadioModule */],
+                __WEBPACK_IMPORTED_MODULE_1__angular_material__["b" /* MatCardModule */],
+                __WEBPACK_IMPORTED_MODULE_1__angular_material__["a" /* MatButtonModule */],
+                __WEBPACK_IMPORTED_MODULE_1__angular_material__["d" /* MatExpansionModule */]],
+            exports: [__WEBPACK_IMPORTED_MODULE_1__angular_material__["a" /* MatButtonModule */],
+                __WEBPACK_IMPORTED_MODULE_1__angular_material__["m" /* MatTabsModule */],
+                __WEBPACK_IMPORTED_MODULE_1__angular_material__["g" /* MatInputModule */],
+                __WEBPACK_IMPORTED_MODULE_1__angular_material__["h" /* MatMenuModule */],
+                __WEBPACK_IMPORTED_MODULE_1__angular_material__["f" /* MatIconModule */],
+                __WEBPACK_IMPORTED_MODULE_1__angular_material__["c" /* MatDatepickerModule */],
+                __WEBPACK_IMPORTED_MODULE_1__angular_material__["i" /* MatNativeDateModule */],
+                __WEBPACK_IMPORTED_MODULE_1__angular_material__["e" /* MatFormFieldModule */],
+                __WEBPACK_IMPORTED_MODULE_1__angular_material__["n" /* MatToolbarModule */],
+                __WEBPACK_IMPORTED_MODULE_1__angular_material__["k" /* MatSelectModule */],
+                __WEBPACK_IMPORTED_MODULE_1__angular_material__["l" /* MatSidenavModule */],
+                __WEBPACK_IMPORTED_MODULE_1__angular_material__["j" /* MatRadioModule */],
+                __WEBPACK_IMPORTED_MODULE_1__angular_material__["b" /* MatCardModule */],
+                __WEBPACK_IMPORTED_MODULE_1__angular_material__["a" /* MatButtonModule */],
+                __WEBPACK_IMPORTED_MODULE_1__angular_material__["d" /* MatExpansionModule */]],
+        })
+    ], MaterialModule);
+    return MaterialModule;
+}());
+
+//# sourceMappingURL=material.module.js.map
+
+/***/ }),
+
+/***/ 604:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MasterDetailPage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__card_card__ = __webpack_require__(65);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__home_home__ = __webpack_require__(63);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__card_card__ = __webpack_require__(66);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__home_home__ = __webpack_require__(65);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(14);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_appoinment_appoinment__ = __webpack_require__(57);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_appoinment_appoinment__ = __webpack_require__(52);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -2816,16 +2831,16 @@ var MasterDetailPage = (function () {
 
 /***/ }),
 
-/***/ 63:
+/***/ 65:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HomePage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__providers_authorization_public_authorization_public__ = __webpack_require__(260);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__providers_authorization_public_authorization_public__ = __webpack_require__(265);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(15);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__card_card__ = __webpack_require__(65);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_appoinment_appoinment__ = __webpack_require__(57);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__card_card__ = __webpack_require__(66);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_appoinment_appoinment__ = __webpack_require__(52);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -2886,18 +2901,18 @@ var HomePage = (function () {
 
 /***/ }),
 
-/***/ 65:
+/***/ 66:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CardPage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__user_login_login__ = __webpack_require__(76);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__user_login_login__ = __webpack_require__(77);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(15);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__appointment_financer_financer__ = __webpack_require__(150);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__appointment_financer_financer__ = __webpack_require__(95);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_moment__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_moment__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__providers_hello_hello__ = __webpack_require__(386);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__providers_hello_hello__ = __webpack_require__(391);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -3038,17 +3053,17 @@ var CardPage = (function () {
 
 /***/ }),
 
-/***/ 76:
+/***/ 77:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LoginPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(15);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__register_register__ = __webpack_require__(148);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__home_home__ = __webpack_require__(63);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_user_user__ = __webpack_require__(149);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__appointment_financer_financer__ = __webpack_require__(150);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__register_register__ = __webpack_require__(150);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__home_home__ = __webpack_require__(65);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_user_user__ = __webpack_require__(151);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__appointment_financer_financer__ = __webpack_require__(95);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -3127,7 +3142,257 @@ var LoginPage = (function () {
 
 //# sourceMappingURL=login.js.map
 
+/***/ }),
+
+/***/ 93:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DependentsProvider; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_common_http__ = __webpack_require__(42);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__ = __webpack_require__(51);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_catch__ = __webpack_require__(58);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_catch___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_catch__);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+var DependentsProvider = (function () {
+    function DependentsProvider(http) {
+        this.http = http;
+        this.apiUrl = "http://dappapache02.eastus.cloudapp.azure.com:4200/api/v2/users/dependents";
+        console.log('Hello DependentsProvider Provider');
+    }
+    DependentsProvider.prototype.getDependens = function () {
+        var authorization = localStorage.getItem('authorization');
+        var headers = new __WEBPACK_IMPORTED_MODULE_0__angular_common_http__["c" /* HttpHeaders */]({ "Authorization": authorization });
+        return this.http.get(this.apiUrl, { headers: headers })
+            .map(function (data) {
+            return data;
+        });
+    };
+    DependentsProvider = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["B" /* Injectable */])(),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0__angular_common_http__["a" /* HttpClient */]])
+    ], DependentsProvider);
+    return DependentsProvider;
+}());
+
+//# sourceMappingURL=dependents.js.map
+
+/***/ }),
+
+/***/ 95:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return FinancerPage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_forms__ = __webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_financier_financier__ = __webpack_require__(268);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__datos_datos__ = __webpack_require__(269);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__providers_appoinment_appoinment__ = __webpack_require__(52);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__pay_pay__ = __webpack_require__(152);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__createparent_createparent__ = __webpack_require__(149);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__payu_payu__ = __webpack_require__(263);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__providers_dependents_dependents__ = __webpack_require__(93);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+
+
+
+
+
+var FinancerPage = (function () {
+    function FinancerPage(navCtrl, navParams, platform, fb, alertCtrl, financierProvider, modalCtrl, appointmentProvider, actionSheet, viewCtrl, loadingCtrl, dependentsPvr) {
+        var _this = this;
+        this.navCtrl = navCtrl;
+        this.navParams = navParams;
+        this.platform = platform;
+        this.fb = fb;
+        this.alertCtrl = alertCtrl;
+        this.financierProvider = financierProvider;
+        this.modalCtrl = modalCtrl;
+        this.appointmentProvider = appointmentProvider;
+        this.actionSheet = actionSheet;
+        this.viewCtrl = viewCtrl;
+        this.loadingCtrl = loadingCtrl;
+        this.dependentsPvr = dependentsPvr;
+        this.isAndroid = false;
+        this.nots = [
+            { "id": "1", "name": "En local" },
+            { "id": "2", "name": "Con tarjeta" },
+        ];
+        this.questions = [
+            { "id": 1, "name": "Si tengo" },
+            { "id": 2, "name": "No tengo" },
+        ];
+        this.firtClick = false;
+        this.isInsurance = false;
+        this.isInsuranceName = false;
+        this.isCard = false;
+        this.isPlace = false;
+        this.payment = false;
+        this.open = false;
+        this.currentAppointment = null;
+        this.personOk = false;
+        this.addFamily = false;
+        this.secureOk = false;
+        this.isAndroid = platform.is('android');
+        this.dependentsPvr.getDependens().subscribe(function (data) {
+            _this.parents = data;
+            console.log(_this.parents);
+        });
+        this.financierProvider.getFinanciers().subscribe(function (data) { _this.items = data; _this.items.shift(); });
+        this.doctor = this.navParams.get('doctor');
+        this.available = this.navParams.get('available');
+        this.hora = this.navParams.get('hora');
+        // this.subida = this.hora.listjson;
+        var role = localStorage.getItem('role');
+        if (role === 'guest') {
+            //  console.log('no hay mail');
+            var datos = this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_4__datos_datos__["a" /* DatosPage */], {
+                hora: this.hora,
+                doctor: this.doctor,
+                available: this.available
+            });
+            // datos.present();
+        }
+        else {
+            console.log("si hay constraseña. que pase");
+        }
+    }
+    FinancerPage.prototype.evaluateEnsurance = function () {
+        this.firtClick = !this.firtClick;
+        this.isInsurance = false;
+        this.isInsuranceName = true;
+        this.payment = false;
+        this.isPlace = false;
+        this.isCard = false;
+    };
+    FinancerPage.prototype.validateSelected = function (item) {
+        var _this = this;
+        if (item == 1) {
+            this.firtClick = false;
+            this.isInsurance = true;
+            this.secure = true;
+            this.open = true;
+        }
+        else if (item == 2) {
+            // PARTICULAR
+            this.financierProvider.getPrice(1, this.doctor.service.id, this.doctor.service.id, this.available).subscribe(function (data) {
+                _this.price = Math.round(parseFloat(data[0].prest_precio_val) * 100 + Number.EPSILON) / 100;
+                _this.isPlace = false;
+                _this.isCard = false;
+                _this.firtClick = false;
+                _this.payment = true;
+                _this.open = true;
+                _this.secure = false;
+                _this.isInsuranceName = false;
+                _this.isInsurance = false;
+            });
+        }
+    };
+    FinancerPage.prototype.insuranceSelected = function (item, itemName) {
+        var _this = this;
+        // SEGUROS
+        this.financierProvider.getPrice(1, this.doctor.service.id, this.doctor.service.id, this.available).subscribe(function (data) {
+            _this.price = Math.round(parseFloat(data[0].prest_precio_val) * 100 + Number.EPSILON) / 100;
+            _this.myEnsuranceName = itemName;
+            _this.isInsuranceName = true;
+            _this.isInsurance = false;
+            _this.payment = true;
+            _this.nameSecure = itemName;
+            _this.financier_id = item;
+        });
+        this.secureOk = true;
+    };
+    FinancerPage.prototype.selectEnsurance = function () {
+        this.isInsurance = !this.isInsurance;
+        this.isInsuranceName = !this.isInsuranceName;
+        this.myEnsuranceName = null;
+    };
+    // si la cita es para el usuario pasará mostrando la ventana de financiador
+    FinancerPage.prototype.passFinancer = function (depe) {
+        this.personOk = !this.personOk;
+        this.personOk = true;
+        this.addFamily = false;
+        this.depe = depe;
+        console.log('lo que me llega de depe:', depe);
+    };
+    // mostrar los familiares adjuntos o la opción de crear uno nuevo
+    FinancerPage.prototype.openParents = function () {
+        this.addFamily = true;
+        this.personOk = false;
+    };
+    // mostrar el modal de la creación de familiares
+    FinancerPage.prototype.showDetailCreateParents = function () {
+        var modal = this.modalCtrl.create(__WEBPACK_IMPORTED_MODULE_7__createparent_createparent__["a" /* CreateparentPage */]);
+        modal.present();
+    };
+    // función para ir a pagos
+    FinancerPage.prototype.goToPay = function () {
+        this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_6__pay_pay__["a" /* PayPage */], {
+            doctor: this.doctor,
+            available: this.available,
+            hora: this.hora,
+            depe: this.depe,
+            price: this.price
+        });
+        console.log('el precio', this.price);
+    };
+    FinancerPage.prototype.openModalPayu = function () {
+        var payuModal = this.modalCtrl.create(__WEBPACK_IMPORTED_MODULE_8__payu_payu__["a" /* PayuPage */], { subida: this.subida, });
+        console.log('this subida de financer:', this.subida);
+        payuModal.present();
+    };
+    FinancerPage = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
+            selector: 'page-financer',template:/*ion-inline-start:"/proyectos/IonicPruebas/ApolloIonicVersionOne/src/pages/appointment/financer/financer.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title>Financiador</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content>\n  <h4 class="parrafoFinanciador">Lo que nos queda es escoger para quien es la cita y el financiador, ya casi terminamos…</h4>\n  <div>\n<ion-row padding>\n  <ion-col class="cuadrado">\n    <button ion-button round\n            (click)="passFinancer()">\n      para mi\n    </button>\n  </ion-col>\n\n  <ion-col class="cuadrado">\n    <button ion-button (click)="openParents()" round color="secondary">\n      un familiar\n    </button>\n  </ion-col>\n</ion-row>\n<div *ngIf="addFamily">\n    <ion-card *ngFor="let depe of parents"\n              (click)="passFinancer(depe)">\n      <ion-row>\n        <ion-col col-4>\n          <ion-avatar>\n            <img src="../assets/imgs/avatars/nino.png" alt="">\n          </ion-avatar>\n        </ion-col>\n        <ion-col col-8>\n            <h3 class="nombrePariente">{{depe.name}}</h3>\n            <p class="parentesco">{{depe.type}}</p>\n            <p class="edad">7 años</p>\n        </ion-col>\n      </ion-row>\n    </ion-card>\n  </div>\n\n    <ion-row *ngIf="addFamily" padding>\n      <ion-card ion-button\n                (click)="showDetailCreateParents()"\n                class="buttonAddFamily">\n        <button ion-button clear item-start>\n          <ion-icon ios="ios-add" md="md-add" color="secondary"></ion-icon>\n        </button>\n        <p item-end>Agregar Familiar</p>\n      </ion-card>\n    </ion-row>\n\n    <!-- template que muestra los familiares que estan ya adjuntos -->\n\n  </div>\n  <!-- fin del template de los familiares adjuntos -->\n\n  <div *ngIf="depe">\n    <ion-card *ngIf="personOk === true">\n      <ion-row>\n        <ion-col col-4\n                 class="cardEscogidoImg">\n            <img src="../assets/imgs/avatars/nino.png" alt="">\n        </ion-col>\n        <ion-col col-8\n                  class="containerNombre"\n                  >\n            <h3 class="nombrePariente">{{depe.name}}</h3>\n        </ion-col>\n      </ion-row>\n    </ion-card>\n  </div>\n  <ion-list class="medio" *ngIf="personOk === true">\n    <ion-card class="evaluate">\n      <ion-list>\n        <ion-item color="light" item-start (click)="evaluateEnsurance($event)">\n          <p>¿Cuenta con seguro?</p>\n          <ion-icon item-end name="arrow-dropdown"></ion-icon>\n        </ion-item>\n\n        <ion-list class="nombresLista" *ngIf="firtClick">\n          <button ion-item *ngFor="let quest of questions" (click)="validateSelected(quest.id)">\n            {{ quest.name }}\n          </button>\n        </ion-list>\n      </ion-list>\n    </ion-card>\n\n    <ion-card class="seguroList">\n      <ion-list>\n        <ion-item color="light" *ngIf="isInsuranceName" (click)="selectEnsurance($event)">\n          {{ myEnsuranceName }}\n        </ion-item>\n        <ion-list *ngIf="isInsurance">\n          <button ion-item *ngFor="let item of items" (click)="insuranceSelected(item.cod_pagador_pk, item.nombre_garante)">\n            {{ item.nombre_garante }}\n          </button>\n        </ion-list>\n      </ion-list>\n    </ion-card>\n\n    <div text-right class="precio" *ngIf="price!=undefined">\n      <p>Precio de la Consulta: {{ \'S/. \' + price }}.00</p>\n    </div>\n  </ion-list>\n\n  <button *ngIf="secureOk === true"\n          color="secondary"\n          ion-button\n          block\n          center\n          class="botonPagar"\n          (click)="goToPay()">\n      hacer el pago\n  </button>\n\n  <!-- <div class="container-gris" *ngIf="open == true">\n        <div padding>\n            <h4 text-center class="tituloMetodos">Metodos de Pago</h4>\n            <ion-segment [(ngModel)]="pago">\n                <ion-segment-button value="enLocal">\n                    En local\n                </ion-segment-button>\n                <ion-segment-button value="enClinica">\n                    Con tarjeta\n                </ion-segment-button>\n            </ion-segment>\n        </div>\n        <div [ngSwitch]="pago">\n            <ion-list *ngSwitchCase="\'enLocal\'">\n                <div class="resumen" >\n                        <ion-card>\n                                <div class="containerTextoPago">\n                                    <h3 class="titleCardPago">Lo que has escogido hasta el momento</h3>\n                                </div>\n                                <div>\n                                    <ion-row class="centrar">\n                                        <ion-col col-4>\n                                            <img id="profile-image" src="http://dappapache02.eastus.cloudapp.azure.com:4200/img/professionals/{{doctor.id}}.png">\n                                        </ion-col>\n                                        <ion-col col-8>\n                                            <h3 class="nombreDoctor" text-center>\n                                                {{ doctor.fullName }}\n                                            </h3>\n                                        </ion-col>\n                                    </ion-row>\n                                </div>\n                                    <div class="centrar">\n                                        <p bold class="izquierda">Sede:</p>\n                                        <p class="blue" type="text" disabled="true">Mendiola</p>\n                                    </div>\n                                    <div  class="centrar">\n                                        <p class="izquierda">Especialidad:</p>\n                                        <p item-end class="blue" disabled="true"> {{ doctor.service.description }}</p>\n                                    </div>\n                                    <div  class="centrar">\n                                        <p class="izquierda">Fecha:</p>\n                                        <p item-end class="blue" disabled="true">\n                                            {{ date | date:\'EEEE d , MMMM \' : \'es\' }}\n                                        </p>\n                                    </div>\n                                    <div  class="centrar">\n                                        <p class="izquierda">Hora:</p>\n                                        <p class="blue" type="text" disabled="true">\n                                            {{ hora.hour | slice:0:5}}\n                                        </p>\n                                    </div>\n                                    <div  class="centrar">\n                                        <p class="izquierda">Costo:</p>\n                                        <p class="blue" item-end type="text" disabled="true">\n                                            {{ \'S/. \' + price }}\n                                        </p>\n                                    </div>\n                            </ion-card>\n\n\n                <div padding>\n                    <button ion-button color="secondary" class="botonAccept" [class.button-disabled]="true" block (click)="next()">Confirmar cita</button>\n                </div>\n\n\n            </div>\n        </ion-list>\n\n\n\n            <ion-list *ngSwitchCase="\'enClinica\'">\n\n                <div class="resumen" >\n                    <ion-card>\n                        <div class="containerTextoPago">\n                            <h3 class="titleCardPago">Lo que has escogido hasta el momento</h3>\n                        </div>\n                        <div>\n                            <ion-row class="centrar">\n                                <ion-col col-4>\n                                    <img id="profile-image" src="http://dappapache02.eastus.cloudapp.azure.com:4200/img/professionals/{{doctor.id}}.png">\n                                </ion-col>\n                                <ion-col col-8>\n                                    <h3 class="nombreDoctor" text-center>\n                                        {{ doctor.fullName }}\n                                    </h3>\n                                </ion-col>\n                            </ion-row>\n                        </div>\n                            <div class="centrar">\n                                <p bold class="izquierda">Sede:</p>\n                                <p class="blue" type="text" disabled="true">Mendiola</p>\n                            </div>\n                            <div  class="centrar">\n                                <p class="izquierda">Especialidad:</p>\n                                <p item-end class="blue" disabled="true"> {{ doctor.service.description }}</p>\n                            </div>\n                            <div  class="centrar">\n                                <p class="izquierda">Fecha:</p>\n                                <p item-end class="blue" disabled="true">\n                                    {{ date | date:\'EEEE d , MMMM \' : \'es\' }}\n                                </p>\n                            </div>\n                            <div  class="centrar">\n                                <p class="izquierda">Hora:</p>\n                                <p class="blue" type="text" disabled="true">\n                                    {{ hora.hour | slice:0:5}}\n                                </p>\n                            </div>\n                            <div  class="centrar">\n                                <p class="izquierda">Costo:</p>\n                                <p class="blue" item-end type="text" disabled="true">\n                                    {{ \'S/. \' + price }}\n                                </p>\n                            </div>\n                    </ion-card>\n\n\n            <div padding>\n                <button ion-button color="secondary" class="botonAccept" [class.button-disabled]="true" block (click)="payCulqi()">Pagar ahora con culqi</button>\n            </div> -->\n\n  <!-- <div padding>\n                    <button ion-button color="secondary" class="botonAccept" [class.button-disabled]="true" block (click)="openModalPayu()">Pagar ahora con payu</button>\n                </div> -->\n\n  <!--\n        </div>\n            </ion-list>\n        </div>\n    </div> -->\n\n\n\n</ion-content>\n'/*ion-inline-end:"/proyectos/IonicPruebas/ApolloIonicVersionOne/src/pages/appointment/financer/financer.html"*/,
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["j" /* NavController */],
+            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["k" /* NavParams */],
+            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["l" /* Platform */],
+            __WEBPACK_IMPORTED_MODULE_1__angular_forms__["b" /* FormBuilder */],
+            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["b" /* AlertController */],
+            __WEBPACK_IMPORTED_MODULE_3__providers_financier_financier__["a" /* FinancierProvider */],
+            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["i" /* ModalController */],
+            __WEBPACK_IMPORTED_MODULE_5__providers_appoinment_appoinment__["a" /* AppointmentProvider */],
+            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["a" /* ActionSheetController */],
+            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["n" /* ViewController */],
+            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["g" /* LoadingController */],
+            __WEBPACK_IMPORTED_MODULE_9__providers_dependents_dependents__["a" /* DependentsProvider */]])
+    ], FinancerPage);
+    return FinancerPage;
+}());
+
+//# sourceMappingURL=financer.js.map
+
 /***/ })
 
-},[428]);
+},[434]);
 //# sourceMappingURL=main.js.map

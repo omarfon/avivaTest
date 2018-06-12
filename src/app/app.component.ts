@@ -1,3 +1,5 @@
+import { MyparentsPage } from './../pages/myparents/myparents';
+import { CreateparentPage } from '../pages/createparent/createparent';
 import { CardPage } from './../pages/card/card';
 import { Component, ViewChild } from '@angular/core';
 import { Platform, NavController, MenuController, Events } from 'ionic-angular';
@@ -10,11 +12,9 @@ import { ProfilePage } from './../pages/user/profile/profile';
 import { IrmPage } from '../pages/optionals-devs/irm/irm';
 import { MyDatesPage } from '../pages/optionals-devs/my-dates/my-dates';
 import { RegisterPage } from '../pages/user/register/register';
-import { PayuPage } from '../pages/payu/payu';
 import { RecipesPage } from '../pages/optionals-devs/recipes/recipes';
 import { PayPage } from '../pages/appointment/pay/pay';
-
-
+import { FinancerPage } from '../pages/appointment/financer/financer';
 
 
 
@@ -38,6 +38,9 @@ export class MyApp {
   myd   = MyDatesPage;
   reg   = RegisterPage;
   pay   = PayPage;
+  fin   = FinancerPage;
+  crea  = CreateparentPage;
+  mypa  = MyparentsPage;
 
 
   constructor(public platform: Platform,
@@ -53,7 +56,6 @@ export class MyApp {
       splashScreen.hide();
     });
 
-    const SERVER = "http://dappapache02.eastus.cloudapp.azure.com:4000";
 
     this.userToken = localStorage.getItem('idTokenUser');
 

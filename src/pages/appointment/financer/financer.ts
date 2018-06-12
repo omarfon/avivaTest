@@ -13,6 +13,9 @@ import { DatosPage } from '../../datos/datos';
 import { AppointmentProvider } from '../../../providers/appoinment/appoinment';
 import { throwToolbarMixedModesError } from '@angular/material';
 import { PayPage } from '../pay/pay';
+import { CreateparentPage } from './../../createparent/createparent';
+import { PayuPage } from '../../payu/payu';
+import { DependentsProvider } from '../../../providers/dependents/dependents';
 
 
 
@@ -63,6 +66,11 @@ export class FinancerPage {
   private subida;
   pay;
   currentAppointment = null;
+  personOk: boolean = false;
+  addFamily: boolean = false;
+  secureOk: boolean = false;
+  depe;
+  public parents;
 
 
   constructor(public navCtrl: NavController,
@@ -75,9 +83,15 @@ export class FinancerPage {
     public appointmentProvider: AppointmentProvider,
     public actionSheet: ActionSheetController,
     public viewCtrl: ViewController,
-    public loadingCtrl: LoadingController) {
+    public loadingCtrl: LoadingController,
+    public dependentsPvr: DependentsProvider) {
 
     this.isAndroid = platform.is('android');
+
+    this.dependentsPvr.getDependens().subscribe(data =>{
+      this.parents = data;
+      console.log(this.parents);
+    });
 
 
     this.financierProvider.getFinanciers().subscribe(data => { this.items = data; this.items.shift(); });
@@ -97,22 +111,11 @@ export class FinancerPage {
           doctor: this.doctor,
           available: this.available
         });
-      console.log('datos de financer:', this.hora, this.doctor , this.available)
-      datos.present();
+      // datos.present();
 
     } else {
       console.log("si hay constraseña. que pase");
     }
-
-    // this.myForm = this.fb.group({
-    //   name: ['', [Validators.required]],
-    //   card: ['', [Validators.required, Validators.minLength(16), Validators.maxLength(16)]],
-    //   cvv: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(3)]],
-    //   month: ['', [Validators.required]],
-    //   year: ['', [Validators.required]]
-    // }, { validator: this.dateValid('month', 'year') });
-
-    // Culqi.publicKey = 'pk_test_e85SD7RVrWlW0u7z';
 
   }
 
@@ -136,7 +139,6 @@ export class FinancerPage {
       // PARTICULAR
       this.financierProvider.getPrice(1, this.doctor.service.id, this.doctor.service.id, this.available).subscribe(data => {
         this.price = Math.round(parseFloat(data[0].prest_precio_val) * 100 + Number.EPSILON) / 100;
-        // console.log('available.date:', this.available.date);
         this.isPlace = false;
         this.isCard = false;
         this.firtClick = false;
@@ -160,11 +162,8 @@ export class FinancerPage {
       this.nameSecure = itemName;
       this.financier_id = item;
     });
-    this.navCtrl.push(PayPage,{
-      doctor:this.doctor,
-      available: this.available,
-      hora: this.hora
-  });
+    this.secureOk = true;
+
   }
 
   selectEnsurance() {
@@ -174,228 +173,38 @@ export class FinancerPage {
 
   }
 
-  personalSelected(item) {
-    // console.log("Selected Item", item);
-    if (item == 1) {
-      this.isPlace = true;
-      this.paymentName = "En local";
-    } else {
-      this.paymentName = "Con tarjeta";
-      this.isPlace = false;
-    }
+  // si la cita es para el usuario pasará mostrando la ventana de financiador
+  passFinancer(depe){
+  this.personOk = !this.personOk;
+  this.personOk = true;
+  this.addFamily = false;
+  this.depe = depe;
+  console.log('lo que me llega de depe:',depe);
   }
 
+  // mostrar los familiares adjuntos o la opción de crear uno nuevo
+  openParents(){
+    this.addFamily = true;
+    this.personOk = false;
+  }
 
-  // dateValid(month: string, year: string) {
-  //   return (group: FormGroup) => {
-  //     let date = new Date();
-  //     let monthInput = group.controls[month];
-  //     let yearInput = group.controls[year];
+  // mostrar el modal de la creación de familiares
+  showDetailCreateParents(){
+      let modal = this.modalCtrl.create(CreateparentPage);
+      modal.present();
+  }
 
-  //     if (yearInput.value == date.getFullYear())
-  //       if (monthInput.value < ("0" + (date.getMonth() + 1)).slice(-2))
-  //         return monthInput.setErrors({ notEquivalent: true })
-  //   }
-  // }
-
-  // next(){
-  //   if(this.currentAppointment === null){
-
-  //     this.appointmentProvider.createAppointment(this.subida).subscribe(data=>{
-  //         console.log("se ha creado la cita");
-  //         let loading = this.loadingCtrl.create({
-  //             content:"creando cita"
-  //         });
-  //         loading.present();
-  //         let alert = this.alertCtrl.create({
-  //           title:"Creación de cita",
-  //           subTitle:"la cita que reservaste ha sido creada satisfactoriamente.",
-  //           buttons:[
-  //             {
-  //               text:"Ok",
-  //               role:"Cancel"
-  //             }
-  //           ]
-  //         });
-  //         loading.dismiss();
-  //         alert.present();
-  //         this.navCtrl.setRoot(HomePage);
-  //     });
-  //   }else{
-  //     let alert = this.alertCtrl.create({
-  //       title:"Creación de cita",
-  //       subTitle:"la cita que reservaste ha sido creada satisfactoriamente.",
-  //       buttons:[
-  //         {
-  //           text:"Ok",
-  //           role:"Cancel"
-  //         }
-  //       ]
-  //     });
-  //     alert.present();
-  //   }
-  //   this.navCtrl.setRoot(HomePage);
-  // }
-
-  // openCulqi(){
-
-  //   let appointment = this.currentAppointment;
-  //   console.log("this.openCulqi");
-  //   const settings = {
-  //     title: 'Cita para' ,
-  //     description: "prueba",
-  //     currency: "PEN",
-  //     amount: this.price * 100
-  //   };
-  //   culqiData.amount = this.price * 100;
-  //   Culqi.settings(settings);
-
-  //   let loadingPago = this.loadingCtrl.create({
-  //     content:"Haciendo el cobro...",
-  //     });
-  //   loadingPago.present();
-
-  //   const i = setInterval(function(){
-  //     // si se puede realizar el pago con culqi
-  //     if(culqiData.status == "ok" ){
-  //       clearInterval(i);
-  //       loadingPago.dismiss();
-  //       let alert = this.alertCtrl.create({
-  //           title:"Creación de cita",
-  //           subTitle:"la cita que reservaste ha sido creada satisfactoriamente.",
-  //           buttons:[
-  //             {
-  //               text:"OK",
-  //               role:'cancel'
-  //             }
-  //           ]
-  //       });
-  //       alert.present();
-  //       this.navCtrl.setRoot(HomePage);
-  //     }
-  //     // si no se puede realizar el pago con culqi
-  //     else if(culqiData.status == "error"){
-  //       const self = this;
-  //       clearInterval(i);
-  //       loadingPago.dismiss();
-  //        let action = this.actionSheet.create({
-  //             title:"EL PAGO NO PUDO REALIZARSE",
-  //             buttons:[
-  //               {
-  //                 text: "Intentar de nuevo",
-  //                 role: 'destructive',
-  //                 handler: ()=>{
-  //                   action.dismiss().then(()=>{
-  //                     culqiData.status = "";
-  //                     self.openCulqi();
-  //                   });
-  //                   return false;
-  //                 }
-  //               },
-  //               {
-  //                 text: "Pagar en clínica",
-  //                 handler: ()=>{
-  //                   this.navCtrl.setRoot(HomePage);
-  //                   let alert = this.alertCtrl.create({
-  //                     title:"La Cita que pediste ha sido creada",
-  //                     subTitle:"recuerda que tendras que pagar en la clínica",
-  //                     buttons:[{
-  //                       text:"OK",
-  //                       role:'cancel'
-  //                     }]
-  //                   });
-  //                   alert.present();
-  //                 }
-  //               },
-  //               {
-  //                 text: "Cancelar cita",
-  //                 handler: ()=>{
-  //                   this.appointmentProvider.destroyAppointment(appointment).subscribe(data =>{
-  //                     this.navCtrl.setRoot(HomePage);
-  //                     let alert = this.alertCtrl.create({
-  //                         title:"su cita fue cancelada",
-  //                         buttons:[
-  //                           {
-  //                             text:"OK",
-  //                             role:"cancel"
-  //                           }
-  //                         ]
-  //                     });
-  //                     alert.present();
-  //                   });
-  //                 }
-  //               }
-  //             ]
-  //        });
-  //        action.present();
-  //      }
-  //   }.bind(this),
-  // 1000);
-  // console.log("open CUlqi");
-  // Culqi.open();
-  // loadingPago.dismiss();
-  // }
-
-  // payCulqi() {
-
-  //   this.appointmentProvider.createAppointment(this.subida)
-  //                           .subscribe((data:any)=> {
-  //                           this.currentAppointment = data;
-  //                           this.openCulqi();
-  //                         }
-  //   ,err =>{
-  //     if(this.currentAppointment !== null){
-  //       this.openCulqi();
-  //       return;
-  //     }
-  //     console.log('err',err);
-  //          if(!err){
-  //            return
-  //         }
-  //     const code = err.error.data.errorCode;
-  //       let alert;
-  //       switch (code) {
-  //         case 15006:
-  //           // case 15035:
-  //           alert = this.alertCtrl.create({
-  //             title: 'Aviso al Cliente',
-  //             subTitle: 'Ya tienes una cita en una hora cercana a esta.',
-  //             buttons: [
-  //               {
-  //                 text: 'Buscar otra hora',
-  //                 handler: data => {
-  //                   this.navCtrl.setRoot(CardPage);
-  //                 }
-  //               }
-  //             ]
-  //           });
-  //           alert.present();
-  //           break;
-
-  //         case 15009:
-  //         case 15035:
-  //           alert = this.alertCtrl.create({
-  //             title: 'Aviso al Cliente',
-  //             subTitle: 'El horario escogido ya fue tomado .',
-  //             buttons: [
-  //               {
-  //                 text: 'Buscar otra hora',
-  //                 handler: data => {
-  //                   this.navCtrl.setRoot(CardPage);
-  //                 }
-  //               }
-  //             ],
-  //             enableBackdropDismiss: true
-  //           });
-  //           alert.present();
-  //           break;
-
-  //         default:
-  //           break;
-  //       }
-
-  //   });
-  // }
+  // función para ir a pagos
+  goToPay(){
+    this.navCtrl.push(PayPage,{
+      doctor:this.doctor,
+      available: this.available,
+      hora: this.hora,
+      depe: this.depe,
+      price: this.price
+  });
+  console.log('el precio', this.price);
+  }
 
 
   openModalPayu(){

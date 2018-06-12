@@ -10,7 +10,7 @@ import { RecursiveTemplateAstVisitor } from '@angular/compiler';
 })
 export class RecipesPage {
 
-  id = 15421;
+  id = 18439;
   public recipes;
 
   constructor(public navCtrl: NavController,
@@ -20,11 +20,16 @@ export class RecipesPage {
     // ahora esta implementado así.... pero no funcionará
     // porque lo que tiene que pasar es tener un endpoint que me traiga todos las recetas
 
-    // this.recipesPvr.getRecipes(this.id).subscribe(data=>{
+    // this.recipesPvr.getAllRecipes().subscribe(data=>{
     //   this.recipes = data;
     //   console.log(this.recipes);
 
-    // });
+    this.recipesPvr.getRecipes(this.id).subscribe((data:any) =>{
+        this.recipes = data;
+        console.log(this.recipes);
+
+
+    });
   }
 
   ionViewDidLoad() {

@@ -1,9 +1,11 @@
+import { CrudparentProvider } from './../../../providers/crudparent/crudparent';
 import { HomePage } from './../../home/home';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Component } from '@angular/core';
 import { NavController, NavParams, AlertController, Platform, ModalController, ViewController, ActionSheetController, LoadingController } from 'ionic-angular';
 import { AppointmentProvider } from '../../../providers/appoinment/appoinment';
 import { CardPage } from '../../card/card';
+
 
 
 @Component({
@@ -18,6 +20,9 @@ export class PayPage {
   private hour;
   public price;
   public pago;
+  public depe;
+  public dependCreate;
+
 
   nots = [
     { "id": "1", "name": "En local" },
@@ -38,14 +43,19 @@ export class PayPage {
               public appointmentProvider: AppointmentProvider,
               public actionSheet: ActionSheetController,
               public viewCtrl: ViewController,
-              public loadingCtrl: LoadingController) {
+              public loadingCtrl: LoadingController,
+              public crudPvr: CrudparentProvider) {
 
       this.pago = 'enLocal';
 
     this.doctor = this.navParams.get('doctor');
     this.available = this.navParams.get('available');
     this.hora = this.navParams.get('hora');
+    this.depe = this.navParams.get('depe');
+    this.price = this.navParams.get('price');
     this.subida = this.hora.listjson;
+    console.log('la hora', this.hora);
+
 
 
     this.myForm = this.fb.group({
@@ -188,8 +198,10 @@ export class PayPage {
   }
 
   payCulqi() {
-
-    this.appointmentProvider.createAppointment(this.subida)
+      if(this.depe){
+        let id = this.depe._id;
+        console.log('lo que mando al proivider:', this.subida, id)
+          this.crudPvr.createParentDate(this.subida, id)
                             .subscribe((data:any)=> {
                             this.currentAppointment = data;
                             this.openCulqi();
@@ -246,14 +258,135 @@ export class PayPage {
         }
 
     });
+      }else{
+        this.appointmentProvider.createAppointment(this.subida)
+                            .subscribe((data:any)=> {
+                            this.currentAppointment = data;
+                            this.openCulqi();
+                          }
+    ,err =>{
+      if(this.currentAppointment !== null){
+        this.openCulqi();
+        return;
+      }
+      console.log('err',err);
+           if(!err){
+             return
+          }
+      const code = err.error.data.errorCode;
+        let alert;
+        switch (code) {
+          case 15006:
+            // case 15035:
+            alert = this.alertCtrl.create({
+              title: 'Aviso al Cliente',
+              subTitle: 'Ya tienes una cita en una hora cercana a esta.',
+              buttons: [
+                {
+                  text: 'Buscar otra hora',
+                  handler: data => {
+                    this.navCtrl.setRoot(CardPage);
+                  }
+                }
+              ]
+            });
+            alert.present();
+            break;
+
+          case 15009:
+          case 15035:
+            alert = this.alertCtrl.create({
+              title: 'Aviso al Cliente',
+              subTitle: 'El horario escogido ya fue tomado .',
+              buttons: [
+                {
+                  text: 'Buscar otra hora',
+                  handler: data => {
+                    this.navCtrl.setRoot(CardPage);
+                  }
+                }
+              ],
+              enableBackdropDismiss: true
+            });
+            alert.present();
+            break;
+
+          default:
+            break;
+        }
+    });
+      }
+
   }
+
+  // payCulqi() {
+
+  //   this.appointmentProvider.createAppointment(this.subida)
+  //                           .subscribe((data:any)=> {
+  //                           this.currentAppointment = data;
+  //                           this.openCulqi();
+  //                         }
+  //   ,err =>{
+  //     if(this.currentAppointment !== null){
+  //       this.openCulqi();
+  //       return;
+  //     }
+  //     console.log('err',err);
+  //          if(!err){
+  //            return
+  //         }
+  //     const code = err.error.data.errorCode;
+  //       let alert;
+  //       switch (code) {
+  //         case 15006:
+  //           // case 15035:
+  //           alert = this.alertCtrl.create({
+  //             title: 'Aviso al Cliente',
+  //             subTitle: 'Ya tienes una cita en una hora cercana a esta.',
+  //             buttons: [
+  //               {
+  //                 text: 'Buscar otra hora',
+  //                 handler: data => {
+  //                   this.navCtrl.setRoot(CardPage);
+  //                 }
+  //               }
+  //             ]
+  //           });
+  //           alert.present();
+  //           break;
+
+  //         case 15009:
+  //         case 15035:
+  //           alert = this.alertCtrl.create({
+  //             title: 'Aviso al Cliente',
+  //             subTitle: 'El horario escogido ya fue tomado .',
+  //             buttons: [
+  //               {
+  //                 text: 'Buscar otra hora',
+  //                 handler: data => {
+  //                   this.navCtrl.setRoot(CardPage);
+  //                 }
+  //               }
+  //             ],
+  //             enableBackdropDismiss: true
+  //           });
+  //           alert.present();
+  //           break;
+
+  //         default:
+  //           break;
+  //       }
+
+  //   });
+  // }
+
 
 
   next(){
     if(this.currentAppointment === null){
 
       this.appointmentProvider.createAppointment(this.subida).subscribe(data=>{
-          console.log("se ha creado la cita");
+          // console.log("se ha creado la cita");
           let loading = this.loadingCtrl.create({
               content:"creando cita"
           });
@@ -286,5 +419,31 @@ export class PayPage {
       alert.present();
     }
     this.navCtrl.setRoot(HomePage);
+  }
+
+
+  nextDepe(){
+    let id = this.depe._id
+    console.log('el id que va para creacion de familiar:', id)
+    this.crudPvr.createParentDate(this.subida, id).subscribe(data=>{
+      let loading = this.loadingCtrl.create({
+        content:"creando cita"
+    });
+    loading.present();
+          let alert = this.alertCtrl.create({
+            title:"Creación de cita",
+            subTitle:"la cita que reservaste ha sido creada satisfactoriamente.",
+            buttons:[
+              {
+                text:"Ok",
+                role:"Cancel"
+              }
+            ]
+          });
+          loading.dismiss();
+          alert.present();
+          this.navCtrl.setRoot(HomePage);
+      });
+      // queda pendiente el error, sino crea la cita
   }
 }

@@ -1,66 +1,123 @@
 <ion-header>
 
-    <ion-navbar color="primary">
-        <ion-title>Financiador</ion-title>
-    </ion-navbar>
+  <ion-navbar color="primary">
+    <ion-title>Financiador</ion-title>
+  </ion-navbar>
 
 </ion-header>
 
 
 <ion-content>
-    <h4 class="parrafoFinanciador">Lo que nos queda es escoger para quien es la cita y el financiador, ya casi terminamos…</h4>
-    <div>
+  <h4 class="parrafoFinanciador">Lo que nos queda es escoger para quien es la cita y el financiador, ya casi terminamos…</h4>
+  <div>
+<ion-row padding>
+  <ion-col class="cuadrado">
+    <button ion-button round
+            (click)="passFinancer()">
+      para mi
+    </button>
+  </ion-col>
+
+  <ion-col class="cuadrado">
+    <button ion-button (click)="openParents()" round color="secondary">
+      un familiar
+    </button>
+  </ion-col>
+</ion-row>
+<div *ngIf="addFamily">
+    <ion-card *ngFor="let depe of parents"
+              (click)="passFinancer(depe)">
       <ion-row>
-        <ion-col class="cuadrado">
-          <div class="me">
-            para mi
-          </div>
+        <ion-col col-4>
+          <ion-avatar>
+            <img src="../assets/imgs/avatars/nino.png" alt="">
+          </ion-avatar>
         </ion-col>
-        <ion-col class="cuadrado">
-          <div class="fam">
-            un familiar
-          </div>
+        <ion-col col-8>
+            <h3 class="nombrePariente">{{depe.name}}</h3>
+            <p class="parentesco">{{depe.type}}</p>
+            <p class="edad">7 años</p>
         </ion-col>
       </ion-row>
+    </ion-card>
+  </div>
+
+    <ion-row *ngIf="addFamily" padding>
+      <ion-card ion-button
+                (click)="showDetailCreateParents()"
+                class="buttonAddFamily">
+        <button ion-button clear item-start>
+          <ion-icon ios="ios-add" md="md-add" color="secondary"></ion-icon>
+        </button>
+        <p item-end>Agregar Familiar</p>
+      </ion-card>
+    </ion-row>
+
+    <!-- template que muestra los familiares que estan ya adjuntos -->
+
+  </div>
+  <!-- fin del template de los familiares adjuntos -->
+
+  <div *ngIf="depe">
+    <ion-card *ngIf="personOk === true">
+      <ion-row>
+        <ion-col col-4
+                 class="cardEscogidoImg">
+            <img src="../assets/imgs/avatars/nino.png" alt="">
+        </ion-col>
+        <ion-col col-8
+                  class="containerNombre"
+                  >
+            <h3 class="nombrePariente">{{depe.name}}</h3>
+        </ion-col>
+      </ion-row>
+    </ion-card>
+  </div>
+  <ion-list class="medio" *ngIf="personOk === true">
+    <ion-card class="evaluate">
+      <ion-list>
+        <ion-item color="light" item-start (click)="evaluateEnsurance($event)">
+          <p>¿Cuenta con seguro?</p>
+          <ion-icon item-end name="arrow-dropdown"></ion-icon>
+        </ion-item>
+
+        <ion-list class="nombresLista" *ngIf="firtClick">
+          <button ion-item *ngFor="let quest of questions" (click)="validateSelected(quest.id)">
+            {{ quest.name }}
+          </button>
+        </ion-list>
+      </ion-list>
+    </ion-card>
+
+    <ion-card class="seguroList">
+      <ion-list>
+        <ion-item color="light" *ngIf="isInsuranceName" (click)="selectEnsurance($event)">
+          {{ myEnsuranceName }}
+        </ion-item>
+        <ion-list *ngIf="isInsurance">
+          <button ion-item *ngFor="let item of items" (click)="insuranceSelected(item.cod_pagador_pk, item.nombre_garante)">
+            {{ item.nombre_garante }}
+          </button>
+        </ion-list>
+      </ion-list>
+    </ion-card>
+
+    <div text-right class="precio" *ngIf="price!=undefined">
+      <p>Precio de la Consulta: {{ 'S/. ' + price }}.00</p>
     </div>
+  </ion-list>
 
+  <button *ngIf="secureOk === true"
+          color="secondary"
+          ion-button
+          block
+          center
+          class="botonPagar"
+          (click)="goToPay()">
+      hacer el pago
+  </button>
 
-    <ion-list class="medio">
-
-        <ion-card class="evaluate">
-            <ion-list>
-                <ion-item color="light" item-start (click)="evaluateEnsurance($event)">
-                    <p>¿Cuenta con seguro?</p>
-                    <ion-icon item-end name="arrow-dropdown"></ion-icon>
-                </ion-item>
-
-                <ion-list class="nombresLista" *ngIf="firtClick">
-                    <button ion-item *ngFor="let quest of questions" (click)="validateSelected(quest.id)">
-                        {{ quest.name }}
-                    </button>
-                </ion-list>
-            </ion-list>
-        </ion-card>
-
-        <ion-card class="seguroList">
-            <ion-list>
-                <ion-item color="light" *ngIf="isInsuranceName" (click)="selectEnsurance($event)">
-                    {{ myEnsuranceName }}
-                </ion-item>
-                <ion-list *ngIf="isInsurance">
-                    <button ion-item *ngFor="let item of items" (click)="insuranceSelected(item.cod_pagador_pk, item.nombre_garante)">
-                        {{ item.nombre_garante }}
-                    </button>
-                </ion-list>
-            </ion-list>
-        </ion-card>
-
-        <div text-right class="precio" *ngIf="price!=undefined">
-            <p>Precio de la Consulta: {{ 'S/. ' + price }}</p>
-        </div>
-    </ion-list>
-
-    <!-- <div class="container-gris" *ngIf="open == true">
+  <!-- <div class="container-gris" *ngIf="open == true">
         <div padding>
             <h4 text-center class="tituloMetodos">Metodos de Pago</h4>
             <ion-segment [(ngModel)]="pago">
@@ -182,11 +239,11 @@
                 <button ion-button color="secondary" class="botonAccept" [class.button-disabled]="true" block (click)="payCulqi()">Pagar ahora con culqi</button>
             </div> -->
 
-            <!-- <div padding>
+  <!-- <div padding>
                     <button ion-button color="secondary" class="botonAccept" [class.button-disabled]="true" block (click)="openModalPayu()">Pagar ahora con payu</button>
                 </div> -->
 
-<!--
+  <!--
         </div>
             </ion-list>
         </div>

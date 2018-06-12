@@ -36,13 +36,13 @@
                                         <h3 class="nombreDoctor" text-center>
                                             {{ doctor.fullName }}
                                         </h3>
+                                        <div class="sedeContainer">
+                                            <!-- <p bold class="izquierda">Sede:</p> -->
+                                            <p class="sede" type="text" disabled="true">Mendiola</p>
+                                        </div>
                                     </ion-col>
                                 </ion-row>
                             </div>
-                                <div class="centrar">
-                                    <p bold class="izquierda">Sede:</p>
-                                    <p class="blue" type="text" disabled="true">Mendiola</p>
-                                </div>
                                 <div  class="centrar">
                                     <p class="izquierda">Especialidad:</p>
                                     <p item-end class="blue" disabled="true"> {{ doctor.service.description }}</p>
@@ -50,7 +50,7 @@
                                 <div  class="centrar">
                                     <p class="izquierda">Fecha:</p>
                                     <p item-end class="blue" disabled="true">
-                                        {{ date | date:'EEEE d , MMMM ' : 'es' }}
+                                        {{ available | date:'EEEE d , MMMM ' : 'es' }}
                                     </p>
                                 </div>
                                 <div  class="centrar">
@@ -62,14 +62,23 @@
                                 <div  class="centrar">
                                     <p class="izquierda">Costo:</p>
                                     <p class="blue" item-end type="text" disabled="true">
-                                        {{ 'S/. ' + price }}
+                                        {{ 'S/. ' + price + '.00'}}
                                     </p>
                                 </div>
                         </ion-card>
-
-
             <div padding>
-                <button ion-button color="secondary" class="botonAccept" [class.button-disabled]="true" block (click)="next()">Confirmar cita</button>
+                <button *ngIf="!depe"
+                        ion-button color="secondary"
+                        class="botonAccept"
+                        [class.button-disabled]="true"
+                        block
+                        (click)="next()">Confirmar cita</button>
+                <button *ngIf="depe"
+                      ion-button
+                      color="secondary"
+                      class="botonAccept"
+                      [class.button-disabled]="true"
+                      block (click)="nextDepe()">Confirmar cita para</button>
             </div>
 
 
@@ -79,7 +88,6 @@
 
 
         <ion-list *ngSwitchCase="'enClinica'">
-
             <div class="resumen" >
                 <ion-card>
                     <div class="containerTextoPago">
@@ -94,13 +102,13 @@
                                 <h3 class="nombreDoctor" text-center>
                                     {{ doctor.fullName }}
                                 </h3>
+                                <div class="sedeContainer">
+                                    <!-- <p bold class="izquierda">Sede:</p> -->
+                                    <p class="sede" type="text" disabled="true">Mendiola</p>
+                                </div>
                             </ion-col>
                         </ion-row>
                     </div>
-                        <div class="centrar">
-                            <p bold class="izquierda">Sede:</p>
-                            <p class="blue" type="text" disabled="true">Mendiola</p>
-                        </div>
                         <div  class="centrar">
                             <p class="izquierda">Especialidad:</p>
                             <p item-end class="blue" disabled="true"> {{ doctor.service.description }}</p>
@@ -108,7 +116,7 @@
                         <div  class="centrar">
                             <p class="izquierda">Fecha:</p>
                             <p item-end class="blue" disabled="true">
-                                {{ date | date:'EEEE d , MMMM ' : 'es' }}
+                                {{ available | date:'EEEE d , MMMM ' : 'es' }}
                             </p>
                         </div>
                         <div  class="centrar">
@@ -120,7 +128,7 @@
                         <div  class="centrar">
                             <p class="izquierda">Costo:</p>
                             <p class="blue" item-end type="text" disabled="true">
-                                {{ 'S/. ' + price }}
+                                {{ 'S/. ' + price + '.00'}}
                             </p>
                         </div>
                 </ion-card>

@@ -1,0 +1,101 @@
+
+<ion-content padding class="gris">
+<div class="cienPorCiento">
+  <ion-row>
+    <ion-col col-9>
+      <h3 class="tituloFamiliar">Creación de cuenta Adicional</h3>
+    </ion-col>
+    <ion-col col-3 class="contenedorButton">
+      <button ion-button class="buttonClose">
+        <ion-icon name="close" color="secondary" class="close" round (click)="closeModal()">
+        </ion-icon>
+      </button>
+    </ion-col>
+  </ion-row>
+</div>
+
+<form [formGroup]="formFamily" (ngSubmit)="saveData(formFamily.value)" novalidate>
+  <ion-list>
+    <ion-grid>
+
+      <ion-item>
+        <ion-label fixed>Nombre:</ion-label>
+        <ion-input formControlName="name" type="text" maxlength="40">
+        </ion-input>
+      </ion-item>
+
+<ion-item>
+  <ion-label fixed>Apellido Paterno:</ion-label>
+  <ion-input formControlName="paternal_surname" type="text" maxlength="40">
+  </ion-input>
+</ion-item>
+
+<ion-item>
+  <ion-label fixed>Apellido Materno:</ion-label>
+  <ion-input formControlName="maternal_surname" type="text" maxlength="40">
+  </ion-input>
+</ion-item>
+
+
+<ion-row>
+  <ion-col col-6>
+    <ion-item>
+      <ion-label fixed>Sexo:</ion-label>
+      <ion-select formControlName="gender" name="gender">
+        <ion-option value="M">M</ion-option>
+        <ion-option value="F">F</ion-option>
+      </ion-select>
+    </ion-item>
+  </ion-col>
+
+<ion-col col-6>
+  <ion-item>
+    <ion-label fixed>Nacimiento:</ion-label>
+    <ion-input type="date" formControlName="date_of_birth" name="date_of_birth"></ion-input>
+  </ion-item>
+</ion-col>
+
+<ion-col col-6>
+  <ion-item>
+    <ion-label fixed>Documento:</ion-label>
+    <ion-select [(ngModel)]="change" formControlName="type_document" name="type_document" floating>
+      <ion-option value="dni">DNI</ion-option>
+      <ion-option value="carne_extranjeria">Carne de Extranjeria</ion-option>
+      <ion-option value="pasaporte">Pasaporte</ion-option>
+    </ion-select>
+  </ion-item>
+</ion-col>
+
+<ion-col col-6>
+  <ion-item>
+    <ion-label floating> Nº Documento:</ion-label>
+    <ion-input *ngIf="change === 'dni'" type="number" formControlName="dni" name="dni" minlength="8" maxlength="8" floating></ion-input>
+    <ion-input *ngIf="change === 'carne_extranjeria'" type="tel" formControlName="dni" name="dni" minlength="12" maxlength="12"
+      floating></ion-input>
+    <ion-input *ngIf="change === 'pasaporte'" type="tel" formControlName="dni" name="dni" minlength="12" maxlength="12" floating></ion-input>
+    <!-- <p color="danger" ion-text *ngIf="registerForm.get('dni').hasError('required')">DNI requerido</p> -->
+  </ion-item>
+</ion-col>
+</ion-row>
+</ion-grid>
+
+<ion-col col-12>
+  <ion-item>
+    <ion-label fixed>Parentesco:</ion-label>
+    <ion-select formControlName="kindred" name="kindred" floating>
+      <ion-option value="father">Padre</ion-option>
+      <ion-option value="mother">Madre</ion-option>
+      <ion-option value="son">hijo</ion-option>
+      <ion-option value="daughter">Hija</ion-option>
+      <ion-option value="uncle">Tio</ion-option>
+      <ion-option value="aunt">Tia</ion-option>
+    </ion-select>
+  </ion-item>
+</ion-col>
+
+    </ion-list>
+
+    <button ion-button type="submit" [disabled]="!formFamily.valid" block color="secondary" class="guardaryContinuar">Guardar y continuar</button>
+  </form>
+
+</ion-content>
