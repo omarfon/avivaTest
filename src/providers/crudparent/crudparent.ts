@@ -9,9 +9,9 @@ export class CrudparentProvider {
 
 private apiUrl = "http://dappapache02.eastus.cloudapp.azure.com:4200/api/v2/ebooking/appointments/createForUser/";
 
-// private api = "http://dappapache02.eastus.cloudapp.azure.com:4200/api/v2/users/register-dependent/";
+private api = "http://dappapache02.eastus.cloudapp.azure.com:4200/api/v2/users/register-dependent/";
 
-private api = "http://192.168.1.173:4000/api/v2/users/register-dependent/";
+// private api = "http://192.168.1.173:4000/api/v2/users/register-dependent/";
 
   constructor(public http: HttpClient) {
     console.log('Hello CrudparentProvider Provider');
