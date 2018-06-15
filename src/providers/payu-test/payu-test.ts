@@ -7,7 +7,7 @@ import { Observable } from 'apollo-client/util/Observable';
 @Injectable()
 export class PayuTestProvider {
 
-  private apiUrl = "http://dappapache02.eastus.cloudapp.azure.com:4200/api/v2/ebooking/payu-test"; 
+  private apiUrl = "http://dappapache02.eastus.cloudapp.azure.com:4200/api/v2/ebooking/payu-test";
 
   constructor(public http: HttpClient) {
     console.log('Hello PayuTestProvider Provider');
@@ -18,12 +18,12 @@ export class PayuTestProvider {
     console.log('ping:');
     const authorization = localStorage.getItem('authorization');
     let headers = new HttpHeaders({"Authorization": authorization});
-    let params = {"command":"PING"}; 
+    let params = {"command":"PING"};
     return this.http.post(this.apiUrl, params, {headers})
     .map(data =>{
       console.log(data);
       return data;
-    }); 
+    });
 }
 
 command(numero, cvv){
@@ -38,7 +38,7 @@ command(numero, cvv){
             "referenceCode": "payment_test_00000001",
             "description": "payment test",
             "language": "es",
-            "notifyUrl": "http://dappapache02.eastus.cloudapp.azure.com:4000/api/v2/ebooking/hello",
+            "notifyUrl": "http://dappapache02.eastus.cloudapp.azure.com:4200/api/v2/ebooking/hello",
             "additionalValues": {
              "TX_VALUE": {
                 "value": 100,
@@ -62,7 +62,7 @@ command(numero, cvv){
              }
           }
         },
-        
+
         "payer": {
           "merchantPayerId": "1",
           "fullName": "First name and second payer name",
@@ -89,13 +89,13 @@ command(numero, cvv){
       "paymentMethod": "VISA",
       "paymentCountry": "PE"
     }
-  }; 
+  };
 
   return this.http.post(this.apiUrl, params, {headers})
   .map(data =>{
     console.log(data);
     return data;
-  }); 
+  });
 }
 
 }
