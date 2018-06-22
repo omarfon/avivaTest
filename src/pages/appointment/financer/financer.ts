@@ -71,7 +71,8 @@ export class FinancerPage {
   secureOk: boolean = false;
   depe;
   public parents;
-
+  vcolor = false;
+  ccolor = false;
 
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
@@ -180,12 +181,16 @@ export class FinancerPage {
   this.addFamily = false;
   this.depe = depe;
   console.log('lo que me llega de depe:',depe);
+  this.vcolor = true;
+  this.ccolor = false;
   }
 
   // mostrar los familiares adjuntos o la opción de crear uno nuevo
   openParents(){
     this.addFamily = true;
     this.personOk = false;
+    this.ccolor = true;
+    this.vcolor = false;
   }
 
   // mostrar el modal de la creación de familiares

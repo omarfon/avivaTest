@@ -36941,6 +36941,10 @@ page-financer .containerNombre {
   align-items: center;
 }
 
+page-financer .verde {
+  background-color: #00B6A3 !important;
+}
+
 page-master-detail #content {
   position: relative;
   margin-top: 15%;

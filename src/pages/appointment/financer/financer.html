@@ -13,14 +13,20 @@
 <ion-row padding>
   <ion-col class="cuadrado">
     <button ion-button round
+            color="gris"
+            [ngClass]="{verde:vcolor == true}"
             (click)="passFinancer()">
-      para mi
+              para mi
     </button>
   </ion-col>
 
   <ion-col class="cuadrado">
-    <button ion-button (click)="openParents()" round color="secondary">
-      un familiar
+    <button ion-button
+            (click)="openParents()"
+            round
+            color="gris"
+            [ngClass]="{verde:ccolor == true}">
+              un familiar
     </button>
   </ion-col>
 </ion-row>
