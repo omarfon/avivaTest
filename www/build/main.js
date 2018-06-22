@@ -3377,6 +3377,7 @@ var FinancerPage = (function () {
             _this.parents = data;
             console.log(_this.parents);
         });
+        this.financierProvider.getFinanciers().subscribe(function (data) { _this.items = data; _this.items.shift(); });
         this.doctor = this.navParams.get('doctor');
         this.available = this.navParams.get('available');
         this.hora = this.navParams.get('hora');
@@ -3441,8 +3442,6 @@ var FinancerPage = (function () {
         this.secureOk = true;
     };
     FinancerPage.prototype.selectEnsurance = function () {
-        var _this = this;
-        this.financierProvider.getFinanciers().subscribe(function (data) { _this.items = data; _this.items.shift(); });
         this.isInsurance = !this.isInsurance;
         this.isInsuranceName = !this.isInsuranceName;
         this.myEnsuranceName = null;
