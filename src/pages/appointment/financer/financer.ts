@@ -95,7 +95,7 @@ export class FinancerPage {
     });
 
 
-    this.financierProvider.getFinanciers().subscribe(data => { this.items = data; this.items.shift(); });
+
 
     this.doctor = this.navParams.get('doctor');
     this.available = this.navParams.get('available');
@@ -168,6 +168,7 @@ export class FinancerPage {
   }
 
   selectEnsurance() {
+    this.financierProvider.getFinanciers().subscribe(data => { this.items = data; this.items.shift(); });
     this.isInsurance = !this.isInsurance;
     this.isInsuranceName = !this.isInsuranceName;
     this.myEnsuranceName = null;
@@ -180,7 +181,6 @@ export class FinancerPage {
   this.personOk = true;
   this.addFamily = false;
   this.depe = depe;
-  console.log('lo que me llega de depe:',depe);
   this.vcolor = true;
   this.ccolor = false;
   }
