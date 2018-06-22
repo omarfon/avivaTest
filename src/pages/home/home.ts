@@ -20,11 +20,19 @@ export class HomePage {
 
   tasks: any[];
   public ensenar;
+  public nombre;
 
   constructor(public navCtrl : NavController,
               public appointmentProvider : AppointmentProvider,
               private autho : AuthorizationPublicProvider
 ) {
+      let nombrePatient = localStorage.getItem('patientName');
+      let separador = " ";
+      if(nombrePatient){
+        this.nombre = nombrePatient.split(separador ,  1);
+      }else{
+        console.log("seguir normal es invitado")
+      }
       const authorization = localStorage.getItem('authorization');
       if( !authorization ){
         this.autho.getKey().subscribe((data:any) =>{
@@ -33,7 +41,7 @@ export class HomePage {
           localStorage.setItem('role', data.role);
         });
       }
-      
+
     }
 
     obtenerUltimaFecha(){
@@ -43,12 +51,8 @@ export class HomePage {
           console.log('tasks en home:',this.ensenar);
       });
     }
-    
-                            
-
-
 
   irACard(){
 this.navCtrl.push(CardPage);
-}
+  }
 }

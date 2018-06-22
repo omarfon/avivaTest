@@ -1,0 +1,54 @@
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title>Código de Validación</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <p class="codigoValida">hemos enviado al correo el código de validación , ingresalo y listo....</p>
+ <ion-row>
+   <div col-3></div>
+   <div col-6>
+      <form [formGroup]="formCode" (ngSubmit)="saveData(formCode.value)" novalidate>
+     <ion-row>
+         <ion-col class="rectanguloInput">
+            <ion-input type="number"
+                       [(ngModel)]="primero"
+                       formControlName="primero"
+                        ></ion-input>
+          </ion-col>
+         <ion-col class="rectanguloInput">
+            <ion-input type="number"
+                        [(ngModel)]="segundo"
+                        formControlName="segundo"
+                        ></ion-input>
+          </ion-col>
+         <ion-col class="rectanguloInput">
+           <ion-input type="number"
+                      tercero="tercero"
+                      formControlName="tercero"
+                      ngModel></ion-input>
+          </ion-col>
+          <div class="center">
+            <button ion-button
+                     type="submit">
+               enviar código
+            </button>
+          </div>
+     </ion-row>
+    </form>
+   </div>
+   <div col-3></div>
+ </ion-row>
+
+
+ <div class="center">
+   <p class="codigoreen"
+      (click)="sendCode()">reenviar códido</p>
+ </div>
+
+</ion-content>

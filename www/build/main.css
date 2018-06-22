@@ -37362,7 +37362,7 @@ page-card a {
   height: 30px;
   width: 30px;
   border-radius: 50%;
-  margin-left: 12px;
+  margin-left: 15px;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -37444,6 +37444,34 @@ page-card .list-md .item-input.ng-valid.input-has-value:not(.input-has-focus):no
   border-bottom-color: #dedede !important;
   -webkit-box-shadow: none !important;
   box-shadow: none !important;
+}
+
+page-code .codigoValida {
+  color: #062F51;
+  text-align: center;
+  margin-bottom: 2em;
+  font-size: 1.1em;
+  font-weight: 300;
+  padding-top: 1em;
+  width: 90%;
+  margin-left: 5%;
+}
+
+page-code .rectanguloInput {
+  border: 2px solid #96999C;
+  height: 60px;
+  margin: 2px;
+  border-radius: 5px;
+}
+
+page-code .center {
+  text-align: center;
+  margin-top: 30px;
+}
+
+page-code .codigoreen {
+  color: #96999C;
+  font-size: 1em;
 }
 
 page-createparent {
@@ -37685,6 +37713,11 @@ page-home .textoRecetas {
   width: 80%;
   margin-left: 10%;
   padding-top: 20px;
+}
+
+page-home .logueado {
+  font-size: .8em;
+  margin-right: 10px;
 }
 
 page-myparents .nombrePariente {

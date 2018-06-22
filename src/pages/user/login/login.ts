@@ -10,6 +10,7 @@ import { UserProvider } from './../../../providers/user/user';
 import * as shajs from 'sha.js';
 import { FinancerPage } from '../../appointment/financer/financer';
 import { CardPage } from '../../card/card';
+import { AuthorizationPublicProvider } from '../../../providers/authorization-public/authorization-public';
 
 
 @Component({
@@ -23,21 +24,29 @@ export class LoginPage {
   private hora;
   private doctor;
   private available;
+  private authPublic;
 
-  constructor(public navCtrl: NavController, 
+  constructor(public navCtrl: NavController,
               public navParams: NavParams,
               public userService: UserProvider,
               public alertCtrl: AlertController,
               public events: Events,
-              public viewCtrl: ViewController) {
+              public viewCtrl: ViewController,
+              public authPvr: AuthorizationPublicProvider) {
       this.hora = this.navParams.get('hora');
       this.doctor = this.navParams.get('doctor');
       this.available = this.navParams.get('available');
 
+      this.authPvr.getKey().subscribe(data =>{
+        this.authPublic = data;
+        localStorage.setItem('authorization', this.authPublic.authorization);
+        localStorage.setItem('role', this.authPublic.role);
+      });
+
       localStorage.removeItem('idTokenUser');
       localStorage.removeItem('emailUser');
-      localStorage.removeItem('authorization');
-      localStorage.removeItem('role');
+      // localStorage.removeItem('authorization');
+      // localStorage.removeItem('role');
   }
 
   ionViewDidLoad() {
@@ -45,13 +54,14 @@ export class LoginPage {
   }
   startSesion(formulario: NgForm){
     this.userService.doSignIn(formulario.value.email.toLowerCase(), formulario.value.password.toLowerCase())
-    .subscribe( 
+    .subscribe(
       data => {
         this.msg = "";
         localStorage.setItem('idTokenUser', data.patientId);
         localStorage.setItem('emailUser', formulario.value.email);
         localStorage.setItem('authorization', data.authorization);
         localStorage.setItem('role', data.role);
+        localStorage.setItem('patientName', data.patientName);
         this.events.publish('user:logged', 'logged');
         if( !this.hora )
         this.navCtrl.push(HomePage )
@@ -65,12 +75,12 @@ export class LoginPage {
   }
 
   registrarUsuario(){
-    if( this.pageFrom == 'payment' )
-    // { headquarter: this.headquarterId, specialty: this.specialty, doctor: this.doctor, date: this.date, hour: this.hour, pageFrom: this.pageFrom }
-      this.navCtrl.push(RegisterPage );
+    if(this.hora !== undefined)
+      this.navCtrl.push(RegisterPage , {hora: this.hora, available: this.available, doctor: this.doctor, texto: "viene con data"});
     else
-      this.navCtrl.push(RegisterPage);
+      this.navCtrl.push(RegisterPage, {texto: "vienen sin data"});
   }
+
   goToHome(){
     this.navCtrl.push(HomePage);
   }

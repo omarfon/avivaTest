@@ -36,17 +36,17 @@ export class PayPage {
 
 
   constructor(public navCtrl: NavController,
-              public navParams: NavParams,
-              public fb:FormBuilder,
-              public alertCtrl: AlertController,
-              public modalCtrl: ModalController,
-              public appointmentProvider: AppointmentProvider,
-              public actionSheet: ActionSheetController,
-              public viewCtrl: ViewController,
-              public loadingCtrl: LoadingController,
-              public crudPvr: CrudparentProvider) {
+    public navParams: NavParams,
+    public fb: FormBuilder,
+    public alertCtrl: AlertController,
+    public modalCtrl: ModalController,
+    public appointmentProvider: AppointmentProvider,
+    public actionSheet: ActionSheetController,
+    public viewCtrl: ViewController,
+    public loadingCtrl: LoadingController,
+    public crudPvr: CrudparentProvider) {
 
-      this.pago = 'enLocal';
+    this.pago = 'enLocal';
 
     this.doctor = this.navParams.get('doctor');
     this.available = this.navParams.get('available');
@@ -98,12 +98,12 @@ export class PayPage {
     }
   }
 
-  openCulqi(){
+  openCulqi() {
 
     let appointment = this.currentAppointment;
     console.log("this.openCulqi");
     const settings = {
-      title: 'Cita para' ,
+      title: 'Cita para',
       description: "prueba",
       currency: "PEN",
       amount: this.price * 100
@@ -112,210 +112,211 @@ export class PayPage {
     Culqi.settings(settings);
 
     let loadingPago = this.loadingCtrl.create({
-      content:"Haciendo el cobro...",
-      });
+      content: "Haciendo el cobro...",
+    });
     loadingPago.present();
 
-    const i = setInterval(function(){
+    const i = setInterval(function () {
       // si se puede realizar el pago con culqi
-      if(culqiData.status == "ok" ){
+      if (culqiData.status == "error") {
+        console.log('lo que me llega en culqiData:', culqiData);
         clearInterval(i);
         loadingPago.dismiss();
         let alert = this.alertCtrl.create({
-            title:"Creación de cita",
-            subTitle:"la cita que reservaste ha sido creada satisfactoriamente.",
-            buttons:[
-              {
-                text:"OK",
-                role:'cancel'
-              }
-            ]
+          title: "Creación de cita",
+          subTitle: "la cita que reservaste ha sido creada satisfactoriamente.",
+          buttons: [
+            {
+              text: "OK",
+              role: 'cancel'
+            }
+          ]
         });
         alert.present();
         this.navCtrl.setRoot(HomePage);
       }
       // si no se puede realizar el pago con culqi
-      else if(culqiData.status == "error"){
+      else if (culqiData.status == "ok") {
         const self = this;
         clearInterval(i);
         loadingPago.dismiss();
-         let action = this.actionSheet.create({
-              title:"EL PAGO NO PUDO REALIZARSE",
-              buttons:[
-                {
-                  text: "Intentar de nuevo",
-                  role: 'destructive',
-                  handler: ()=>{
-                    action.dismiss().then(()=>{
-                      culqiData.status = "";
-                      self.openCulqi();
-                    });
-                    return false;
-                  }
-                },
-                {
-                  text: "Pagar en clínica",
-                  handler: ()=>{
-                    this.navCtrl.setRoot(HomePage);
-                    let alert = this.alertCtrl.create({
-                      title:"La Cita que pediste ha sido creada",
-                      subTitle:"recuerda que tendras que pagar en la clínica",
-                      buttons:[{
-                        text:"OK",
-                        role:'cancel'
-                      }]
-                    });
-                    alert.present();
-                  }
-                },
-                {
-                  text: "Cancelar cita",
-                  handler: ()=>{
-                    this.appointmentProvider.destroyAppointment(appointment).subscribe(data =>{
-                      this.navCtrl.setRoot(HomePage);
-                      let alert = this.alertCtrl.create({
-                          title:"su cita fue cancelada",
-                          buttons:[
-                            {
-                              text:"OK",
-                              role:"cancel"
-                            }
-                          ]
-                      });
-                      alert.present();
-                    });
-                  }
-                }
-              ]
-         });
-         action.present();
-       }
+        let action = this.actionSheet.create({
+          title: "EL PAGO NO PUDO REALIZARSE",
+          buttons: [
+            {
+              text: "Intentar de nuevo",
+              role: 'destructive',
+              handler: () => {
+                action.dismiss().then(() => {
+                  culqiData.status = "";
+                  self.openCulqi();
+                });
+                return false;
+              }
+            },
+            {
+              text: "Pagar en clínica",
+              handler: () => {
+                this.navCtrl.setRoot(HomePage);
+                let alert = this.alertCtrl.create({
+                  title: "La Cita que pediste ha sido creada",
+                  subTitle: "recuerda que tendras que pagar en la clínica",
+                  buttons: [{
+                    text: "OK",
+                    role: 'cancel'
+                  }]
+                });
+                alert.present();
+              }
+            },
+            {
+              text: "Cancelar cita",
+              handler: () => {
+                this.appointmentProvider.destroyAppointment(appointment).subscribe(data => {
+                  this.navCtrl.setRoot(HomePage);
+                  let alert = this.alertCtrl.create({
+                    title: "su cita fue cancelada",
+                    buttons: [
+                      {
+                        text: "OK",
+                        role: "cancel"
+                      }
+                    ]
+                  });
+                  alert.present();
+                });
+              }
+            }
+          ]
+        });
+        action.present();
+      }
     }.bind(this),
-  1000);
-  console.log("open CUlqi");
-  Culqi.open();
-  loadingPago.dismiss();
+      1000);
+    console.log("open CUlqi");
+    Culqi.open();
+    loadingPago.dismiss();
   }
 
   payCulqi() {
-      if(this.depe){
-        let id = this.depe._id;
-        console.log('lo que mando al proivider:', this.subida, id)
-          this.crudPvr.createParentDate(this.subida, id)
-                            .subscribe((data:any)=> {
-                            this.currentAppointment = data;
-                            this.openCulqi();
-                          }
-    ,err =>{
-      if(this.currentAppointment !== null){
-        this.openCulqi();
-        return;
-      }
-      console.log('err',err);
-           if(!err){
-             return
-          }
-      const code = err.error.data.errorCode;
-        let alert;
-        switch (code) {
-          case 15006:
-            // case 15035:
-            alert = this.alertCtrl.create({
-              title: 'Aviso al Cliente',
-              subTitle: 'Ya tienes una cita en una hora cercana a esta.',
-              buttons: [
-                {
-                  text: 'Buscar otra hora',
-                  handler: data => {
-                    this.navCtrl.setRoot(CardPage);
-                  }
-                }
-              ]
-            });
-            alert.present();
-            break;
-
-          case 15009:
-          case 15035:
-            alert = this.alertCtrl.create({
-              title: 'Aviso al Cliente',
-              subTitle: 'El horario escogido ya fue tomado .',
-              buttons: [
-                {
-                  text: 'Buscar otra hora',
-                  handler: data => {
-                    this.navCtrl.setRoot(CardPage);
-                  }
-                }
-              ],
-              enableBackdropDismiss: true
-            });
-            alert.present();
-            break;
-
-          default:
-            break;
+    if (this.depe) {
+      let id = this.depe._id;
+      // console.log('lo que mando al proivider:', this.subida, id);
+      this.crudPvr.createParentDate(this.subida, id)
+        .subscribe((data: any) => {
+          this.currentAppointment = data;
+          this.openCulqi();
         }
+          , err => {
+            if (this.currentAppointment !== null) {
+              this.openCulqi();
+              return;
+            }
+            console.log('err', err);
+            if (!err) {
+              return
+            }
+            const code = err.error.data.errorCode;
+            let alert;
+            switch (code) {
+              case 15006:
+                // case 15035:
+                alert = this.alertCtrl.create({
+                  title: 'Aviso al Cliente',
+                  subTitle: 'Ya tienes una cita en una hora cercana a esta.',
+                  buttons: [
+                    {
+                      text: 'Buscar otra hora',
+                      handler: data => {
+                        this.navCtrl.setRoot(CardPage);
+                      }
+                    }
+                  ]
+                });
+                alert.present();
+                break;
 
-    });
-      }else{
-        this.appointmentProvider.createAppointment(this.subida)
-                            .subscribe((data:any)=> {
-                            this.currentAppointment = data;
-                            this.openCulqi();
-                          }
-    ,err =>{
-      if(this.currentAppointment !== null){
-        this.openCulqi();
-        return;
-      }
-      console.log('err',err);
-           if(!err){
-             return
-          }
-      const code = err.error.data.errorCode;
-        let alert;
-        switch (code) {
-          case 15006:
-            // case 15035:
-            alert = this.alertCtrl.create({
-              title: 'Aviso al Cliente',
-              subTitle: 'Ya tienes una cita en una hora cercana a esta.',
-              buttons: [
-                {
-                  text: 'Buscar otra hora',
-                  handler: data => {
-                    this.navCtrl.setRoot(CardPage);
-                  }
-                }
-              ]
-            });
-            alert.present();
-            break;
+              case 15009:
+              case 15035:
+                alert = this.alertCtrl.create({
+                  title: 'Aviso al Cliente',
+                  subTitle: 'El horario escogido ya fue tomado .',
+                  buttons: [
+                    {
+                      text: 'Buscar otra hora',
+                      handler: data => {
+                        this.navCtrl.setRoot(CardPage);
+                      }
+                    }
+                  ],
+                  enableBackdropDismiss: true
+                });
+                alert.present();
+                break;
 
-          case 15009:
-          case 15035:
-            alert = this.alertCtrl.create({
-              title: 'Aviso al Cliente',
-              subTitle: 'El horario escogido ya fue tomado .',
-              buttons: [
-                {
-                  text: 'Buscar otra hora',
-                  handler: data => {
-                    this.navCtrl.setRoot(CardPage);
-                  }
-                }
-              ],
-              enableBackdropDismiss: true
-            });
-            alert.present();
-            break;
+              default:
+                break;
+            }
 
-          default:
-            break;
+          });
+    } else {
+      this.appointmentProvider.createAppointment(this.subida)
+        .subscribe((data: any) => {
+          this.currentAppointment = data;
+          this.openCulqi();
         }
-    });
-      }
+          , err => {
+            if (this.currentAppointment !== null) {
+              this.openCulqi();
+              return;
+            }
+            console.log('err', err);
+            if (!err) {
+              return
+            }
+            const code = err.error.data.errorCode;
+            let alert;
+            switch (code) {
+              case 15006:
+                // case 15035:
+                alert = this.alertCtrl.create({
+                  title: 'Aviso al Cliente',
+                  subTitle: 'Ya tienes una cita en una hora cercana a esta.',
+                  buttons: [
+                    {
+                      text: 'Buscar otra hora',
+                      handler: data => {
+                        this.navCtrl.setRoot(CardPage);
+                      }
+                    }
+                  ]
+                });
+                alert.present();
+                break;
+
+              case 15009:
+              case 15035:
+                alert = this.alertCtrl.create({
+                  title: 'Aviso al Cliente',
+                  subTitle: 'El horario escogido ya fue tomado .',
+                  buttons: [
+                    {
+                      text: 'Buscar otra hora',
+                      handler: data => {
+                        this.navCtrl.setRoot(CardPage);
+                      }
+                    }
+                  ],
+                  enableBackdropDismiss: true
+                });
+                alert.present();
+                break;
+
+              default:
+                break;
+            }
+          });
+    }
 
   }
 
@@ -382,37 +383,37 @@ export class PayPage {
 
 
 
-  next(){
-    if(this.currentAppointment === null){
+  next() {
+    if (this.currentAppointment === null) {
 
-      this.appointmentProvider.createAppointment(this.subida).subscribe(data=>{
-          // console.log("se ha creado la cita");
-          let loading = this.loadingCtrl.create({
-              content:"creando cita"
-          });
-          loading.present();
-          let alert = this.alertCtrl.create({
-            title:"Creación de cita",
-            subTitle:"la cita que reservaste ha sido creada satisfactoriamente.",
-            buttons:[
-              {
-                text:"Ok",
-                role:"Cancel"
-              }
-            ]
-          });
-          loading.dismiss();
-          alert.present();
-          this.navCtrl.setRoot(HomePage);
+      this.appointmentProvider.createAppointment(this.subida).subscribe(data => {
+        // console.log("se ha creado la cita");
+        let loading = this.loadingCtrl.create({
+          content: "creando cita"
+        });
+        loading.present();
+        let alert = this.alertCtrl.create({
+          title: "Creación de cita",
+          subTitle: "la cita que reservaste ha sido creada satisfactoriamente.",
+          buttons: [
+            {
+              text: "Ok",
+              role: "Cancel"
+            }
+          ]
+        });
+        loading.dismiss();
+        alert.present();
+        this.navCtrl.setRoot(HomePage);
       });
-    }else{
+    } else {
       let alert = this.alertCtrl.create({
-        title:"Creación de cita",
-        subTitle:"la cita que reservaste ha sido creada satisfactoriamente.",
-        buttons:[
+        title: "Creación de cita",
+        subTitle: "la cita que reservaste ha sido creada satisfactoriamente.",
+        buttons: [
           {
-            text:"Ok",
-            role:"Cancel"
+            text: "Ok",
+            role: "Cancel"
           }
         ]
       });
@@ -422,28 +423,28 @@ export class PayPage {
   }
 
 
-  nextDepe(){
+  nextDepe() {
     let id = this.depe._id
     console.log('el id que va para creacion de familiar:', id)
-    this.crudPvr.createParentDate(this.subida, id).subscribe(data=>{
+    this.crudPvr.createParentDate(this.subida, id).subscribe(data => {
       let loading = this.loadingCtrl.create({
-        content:"creando cita"
-    });
-    loading.present();
-          let alert = this.alertCtrl.create({
-            title:"Creación de cita",
-            subTitle:"la cita que reservaste ha sido creada satisfactoriamente.",
-            buttons:[
-              {
-                text:"Ok",
-                role:"Cancel"
-              }
-            ]
-          });
-          loading.dismiss();
-          alert.present();
-          this.navCtrl.setRoot(HomePage);
+        content: "creando cita"
       });
-      // queda pendiente el error, sino crea la cita
+      loading.present();
+      let alert = this.alertCtrl.create({
+        title: "Creación de cita",
+        subTitle: "la cita que reservaste ha sido creada satisfactoriamente.",
+        buttons: [
+          {
+            text: "Ok",
+            role: "Cancel"
+          }
+        ]
+      });
+      loading.dismiss();
+      alert.present();
+      this.navCtrl.setRoot(HomePage);
+    });
+    // queda pendiente el error, sino crea la cita
   }
 }

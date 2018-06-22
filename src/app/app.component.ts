@@ -1,3 +1,4 @@
+import { CodePage } from './../pages/code/code';
 import { MyparentsPage } from './../pages/myparents/myparents';
 import { CreateparentPage } from '../pages/createparent/createparent';
 import { CardPage } from './../pages/card/card';
@@ -41,6 +42,7 @@ export class MyApp {
   fin   = FinancerPage;
   crea  = CreateparentPage;
   mypa  = MyparentsPage;
+  code  = CodePage;
 
 
   constructor(public platform: Platform,
@@ -82,6 +84,7 @@ export class MyApp {
     localStorage.removeItem('passUser');
     localStorage.removeItem('authorization');
     localStorage.removeItem('role');
+    localStorage.removeItem('patientName');
     this.userToken = null;
     this.menu.setRoot(LoginPage);
     this.menuCtrl.close();

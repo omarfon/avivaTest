@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { DependentsProvider } from '../../providers/dependents/dependents';
+import { CrudparentProvider } from '../../providers/crudparent/crudparent';
 
 
 @Component({
@@ -14,11 +15,14 @@ export class MyparentsPage {
   dependens;
 
   public formFamily: FormGroup;
+  public createParents;
+  public parents;
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
               public fb: FormBuilder,
-              public dependentsPvr: DependentsProvider) {
+              public dependentsPvr: DependentsProvider,
+              public crudPvr: CrudparentProvider) {
 
                 this.dependentsPvr.getDependens().subscribe(data =>{
                  this.dependens = data;
@@ -46,6 +50,39 @@ export class MyparentsPage {
   showForm(){
     this.openForm = !this.openForm;
     // this.openForm = true;
+  }
+
+  saveData(){
+    let datos = this.formFamily.value;
+    let data:any ={
+        relation :{
+          id : 4,
+          name : datos.kindred
+        },
+        name : datos.name,
+        surname1 : datos.paternal_surname,
+        surname2 : datos.maternal_surname,
+        birthdate : datos.date_of_birth,
+        gender : {
+          id :2,
+          name: datos.gender
+        },
+        documentType : {
+          id: 1,
+          name:datos.type_document
+        },
+        documentNumber : datos.dni
+      }
+
+
+    this.crudPvr.createParent(data).subscribe(data =>{
+      this.createParents = data;
+        this.dependentsPvr.getDependens().subscribe(dat =>{
+          this.parents = dat;
+          console.log(this.parents);
+      this.openForm = false;
+        });
+    });
   }
 
 }

@@ -15,7 +15,7 @@
 
     <h4 class="registroDeUsuarioTitulo">Completa tu registro para obtener una cuenta...así de facil..</h4>
 
-    <form [formGroup]="registerForm" (ngSubmit)="registrarUsuario(registerForm.value)" role="form" novalidate>
+    <form [formGroup]="registerForm" (ngSubmit)="registerNewUser(registerForm.value)"  novalidate>
 
         <ion-row>
             <ion-item>
@@ -40,9 +40,9 @@
                 <ion-item>
                     <ion-label floating>Sexo:</ion-label>
                     <ion-select formControlName="gender" name="gender">
-                        <ion-option value=1>Indistinto</ion-option>
-                        <ion-option value=2>Hombre</ion-option>
-                        <ion-option value=3>Mujer</ion-option>
+                        <!-- <ion-option value=1>Indistinto</ion-option> -->
+                        <ion-option value="HOMBRE">Hombre</ion-option>
+                        <!-- <ion-option value=3>Mujer</ion-option> -->
                     </ion-select>
                     <p color="danger" ion-text *ngIf="registerForm.get('gender').hasError('required')">Genero requerido</p>
                 </ion-item>
@@ -62,7 +62,7 @@
                 <ion-item>
                     <ion-label stacked>Tipo de documento:</ion-label>
                     <ion-select [(ngModel)]="change" formControlName="documentType" name="type_document">
-                        <ion-option value=1>D.N.I</ion-option>
+                        <ion-option value=D.N.I>D.N.I</ion-option>
                         <ion-option value=2>Pasaporte</ion-option>
                         <ion-option value=3>C.E.</ion-option>
                         <ion-option value=4>No Tiene</ion-option>
@@ -74,7 +74,7 @@
                 <ion-item>
                     <ion-label stacked>Tipo de documento:</ion-label>
                     <ion-input *ngIf="change == 3" placeholder="Nº de Carne" type="tel" minlength=12 maxlength=12 formControlName="documentNumber" name="dni" stacked></ion-input>
-                    <ion-input *ngIf="change == 1" placeholder="Nº de Dni" type="number" formControlName="documentNumber" minlength=8 maxlength=8 name="dni" stacked></ion-input>
+                    <ion-input *ngIf="change == 'D.N.I'" placeholder="Nº de Dni" type="number" formControlName="documentNumber" minlength=8 maxlength=8 name="dni" stacked></ion-input>
                     <ion-input *ngIf="change == 2" placeholder="Nº de Pasaporte" type="number" formControlName="documentNumber" minlength=12 maxlength=12 name="dni" stacked></ion-input>
                     <!-- <p color="danger" ion-text *ngIf="registerForm.get('dni').hasError('required')">DNI requerido</p> -->
                 </ion-item>

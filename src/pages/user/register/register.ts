@@ -3,6 +3,10 @@ import { NavController, NavParams, AlertController } from 'ionic-angular';
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { LoginPage } from '../login/login';
 import { UserProvider } from '../../../providers/user/user';
+import { CrudparentProvider } from '../../../providers/crudparent/crudparent';
+import * as shajs from 'sha.js';
+import { CodePage } from '../../code/code';
+
 
 @Component({
   selector: 'page-register',
@@ -16,9 +20,14 @@ export class RegisterPage {
   private pageFrom;
   private headquarterId;
   private specialty;
-  private doctor;
   private date;
-  private hour;
+
+  private hora;
+  private available;
+  private doctor;
+  private texto;
+
+  private resolve;
 
 cambio:boolean = false;
 
@@ -26,16 +35,15 @@ cambio:boolean = false;
               public navParams: NavParams,
               public alertCtrl: AlertController,
               public fb: FormBuilder,
-              public userProvider: UserProvider) {
+              public userProvider: UserProvider,
+              public crudPvr: CrudparentProvider) {
 
-    // if(navParams.get('pageFrom')){
-    //   this.headquarterId = navParams.get('headquarter');
-    //   this.specialty = navParams.get('specialty');
-    //   this.pageFrom = navParams.get('pageFrom');
-    //   this.doctor = navParams.get('doctor');
-    //   this.date = navParams.get('date');
-    //   this.hour = navParams.get('hour');
-    // }
+    this.hora = this.navParams.get('hora');
+    this.doctor = this.navParams.get('doctor');
+    this.available = this.navParams.get('available');
+    this.texto = this.navParams.get('texto');
+    console.log(this.hora, this.available,this.doctor, this.texto);
+
 
     this.registerForm = this.fb.group({
       name: ['',  [ Validators.required ]],
@@ -53,22 +61,6 @@ cambio:boolean = false;
     // , {validator: this.areEqual('password', 'password_confirmation')}
   }
 
-  registrarUsuario(formModel){
-    this.userProvider.doSignUp(formModel)
-     .subscribe(
-        data => {
-          this.msg = "";
-          if(this.pageFrom == 'payment')
-          this.navCtrl.push(LoginPage)
-            // this.navCtrl.push(LoginPage, { headquarter: this.headquarterId, specialty: this.specialty, doctor: this.doctor, date: this.date, hour: this.hour, pageFrom: this.pageFrom })
-          else
-            this.navCtrl.push(LoginPage)
-        },
-        err => {
-          this.msg = err.errors.full_messages[0]
-        }
-      )
-  }
 
   goToLogin(){
     this.navCtrl.push(LoginPage);
@@ -83,17 +75,54 @@ cambio:boolean = false;
     terminos.present();
   }
 
-  areEqual(passwordKey: string, passwordConfirmationKey: string) {
-    return (group: FormGroup) => {
-      let passwordInput = group.controls[passwordKey];
-      let passwordConfirmationInput = group.controls[passwordConfirmationKey];
-      if (passwordInput.value !== passwordConfirmationInput.value) {
-        return passwordConfirmationInput.setErrors({notEquivalent: true})
-      }
-    }
-  }
+  // areEqual(passwordKey: string, passwordConfirmationKey: string) {
+  //   return (group: FormGroup) => {
+  //     let passwordInput = group.controls[passwordKey];
+  //     let passwordConfirmationInput = group.controls[passwordConfirmationKey];
+  //     if (passwordInput.value !== passwordConfirmationInput.value) {
+  //       return passwordConfirmationInput.setErrors({notEquivalent: true})
+  //     }
+  //   }
+  // }
 
   changue(){
     this.cambio = true;
   }
+
+    registerNewUser(){
+      let data = this.registerForm.value;
+      let datos:any ={
+        email          : data.email,
+        password       : shajs('sha256').update(data.password).digest('hex'),
+        name           : data.name,
+        surname1       : data.surname1,
+        surname2       : data.surname2,
+        birthdate      : data.birthdate,
+        gender         :{
+            id         : "2",
+            name       : data.gender
+        },
+        documentType   :{
+            id         : "1",
+            name       : data.documentType
+        },
+        documentNumber : data.documentNumber,
+        phone          : data.phone
+        // code           : "123"
+      }
+
+      let email = {email:datos.email}
+      this.crudPvr.validateEmail(email).subscribe(data =>{
+        this.resolve = data;
+        // console.log(this.resolve);
+        if(this.resolve.result == "ok"){
+          this.navCtrl.push(CodePage, {
+            datos: datos , hora : this.hora , availables: this.available , doctor: this.doctor
+          });
+        }else{
+            console.log("mantener por error hasta solucionar el error");
+        }
+      });
+    }
+
 }

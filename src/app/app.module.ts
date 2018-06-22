@@ -26,6 +26,7 @@ import { LoginPage } from './../pages/user/login/login';
 import { RegisterPage } from '../pages/user/register/register';
 import { ProfilePage } from '../pages/user/profile/profile';
 
+
 // aqui las importaciones de las paginas de cita
 import { SearchPage } from '../pages/appointment/search/search';
 import { FinancerPage } from '../pages/appointment/financer/financer';
@@ -81,6 +82,7 @@ import { PayuTestProvider } from '../providers/payu-test/payu-test';
 import { RecipesProvider } from '../providers/recipes/recipes';
 import { DependentsProvider } from '../providers/dependents/dependents';
 import { CrudparentProvider } from '../providers/crudparent/crudparent';
+import { CodePage } from '../pages/code/code';
 
 
 @NgModule({
@@ -105,7 +107,8 @@ import { CrudparentProvider } from '../providers/crudparent/crudparent';
     DatosPage,
     PayuPage,
     CreateparentPage,
-    MyparentsPage
+    MyparentsPage,
+    CodePage
   ],
   imports: [
     BrowserModule,
@@ -142,7 +145,8 @@ import { CrudparentProvider } from '../providers/crudparent/crudparent';
     ExpandableComponent,
     PayuPage,
     CreateparentPage,
-    MyparentsPage
+    MyparentsPage,
+    CodePage
   ],
   providers: [
     StatusBar,

@@ -15,7 +15,7 @@ export class HelloProvider {
   doctores: any[] = [];
 
  private SERVER = "http://dappapache02.eastus.cloudapp.azure.com:4200";
- private apiUrl = `${this.SERVER}/graphql`; 
+ private apiUrl = `${this.SERVER}/graphql`;
 
 
   constructor(public http: HttpClient) {
@@ -38,7 +38,7 @@ export class HelloProvider {
                       // console.log('resp2:', resp)
                       this.servicios = resp.data.centers[0].services;
                       return this.servicios;
-                    });           
+                    });
   }
 
 
@@ -81,5 +81,5 @@ export class HelloProvider {
                       return resp.data.centers[0].service.professionals;
                     });
   }
-  
+
 }

@@ -68,19 +68,19 @@ export class CreateparentPage {
         },
         documentNumber : datos.dni
       }
-    ;
+
 
     this.crudPvr.createParent(data).subscribe(data =>{
       this.createParents = data;
       this.viewCtrl.dismiss();
-      this.dependentsPvr.getDependens().subscribe(data =>{
-        this.parents = data;
-      });
+        this.dependentsPvr.getDependens().subscribe(dat =>{
+          this.parents = dat;
+          console.log(this.parents);
+        });
     });
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad CreateparentPage');
   }
-
 }
