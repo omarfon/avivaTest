@@ -8,6 +8,7 @@ import 'rxjs/add/operator/catch';
 export class DependentsProvider {
 
   private apiUrl = "http://dappapache02.eastus.cloudapp.azure.com:4200/api/v2/users/dependents";
+  private apiDelete = "http://dappapache02.eastus.cloudapp.azure.com:4200/api/v2/users/removecontact?userId=";
 
   constructor(public http: HttpClient) {
     console.log('Hello DependentsProvider Provider');
@@ -18,6 +19,15 @@ export class DependentsProvider {
     let headers = new HttpHeaders({"Authorization": authorization});
 
     return this.http.get(this.apiUrl, {headers})
+                    .map(data =>{
+                      return data;
+                    });
+  }
+  deleteDepend(id){
+    const authorization = localStorage.getItem('authorization');
+    let headers = new HttpHeaders({"Authorization": authorization});
+
+    return this.http.delete(this.apiDelete + `${id}`, {headers})
                     .map(data =>{
                       return data;
                     });

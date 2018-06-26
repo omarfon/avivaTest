@@ -214,4 +214,10 @@ export class FinancerPage {
     console.log('this subida de financer:',this.subida)
     payuModal.present();
   }
+
+  doSubmitData(){
+    let data = this.parents
+    this.viewCtrl.dismiss(data);
+    console.log('la data pasado por el modal:',data);
+  }
 }

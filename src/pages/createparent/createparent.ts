@@ -73,12 +73,11 @@ export class CreateparentPage {
 
     this.crudPvr.createParent(data).subscribe(data =>{
       this.createParents = data;
-      this.viewCtrl.dismiss();
-        this.dependentsPvr.getDependens().subscribe(dat =>{
-          this._parents = dat;
-          this.parents = this._parents
-          console.log(this.parents);
-        });
+      this.viewCtrl.dismiss(data);
+        // this.dependentsPvr.getDependens().subscribe(dat =>{
+        //   this._parents = dat;
+        //   console.log(this.parents);
+        // });
     });
   }
 

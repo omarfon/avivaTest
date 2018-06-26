@@ -1,3 +1,4 @@
+declare var Culqi: any;
 import { CrudparentProvider } from './../../../providers/crudparent/crudparent';
 import { HomePage } from './../../home/home';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -33,7 +34,7 @@ export class PayPage {
   private doctor; //doctor seleccionado//
   private available; //fecha seleccionada//
   private hora; // fecha seleccionada
-
+  private culqiData;
 
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
@@ -45,6 +46,10 @@ export class PayPage {
     public viewCtrl: ViewController,
     public loadingCtrl: LoadingController,
     public crudPvr: CrudparentProvider) {
+
+      console.log('culqi en pay:',Culqi);
+      this.culqiData = JSON.parse(localStorage.getItem('culqiData'));
+    console.log('culqi guardada en local', localStorage.getItem('culqiData'));
 
     this.pago = 'enLocal';
 
@@ -101,14 +106,18 @@ export class PayPage {
   openCulqi() {
 
     let appointment = this.currentAppointment;
-    console.log("this.openCulqi");
+    // console.log(Culqi);
+    // console.log('elprecio:',this.price)
+    // console.log("this.openCulqi");
     const settings = {
       title: 'Cita para',
       description: "prueba",
       currency: "PEN",
       amount: this.price * 100
     };
-    culqiData.amount = this.price * 100;
+    this.culqiData.amount = this.price * 100;
+    localStorage.setItem('culqiData', JSON.stringify(this.culqiData));
+    console.log('settings:', settings, this.culqiData);
     Culqi.settings(settings);
 
     let loadingPago = this.loadingCtrl.create({
@@ -118,8 +127,10 @@ export class PayPage {
 
     const i = setInterval(function () {
       // si se puede realizar el pago con culqi
-      if (culqiData.status == "ok") {
-        console.log('lo que me llega en culqiData:', culqiData);
+      this.culqiData = JSON.parse(localStorage.getItem('culqiData'));
+      console.log('this.culqiData:', this.culqiData)
+      if (this.culqiData.status == "ok") {
+        console.log('lo que me llega en culqiData:', this.culqiData);
         clearInterval(i);
         loadingPago.dismiss();
         let alert = this.alertCtrl.create({
@@ -136,7 +147,7 @@ export class PayPage {
         this.navCtrl.setRoot(HomePage);
       }
       // si no se puede realizar el pago con culqi
-      else if (culqiData.status == "error") {
+      else if (this.culqiData.status == "error") {
         const self = this;
         clearInterval(i);
         loadingPago.dismiss();
@@ -148,7 +159,8 @@ export class PayPage {
               role: 'destructive',
               handler: () => {
                 action.dismiss().then(() => {
-                  culqiData.status = "";
+                  this.culqiData.status = "";
+                  localStorage.setItem('culqiData', JSON.stringify(this.culqiData));
                   self.openCulqi();
                 });
                 return false;

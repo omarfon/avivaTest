@@ -51,9 +51,12 @@
     <script src="https://checkout.culqi.com/v2"></script>
 
     <script>
-        var SERVER = "http://dappapache02.eastus.cloudapp.azure.com:4000";
+        var SERVER = "http://dappapache02.eastus.cloudapp.azure.com:4200";
         </script>
     <script>
+      function updateCulqiData (culqiData){
+        localStorage.setItem('culqiData', JSON.stringify(culqiData));
+      }
         var culqiData = {
             source_id: "",
             amount: 0,
@@ -61,11 +64,14 @@
             email: "",
             status:""
         }
+        updateCulqiData(culqiData);
         var authorization = localStorage.getItem('authorization');
         function culqi(token) {
-            console.log("enviar datos de pago al servidor", token, Culqi.token);
+          culqiData = JSON.parse(localStorage.getItem('culqiData'));
+            console.log("enviar datos de pago al servidor", token, Culqi.token, culqiData);
+
             // const url = `${SERVER}/api/v2/ebooking/culqi-charges`;
-            const url = `http://dappapache02.eastus.cloudapp.azure.com:4200/api/v2/ebooking/hello`;
+            const url = `http://dappapache02.eastus.cloudapp.azure.com:4200/api/v2/ebooking/culqi-charges`;
             const headers = {
                 Accept: "application/json, text/plain, */*",
                 "Content-Type": "application/json",
@@ -74,6 +80,8 @@
             const method = "POST";
             culqiData.source_id = Culqi.token.id;
             culqiData.email = Culqi.token.email;
+            updateCulqiData(culqiData);
+            console.log(culqiData);
             return fetch(url, {
                 headers: new Headers(headers),
                 method,
@@ -84,9 +92,11 @@
                 console.log('Culqi charges ok', data);
                 if(data.data && data.data.object === "error"){
                     culqiData.status = "error";
+                    updateCulqiData(culqiData);
                 }
                 else{
                     culqiData.status = "ok";
+                    updateCulqiData(culqiData);
                 }
             })
             .catch(err => {

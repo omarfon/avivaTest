@@ -45,6 +45,9 @@ export class MyApp {
   code  = CodePage;
 
 
+
+
+
   constructor(public platform: Platform,
               public statusBar: StatusBar,
               public splashScreen: SplashScreen,

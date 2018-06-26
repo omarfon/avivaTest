@@ -1,3 +1,4 @@
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/compiler/src/core';
 import { MyparentsPage } from './../pages/myparents/myparents';
 import { CreateparentPage } from './../pages/createparent/createparent';
 import { PayuPage } from './../pages/payu/payu';
@@ -50,8 +51,6 @@ import { SchemaLink } from "apollo-link-schema";
 import { makeExecutableSchema, addMockFunctionsToSchema } from "graphql-tools";
 import { typeDefs } from "./schema";
 import { mocks } from "./mocks";
-
-
 // componentes para la busqueda
 
 
@@ -83,7 +82,6 @@ import { RecipesProvider } from '../providers/recipes/recipes';
 import { DependentsProvider } from '../providers/dependents/dependents';
 import { CrudparentProvider } from '../providers/crudparent/crudparent';
 import { CodePage } from '../pages/code/code';
-
 
 @NgModule({
   declarations: [
@@ -121,7 +119,7 @@ import { CodePage } from '../pages/code/code';
     HttpLinkModule,
     FormsModule,
     MaterialModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -146,7 +144,7 @@ import { CodePage } from '../pages/code/code';
     PayuPage,
     CreateparentPage,
     MyparentsPage,
-    CodePage
+    CodePage,
   ],
   providers: [
     StatusBar,

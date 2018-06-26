@@ -12,11 +12,13 @@ import { CrudparentProvider } from '../../providers/crudparent/crudparent';
 export class MyparentsPage {
 
   openForm: boolean = false;
-  dependens;
+  public dependens;
+  public _dependens;
 
   public formFamily: FormGroup;
   public createParents;
   public parents;
+
 
 
   constructor(public navCtrl: NavController,
@@ -81,6 +83,7 @@ export class MyparentsPage {
       this.createParents = data;
         this.dependentsPvr.getDependens().subscribe(dat =>{
           this.parents = dat;
+          this.dependens = this.parents;
           console.log(this.parents);
       this.openForm = false;
         });
@@ -89,6 +92,7 @@ export class MyparentsPage {
 
   deleteParent(depe){
     console.log('lo que me trae depe', depe);
+    let id = depe._id;
     let eliminado = depe.name;
     let alert = this.alertCtrl.create({
         title:`eliminar a ${eliminado}`,
@@ -97,7 +101,13 @@ export class MyparentsPage {
           {
             text: 'Ok',
             handler: () =>{
-              console.log('elimina cita');
+              this.dependentsPvr.deleteDepend(id).subscribe(data=>{
+                this.dependentsPvr.getDependens().subscribe(dato =>{
+                  this._dependens = dato;
+                  this.dependens = this._dependens;
+                  console.log('lo que es ahora parientes', this.dependens);
+                });
+              });
             }
           },
           {
@@ -112,7 +122,6 @@ export class MyparentsPage {
         ]
     });
     alert.present();
-
   }
 
 }
