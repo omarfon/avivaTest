@@ -194,6 +194,9 @@ export class FinancerPage {
   showDetailCreateParents(){
       let modal = this.modalCtrl.create(CreateparentPage);
       modal.present();
+      modal.onDidDismiss(data =>{
+       this.parents = data;
+      });
   }
 
   // función para ir a pagos

@@ -78,11 +78,11 @@ var CreateparentPage = (function () {
         };
         this.crudPvr.createParent(data).subscribe(function (data) {
             _this.createParents = data;
-            _this.viewCtrl.dismiss(data);
-            // this.dependentsPvr.getDependens().subscribe(dat =>{
-            //   this._parents = dat;
-            //   console.log(this.parents);
-            // });
+            _this.dependentsPvr.getDependens().subscribe(function (dat) {
+                _this._parents = dat;
+                console.log(_this.parents);
+                _this.viewCtrl.dismiss(_this._parents);
+            });
         });
     };
     CreateparentPage.prototype.ionViewDidLoad = function () {
@@ -3499,8 +3499,12 @@ var FinancerPage = (function () {
     };
     // mostrar el modal de la creación de familiares
     FinancerPage.prototype.showDetailCreateParents = function () {
+        var _this = this;
         var modal = this.modalCtrl.create(__WEBPACK_IMPORTED_MODULE_7__createparent_createparent__["a" /* CreateparentPage */]);
         modal.present();
+        modal.onDidDismiss(function (data) {
+            _this.parents = data;
+        });
     };
     // función para ir a pagos
     FinancerPage.prototype.goToPay = function () {
