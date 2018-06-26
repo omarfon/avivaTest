@@ -20,7 +20,7 @@
                 </ion-select>
             </ion-item> -->
             <ion-item>
-                <ion-label floating>Busca por Especialidad</ion-label>
+                <ion-label floating>Busca por especialidad</ion-label>
                 <ion-select [(ngModel)]="id" #specialty (ionChange)="onChangueSpecialty(specialty.value)">
                     <ion-option [value]="specialty.id" *ngFor="let specialty of servicios">{{specialty.description}}</ion-option>
                 </ion-select>
@@ -33,7 +33,7 @@
 
 
             <ion-item>
-                <ion-label floating>Busca por Fecha</ion-label>
+                <ion-label floating>Busca por fecha</ion-label>
                 <ion-input type="date" (ionChange)="getDoctorsPerDay()" [(ngModel)]="fromDate"></ion-input>
             </ion-item>
         </ion-list>

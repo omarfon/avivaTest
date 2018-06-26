@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, AlertController } from 'ionic-angular';
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { DependentsProvider } from '../../providers/dependents/dependents';
 import { CrudparentProvider } from '../../providers/crudparent/crudparent';
@@ -23,7 +23,8 @@ export class MyparentsPage {
               public navParams: NavParams,
               public fb: FormBuilder,
               public dependentsPvr: DependentsProvider,
-              public crudPvr: CrudparentProvider) {
+              public crudPvr: CrudparentProvider,
+              public alertCtrl: AlertController) {
 
                 this.dependentsPvr.getDependens().subscribe(data =>{
                  this.dependens = data;
@@ -84,6 +85,34 @@ export class MyparentsPage {
       this.openForm = false;
         });
     });
+  }
+
+  deleteParent(depe){
+    console.log('lo que me trae depe', depe);
+    let eliminado = depe.name;
+    let alert = this.alertCtrl.create({
+        title:`eliminar a ${eliminado}`,
+        message:'si desea continuar seleccione ok, sino es el caso cancele',
+        buttons: [
+          {
+            text: 'Ok',
+            handler: () =>{
+              console.log('elimina cita');
+            }
+          },
+          {
+            text:'Cancel',
+            role: 'Cancel',
+            handler: ()=>{
+              console.log('se le hace dismiss al alert');
+              // alert.dismiss();
+            }
+
+          }
+        ]
+    });
+    alert.present();
+
   }
 
 }

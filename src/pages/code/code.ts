@@ -1,7 +1,7 @@
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { CrudparentProvider } from '../../providers/crudparent/crudparent';
 import { Component } from '@angular/core';
-import {NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, Events } from 'ionic-angular';
 import { HomePage } from '../home/home';
 import { FinancerPage } from '../appointment/financer/financer';
 import { UserProvider } from '../../providers/user/user';
@@ -30,7 +30,8 @@ export class CodePage {
               public navParams: NavParams,
               public crudPvr: CrudparentProvider,
               public form: FormBuilder,
-              public userService: UserProvider,) {
+              public userService: UserProvider,
+              public events: Events) {
 
       this.hora = this.navParams.get('hora');
       this.available = this.navParams.get('available');
@@ -65,32 +66,31 @@ export class CodePage {
       this.createOk = data;
 
       console.log('data que viene de la creación:', data);
-     let email = this.createOk.data.midleware.email;
-     let password = this.createOk.data.midleware.passwordHash;
+     let email = this.createOk.data.middleware.email;
+     let password = this.createOk.data.middleware.passwordHash;
 
-     this.userService.doSignIn(email, password).subscribe(data =>{
+     this.userService.doSignInforNewRegister(email, password).subscribe(data =>{
         this.loginOk = data;
 
       console.log('datos que vienen del logueo: por registro:', this.loginOk);
-        // localStorage.setItem('idTokenUser', data.patientId);
-        // localStorage.setItem('emailUser', formulario.value.email);
-        // localStorage.setItem('authorization', data.authorization);
-        // localStorage.setItem('role', data.role);
-        // this.events.publish('user:logged', 'logged');
+        localStorage.setItem('idTokenUser', data.patientId);
+        localStorage.setItem('emailUser', data.emailPaciente);
+        localStorage.setItem('authorization', data.authorization);
+        localStorage.setItem('role', data.role);
+        this.events.publish('user:logged', 'logged');
+        if(this.hora ){
+          console.log(this.hora, this.doctor, this.available);
+          this.navCtrl.setRoot(FinancerPage, {
+            doctor: this.doctor,
+            available: this.available,
+            hora: this.hora
+          })
 
+        }else{
+            this.navCtrl.setRoot(HomePage)
+        }
+        console.log("pasó!!!");
      });
-
-
-      if(this.hora !== undefined){
-        this.navCtrl.setRoot(FinancerPage, {
-          doctor: this.doctor,
-          available: this.available,
-          hora: this.hora
-        } )
-      }else{
-          this.navCtrl.setRoot(HomePage)
-      }
-      console.log("pasó!!!");
     });
   }
 

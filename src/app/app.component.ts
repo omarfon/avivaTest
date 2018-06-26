@@ -86,7 +86,7 @@ export class MyApp {
     localStorage.removeItem('role');
     localStorage.removeItem('patientName');
     this.userToken = null;
-    this.menu.setRoot(LoginPage);
+    this.menu.setRoot(HomePage);
     this.menuCtrl.close();
   }
 

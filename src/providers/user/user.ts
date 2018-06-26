@@ -31,6 +31,14 @@ export class UserProvider {
                     .map(this.extractData)
                     .catch(this.handleError);
   }
+  doSignInforNewRegister(email, password){
+    let params = {email:email, password: password , captchaId: "4dbc9e7e-a921-4d1f-8e36-1021a670c47a"}
+    // let params = {email:email, password: shajs('sha256').update(password).digest('hex') }
+    return this.http.post(this.apiUrl + 'login', params)
+                    .map(this.extractData)
+                    .catch(this.handleError);
+  }
+
   diSignInPassword(email, password){
     let params = {email:email, password: password};
     return this.http.post(this.apiUrl + 'login', params)

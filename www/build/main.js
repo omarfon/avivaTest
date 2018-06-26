@@ -80,7 +80,8 @@ var CreateparentPage = (function () {
             _this.createParents = data;
             _this.viewCtrl.dismiss();
             _this.dependentsPvr.getDependens().subscribe(function (dat) {
-                _this.parents = dat;
+                _this._parents = dat;
+                _this.parents = _this._parents;
                 console.log(_this.parents);
             });
         });
@@ -92,14 +93,10 @@ var CreateparentPage = (function () {
         Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["m" /* Component */])({
             selector: 'page-createparent',template:/*ion-inline-start:"/proyectos/IonicPruebas/ApolloIonicVersionOne/src/pages/createparent/createparent.html"*/'\n<ion-content padding class="gris">\n<div class="cienPorCiento">\n  <ion-row>\n    <ion-col col-9>\n      <h3 class="tituloFamiliar">Creación de cuenta Adicional</h3>\n    </ion-col>\n    <ion-col col-3 class="contenedorButton">\n      <button ion-button class="buttonClose">\n        <ion-icon name="close" color="secondary" class="close" round (click)="closeModal()">\n        </ion-icon>\n      </button>\n    </ion-col>\n  </ion-row>\n</div>\n\n<form [formGroup]="formFamily" (ngSubmit)="saveData(formFamily.value)" novalidate>\n  <ion-list>\n    <ion-grid>\n\n      <ion-item>\n        <ion-label fixed>Nombres:</ion-label>\n        <ion-input formControlName="name" type="text" maxlength="40">\n        </ion-input>\n      </ion-item>\n\n<ion-item>\n  <ion-label fixed>Apellido Paterno:</ion-label>\n  <ion-input formControlName="paternal_surname" type="text" maxlength="40">\n  </ion-input>\n</ion-item>\n\n<ion-item>\n  <ion-label fixed>Apellido Materno:</ion-label>\n  <ion-input formControlName="maternal_surname" type="text" maxlength="40">\n  </ion-input>\n</ion-item>\n\n<ion-col col-12>\n  <ion-item>\n    <ion-label fixed>Nacimiento:</ion-label>\n    <ion-input type="date" formControlName="date_of_birth" name="date_of_birth"></ion-input>\n  </ion-item>\n</ion-col>\n\n<ion-row>\n  <ion-col col-6>\n    <ion-item>\n      <ion-label fixed>Sexo:</ion-label>\n      <ion-select formControlName="gender" name="gender">\n        <ion-option value="HOMBRE">M</ion-option>\n        <ion-option value="MUJER">F</ion-option>\n      </ion-select>\n    </ion-item>\n  </ion-col>\n\n\n<ion-col col-6>\n  <ion-item>\n    <ion-label fixed>Documento:</ion-label>\n    <ion-select [(ngModel)]="change" formControlName="type_document" name="type_document" floating>\n      <ion-option value="D.N.I">DNI</ion-option>\n      <ion-option value="carne_extranjeria">Carne de Extranjeria</ion-option>\n      <ion-option value="pasaporte">Pasaporte</ion-option>\n    </ion-select>\n  </ion-item>\n</ion-col>\n\n<ion-col col-12>\n  <ion-item>\n    <ion-label fixed> Nº Documento:</ion-label>\n    <ion-input *ngIf="change === \'D.N.I\'" type="number" formControlName="dni" name="dni" minlength="8" maxlength="8" floating></ion-input>\n    <ion-input *ngIf="change === \'carne_extranjeria\'" type="tel" formControlName="dni" name="dni" minlength="12" maxlength="12"\n      floating></ion-input>\n    <ion-input *ngIf="change === \'pasaporte\'" type="tel" formControlName="dni" name="dni" minlength="12" maxlength="12" floating></ion-input>\n    <!-- <p color="danger" ion-text *ngIf="registerForm.get(\'dni\').hasError(\'required\')">DNI requerido</p> -->\n  </ion-item>\n</ion-col>\n</ion-row>\n</ion-grid>\n\n<ion-col col-12>\n  <ion-item>\n    <ion-label fixed>Parentesco:</ion-label>\n    <ion-select formControlName="kindred" name="kindred" floating>\n      <!-- <ion-option value="father">Padre</ion-option>\n      <ion-option value="mother">Madre</ion-option> -->\n      <ion-option value="hijo/a">hijo/a</ion-option>\n      <!-- <ion-option value="daughter">Hija</ion-option>\n      <ion-option value="uncle">Tio</ion-option>\n      <ion-option value="aunt">Tia</ion-option> -->\n    </ion-select>\n  </ion-item>\n</ion-col>\n\n    </ion-list>\n\n    <button ion-button type="submit" [disabled]="!formFamily.valid" block color="secondary" class="guardaryContinuar">Guardar y continuar</button>\n  </form>\n\n</ion-content>\n'/*ion-inline-end:"/proyectos/IonicPruebas/ApolloIonicVersionOne/src/pages/createparent/createparent.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["j" /* NavController */],
-            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["k" /* NavParams */],
-            __WEBPACK_IMPORTED_MODULE_3__angular_forms__["b" /* FormBuilder */],
-            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["n" /* ViewController */],
-            __WEBPACK_IMPORTED_MODULE_4__providers_dependents_dependents__["a" /* DependentsProvider */],
-            __WEBPACK_IMPORTED_MODULE_0__providers_crudparent_crudparent__["a" /* CrudparentProvider */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["j" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["j" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["k" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["k" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__angular_forms__["b" /* FormBuilder */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__angular_forms__["b" /* FormBuilder */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["n" /* ViewController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["n" /* ViewController */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_4__providers_dependents_dependents__["a" /* DependentsProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__providers_dependents_dependents__["a" /* DependentsProvider */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_0__providers_crudparent_crudparent__["a" /* CrudparentProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__providers_crudparent_crudparent__["a" /* CrudparentProvider */]) === "function" && _f || Object])
     ], CreateparentPage);
     return CreateparentPage;
+    var _a, _b, _c, _d, _e, _f;
 }());
 
 //# sourceMappingURL=createparent.js.map
@@ -159,7 +156,7 @@ var AuthorizationPublicProvider = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(14);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__login_login__ = __webpack_require__(78);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__login_login__ = __webpack_require__(68);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_user_user__ = __webpack_require__(96);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__providers_crudparent_crudparent__ = __webpack_require__(66);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_sha_js__ = __webpack_require__(268);
@@ -262,7 +259,7 @@ var RegisterPage = (function () {
             // console.log(this.resolve);
             if (_this.resolve.result == "ok") {
                 _this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_7__code_code__["a" /* CodePage */], {
-                    datos: datos, hora: _this.hora, availables: _this.available, doctor: _this.doctor
+                    datos: datos, hora: _this.hora, available: _this.available, doctor: _this.doctor
                 });
             }
             else {
@@ -317,12 +314,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 var CodePage = (function () {
-    function CodePage(navCtrl, navParams, crudPvr, form, userService) {
+    function CodePage(navCtrl, navParams, crudPvr, form, userService, events) {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
         this.crudPvr = crudPvr;
         this.form = form;
         this.userService = userService;
+        this.events = events;
         this.hora = this.navParams.get('hora');
         this.available = this.navParams.get('available');
         this.doctor = this.navParams.get('doctor');
@@ -352,28 +350,29 @@ var CodePage = (function () {
         this.crudPvr.createNewUser(this.datos).subscribe(function (data) {
             _this.createOk = data;
             console.log('data que viene de la creación:', data);
-            var email = _this.createOk.data.midleware.email;
-            var password = _this.createOk.data.midleware.passwordHash;
-            _this.userService.doSignIn(email, password).subscribe(function (data) {
+            var email = _this.createOk.data.middleware.email;
+            var password = _this.createOk.data.middleware.passwordHash;
+            _this.userService.doSignInforNewRegister(email, password).subscribe(function (data) {
                 _this.loginOk = data;
                 console.log('datos que vienen del logueo: por registro:', _this.loginOk);
-                // localStorage.setItem('idTokenUser', data.patientId);
-                // localStorage.setItem('emailUser', formulario.value.email);
-                // localStorage.setItem('authorization', data.authorization);
-                // localStorage.setItem('role', data.role);
-                // this.events.publish('user:logged', 'logged');
+                localStorage.setItem('idTokenUser', data.patientId);
+                localStorage.setItem('emailUser', data.emailPaciente);
+                localStorage.setItem('authorization', data.authorization);
+                localStorage.setItem('role', data.role);
+                _this.events.publish('user:logged', 'logged');
+                if (_this.hora) {
+                    console.log(_this.hora, _this.doctor, _this.available);
+                    _this.navCtrl.setRoot(__WEBPACK_IMPORTED_MODULE_5__appointment_financer_financer__["a" /* FinancerPage */], {
+                        doctor: _this.doctor,
+                        available: _this.available,
+                        hora: _this.hora
+                    });
+                }
+                else {
+                    _this.navCtrl.setRoot(__WEBPACK_IMPORTED_MODULE_4__home_home__["a" /* HomePage */]);
+                }
+                console.log("pasó!!!");
             });
-            if (_this.hora !== undefined) {
-                _this.navCtrl.setRoot(__WEBPACK_IMPORTED_MODULE_5__appointment_financer_financer__["a" /* FinancerPage */], {
-                    doctor: _this.doctor,
-                    available: _this.available,
-                    hora: _this.hora
-                });
-            }
-            else {
-                _this.navCtrl.setRoot(__WEBPACK_IMPORTED_MODULE_4__home_home__["a" /* HomePage */]);
-            }
-            console.log("pasó!!!");
         });
     };
     CodePage.prototype.sendCode = function () {
@@ -393,7 +392,8 @@ var CodePage = (function () {
             __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["k" /* NavParams */],
             __WEBPACK_IMPORTED_MODULE_1__providers_crudparent_crudparent__["a" /* CrudparentProvider */],
             __WEBPACK_IMPORTED_MODULE_0__angular_forms__["b" /* FormBuilder */],
-            __WEBPACK_IMPORTED_MODULE_6__providers_user_user__["a" /* UserProvider */]])
+            __WEBPACK_IMPORTED_MODULE_6__providers_user_user__["a" /* UserProvider */],
+            __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["c" /* Events */]])
     ], CodePage);
     return CodePage;
 }());
@@ -509,7 +509,7 @@ var PayPage = (function () {
                 console.log('lo que me llega en culqiData:', culqiData);
                 clearInterval(i);
                 loadingPago.dismiss();
-                var alert_1 = this.alertCtrl.create({
+                var alert = this.alertCtrl.create({
                     title: "Creación de cita",
                     subTitle: "la cita que reservaste ha sido creada satisfactoriamente.",
                     buttons: [
@@ -519,7 +519,7 @@ var PayPage = (function () {
                         }
                     ]
                 });
-                alert_1.present();
+                alert.present();
                 this.navCtrl.setRoot(__WEBPACK_IMPORTED_MODULE_1__home_home__["a" /* HomePage */]);
             }
             else if (culqiData.status == "error") {
@@ -778,7 +778,7 @@ var PayPage = (function () {
             });
         }
         else {
-            var alert_2 = this.alertCtrl.create({
+            var alert = this.alertCtrl.create({
                 title: "Creación de cita",
                 subTitle: "la cita que reservaste ha sido creada satisfactoriamente.",
                 buttons: [
@@ -788,7 +788,7 @@ var PayPage = (function () {
                     }
                 ]
             });
-            alert_2.present();
+            alert.present();
         }
         this.navCtrl.setRoot(__WEBPACK_IMPORTED_MODULE_1__home_home__["a" /* HomePage */]);
     };
@@ -821,18 +821,10 @@ var PayPage = (function () {
         Object(__WEBPACK_IMPORTED_MODULE_3__angular_core__["m" /* Component */])({
             selector: 'page-pay',template:/*ion-inline-start:"/proyectos/IonicPruebas/ApolloIonicVersionOne/src/pages/appointment/pay/pay.html"*/'\n<ion-header>\n  <ion-navbar color="primary">\n    <ion-title>Pago</ion-title>\n  </ion-navbar>\n</ion-header>\n\n\n<ion-content >\n    <div class="container-gris" >\n      <h4 class="tituloPagos">Terminemos... escoge la forma en la que vas a pagar y listo...</h4>\n    <div padding>\n        <h4 text-center class="tituloMetodos">Metodos de Pago</h4>\n        <ion-segment [(ngModel)]="pago">\n            <ion-segment-button value="enLocal">\n                En local\n            </ion-segment-button>\n            <ion-segment-button value="enClinica">\n                Con tarjeta\n            </ion-segment-button>\n        </ion-segment>\n    </div>\n    <div [ngSwitch]="pago">\n        <ion-list *ngSwitchCase="\'enLocal\'">\n            <div class="resumen" >\n                    <ion-card>\n                            <div class="containerTextoPago">\n                                <h3 class="titleCardPago">Lo que has escogido hasta el momento</h3>\n                            </div>\n                            <div>\n                                <ion-row class="centrar">\n                                    <ion-col col-4>\n                                        <img id="profile-image" src="http://dappapache02.eastus.cloudapp.azure.com:4200/img/professionals/{{doctor.id}}.png">\n                                    </ion-col>\n                                    <ion-col col-8>\n                                        <h3 class="nombreDoctor" text-center>\n                                            {{ doctor.fullName }}\n                                        </h3>\n                                        <div class="sedeContainer">\n                                            <!-- <p bold class="izquierda">Sede:</p> -->\n                                            <p class="sede" type="text" disabled="true">Mendiola</p>\n                                        </div>\n                                    </ion-col>\n                                </ion-row>\n                            </div>\n                                <div  class="centrar">\n                                    <p class="izquierda">Especialidad:</p>\n                                    <p item-end class="blue" disabled="true"> {{ doctor.service.description }}</p>\n                                </div>\n                                <div  class="centrar">\n                                    <p class="izquierda">Fecha:</p>\n                                    <p item-end class="blue" disabled="true">\n                                        {{ available | date:\'EEEE d , MMMM \' : \'es\' }}\n                                    </p>\n                                </div>\n                                <div  class="centrar">\n                                    <p class="izquierda">Hora:</p>\n                                    <p class="blue" type="text" disabled="true">\n                                        {{ hora.hour | slice:0:5}}\n                                    </p>\n                                </div>\n                                <div  class="centrar">\n                                    <p class="izquierda">Costo:</p>\n                                    <p class="blue" item-end type="text" disabled="true">\n                                        {{ \'S/. \' + price + \'.00\'}}\n                                    </p>\n                                </div>\n                        </ion-card>\n            <div padding>\n                <button *ngIf="!depe"\n                        ion-button color="secondary"\n                        class="botonAccept"\n                        [class.button-disabled]="true"\n                        block\n                        (click)="next()">Confirmar cita</button>\n                <button *ngIf="depe"\n                      ion-button\n                      color="secondary"\n                      class="botonAccept"\n                      [class.button-disabled]="true"\n                      block (click)="nextDepe()">Confirmar cita</button>\n            </div>\n        </div>\n    </ion-list>\n        <ion-list *ngSwitchCase="\'enClinica\'">\n            <div class="resumen" >\n                <ion-card>\n                    <div class="containerTextoPago">\n                        <h3 class="titleCardPago">Lo que has escogido hasta el momento</h3>\n                    </div>\n                    <div>\n                        <ion-row class="centrar">\n                            <ion-col col-4>\n                                <img id="profile-image" src="http://dappapache02.eastus.cloudapp.azure.com:4200/img/professionals/{{doctor.id}}.png">\n                            </ion-col>\n                            <ion-col col-8>\n                                <h3 class="nombreDoctor" text-center>\n                                    {{ doctor.fullName }}\n                                </h3>\n                                <div class="sedeContainer">\n                                    <!-- <p bold class="izquierda">Sede:</p> -->\n                                    <p class="sede" type="text" disabled="true">Mendiola</p>\n                                </div>\n                            </ion-col>\n                        </ion-row>\n                    </div>\n                        <div  class="centrar">\n                            <p class="izquierda">Especialidad:</p>\n                            <p item-end class="blue" disabled="true"> {{ doctor.service.description }}</p>\n                        </div>\n                        <div  class="centrar">\n                            <p class="izquierda">Fecha:</p>\n                            <p item-end class="blue" disabled="true">\n                                {{ available | date:\'EEEE d , MMMM \' : \'es\' }}\n                            </p>\n                        </div>\n                        <div  class="centrar">\n                            <p class="izquierda">Hora:</p>\n                            <p class="blue" type="text" disabled="true">\n                                {{ hora.hour | slice:0:5}}\n                            </p>\n                        </div>\n                        <div  class="centrar">\n                            <p class="izquierda">Costo:</p>\n                            <p class="blue" item-end type="text" disabled="true">\n                                {{ \'S/. \' + price + \'.00\'}}\n                            </p>\n                        </div>\n                </ion-card>\n\n\n        <div padding>\n            <button ion-button color="secondary" class="botonAccept" [class.button-disabled]="true" block (click)="payCulqi()">Pagar ahora con culqi</button>\n        </div>\n\n        <!-- <div padding>\n                <button ion-button color="secondary" class="botonAccept" [class.button-disabled]="true" block (click)="openModalPayu()">Pagar ahora con payu</button>\n            </div> -->\n\n\n    </div>\n        </ion-list>\n    </div>\n</div>\n\n</ion-content>\n'/*ion-inline-end:"/proyectos/IonicPruebas/ApolloIonicVersionOne/src/pages/appointment/pay/pay.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_4_ionic_angular__["j" /* NavController */],
-            __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["k" /* NavParams */],
-            __WEBPACK_IMPORTED_MODULE_2__angular_forms__["b" /* FormBuilder */],
-            __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["b" /* AlertController */],
-            __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["i" /* ModalController */],
-            __WEBPACK_IMPORTED_MODULE_5__providers_appoinment_appoinment__["a" /* AppointmentProvider */],
-            __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["a" /* ActionSheetController */],
-            __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["n" /* ViewController */],
-            __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["g" /* LoadingController */],
-            __WEBPACK_IMPORTED_MODULE_0__providers_crudparent_crudparent__["a" /* CrudparentProvider */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["j" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["j" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["k" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["k" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__angular_forms__["b" /* FormBuilder */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_forms__["b" /* FormBuilder */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["b" /* AlertController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["b" /* AlertController */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["i" /* ModalController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["i" /* ModalController */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_5__providers_appoinment_appoinment__["a" /* AppointmentProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__providers_appoinment_appoinment__["a" /* AppointmentProvider */]) === "function" && _f || Object, typeof (_g = typeof __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["a" /* ActionSheetController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["a" /* ActionSheetController */]) === "function" && _g || Object, typeof (_h = typeof __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["n" /* ViewController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["n" /* ViewController */]) === "function" && _h || Object, typeof (_j = typeof __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["g" /* LoadingController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["g" /* LoadingController */]) === "function" && _j || Object, typeof (_k = typeof __WEBPACK_IMPORTED_MODULE_0__providers_crudparent_crudparent__["a" /* CrudparentProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__providers_crudparent_crudparent__["a" /* CrudparentProvider */]) === "function" && _k || Object])
     ], PayPage);
     return PayPage;
+    var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k;
 }());
 
 //# sourceMappingURL=pay.js.map
@@ -847,7 +839,7 @@ var PayPage = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(14);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_appoinment_appoinment__ = __webpack_require__(52);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__my_date_modal_my_date_modal__ = __webpack_require__(402);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__my_date_modal_my_date_modal__ = __webpack_require__(401);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -942,13 +934,14 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 var MyparentsPage = (function () {
-    function MyparentsPage(navCtrl, navParams, fb, dependentsPvr, crudPvr) {
+    function MyparentsPage(navCtrl, navParams, fb, dependentsPvr, crudPvr, alertCtrl) {
         var _this = this;
         this.navCtrl = navCtrl;
         this.navParams = navParams;
         this.fb = fb;
         this.dependentsPvr = dependentsPvr;
         this.crudPvr = crudPvr;
+        this.alertCtrl = alertCtrl;
         this.openForm = false;
         this.dependentsPvr.getDependens().subscribe(function (data) {
             _this.dependens = data;
@@ -1005,14 +998,43 @@ var MyparentsPage = (function () {
             });
         });
     };
+    MyparentsPage.prototype.deleteParent = function (depe) {
+        console.log('lo que me trae depe', depe);
+        var eliminado = depe.name;
+        var alert = this.alertCtrl.create({
+            title: "eliminar a " + eliminado,
+            message: 'si desea continuar seleccione ok, sino es el caso cancele',
+            buttons: [
+                {
+                    text: 'Ok',
+                    handler: function () {
+                        console.log('elimina cita');
+                    }
+                },
+                {
+                    text: 'Cancel',
+                    role: 'Cancel',
+                    handler: function () {
+                        console.log('se le hace dismiss al alert');
+                        // alert.dismiss();
+                    }
+                }
+            ]
+        });
+        alert.present();
+    };
     MyparentsPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-myparents',template:/*ion-inline-start:"/proyectos/IonicPruebas/ApolloIonicVersionOne/src/pages/myparents/myparents.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title>Mis Parientes</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n\n  <div>\n    <ion-card *ngFor="let depe of dependens">\n      <ion-row>\n        <ion-col col-4>\n          <ion-avatar>\n            <img src="../assets/imgs/avatars/nino.png" alt="">\n          </ion-avatar>\n        </ion-col>\n        <ion-col col-8>\n            <h3 class="nombrePariente">{{depe.name}}</h3>\n            <p class="parentesco">{{depe.type}}</p>\n            <p class="edad">7 años</p>\n        </ion-col>\n      </ion-row>\n    </ion-card>\n  </div>\n  <div class="center">\n    <button ion-button\n            color="secondary"\n            (click)="showForm()">\n     Agregar familiar\n    </button>\n  </div>\n  <div *ngIf="openForm == true"\n        class="down20">\n      <div class="cienPorCiento">\n        <h3 class="tituloFamiliar">Creación de cuenta Adicional</h3>\n      </div>\n\n      <form [formGroup]="formFamily" (ngSubmit)="saveData(formFamily.value)" novalidate>\n          <ion-list>\n            <ion-grid>\n\n              <ion-item>\n                <ion-label fixed>Nombres:</ion-label>\n                <ion-input formControlName="name" type="text" maxlength="40">\n                </ion-input>\n              </ion-item>\n\n        <ion-item>\n          <ion-label fixed>Apellido Paterno:</ion-label>\n          <ion-input formControlName="paternal_surname" type="text" maxlength="40">\n          </ion-input>\n        </ion-item>\n\n        <ion-item>\n          <ion-label fixed>Apellido Materno:</ion-label>\n          <ion-input formControlName="maternal_surname" type="text" maxlength="40">\n          </ion-input>\n        </ion-item>\n\n        <ion-col col-12>\n          <ion-item>\n            <ion-label fixed>Nacimiento:</ion-label>\n            <ion-input type="date" formControlName="date_of_birth" name="date_of_birth"></ion-input>\n          </ion-item>\n        </ion-col>\n\n        <ion-row>\n          <ion-col col-6>\n            <ion-item>\n              <ion-label fixed>Sexo:</ion-label>\n              <ion-select formControlName="gender" name="gender">\n                <ion-option value="HOMBRE">M</ion-option>\n                <ion-option value="MUJER">F</ion-option>\n              </ion-select>\n            </ion-item>\n          </ion-col>\n\n\n        <ion-col col-6>\n          <ion-item>\n            <ion-label fixed>Documento:</ion-label>\n            <ion-select [(ngModel)]="change" formControlName="type_document" name="type_document" floating>\n              <ion-option value="D.N.I">DNI</ion-option>\n              <ion-option value="carne_extranjeria">Carne de Extranjeria</ion-option>\n              <ion-option value="pasaporte">Pasaporte</ion-option>\n            </ion-select>\n          </ion-item>\n        </ion-col>\n\n        <ion-col col-12>\n          <ion-item>\n            <ion-label fixed> Nº Documento:</ion-label>\n            <ion-input *ngIf="change === \'D.N.I\'" type="number" formControlName="dni" name="dni" minlength="8" maxlength="8" floating></ion-input>\n            <ion-input *ngIf="change === \'carne_extranjeria\'" type="tel" formControlName="dni" name="dni" minlength="12" maxlength="12"\n              floating></ion-input>\n            <ion-input *ngIf="change === \'pasaporte\'" type="tel" formControlName="dni" name="dni" minlength="12" maxlength="12" floating></ion-input>\n            <!-- <p color="danger" ion-text *ngIf="registerForm.get(\'dni\').hasError(\'required\')">DNI requerido</p> -->\n          </ion-item>\n        </ion-col>\n        </ion-row>\n        </ion-grid>\n\n        <ion-col col-12>\n          <ion-item>\n            <ion-label fixed>Parentesco:</ion-label>\n            <ion-select formControlName="kindred" name="kindred" floating>\n              <!-- <ion-option value="father">Padre</ion-option>\n              <ion-option value="mother">Madre</ion-option> -->\n              <ion-option value="hijo/a">hijo/a</ion-option>\n              <!-- <ion-option value="daughter">Hija</ion-option>\n              <ion-option value="uncle">Tio</ion-option>\n              <ion-option value="aunt">Tia</ion-option> -->\n            </ion-select>\n          </ion-item>\n        </ion-col>\n\n            </ion-list>\n\n            <button ion-button type="submit" [disabled]="!formFamily.valid" block color="secondary" class="guardaryContinuar">Guardar y continuar</button>\n          </form>\n  </div>\n\n</ion-content>\n'/*ion-inline-end:"/proyectos/IonicPruebas/ApolloIonicVersionOne/src/pages/myparents/myparents.html"*/,
+            selector: 'page-myparents',template:/*ion-inline-start:"/proyectos/IonicPruebas/ApolloIonicVersionOne/src/pages/myparents/myparents.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title>Mis Parientes</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n\n  <div >\n    <ion-card *ngFor="let depe of dependens">\n      <ion-row>\n        <ion-col col-4>\n          <ion-avatar>\n            <img src="../assets/imgs/avatars/nino.png" alt="">\n          </ion-avatar>\n        </ion-col>\n        <ion-col col-6>\n            <h3 class="nombrePariente">{{depe.name}}</h3>\n            <p  *ngIf="depe.relation"\n                class="parentesco">{{depe.relation.name}}</p>\n            <p class="edad">7 años</p>\n        </ion-col>\n        <ion-col col-2>\n          <button ion-button\n                  clear\n                  (click)="deleteParent(depe)">\n            <ion-icon name="close"></ion-icon>\n          </button>\n        </ion-col>\n      </ion-row>\n    </ion-card>\n  </div>\n  <div class="center">\n    <button ion-button\n            color="secondary"\n            (click)="showForm()">\n     Agregar familiar\n    </button>\n  </div>\n  <div *ngIf="openForm == true"\n        class="down20">\n      <div class="cienPorCiento">\n        <h3 class="tituloFamiliar">Creación de cuenta Adicional</h3>\n      </div>\n\n      <form [formGroup]="formFamily" (ngSubmit)="saveData(formFamily.value)" novalidate>\n          <ion-list>\n            <ion-grid>\n\n              <ion-item>\n                <ion-label fixed>Nombres:</ion-label>\n                <ion-input formControlName="name" type="text" maxlength="40">\n                </ion-input>\n              </ion-item>\n\n        <ion-item>\n          <ion-label fixed>Apellido Paterno:</ion-label>\n          <ion-input formControlName="paternal_surname" type="text" maxlength="40">\n          </ion-input>\n        </ion-item>\n\n        <ion-item>\n          <ion-label fixed>Apellido Materno:</ion-label>\n          <ion-input formControlName="maternal_surname" type="text" maxlength="40">\n          </ion-input>\n        </ion-item>\n\n        <ion-col col-12>\n          <ion-item>\n            <ion-label fixed>Nacimiento:</ion-label>\n            <ion-input type="date" formControlName="date_of_birth" name="date_of_birth"></ion-input>\n          </ion-item>\n        </ion-col>\n\n        <ion-row>\n          <ion-col col-6>\n            <ion-item>\n              <ion-label fixed>Sexo:</ion-label>\n              <ion-select formControlName="gender" name="gender">\n                <ion-option value="HOMBRE">M</ion-option>\n                <ion-option value="MUJER">F</ion-option>\n              </ion-select>\n            </ion-item>\n          </ion-col>\n\n\n        <ion-col col-6>\n          <ion-item>\n            <ion-label fixed>Documento:</ion-label>\n            <ion-select [(ngModel)]="change" formControlName="type_document" name="type_document" floating>\n              <ion-option value="D.N.I">DNI</ion-option>\n              <ion-option value="carne_extranjeria">Carne de Extranjeria</ion-option>\n              <ion-option value="pasaporte">Pasaporte</ion-option>\n            </ion-select>\n          </ion-item>\n        </ion-col>\n\n        <ion-col col-12>\n          <ion-item>\n            <ion-label fixed> Nº Documento:</ion-label>\n            <ion-input *ngIf="change === \'D.N.I\'" type="number" formControlName="dni" name="dni" minlength="8" maxlength="8" floating></ion-input>\n            <ion-input *ngIf="change === \'carne_extranjeria\'" type="tel" formControlName="dni" name="dni" minlength="12" maxlength="12"\n              floating></ion-input>\n            <ion-input *ngIf="change === \'pasaporte\'" type="tel" formControlName="dni" name="dni" minlength="12" maxlength="12" floating></ion-input>\n            <!-- <p color="danger" ion-text *ngIf="registerForm.get(\'dni\').hasError(\'required\')">DNI requerido</p> -->\n          </ion-item>\n        </ion-col>\n        </ion-row>\n        </ion-grid>\n\n        <ion-col col-12>\n          <ion-item>\n            <ion-label fixed>Parentesco:</ion-label>\n            <ion-select formControlName="kindred" name="kindred" floating>\n              <!-- <ion-option value="father">Padre</ion-option>\n              <ion-option value="mother">Madre</ion-option> -->\n              <ion-option value="hijo/a">hijo/a</ion-option>\n              <!-- <ion-option value="daughter">Hija</ion-option>\n              <ion-option value="uncle">Tio</ion-option>\n              <ion-option value="aunt">Tia</ion-option> -->\n            </ion-select>\n          </ion-item>\n        </ion-col>\n\n            </ion-list>\n\n            <button ion-button type="submit" [disabled]="!formFamily.valid" block color="secondary" class="guardaryContinuar">Guardar y continuar</button>\n          </form>\n  </div>\n\n</ion-content>\n'/*ion-inline-end:"/proyectos/IonicPruebas/ApolloIonicVersionOne/src/pages/myparents/myparents.html"*/,
         }),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__angular_forms__["b" /* FormBuilder */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_forms__["b" /* FormBuilder */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_3__providers_dependents_dependents__["a" /* DependentsProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__providers_dependents_dependents__["a" /* DependentsProvider */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_4__providers_crudparent_crudparent__["a" /* CrudparentProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__providers_crudparent_crudparent__["a" /* CrudparentProvider */]) === "function" && _e || Object])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */],
+            __WEBPACK_IMPORTED_MODULE_2__angular_forms__["b" /* FormBuilder */],
+            __WEBPACK_IMPORTED_MODULE_3__providers_dependents_dependents__["a" /* DependentsProvider */],
+            __WEBPACK_IMPORTED_MODULE_4__providers_crudparent_crudparent__["a" /* CrudparentProvider */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */]])
     ], MyparentsPage);
     return MyparentsPage;
-    var _a, _b, _c, _d, _e;
 }());
 
 //# sourceMappingURL=myparents.js.map
@@ -1344,66 +1366,7 @@ var FinancierProvider = (function () {
 
 /***/ }),
 
-/***/ 272:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DatosPage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(14);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__user_login_login__ = __webpack_require__(78);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__card_card__ = __webpack_require__(67);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-
-var DatosPage = (function () {
-    function DatosPage(navCtrl, navParams, viewCtrl) {
-        this.navCtrl = navCtrl;
-        this.navParams = navParams;
-        this.viewCtrl = viewCtrl;
-        this.hora = navParams.get('hora');
-        this.available = navParams.get('available');
-        this.doctor = navParams.get('doctor');
-    }
-    DatosPage.prototype.ionViewDidLoad = function () {
-        console.log('ionViewDidLoad DatosPage');
-    };
-    DatosPage.prototype.goToLogin = function () {
-        this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_2__user_login_login__["a" /* LoginPage */], {
-            hora: this.hora,
-            available: this.available,
-            doctor: this.doctor
-        });
-        console.log('datos de datos:', this.hora, this.available, this.doctor);
-        //aqui tiene que ir el dismiss
-    };
-    DatosPage.prototype.goToCard = function () {
-        this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_3__card_card__["a" /* CardPage */]);
-    };
-    DatosPage = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-datos',template:/*ion-inline-start:"/proyectos/IonicPruebas/ApolloIonicVersionOne/src/pages/datos/datos.html"*/'<ion-content padding>\n    <h1>Modal de Datos</h1>\n\n    <img class="centrar" src="https://www.trybooking.com/media/3446/login-user-icon.png" alt="">\n    <hr>\n    <p>Para continuar necesitas iniciar Sesión</p>\n    <button ion-button block color="secondary" (click)="goToLogin()" class="botonPrimero">Ir a Login</button>\n    <!-- <button ion-button clear block (click)="goToCard()">Continuar buscando doctor</button> -->\n</ion-content>'/*ion-inline-end:"/proyectos/IonicPruebas/ApolloIonicVersionOne/src/pages/datos/datos.html"*/,
-        }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* ViewController */]])
-    ], DatosPage);
-    return DatosPage;
-}());
-
-//# sourceMappingURL=datos.js.map
-
-/***/ }),
-
-/***/ 393:
+/***/ 392:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1412,7 +1375,7 @@ var DatosPage = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__ = __webpack_require__(51);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_filter__ = __webpack_require__(394);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_filter__ = __webpack_require__(393);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_filter___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_filter__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_catch__ = __webpack_require__(58);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_catch___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_catch__);
@@ -1508,7 +1471,7 @@ var HelloProvider = (function () {
 
 /***/ }),
 
-/***/ 400:
+/***/ 399:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1557,7 +1520,7 @@ var ProfilePage = (function () {
 
 /***/ }),
 
-/***/ 401:
+/***/ 400:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1596,7 +1559,7 @@ var IrmPage = (function () {
 
 /***/ }),
 
-/***/ 402:
+/***/ 401:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1679,12 +1642,12 @@ var MyDateModalPage = (function () {
 
 /***/ }),
 
-/***/ 403:
+/***/ 402:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return RecipesPage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__providers_recipes_recipes__ = __webpack_require__(404);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__providers_recipes_recipes__ = __webpack_require__(403);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(14);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -1734,7 +1697,7 @@ var RecipesPage = (function () {
 
 /***/ }),
 
-/***/ 404:
+/***/ 403:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1747,7 +1710,7 @@ var RecipesPage = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_catch___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_catch__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_map__ = __webpack_require__(51);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_map__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_filter__ = __webpack_require__(394);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_filter__ = __webpack_require__(393);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_filter___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_filter__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -1819,13 +1782,13 @@ var RecipesProvider = (function () {
 
 /***/ }),
 
-/***/ 436:
+/***/ 435:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__ = __webpack_require__(437);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__app_module__ = __webpack_require__(450);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__ = __webpack_require__(436);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__app_module__ = __webpack_require__(449);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_hammerjs__ = __webpack_require__(606);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_hammerjs___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_hammerjs__);
 
@@ -1836,7 +1799,7 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 
 /***/ }),
 
-/***/ 450:
+/***/ 449:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1847,44 +1810,44 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_platform_browser__ = __webpack_require__(29);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_ionic_angular__ = __webpack_require__(14);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__ionic_native_splash_screen__ = __webpack_require__(395);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__ionic_native_status_bar__ = __webpack_require__(399);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__ionic_native_splash_screen__ = __webpack_require__(394);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__ionic_native_status_bar__ = __webpack_require__(398);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__angular_http__ = __webpack_require__(97);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__angular_common_locales_es__ = __webpack_require__(506);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__angular_common_locales_es__ = __webpack_require__(505);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__angular_common__ = __webpack_require__(5);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__app_component__ = __webpack_require__(507);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__app_component__ = __webpack_require__(506);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__pages_home_home__ = __webpack_require__(59);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__pages_card_card__ = __webpack_require__(67);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__pages_charge_charge__ = __webpack_require__(508);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__pages_user_login_login__ = __webpack_require__(78);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__pages_charge_charge__ = __webpack_require__(507);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__pages_user_login_login__ = __webpack_require__(68);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__pages_user_register_register__ = __webpack_require__(153);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__pages_user_profile_profile__ = __webpack_require__(400);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__pages_appointment_search_search__ = __webpack_require__(509);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__pages_user_profile_profile__ = __webpack_require__(399);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__pages_appointment_search_search__ = __webpack_require__(508);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__pages_appointment_financer_financer__ = __webpack_require__(79);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__pages_appointment_pay_pay__ = __webpack_require__(155);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__pages_optionals_devs_my_dates_my_dates__ = __webpack_require__(157);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__pages_optionals_devs_irm_irm__ = __webpack_require__(401);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__pages_optionals_devs_recipes_recipes__ = __webpack_require__(403);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__pages_optionals_devs_recomendations_recomendations__ = __webpack_require__(510);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__pages_optionals_devs_my_dates_my_date_modal_my_date_modal__ = __webpack_require__(402);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__pages_optionals_devs_irm_irm__ = __webpack_require__(400);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__pages_optionals_devs_recipes_recipes__ = __webpack_require__(402);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__pages_optionals_devs_recomendations_recomendations__ = __webpack_require__(509);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__pages_optionals_devs_my_dates_my_date_modal_my_date_modal__ = __webpack_require__(401);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__angular_common_http__ = __webpack_require__(42);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_27_apollo_angular_link_http__ = __webpack_require__(511);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_28_apollo_cache_inmemory__ = __webpack_require__(526);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_29_apollo_angular__ = __webpack_require__(535);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_27_apollo_angular_link_http__ = __webpack_require__(510);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_28_apollo_cache_inmemory__ = __webpack_require__(525);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_29_apollo_angular__ = __webpack_require__(534);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_30__providers_financier_financier__ = __webpack_require__(271);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_31__providers_user_user__ = __webpack_require__(96);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_32__providers_appoinment_appoinment__ = __webpack_require__(52);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_33__providers_authorization_public_authorization_public__ = __webpack_require__(152);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_34__angular_forms__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_35_ng2_search_filter__ = __webpack_require__(560);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_36__components_expandable_expandable_component__ = __webpack_require__(561);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_37__angular_platform_browser_animations__ = __webpack_require__(562);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_38__material_module__ = __webpack_require__(564);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_39__pages_appointment_master_detail_master_detail__ = __webpack_require__(605);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_40__providers_hello_hello__ = __webpack_require__(393);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_41__pages_datos_datos__ = __webpack_require__(272);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_35_ng2_search_filter__ = __webpack_require__(559);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_36__components_expandable_expandable_component__ = __webpack_require__(560);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_37__angular_platform_browser_animations__ = __webpack_require__(561);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_38__material_module__ = __webpack_require__(563);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_39__pages_appointment_master_detail_master_detail__ = __webpack_require__(604);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_40__providers_hello_hello__ = __webpack_require__(392);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_41__pages_datos_datos__ = __webpack_require__(605);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_42__providers_payu_test_payu_test__ = __webpack_require__(267);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_43__providers_recipes_recipes__ = __webpack_require__(404);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_43__providers_recipes_recipes__ = __webpack_require__(403);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_44__providers_dependents_dependents__ = __webpack_require__(95);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_45__providers_crudparent_crudparent__ = __webpack_require__(66);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_46__pages_code_code__ = __webpack_require__(154);
@@ -2054,248 +2017,248 @@ var AppModule = (function () {
 
 /***/ }),
 
-/***/ 499:
+/***/ 498:
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
-	"./af": 274,
-	"./af.js": 274,
-	"./ar": 275,
-	"./ar-dz": 276,
-	"./ar-dz.js": 276,
-	"./ar-kw": 277,
-	"./ar-kw.js": 277,
-	"./ar-ly": 278,
-	"./ar-ly.js": 278,
-	"./ar-ma": 279,
-	"./ar-ma.js": 279,
-	"./ar-sa": 280,
-	"./ar-sa.js": 280,
-	"./ar-tn": 281,
-	"./ar-tn.js": 281,
-	"./ar.js": 275,
-	"./az": 282,
-	"./az.js": 282,
-	"./be": 283,
-	"./be.js": 283,
-	"./bg": 284,
-	"./bg.js": 284,
-	"./bm": 285,
-	"./bm.js": 285,
-	"./bn": 286,
-	"./bn.js": 286,
-	"./bo": 287,
-	"./bo.js": 287,
-	"./br": 288,
-	"./br.js": 288,
-	"./bs": 289,
-	"./bs.js": 289,
-	"./ca": 290,
-	"./ca.js": 290,
-	"./cs": 291,
-	"./cs.js": 291,
-	"./cv": 292,
-	"./cv.js": 292,
-	"./cy": 293,
-	"./cy.js": 293,
-	"./da": 294,
-	"./da.js": 294,
-	"./de": 295,
-	"./de-at": 296,
-	"./de-at.js": 296,
-	"./de-ch": 297,
-	"./de-ch.js": 297,
-	"./de.js": 295,
-	"./dv": 298,
-	"./dv.js": 298,
-	"./el": 299,
-	"./el.js": 299,
-	"./en-au": 300,
-	"./en-au.js": 300,
-	"./en-ca": 301,
-	"./en-ca.js": 301,
-	"./en-gb": 302,
-	"./en-gb.js": 302,
-	"./en-ie": 303,
-	"./en-ie.js": 303,
-	"./en-nz": 304,
-	"./en-nz.js": 304,
-	"./eo": 305,
-	"./eo.js": 305,
-	"./es": 306,
-	"./es-do": 307,
-	"./es-do.js": 307,
-	"./es-us": 308,
-	"./es-us.js": 308,
-	"./es.js": 306,
-	"./et": 309,
-	"./et.js": 309,
-	"./eu": 310,
-	"./eu.js": 310,
-	"./fa": 311,
-	"./fa.js": 311,
-	"./fi": 312,
-	"./fi.js": 312,
-	"./fo": 313,
-	"./fo.js": 313,
-	"./fr": 314,
-	"./fr-ca": 315,
-	"./fr-ca.js": 315,
-	"./fr-ch": 316,
-	"./fr-ch.js": 316,
-	"./fr.js": 314,
-	"./fy": 317,
-	"./fy.js": 317,
-	"./gd": 318,
-	"./gd.js": 318,
-	"./gl": 319,
-	"./gl.js": 319,
-	"./gom-latn": 320,
-	"./gom-latn.js": 320,
-	"./gu": 321,
-	"./gu.js": 321,
-	"./he": 322,
-	"./he.js": 322,
-	"./hi": 323,
-	"./hi.js": 323,
-	"./hr": 324,
-	"./hr.js": 324,
-	"./hu": 325,
-	"./hu.js": 325,
-	"./hy-am": 326,
-	"./hy-am.js": 326,
-	"./id": 327,
-	"./id.js": 327,
-	"./is": 328,
-	"./is.js": 328,
-	"./it": 329,
-	"./it.js": 329,
-	"./ja": 330,
-	"./ja.js": 330,
-	"./jv": 331,
-	"./jv.js": 331,
-	"./ka": 332,
-	"./ka.js": 332,
-	"./kk": 333,
-	"./kk.js": 333,
-	"./km": 334,
-	"./km.js": 334,
-	"./kn": 335,
-	"./kn.js": 335,
-	"./ko": 336,
-	"./ko.js": 336,
-	"./ky": 337,
-	"./ky.js": 337,
-	"./lb": 338,
-	"./lb.js": 338,
-	"./lo": 339,
-	"./lo.js": 339,
-	"./lt": 340,
-	"./lt.js": 340,
-	"./lv": 341,
-	"./lv.js": 341,
-	"./me": 342,
-	"./me.js": 342,
-	"./mi": 343,
-	"./mi.js": 343,
-	"./mk": 344,
-	"./mk.js": 344,
-	"./ml": 345,
-	"./ml.js": 345,
-	"./mr": 346,
-	"./mr.js": 346,
-	"./ms": 347,
-	"./ms-my": 348,
-	"./ms-my.js": 348,
-	"./ms.js": 347,
-	"./mt": 349,
-	"./mt.js": 349,
-	"./my": 350,
-	"./my.js": 350,
-	"./nb": 351,
-	"./nb.js": 351,
-	"./ne": 352,
-	"./ne.js": 352,
-	"./nl": 353,
-	"./nl-be": 354,
-	"./nl-be.js": 354,
-	"./nl.js": 353,
-	"./nn": 355,
-	"./nn.js": 355,
-	"./pa-in": 356,
-	"./pa-in.js": 356,
-	"./pl": 357,
-	"./pl.js": 357,
-	"./pt": 358,
-	"./pt-br": 359,
-	"./pt-br.js": 359,
-	"./pt.js": 358,
-	"./ro": 360,
-	"./ro.js": 360,
-	"./ru": 361,
-	"./ru.js": 361,
-	"./sd": 362,
-	"./sd.js": 362,
-	"./se": 363,
-	"./se.js": 363,
-	"./si": 364,
-	"./si.js": 364,
-	"./sk": 365,
-	"./sk.js": 365,
-	"./sl": 366,
-	"./sl.js": 366,
-	"./sq": 367,
-	"./sq.js": 367,
-	"./sr": 368,
-	"./sr-cyrl": 369,
-	"./sr-cyrl.js": 369,
-	"./sr.js": 368,
-	"./ss": 370,
-	"./ss.js": 370,
-	"./sv": 371,
-	"./sv.js": 371,
-	"./sw": 372,
-	"./sw.js": 372,
-	"./ta": 373,
-	"./ta.js": 373,
-	"./te": 374,
-	"./te.js": 374,
-	"./tet": 375,
-	"./tet.js": 375,
-	"./th": 376,
-	"./th.js": 376,
-	"./tl-ph": 377,
-	"./tl-ph.js": 377,
-	"./tlh": 378,
-	"./tlh.js": 378,
-	"./tr": 379,
-	"./tr.js": 379,
-	"./tzl": 380,
-	"./tzl.js": 380,
-	"./tzm": 381,
-	"./tzm-latn": 382,
-	"./tzm-latn.js": 382,
-	"./tzm.js": 381,
-	"./uk": 383,
-	"./uk.js": 383,
-	"./ur": 384,
-	"./ur.js": 384,
-	"./uz": 385,
-	"./uz-latn": 386,
-	"./uz-latn.js": 386,
-	"./uz.js": 385,
-	"./vi": 387,
-	"./vi.js": 387,
-	"./x-pseudo": 388,
-	"./x-pseudo.js": 388,
-	"./yo": 389,
-	"./yo.js": 389,
-	"./zh-cn": 390,
-	"./zh-cn.js": 390,
-	"./zh-hk": 391,
-	"./zh-hk.js": 391,
-	"./zh-tw": 392,
-	"./zh-tw.js": 392
+	"./af": 273,
+	"./af.js": 273,
+	"./ar": 274,
+	"./ar-dz": 275,
+	"./ar-dz.js": 275,
+	"./ar-kw": 276,
+	"./ar-kw.js": 276,
+	"./ar-ly": 277,
+	"./ar-ly.js": 277,
+	"./ar-ma": 278,
+	"./ar-ma.js": 278,
+	"./ar-sa": 279,
+	"./ar-sa.js": 279,
+	"./ar-tn": 280,
+	"./ar-tn.js": 280,
+	"./ar.js": 274,
+	"./az": 281,
+	"./az.js": 281,
+	"./be": 282,
+	"./be.js": 282,
+	"./bg": 283,
+	"./bg.js": 283,
+	"./bm": 284,
+	"./bm.js": 284,
+	"./bn": 285,
+	"./bn.js": 285,
+	"./bo": 286,
+	"./bo.js": 286,
+	"./br": 287,
+	"./br.js": 287,
+	"./bs": 288,
+	"./bs.js": 288,
+	"./ca": 289,
+	"./ca.js": 289,
+	"./cs": 290,
+	"./cs.js": 290,
+	"./cv": 291,
+	"./cv.js": 291,
+	"./cy": 292,
+	"./cy.js": 292,
+	"./da": 293,
+	"./da.js": 293,
+	"./de": 294,
+	"./de-at": 295,
+	"./de-at.js": 295,
+	"./de-ch": 296,
+	"./de-ch.js": 296,
+	"./de.js": 294,
+	"./dv": 297,
+	"./dv.js": 297,
+	"./el": 298,
+	"./el.js": 298,
+	"./en-au": 299,
+	"./en-au.js": 299,
+	"./en-ca": 300,
+	"./en-ca.js": 300,
+	"./en-gb": 301,
+	"./en-gb.js": 301,
+	"./en-ie": 302,
+	"./en-ie.js": 302,
+	"./en-nz": 303,
+	"./en-nz.js": 303,
+	"./eo": 304,
+	"./eo.js": 304,
+	"./es": 305,
+	"./es-do": 306,
+	"./es-do.js": 306,
+	"./es-us": 307,
+	"./es-us.js": 307,
+	"./es.js": 305,
+	"./et": 308,
+	"./et.js": 308,
+	"./eu": 309,
+	"./eu.js": 309,
+	"./fa": 310,
+	"./fa.js": 310,
+	"./fi": 311,
+	"./fi.js": 311,
+	"./fo": 312,
+	"./fo.js": 312,
+	"./fr": 313,
+	"./fr-ca": 314,
+	"./fr-ca.js": 314,
+	"./fr-ch": 315,
+	"./fr-ch.js": 315,
+	"./fr.js": 313,
+	"./fy": 316,
+	"./fy.js": 316,
+	"./gd": 317,
+	"./gd.js": 317,
+	"./gl": 318,
+	"./gl.js": 318,
+	"./gom-latn": 319,
+	"./gom-latn.js": 319,
+	"./gu": 320,
+	"./gu.js": 320,
+	"./he": 321,
+	"./he.js": 321,
+	"./hi": 322,
+	"./hi.js": 322,
+	"./hr": 323,
+	"./hr.js": 323,
+	"./hu": 324,
+	"./hu.js": 324,
+	"./hy-am": 325,
+	"./hy-am.js": 325,
+	"./id": 326,
+	"./id.js": 326,
+	"./is": 327,
+	"./is.js": 327,
+	"./it": 328,
+	"./it.js": 328,
+	"./ja": 329,
+	"./ja.js": 329,
+	"./jv": 330,
+	"./jv.js": 330,
+	"./ka": 331,
+	"./ka.js": 331,
+	"./kk": 332,
+	"./kk.js": 332,
+	"./km": 333,
+	"./km.js": 333,
+	"./kn": 334,
+	"./kn.js": 334,
+	"./ko": 335,
+	"./ko.js": 335,
+	"./ky": 336,
+	"./ky.js": 336,
+	"./lb": 337,
+	"./lb.js": 337,
+	"./lo": 338,
+	"./lo.js": 338,
+	"./lt": 339,
+	"./lt.js": 339,
+	"./lv": 340,
+	"./lv.js": 340,
+	"./me": 341,
+	"./me.js": 341,
+	"./mi": 342,
+	"./mi.js": 342,
+	"./mk": 343,
+	"./mk.js": 343,
+	"./ml": 344,
+	"./ml.js": 344,
+	"./mr": 345,
+	"./mr.js": 345,
+	"./ms": 346,
+	"./ms-my": 347,
+	"./ms-my.js": 347,
+	"./ms.js": 346,
+	"./mt": 348,
+	"./mt.js": 348,
+	"./my": 349,
+	"./my.js": 349,
+	"./nb": 350,
+	"./nb.js": 350,
+	"./ne": 351,
+	"./ne.js": 351,
+	"./nl": 352,
+	"./nl-be": 353,
+	"./nl-be.js": 353,
+	"./nl.js": 352,
+	"./nn": 354,
+	"./nn.js": 354,
+	"./pa-in": 355,
+	"./pa-in.js": 355,
+	"./pl": 356,
+	"./pl.js": 356,
+	"./pt": 357,
+	"./pt-br": 358,
+	"./pt-br.js": 358,
+	"./pt.js": 357,
+	"./ro": 359,
+	"./ro.js": 359,
+	"./ru": 360,
+	"./ru.js": 360,
+	"./sd": 361,
+	"./sd.js": 361,
+	"./se": 362,
+	"./se.js": 362,
+	"./si": 363,
+	"./si.js": 363,
+	"./sk": 364,
+	"./sk.js": 364,
+	"./sl": 365,
+	"./sl.js": 365,
+	"./sq": 366,
+	"./sq.js": 366,
+	"./sr": 367,
+	"./sr-cyrl": 368,
+	"./sr-cyrl.js": 368,
+	"./sr.js": 367,
+	"./ss": 369,
+	"./ss.js": 369,
+	"./sv": 370,
+	"./sv.js": 370,
+	"./sw": 371,
+	"./sw.js": 371,
+	"./ta": 372,
+	"./ta.js": 372,
+	"./te": 373,
+	"./te.js": 373,
+	"./tet": 374,
+	"./tet.js": 374,
+	"./th": 375,
+	"./th.js": 375,
+	"./tl-ph": 376,
+	"./tl-ph.js": 376,
+	"./tlh": 377,
+	"./tlh.js": 377,
+	"./tr": 378,
+	"./tr.js": 378,
+	"./tzl": 379,
+	"./tzl.js": 379,
+	"./tzm": 380,
+	"./tzm-latn": 381,
+	"./tzm-latn.js": 381,
+	"./tzm.js": 380,
+	"./uk": 382,
+	"./uk.js": 382,
+	"./ur": 383,
+	"./ur.js": 383,
+	"./uz": 384,
+	"./uz-latn": 385,
+	"./uz-latn.js": 385,
+	"./uz.js": 384,
+	"./vi": 386,
+	"./vi.js": 386,
+	"./x-pseudo": 387,
+	"./x-pseudo.js": 387,
+	"./yo": 388,
+	"./yo.js": 388,
+	"./zh-cn": 389,
+	"./zh-cn.js": 389,
+	"./zh-hk": 390,
+	"./zh-hk.js": 390,
+	"./zh-tw": 391,
+	"./zh-tw.js": 391
 };
 function webpackContext(req) {
 	return __webpack_require__(webpackContextResolve(req));
@@ -2311,11 +2274,11 @@ webpackContext.keys = function webpackContextKeys() {
 };
 webpackContext.resolve = webpackContextResolve;
 module.exports = webpackContext;
-webpackContext.id = 499;
+webpackContext.id = 498;
 
 /***/ }),
 
-/***/ 507:
+/***/ 506:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2326,15 +2289,15 @@ webpackContext.id = 499;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__pages_card_card__ = __webpack_require__(67);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_ionic_angular__ = __webpack_require__(14);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__ionic_native_status_bar__ = __webpack_require__(399);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__ionic_native_splash_screen__ = __webpack_require__(395);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__ionic_native_status_bar__ = __webpack_require__(398);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__ionic_native_splash_screen__ = __webpack_require__(394);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__pages_home_home__ = __webpack_require__(59);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__pages_user_login_login__ = __webpack_require__(78);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__pages_user_profile_profile__ = __webpack_require__(400);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__pages_optionals_devs_irm_irm__ = __webpack_require__(401);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__pages_user_login_login__ = __webpack_require__(68);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__pages_user_profile_profile__ = __webpack_require__(399);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__pages_optionals_devs_irm_irm__ = __webpack_require__(400);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__pages_optionals_devs_my_dates_my_dates__ = __webpack_require__(157);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__pages_user_register_register__ = __webpack_require__(153);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__pages_optionals_devs_recipes_recipes__ = __webpack_require__(403);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__pages_optionals_devs_recipes_recipes__ = __webpack_require__(402);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__pages_appointment_pay_pay__ = __webpack_require__(155);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__pages_appointment_financer_financer__ = __webpack_require__(79);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -2415,7 +2378,7 @@ var MyApp = (function () {
         localStorage.removeItem('role');
         localStorage.removeItem('patientName');
         this.userToken = null;
-        this.menu.setRoot(__WEBPACK_IMPORTED_MODULE_9__pages_user_login_login__["a" /* LoginPage */]);
+        this.menu.setRoot(__WEBPACK_IMPORTED_MODULE_8__pages_home_home__["a" /* HomePage */]);
         this.menuCtrl.close();
     };
     __decorate([
@@ -2438,7 +2401,7 @@ var MyApp = (function () {
 
 /***/ }),
 
-/***/ 508:
+/***/ 507:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2477,7 +2440,7 @@ var ChargePage = (function () {
 
 /***/ }),
 
-/***/ 509:
+/***/ 508:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2516,7 +2479,7 @@ var SearchPage = (function () {
 
 /***/ }),
 
-/***/ 510:
+/***/ 509:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2626,7 +2589,7 @@ var AppointmentProvider = (function () {
 
 /***/ }),
 
-/***/ 561:
+/***/ 560:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2686,13 +2649,13 @@ var ExpandableComponent = (function () {
 
 /***/ }),
 
-/***/ 564:
+/***/ 563:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MaterialModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_material__ = __webpack_require__(565);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_material__ = __webpack_require__(564);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -2823,7 +2786,7 @@ var HomePage = (function () {
 
 /***/ }),
 
-/***/ 605:
+/***/ 604:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2962,6 +2925,65 @@ var MasterDetailPage = (function () {
 
 /***/ }),
 
+/***/ 605:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DatosPage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__user_login_login__ = __webpack_require__(68);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__card_card__ = __webpack_require__(67);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+var DatosPage = (function () {
+    function DatosPage(navCtrl, navParams, viewCtrl) {
+        this.navCtrl = navCtrl;
+        this.navParams = navParams;
+        this.viewCtrl = viewCtrl;
+        this.hora = navParams.get('hora');
+        this.available = navParams.get('available');
+        this.doctor = navParams.get('doctor');
+    }
+    DatosPage.prototype.ionViewDidLoad = function () {
+        console.log('ionViewDidLoad DatosPage');
+    };
+    DatosPage.prototype.goToLogin = function () {
+        this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_2__user_login_login__["a" /* LoginPage */], {
+            hora: this.hora,
+            available: this.available,
+            doctor: this.doctor
+        });
+        console.log('datos de datos:', this.hora, this.available, this.doctor);
+        //aqui tiene que ir el dismiss
+    };
+    DatosPage.prototype.goToCard = function () {
+        this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_3__card_card__["a" /* CardPage */]);
+    };
+    DatosPage = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
+            selector: 'page-datos',template:/*ion-inline-start:"/proyectos/IonicPruebas/ApolloIonicVersionOne/src/pages/datos/datos.html"*/'<ion-content padding>\n    <h1>Modal de Datos</h1>\n\n    <img class="centrar" src="https://www.trybooking.com/media/3446/login-user-icon.png" alt="">\n    <hr>\n    <p>Para continuar necesitas iniciar Sesión</p>\n    <button ion-button block color="secondary" (click)="goToLogin()" class="botonPrimero">Ir a Login</button>\n    <!-- <button ion-button clear block (click)="goToCard()">Continuar buscando doctor</button> -->\n</ion-content>'/*ion-inline-end:"/proyectos/IonicPruebas/ApolloIonicVersionOne/src/pages/datos/datos.html"*/,
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* ViewController */]])
+    ], DatosPage);
+    return DatosPage;
+}());
+
+//# sourceMappingURL=datos.js.map
+
+/***/ }),
+
 /***/ 66:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -3053,13 +3075,13 @@ var CrudparentProvider = (function () {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CardPage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__user_login_login__ = __webpack_require__(78);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__user_login_login__ = __webpack_require__(68);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(14);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__appointment_financer_financer__ = __webpack_require__(79);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_moment__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_moment__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__providers_hello_hello__ = __webpack_require__(393);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__providers_hello_hello__ = __webpack_require__(392);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -3182,7 +3204,7 @@ var CardPage = (function () {
     ], CardPage.prototype, "MyDays", void 0);
     CardPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["m" /* Component */])({
-            selector: 'page-card',template:/*ion-inline-start:"/proyectos/IonicPruebas/ApolloIonicVersionOne/src/pages/card/card.html"*/'<ion-header>\n    <ion-navbar color="primary" hideBackButton="true" persistent="true">\n        <button ion-button menuToggle>\n<ion-icon name="menu"></ion-icon>\n</button>\n        <ion-title> Home Page </ion-title>\n    </ion-navbar>\n\n</ion-header>\n\n\n<ion-content>\n\n    <div id="busqueda">\n        <ion-list padding>\n            <!-- <ion-item>\n                <ion-label floating>Busqueda por Sede</ion-label>\n                <ion-select [(ngModel)]="sede" (click)="allMedicsForCenter()">\n                    <ion-option value="{{center.id}}" *ngFor="let center of centers">{{center.name}}</ion-option>\n                </ion-select>\n            </ion-item> -->\n            <ion-item>\n                <ion-label floating>Busca por Especialidad</ion-label>\n                <ion-select [(ngModel)]="id" #specialty (ionChange)="onChangueSpecialty(specialty.value)">\n                    <ion-option [value]="specialty.id" *ngFor="let specialty of servicios">{{specialty.description}}</ion-option>\n                </ion-select>\n            </ion-item>\n\n            <ion-item>\n                <ion-label floating>Busca por doctor</ion-label>\n                <ion-input type="text" (keyup)="buscarDoctor()" [(ngModel)]="search"></ion-input>\n            </ion-item>\n\n\n            <ion-item>\n                <ion-label floating>Busca por Fecha</ion-label>\n                <ion-input type="date" (ionChange)="getDoctorsPerDay()" [(ngModel)]="fromDate"></ion-input>\n            </ion-item>\n        </ion-list>\n\n    </div>\n\n    <div >\n        <ion-card *ngFor="let doctor of doctors ">\n            <div [ngStyle]="{\'display\': doctor.hasAvailable ? \'block\' : \'none\'}">\n                <ion-row>\n                    <ion-col col-4 class="imageDoctor">\n                        <img src="http://dappapache02.eastus.cloudapp.azure.com:4200/img/professionals/{{doctor.id}}.png" alt="">\n                    </ion-col>\n                    <ion-col col-8 right>\n                        <p class="doctor">{{ doctor.fullName | lowercase}}</p>\n                        <p class="especialidad">{{doctor.service.description | lowercase}}</p>\n                        <p>{{doctor.cmp}}</p>\n                        <p class="centro">Centro: Mendiola</p>\n                    </ion-col>\n\n                    <ion-col col-12>\n                    </ion-col>\n                    <div class="containerDays">\n                        <ion-slides>\n                            <ion-slide *ngFor="let available of doctor.availables">\n                                <div class="centerItemsDays">\n                                    <a (click)="expandedItem(doctor, available)">{{ available.date | date:\'fullDate\' :\'es\' | slice:0:3}}</a>\n                                    <p>{{ available.date | date:\'dd\':\'es\'}}</p>\n                                </div>\n                            </ion-slide>\n                        </ion-slides>\n                    </div>\n                    <ion-col col-12>\n                        <expandable [expandHeight]="itemExpandHeight" [expanded]="doctor.expanded" [doctor]="doctor" [available]="available" [horas]="horas">\n                            <div class="row">\n                                <!-- <div col-12 class="diasLibres">\n                                    <h6>{{dia | date:\'EEEE d , MMMM \' : \'es\'}}</h6>\n                                </div> -->\n                                <div col-1 class="icono">\n                                    <ion-icon item-start name="arrow-dropleft"></ion-icon>\n                                </div>\n                                <div col-10>\n                                    <ion-slides class="dentroExpandable">\n                                        <ion-slide *ngFor="let hora of horas">\n                                            <div (click)="goToFinancer(doctor, available, hora)" class="horas">\n                                                <p>\n                                                    {{ hora.hour | slice:0:5}}\n                                                </p>\n                                            </div>\n                                        </ion-slide>\n                                    </ion-slides>\n                                </div>\n                                <div col-1 class="icono">\n                                    <ion-icon item-end name="arrow-dropright"></ion-icon>\n                                </div>\n                            </div>\n                        </expandable>\n                    </ion-col>\n                </ion-row>\n            </div>\n        </ion-card>\n\n    </div>\n</ion-content>\n'/*ion-inline-end:"/proyectos/IonicPruebas/ApolloIonicVersionOne/src/pages/card/card.html"*/
+            selector: 'page-card',template:/*ion-inline-start:"/proyectos/IonicPruebas/ApolloIonicVersionOne/src/pages/card/card.html"*/'<ion-header>\n    <ion-navbar color="primary" hideBackButton="true" persistent="true">\n        <button ion-button menuToggle>\n<ion-icon name="menu"></ion-icon>\n</button>\n        <ion-title> Home Page </ion-title>\n    </ion-navbar>\n\n</ion-header>\n\n\n<ion-content>\n\n    <div id="busqueda">\n        <ion-list padding>\n            <!-- <ion-item>\n                <ion-label floating>Busqueda por Sede</ion-label>\n                <ion-select [(ngModel)]="sede" (click)="allMedicsForCenter()">\n                    <ion-option value="{{center.id}}" *ngFor="let center of centers">{{center.name}}</ion-option>\n                </ion-select>\n            </ion-item> -->\n            <ion-item>\n                <ion-label floating>Busca por especialidad</ion-label>\n                <ion-select [(ngModel)]="id" #specialty (ionChange)="onChangueSpecialty(specialty.value)">\n                    <ion-option [value]="specialty.id" *ngFor="let specialty of servicios">{{specialty.description}}</ion-option>\n                </ion-select>\n            </ion-item>\n\n            <ion-item>\n                <ion-label floating>Busca por doctor</ion-label>\n                <ion-input type="text" (keyup)="buscarDoctor()" [(ngModel)]="search"></ion-input>\n            </ion-item>\n\n\n            <ion-item>\n                <ion-label floating>Busca por fecha</ion-label>\n                <ion-input type="date" (ionChange)="getDoctorsPerDay()" [(ngModel)]="fromDate"></ion-input>\n            </ion-item>\n        </ion-list>\n\n    </div>\n\n    <div >\n        <ion-card *ngFor="let doctor of doctors ">\n            <div [ngStyle]="{\'display\': doctor.hasAvailable ? \'block\' : \'none\'}">\n                <ion-row>\n                    <ion-col col-4 class="imageDoctor">\n                        <img src="http://dappapache02.eastus.cloudapp.azure.com:4200/img/professionals/{{doctor.id}}.png" alt="">\n                    </ion-col>\n                    <ion-col col-8 right>\n                        <p class="doctor">{{ doctor.fullName | lowercase}}</p>\n                        <p class="especialidad">{{doctor.service.description | lowercase}}</p>\n                        <p>{{doctor.cmp}}</p>\n                        <p class="centro">Centro: Mendiola</p>\n                    </ion-col>\n\n                    <ion-col col-12>\n                    </ion-col>\n                    <div class="containerDays">\n                        <ion-slides>\n                            <ion-slide *ngFor="let available of doctor.availables">\n                                <div class="centerItemsDays">\n                                    <a (click)="expandedItem(doctor, available)">{{ available.date | date:\'fullDate\' :\'es\' | slice:0:3}}</a>\n                                    <p>{{ available.date | date:\'dd\':\'es\'}}</p>\n                                </div>\n                            </ion-slide>\n                        </ion-slides>\n                    </div>\n                    <ion-col col-12>\n                        <expandable [expandHeight]="itemExpandHeight" [expanded]="doctor.expanded" [doctor]="doctor" [available]="available" [horas]="horas">\n                            <div class="row">\n                                <!-- <div col-12 class="diasLibres">\n                                    <h6>{{dia | date:\'EEEE d , MMMM \' : \'es\'}}</h6>\n                                </div> -->\n                                <div col-1 class="icono">\n                                    <ion-icon item-start name="arrow-dropleft"></ion-icon>\n                                </div>\n                                <div col-10>\n                                    <ion-slides class="dentroExpandable">\n                                        <ion-slide *ngFor="let hora of horas">\n                                            <div (click)="goToFinancer(doctor, available, hora)" class="horas">\n                                                <p>\n                                                    {{ hora.hour | slice:0:5}}\n                                                </p>\n                                            </div>\n                                        </ion-slide>\n                                    </ion-slides>\n                                </div>\n                                <div col-1 class="icono">\n                                    <ion-icon item-end name="arrow-dropright"></ion-icon>\n                                </div>\n                            </div>\n                        </expandable>\n                    </ion-col>\n                </ion-row>\n            </div>\n        </ion-card>\n\n    </div>\n</ion-content>\n'/*ion-inline-end:"/proyectos/IonicPruebas/ApolloIonicVersionOne/src/pages/card/card.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["j" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["k" /* NavParams */],
@@ -3200,7 +3222,7 @@ var CardPage = (function () {
 
 /***/ }),
 
-/***/ 78:
+/***/ 68:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3310,7 +3332,7 @@ var LoginPage = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_forms__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(14);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_financier_financier__ = __webpack_require__(271);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__datos_datos__ = __webpack_require__(272);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__user_login_login__ = __webpack_require__(68);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__providers_appoinment_appoinment__ = __webpack_require__(52);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__pay_pay__ = __webpack_require__(155);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__createparent_createparent__ = __webpack_require__(151);
@@ -3383,9 +3405,9 @@ var FinancerPage = (function () {
         this.hora = this.navParams.get('hora');
         // this.subida = this.hora.listjson;
         var role = localStorage.getItem('role');
-        if (role === 'guest') {
+        if (role == 'guest') {
             //  console.log('no hay mail');
-            var datos = this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_4__datos_datos__["a" /* DatosPage */], {
+            var datos = this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_4__user_login_login__["a" /* LoginPage */], {
                 hora: this.hora,
                 doctor: this.doctor,
                 available: this.available
@@ -3485,7 +3507,7 @@ var FinancerPage = (function () {
     };
     FinancerPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-financer',template:/*ion-inline-start:"/proyectos/IonicPruebas/ApolloIonicVersionOne/src/pages/appointment/financer/financer.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title>Financiador</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content>\n  <h4 class="parrafoFinanciador">Lo que nos queda es escoger para quien es la cita y el financiador, ya casi terminamos…</h4>\n  <div>\n<ion-row padding>\n  <ion-col class="cuadrado">\n    <button ion-button round\n            color="gris"\n            [ngClass]="{verde:vcolor == true}"\n            (click)="passFinancer()">\n              para mi\n    </button>\n  </ion-col>\n\n  <ion-col class="cuadrado">\n    <button ion-button\n            (click)="openParents()"\n            round\n            color="gris"\n            [ngClass]="{verde:ccolor == true}">\n              un familiar\n    </button>\n  </ion-col>\n</ion-row>\n<div *ngIf="addFamily">\n    <ion-card *ngFor="let depe of parents"\n              (click)="passFinancer(depe)">\n      <ion-row>\n        <ion-col col-4>\n          <ion-avatar>\n            <img src="../assets/imgs/avatars/nino.png" alt="">\n          </ion-avatar>\n        </ion-col>\n        <ion-col col-8>\n            <h3 class="nombrePariente">{{depe.name}}</h3>\n            <p class="parentesco">{{depe.type}}</p>\n            <p class="edad">7 años</p>\n        </ion-col>\n      </ion-row>\n    </ion-card>\n  </div>\n\n    <ion-row *ngIf="addFamily" padding>\n      <ion-card ion-button\n                (click)="showDetailCreateParents()"\n                class="buttonAddFamily">\n        <button ion-button clear item-start>\n          <ion-icon ios="ios-add" md="md-add" color="secondary"></ion-icon>\n        </button>\n        <p item-end>Agregar Familiar</p>\n      </ion-card>\n    </ion-row>\n\n    <!-- template que muestra los familiares que estan ya adjuntos -->\n\n  </div>\n  <!-- fin del template de los familiares adjuntos -->\n\n  <div *ngIf="depe">\n    <ion-card *ngIf="personOk === true">\n      <ion-row>\n        <ion-col col-4\n                 class="cardEscogidoImg">\n            <img src="../assets/imgs/avatars/nino.png" alt="">\n        </ion-col>\n        <ion-col col-8\n                  class="containerNombre"\n                  >\n            <h3 class="nombrePariente">{{depe.name}}</h3>\n        </ion-col>\n      </ion-row>\n    </ion-card>\n  </div>\n  <ion-list class="medio" *ngIf="personOk === true">\n    <ion-card class="evaluate">\n      <ion-list>\n        <ion-item color="light" item-start (click)="evaluateEnsurance($event)">\n          <p>¿Cuenta con seguro?</p>\n          <ion-icon item-end name="arrow-dropdown"></ion-icon>\n        </ion-item>\n\n        <ion-list class="nombresLista" *ngIf="firtClick">\n          <button ion-item *ngFor="let quest of questions" (click)="validateSelected(quest.id)">\n            {{ quest.name }}\n          </button>\n        </ion-list>\n      </ion-list>\n    </ion-card>\n\n    <ion-card class="seguroList">\n      <ion-list>\n        <ion-item color="light" *ngIf="isInsuranceName" (click)="selectEnsurance($event)">\n          {{ myEnsuranceName }}\n        </ion-item>\n        <ion-list *ngIf="isInsurance">\n          <button ion-item *ngFor="let item of items" (click)="insuranceSelected(item.cod_pagador_pk, item.nombre_garante)">\n            {{ item.nombre_garante }}\n          </button>\n        </ion-list>\n      </ion-list>\n    </ion-card>\n\n    <div text-right class="precio" *ngIf="price!=undefined">\n      <p>Precio de la Consulta: {{ \'S/. \' + price }}.00</p>\n    </div>\n  </ion-list>\n\n  <button *ngIf="secureOk === true"\n          color="secondary"\n          ion-button\n          block\n          center\n          class="botonPagar"\n          (click)="goToPay()">\n      hacer el pago\n  </button>\n\n  <!-- <div class="container-gris" *ngIf="open == true">\n        <div padding>\n            <h4 text-center class="tituloMetodos">Metodos de Pago</h4>\n            <ion-segment [(ngModel)]="pago">\n                <ion-segment-button value="enLocal">\n                    En local\n                </ion-segment-button>\n                <ion-segment-button value="enClinica">\n                    Con tarjeta\n                </ion-segment-button>\n            </ion-segment>\n        </div>\n        <div [ngSwitch]="pago">\n            <ion-list *ngSwitchCase="\'enLocal\'">\n                <div class="resumen" >\n                        <ion-card>\n                                <div class="containerTextoPago">\n                                    <h3 class="titleCardPago">Lo que has escogido hasta el momento</h3>\n                                </div>\n                                <div>\n                                    <ion-row class="centrar">\n                                        <ion-col col-4>\n                                            <img id="profile-image" src="http://dappapache02.eastus.cloudapp.azure.com:4200/img/professionals/{{doctor.id}}.png">\n                                        </ion-col>\n                                        <ion-col col-8>\n                                            <h3 class="nombreDoctor" text-center>\n                                                {{ doctor.fullName }}\n                                            </h3>\n                                        </ion-col>\n                                    </ion-row>\n                                </div>\n                                    <div class="centrar">\n                                        <p bold class="izquierda">Sede:</p>\n                                        <p class="blue" type="text" disabled="true">Mendiola</p>\n                                    </div>\n                                    <div  class="centrar">\n                                        <p class="izquierda">Especialidad:</p>\n                                        <p item-end class="blue" disabled="true"> {{ doctor.service.description }}</p>\n                                    </div>\n                                    <div  class="centrar">\n                                        <p class="izquierda">Fecha:</p>\n                                        <p item-end class="blue" disabled="true">\n                                            {{ date | date:\'EEEE d , MMMM \' : \'es\' }}\n                                        </p>\n                                    </div>\n                                    <div  class="centrar">\n                                        <p class="izquierda">Hora:</p>\n                                        <p class="blue" type="text" disabled="true">\n                                            {{ hora.hour | slice:0:5}}\n                                        </p>\n                                    </div>\n                                    <div  class="centrar">\n                                        <p class="izquierda">Costo:</p>\n                                        <p class="blue" item-end type="text" disabled="true">\n                                            {{ \'S/. \' + price }}\n                                        </p>\n                                    </div>\n                            </ion-card>\n\n\n                <div padding>\n                    <button ion-button color="secondary" class="botonAccept" [class.button-disabled]="true" block (click)="next()">Confirmar cita</button>\n                </div>\n\n\n            </div>\n        </ion-list>\n\n\n\n            <ion-list *ngSwitchCase="\'enClinica\'">\n\n                <div class="resumen" >\n                    <ion-card>\n                        <div class="containerTextoPago">\n                            <h3 class="titleCardPago">Lo que has escogido hasta el momento</h3>\n                        </div>\n                        <div>\n                            <ion-row class="centrar">\n                                <ion-col col-4>\n                                    <img id="profile-image" src="http://dappapache02.eastus.cloudapp.azure.com:4200/img/professionals/{{doctor.id}}.png">\n                                </ion-col>\n                                <ion-col col-8>\n                                    <h3 class="nombreDoctor" text-center>\n                                        {{ doctor.fullName }}\n                                    </h3>\n                                </ion-col>\n                            </ion-row>\n                        </div>\n                            <div class="centrar">\n                                <p bold class="izquierda">Sede:</p>\n                                <p class="blue" type="text" disabled="true">Mendiola</p>\n                            </div>\n                            <div  class="centrar">\n                                <p class="izquierda">Especialidad:</p>\n                                <p item-end class="blue" disabled="true"> {{ doctor.service.description }}</p>\n                            </div>\n                            <div  class="centrar">\n                                <p class="izquierda">Fecha:</p>\n                                <p item-end class="blue" disabled="true">\n                                    {{ date | date:\'EEEE d , MMMM \' : \'es\' }}\n                                </p>\n                            </div>\n                            <div  class="centrar">\n                                <p class="izquierda">Hora:</p>\n                                <p class="blue" type="text" disabled="true">\n                                    {{ hora.hour | slice:0:5}}\n                                </p>\n                            </div>\n                            <div  class="centrar">\n                                <p class="izquierda">Costo:</p>\n                                <p class="blue" item-end type="text" disabled="true">\n                                    {{ \'S/. \' + price }}\n                                </p>\n                            </div>\n                    </ion-card>\n\n\n            <div padding>\n                <button ion-button color="secondary" class="botonAccept" [class.button-disabled]="true" block (click)="payCulqi()">Pagar ahora con culqi</button>\n            </div> -->\n\n  <!-- <div padding>\n                    <button ion-button color="secondary" class="botonAccept" [class.button-disabled]="true" block (click)="openModalPayu()">Pagar ahora con payu</button>\n                </div> -->\n\n  <!--\n        </div>\n            </ion-list>\n        </div>\n    </div> -->\n\n\n\n</ion-content>\n'/*ion-inline-end:"/proyectos/IonicPruebas/ApolloIonicVersionOne/src/pages/appointment/financer/financer.html"*/,
+            selector: 'page-financer',template:/*ion-inline-start:"/proyectos/IonicPruebas/ApolloIonicVersionOne/src/pages/appointment/financer/financer.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title>Financiador</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content>\n  <h4 class="parrafoFinanciador">Lo que nos queda es escoger para quien es la cita y el financiador, ya casi terminamos…</h4>\n  <div>\n<ion-row padding>\n  <ion-col class="cuadrado">\n    <button ion-button round\n            color="gris"\n            [ngClass]="{verde:vcolor == true}"\n            (click)="passFinancer()">\n              para mi\n    </button>\n  </ion-col>\n\n  <ion-col class="cuadrado">\n    <button ion-button\n            (click)="openParents()"\n            round\n            color="gris"\n            [ngClass]="{verde:ccolor == true}">\n              un familiar\n    </button>\n  </ion-col>\n</ion-row>\n<div *ngIf="addFamily">\n    <ion-card *ngFor="let depe of parents"\n              (click)="passFinancer(depe)">\n      <ion-row>\n        <ion-col col-4>\n          <ion-avatar>\n            <img src="../assets/imgs/avatars/nino.png" alt="">\n          </ion-avatar>\n        </ion-col>\n        <ion-col col-8>\n            <h3 class="nombrePariente">{{depe.name}}</h3>\n            <p *ngIf="depe.relation"\n                class="parentesco">{{depe.relation.name}}</p>\n            <p class="edad">7 años</p>\n        </ion-col>\n      </ion-row>x\n    </ion-card>\n  </div>\n\n    <ion-row *ngIf="addFamily" padding>\n      <ion-card ion-button\n                (click)="showDetailCreateParents()"\n                class="buttonAddFamily">\n        <button ion-button clear item-start>\n          <ion-icon ios="ios-add" md="md-add" color="secondary"></ion-icon>\n        </button>\n        <p item-end>Agregar Familiar</p>\n      </ion-card>\n    </ion-row>\n\n    <!-- template que muestra los familiares que estan ya adjuntos -->\n\n  </div>\n  <!-- fin del template de los familiares adjuntos -->\n\n  <div *ngIf="depe">\n    <div *ngIf="personOk === true">\n      <ion-row>\n        <ion-col col-3\n                 class="cardEscogidoImg">\n            <img src="../assets/imgs/avatars/nino.png" alt="">\n        </ion-col>\n        <ion-col col-9\n                  class="containerNombre"\n                  >\n            <h3 class="nombrePariente">escogiste a: {{depe.name}}</h3>\n        </ion-col>\n      </ion-row>\n    </div>\n  </div>\n  <ion-list class="medio" *ngIf="personOk === true">\n    <ion-card class="evaluate">\n      <ion-list>\n        <ion-item color="light" item-start (click)="evaluateEnsurance($event)">\n          <p>¿Cuenta con seguro?</p>\n          <ion-icon item-end name="arrow-dropdown"></ion-icon>\n        </ion-item>\n\n        <ion-list class="nombresLista" *ngIf="firtClick">\n          <button ion-item *ngFor="let quest of questions" (click)="validateSelected(quest.id)">\n            {{ quest.name }}\n          </button>\n        </ion-list>\n      </ion-list>\n    </ion-card>\n\n    <ion-card class="seguroList">\n      <ion-list>\n        <ion-item color="light" *ngIf="isInsuranceName" (click)="selectEnsurance($event)">\n          {{ myEnsuranceName }}\n        </ion-item>\n        <ion-list *ngIf="isInsurance">\n          <button ion-item *ngFor="let item of items" (click)="insuranceSelected(item.cod_pagador_pk, item.nombre_garante)">\n            {{ item.nombre_garante }}\n          </button>\n        </ion-list>\n      </ion-list>\n    </ion-card>\n\n    <div text-right class="precio" *ngIf="price!=undefined">\n      <p>Precio de la Consulta: {{ \'S/. \' + price }}.00</p>\n    </div>\n  </ion-list>\n\n  <button *ngIf="secureOk === true"\n          color="secondary"\n          ion-button\n          block\n          center\n          class="botonPagar"\n          (click)="goToPay()">\n      hacer el pago\n  </button>\n\n  <!-- <div class="container-gris" *ngIf="open == true">\n        <div padding>\n            <h4 text-center class="tituloMetodos">Metodos de Pago</h4>\n            <ion-segment [(ngModel)]="pago">\n                <ion-segment-button value="enLocal">\n                    En local\n                </ion-segment-button>\n                <ion-segment-button value="enClinica">\n                    Con tarjeta\n                </ion-segment-button>\n            </ion-segment>\n        </div>\n        <div [ngSwitch]="pago">\n            <ion-list *ngSwitchCase="\'enLocal\'">\n                <div class="resumen" >\n                        <ion-card>\n                                <div class="containerTextoPago">\n                                    <h3 class="titleCardPago">Lo que has escogido hasta el momento</h3>\n                                </div>\n                                <div>\n                                    <ion-row class="centrar">\n                                        <ion-col col-4>\n                                            <img id="profile-image" src="http://dappapache02.eastus.cloudapp.azure.com:4200/img/professionals/{{doctor.id}}.png">\n                                        </ion-col>\n                                        <ion-col col-8>\n                                            <h3 class="nombreDoctor" text-center>\n                                                {{ doctor.fullName }}\n                                            </h3>\n                                        </ion-col>\n                                    </ion-row>\n                                </div>\n                                    <div class="centrar">\n                                        <p bold class="izquierda">Sede:</p>\n                                        <p class="blue" type="text" disabled="true">Mendiola</p>\n                                    </div>\n                                    <div  class="centrar">\n                                        <p class="izquierda">Especialidad:</p>\n                                        <p item-end class="blue" disabled="true"> {{ doctor.service.description }}</p>\n                                    </div>\n                                    <div  class="centrar">\n                                        <p class="izquierda">Fecha:</p>\n                                        <p item-end class="blue" disabled="true">\n                                            {{ date | date:\'EEEE d , MMMM \' : \'es\' }}\n                                        </p>\n                                    </div>\n                                    <div  class="centrar">\n                                        <p class="izquierda">Hora:</p>\n                                        <p class="blue" type="text" disabled="true">\n                                            {{ hora.hour | slice:0:5}}\n                                        </p>\n                                    </div>\n                                    <div  class="centrar">\n                                        <p class="izquierda">Costo:</p>\n                                        <p class="blue" item-end type="text" disabled="true">\n                                            {{ \'S/. \' + price }}\n                                        </p>\n                                    </div>\n                            </ion-card>\n\n\n                <div padding>\n                    <button ion-button color="secondary" class="botonAccept" [class.button-disabled]="true" block (click)="next()">Confirmar cita</button>\n                </div>\n\n\n            </div>\n        </ion-list>\n\n\n\n            <ion-list *ngSwitchCase="\'enClinica\'">\n\n                <div class="resumen" >\n                    <ion-card>\n                        <div class="containerTextoPago">\n                            <h3 class="titleCardPago">Lo que has escogido hasta el momento</h3>\n                        </div>\n                        <div>\n                            <ion-row class="centrar">\n                                <ion-col col-4>\n                                    <img id="profile-image" src="http://dappapache02.eastus.cloudapp.azure.com:4200/img/professionals/{{doctor.id}}.png">\n                                </ion-col>\n                                <ion-col col-8>\n                                    <h3 class="nombreDoctor" text-center>\n                                        {{ doctor.fullName }}\n                                    </h3>\n                                </ion-col>\n                            </ion-row>\n                        </div>\n                            <div class="centrar">\n                                <p bold class="izquierda">Sede:</p>\n                                <p class="blue" type="text" disabled="true">Mendiola</p>\n                            </div>\n                            <div  class="centrar">\n                                <p class="izquierda">Especialidad:</p>\n                                <p item-end class="blue" disabled="true"> {{ doctor.service.description }}</p>\n                            </div>\n                            <div  class="centrar">\n                                <p class="izquierda">Fecha:</p>\n                                <p item-end class="blue" disabled="true">\n                                    {{ date | date:\'EEEE d , MMMM \' : \'es\' }}\n                                </p>\n                            </div>\n                            <div  class="centrar">\n                                <p class="izquierda">Hora:</p>\n                                <p class="blue" type="text" disabled="true">\n                                    {{ hora.hour | slice:0:5}}\n                                </p>\n                            </div>\n                            <div  class="centrar">\n                                <p class="izquierda">Costo:</p>\n                                <p class="blue" item-end type="text" disabled="true">\n                                    {{ \'S/. \' + price }}\n                                </p>\n                            </div>\n                    </ion-card>\n\n\n            <div padding>\n                <button ion-button color="secondary" class="botonAccept" [class.button-disabled]="true" block (click)="payCulqi()">Pagar ahora con culqi</button>\n            </div> -->\n\n  <!-- <div padding>\n                    <button ion-button color="secondary" class="botonAccept" [class.button-disabled]="true" block (click)="openModalPayu()">Pagar ahora con payu</button>\n                </div> -->\n\n  <!--\n        </div>\n            </ion-list>\n        </div>\n    </div> -->\n\n\n\n</ion-content>\n'/*ion-inline-end:"/proyectos/IonicPruebas/ApolloIonicVersionOne/src/pages/appointment/financer/financer.html"*/,
         }),
         __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["j" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["j" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["k" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["k" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["l" /* Platform */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["l" /* Platform */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_1__angular_forms__["b" /* FormBuilder */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_forms__["b" /* FormBuilder */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["b" /* AlertController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["b" /* AlertController */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_3__providers_financier_financier__["a" /* FinancierProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__providers_financier_financier__["a" /* FinancierProvider */]) === "function" && _f || Object, typeof (_g = typeof __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["i" /* ModalController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["i" /* ModalController */]) === "function" && _g || Object, typeof (_h = typeof __WEBPACK_IMPORTED_MODULE_5__providers_appoinment_appoinment__["a" /* AppointmentProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__providers_appoinment_appoinment__["a" /* AppointmentProvider */]) === "function" && _h || Object, typeof (_j = typeof __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["a" /* ActionSheetController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["a" /* ActionSheetController */]) === "function" && _j || Object, typeof (_k = typeof __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["n" /* ViewController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["n" /* ViewController */]) === "function" && _k || Object, typeof (_l = typeof __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["g" /* LoadingController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["g" /* LoadingController */]) === "function" && _l || Object, typeof (_m = typeof __WEBPACK_IMPORTED_MODULE_9__providers_dependents_dependents__["a" /* DependentsProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_9__providers_dependents_dependents__["a" /* DependentsProvider */]) === "function" && _m || Object])
     ], FinancerPage);
@@ -3596,6 +3618,13 @@ var UserProvider = (function () {
             .map(this.extractData)
             .catch(this.handleError);
     };
+    UserProvider.prototype.doSignInforNewRegister = function (email, password) {
+        var params = { email: email, password: password, captchaId: "4dbc9e7e-a921-4d1f-8e36-1021a670c47a" };
+        // let params = {email:email, password: shajs('sha256').update(password).digest('hex') }
+        return this.http.post(this.apiUrl + 'login', params)
+            .map(this.extractData)
+            .catch(this.handleError);
+    };
     UserProvider.prototype.diSignInPassword = function (email, password) {
         var params = { email: email, password: password };
         return this.http.post(this.apiUrl + 'login', params)
@@ -3665,5 +3694,5 @@ var UserProvider = (function () {
 
 /***/ })
 
-},[436]);
+},[435]);
 //# sourceMappingURL=main.js.map

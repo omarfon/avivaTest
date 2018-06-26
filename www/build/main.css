@@ -36922,8 +36922,13 @@ page-financer .down20 {
   margin-top: 30px;
 }
 
+page-financer ion-avatar img {
+  width: 50px;
+}
+
 page-financer .cardEscogidoImg img {
-  width: 50px !important;
+  width: 40px !important;
+  margin-left: 20px;
 }
 
 page-financer .containerNombre {
@@ -37728,18 +37733,18 @@ page-myparents .nombrePariente {
   color: #00B6A3;
   font-size: 1.3em;
   margin-top: 5px;
-  text-align: right;
+  text-align: left;
   margin-right: 10px;
 }
 
 page-myparents .parentesco {
   color: #4A4A4A;
-  text-align: right;
+  text-align: left;
   margin-right: 10px;
 }
 
 page-myparents .edad {
-  text-align: right;
+  text-align: left;
   margin-right: 10px;
 }
 
@@ -37796,6 +37801,10 @@ page-myparents ion-label {
 
 page-myparents .guardaryContinuar {
   margin-top: -25px;
+}
+
+page-myparents ion-avatar img {
+  width: 70px;
 }
 
 page-my-dates ion-avatar {

@@ -3,16 +3,16 @@ page-myparents {
     color:#00B6A3;
     font-size:1.3em;
     margin-top:5px;
-    text-align: right;
+    text-align: left;
     margin-right:10px;
   }
   .parentesco{
     color:#4A4A4A;
-    text-align: right;
+    text-align: left;
     margin-right:10px;
   }
   .edad{
-    text-align: right;
+    text-align: left;
     margin-right:10px;
   }
   .center{
@@ -52,5 +52,8 @@ page-myparents {
   }
   .guardaryContinuar{
     margin-top:-25px;
+  }
+  ion-avatar img{
+    width: 70px;
   }
 }

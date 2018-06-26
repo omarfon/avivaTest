@@ -41,10 +41,11 @@
         </ion-col>
         <ion-col col-8>
             <h3 class="nombrePariente">{{depe.name}}</h3>
-            <p class="parentesco">{{depe.type}}</p>
+            <p *ngIf="depe.relation"
+                class="parentesco">{{depe.relation.name}}</p>
             <p class="edad">7 años</p>
         </ion-col>
-      </ion-row>
+      </ion-row>x
     </ion-card>
   </div>
 
@@ -65,19 +66,19 @@
   <!-- fin del template de los familiares adjuntos -->
 
   <div *ngIf="depe">
-    <ion-card *ngIf="personOk === true">
+    <div *ngIf="personOk === true">
       <ion-row>
-        <ion-col col-4
+        <ion-col col-3
                  class="cardEscogidoImg">
             <img src="../assets/imgs/avatars/nino.png" alt="">
         </ion-col>
-        <ion-col col-8
+        <ion-col col-9
                   class="containerNombre"
                   >
-            <h3 class="nombrePariente">{{depe.name}}</h3>
+            <h3 class="nombrePariente">escogiste a: {{depe.name}}</h3>
         </ion-col>
       </ion-row>
-    </ion-card>
+    </div>
   </div>
   <ion-list class="medio" *ngIf="personOk === true">
     <ion-card class="evaluate">

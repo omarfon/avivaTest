@@ -215,8 +215,12 @@ page-financer {
     .down20{
       margin-top:30px;
     }
+    ion-avatar img{
+      width:50px;
+    }
     .cardEscogidoImg img{
-      width: 50px!important;
+      width: 40px!important;
+      margin-left:20px;
     }
     .containerNombre{
       display: flex;

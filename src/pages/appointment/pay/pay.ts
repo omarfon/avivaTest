@@ -118,7 +118,7 @@ export class PayPage {
 
     const i = setInterval(function () {
       // si se puede realizar el pago con culqi
-      if (culqiData.status == "error") {
+      if (culqiData.status == "ok") {
         console.log('lo que me llega en culqiData:', culqiData);
         clearInterval(i);
         loadingPago.dismiss();
@@ -136,7 +136,7 @@ export class PayPage {
         this.navCtrl.setRoot(HomePage);
       }
       // si no se puede realizar el pago con culqi
-      else if (culqiData.status == "ok") {
+      else if (culqiData.status == "error") {
         const self = this;
         clearInterval(i);
         loadingPago.dismiss();

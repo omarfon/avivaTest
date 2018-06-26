@@ -13,6 +13,7 @@ export class CreateparentPage {
 
   public formFamily: FormGroup;
   public parents;
+  public _parents;
   public createParents;
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
@@ -74,7 +75,8 @@ export class CreateparentPage {
       this.createParents = data;
       this.viewCtrl.dismiss();
         this.dependentsPvr.getDependens().subscribe(dat =>{
-          this.parents = dat;
+          this._parents = dat;
+          this.parents = this._parents
           console.log(this.parents);
         });
     });

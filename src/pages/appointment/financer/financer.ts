@@ -104,22 +104,20 @@ export class FinancerPage {
 
     let role = localStorage.getItem('role');
 
-    if (role === 'guest') {
+    if (role == 'guest') {
       //  console.log('no hay mail');
-      let datos = this.navCtrl.push(DatosPage,
+      let datos = this.navCtrl.push(LoginPage,
         {
           hora: this.hora,
           doctor: this.doctor,
           available: this.available
         });
       // datos.present();
-
     } else {
       console.log("si hay constraseña. que pase");
     }
 
   }
-
 
   evaluateEnsurance() {
     this.firtClick = !this.firtClick;
