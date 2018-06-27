@@ -128,10 +128,11 @@ page-card {
         font-size: 1em;
         margin-top: 10px;
         p {
-            background: color($colors,gris);
+            background: #fff;
             border-radius: 20px;
             padding: 8 25px;
-            color: #fff;
+            color: #10A7C1;
+            border: 1px solid #10A7C1;
             font-weight: 400;
         }
     }

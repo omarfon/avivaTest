@@ -7,7 +7,52 @@
 
 
 <ion-content >
-    <div class="container-gris" >
+    <div class="container-gris">
+      <div class="containerResumen">
+        <ion-card>
+            <div class="containerTextoPago">
+                <h3 class="titleCardPago">Lo que has escogido hasta el momento</h3>
+            </div>
+            <div>
+                <ion-row class="centrar">
+                    <ion-col col-4>
+                        <img id="profile-image" src="http://dappapache02.eastus.cloudapp.azure.com:4200/img/professionals/{{doctor.id}}.png">
+                    </ion-col>
+                    <ion-col col-8>
+                        <h3 class="nombreDoctor" text-center>
+                            {{ doctor.fullName }}
+                        </h3>
+                        <div class="sedeContainer">
+                            <!-- <p bold class="izquierda">Sede:</p> -->
+                            <p class="sede" type="text" disabled="true">Mendiola</p>
+                        </div>
+                    </ion-col>
+                </ion-row>
+            </div>
+                <div  class="centrar">
+                    <p class="izquierda">Especialidad:</p>
+                    <p item-end class="blue" disabled="true"> {{ doctor.service.description }}</p>
+                </div>
+                <div  class="centrar">
+                    <p class="izquierda">Fecha:</p>
+                    <p item-end class="blue" disabled="true">
+                        {{ available | date:'EEEE d , MMMM ' : 'es' }}
+                    </p>
+                </div>
+                <div  class="centrar">
+                    <p class="izquierda">Hora:</p>
+                    <p class="blue" type="text" disabled="true">
+                        {{ hora.hour | slice:0:5}}
+                    </p>
+                </div>
+                <div  class="centrar">
+                    <p class="izquierda">Costo:</p>
+                    <p class="blue" item-end type="text" disabled="true">
+                        {{ 'S/. ' + price + '.00'}}
+                    </p>
+                </div>
+        </ion-card>
+      </div>
       <h4 class="tituloPagos">Terminemos... escoge la forma en la que vas a pagar y listo...</h4>
     <div padding>
         <h4 text-center class="tituloMetodos">Metodos de Pago</h4>
@@ -23,49 +68,6 @@
     <div [ngSwitch]="pago">
         <ion-list *ngSwitchCase="'enLocal'">
             <div class="resumen" >
-                    <ion-card>
-                            <div class="containerTextoPago">
-                                <h3 class="titleCardPago">Lo que has escogido hasta el momento</h3>
-                            </div>
-                            <div>
-                                <ion-row class="centrar">
-                                    <ion-col col-4>
-                                        <img id="profile-image" src="http://dappapache02.eastus.cloudapp.azure.com:4200/img/professionals/{{doctor.id}}.png">
-                                    </ion-col>
-                                    <ion-col col-8>
-                                        <h3 class="nombreDoctor" text-center>
-                                            {{ doctor.fullName }}
-                                        </h3>
-                                        <div class="sedeContainer">
-                                            <!-- <p bold class="izquierda">Sede:</p> -->
-                                            <p class="sede" type="text" disabled="true">Mendiola</p>
-                                        </div>
-                                    </ion-col>
-                                </ion-row>
-                            </div>
-                                <div  class="centrar">
-                                    <p class="izquierda">Especialidad:</p>
-                                    <p item-end class="blue" disabled="true"> {{ doctor.service.description }}</p>
-                                </div>
-                                <div  class="centrar">
-                                    <p class="izquierda">Fecha:</p>
-                                    <p item-end class="blue" disabled="true">
-                                        {{ available | date:'EEEE d , MMMM ' : 'es' }}
-                                    </p>
-                                </div>
-                                <div  class="centrar">
-                                    <p class="izquierda">Hora:</p>
-                                    <p class="blue" type="text" disabled="true">
-                                        {{ hora.hour | slice:0:5}}
-                                    </p>
-                                </div>
-                                <div  class="centrar">
-                                    <p class="izquierda">Costo:</p>
-                                    <p class="blue" item-end type="text" disabled="true">
-                                        {{ 'S/. ' + price + '.00'}}
-                                    </p>
-                                </div>
-                        </ion-card>
             <div padding>
                 <button *ngIf="!depe"
                         ion-button color="secondary"
@@ -84,49 +86,7 @@
     </ion-list>
         <ion-list *ngSwitchCase="'enClinica'">
             <div class="resumen" >
-                <ion-card>
-                    <div class="containerTextoPago">
-                        <h3 class="titleCardPago">Lo que has escogido hasta el momento</h3>
-                    </div>
-                    <div>
-                        <ion-row class="centrar">
-                            <ion-col col-4>
-                                <img id="profile-image" src="http://dappapache02.eastus.cloudapp.azure.com:4200/img/professionals/{{doctor.id}}.png">
-                            </ion-col>
-                            <ion-col col-8>
-                                <h3 class="nombreDoctor" text-center>
-                                    {{ doctor.fullName }}
-                                </h3>
-                                <div class="sedeContainer">
-                                    <!-- <p bold class="izquierda">Sede:</p> -->
-                                    <p class="sede" type="text" disabled="true">Mendiola</p>
-                                </div>
-                            </ion-col>
-                        </ion-row>
-                    </div>
-                        <div  class="centrar">
-                            <p class="izquierda">Especialidad:</p>
-                            <p item-end class="blue" disabled="true"> {{ doctor.service.description }}</p>
-                        </div>
-                        <div  class="centrar">
-                            <p class="izquierda">Fecha:</p>
-                            <p item-end class="blue" disabled="true">
-                                {{ available | date:'EEEE d , MMMM ' : 'es' }}
-                            </p>
-                        </div>
-                        <div  class="centrar">
-                            <p class="izquierda">Hora:</p>
-                            <p class="blue" type="text" disabled="true">
-                                {{ hora.hour | slice:0:5}}
-                            </p>
-                        </div>
-                        <div  class="centrar">
-                            <p class="izquierda">Costo:</p>
-                            <p class="blue" item-end type="text" disabled="true">
-                                {{ 'S/. ' + price + '.00'}}
-                            </p>
-                        </div>
-                </ion-card>
+
 
 
         <div padding>

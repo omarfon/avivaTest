@@ -37417,10 +37417,11 @@ page-card .horas {
 }
 
 page-card .horas p {
-  background: #9b9b9b;
+  background: #fff;
   border-radius: 20px;
   padding: 8 25px;
-  color: #fff;
+  color: #10A7C1;
+  border: 1px solid #10A7C1;
   font-weight: 400;
 }
 
