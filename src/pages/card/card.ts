@@ -23,7 +23,7 @@ import { CapitalizePipe } from '../../pipes/capitalize/capitalize';
 export class CardPage {
 @ViewChild('MyDays') MyDays: ElementRef;
 
-  
+
   loading: boolean;
   data: {};
   centers;
@@ -56,10 +56,10 @@ export class CardPage {
 
   doctorData;
   itemExpanded: boolean = true;
-  itemExpandHeight: number = 200;
+  itemExpandHeight: number = 250;
   changueColor: Boolean = false;
- 
-  constructor(public navCtrl: NavController, 
+
+  constructor(public navCtrl: NavController,
               public navParams: NavParams,
               public modalCtrl: ModalController,
               public helloPvr: HelloProvider,
@@ -68,7 +68,7 @@ export class CardPage {
               public viewCtrl: ViewController,
               public alertContrl: AlertController
 
-       
+
 ){
   this.id=1;
   this.fromDate = moment().format("YYYY-MM-DD");
@@ -100,6 +100,7 @@ getDoctorsList(){
   this.helloPvr.getDoctorsPerId(this.id).subscribe( doctores =>{
     this._doctors = doctores.map(doctor => {
       doctor.hasAvailable = true;
+      doctor.expanded = false;
       this.helloPvr.getAvailablesPerDoctor(doctor.id, doctor.service.id, this.fromDate, this.toDate).subscribe(availables=>{
           if(availables.length == 0){
             doctor.hasAvailable = false;
@@ -132,30 +133,35 @@ buscarDoctor(){
     const isOk = doctor.fullName.toLowerCase().indexOf((this.search).toLowerCase()) != -1 ;
     return isOk;
   });
-  
+
 }
 
 
 expandedItem(doctor, available){
-  doctor.expanded = !doctor.expanded;
-  if(doctor.expanded){
-    doctor.expanded
-  }
-  this.horas = available.hours;
-  this.dia = available.date;
 
-  
-}
+  this.doctors.map((listDoctor) =>{
+    if(doctor == listDoctor){
+        listDoctor.expanded = true;
+    }else{
+      listDoctor.expanded = false;
+    }
+    return listDoctor
+    });
+    this.horas = available.hours;
+    console.log('las horas:', this.horas);
+    this.dia = available.date;
+    }
+
+
 goToFinancer(doctor, available, hora){
   let role = localStorage.getItem('role');
-
   if(  role === 'guest'){
-       let datos = this.navCtrl.push(LoginPage, 
-        {hora : hora, 
-        doctor: doctor, 
+       let datos = this.navCtrl.push(LoginPage,
+        {hora : hora,
+        doctor: doctor,
         available: this.fromDate});
         // datos.present();
-  }else{
+  }else {
       this.navCtrl.push(FinancerPage ,{ doctor:doctor , available:this.fromDate , hora:hora})
   }
 }

@@ -126,13 +126,15 @@ page-card {
     .horas {
         margin-right: 15px;
         font-size: 1em;
-        margin-top: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
         p {
             background: #fff;
             border-radius: 20px;
-            padding: 8 25px;
-            color: #10A7C1;
-            border: 1px solid #10A7C1;
+            padding: .1em .7em;
+            color: color($colors,gris);
+            border: 1px solid color($colors,gris);
             font-weight: 400;
         }
     }
@@ -152,12 +154,21 @@ page-card {
         color: #007198!important;
     }
     a:hover {
-        background: #a7a9ab!important;
+        background: #00B6A3!important;
         opacity: .9!important;
     }
     .list-md .item-input.ng-valid.item-input-has-value:not(.input-has-focus):not(.item-input-has-focus):last-child,
     .list-md .item-input.ng-valid.input-has-value:not(.input-has-focus):not(.item-input-has-focus):last-child {
         border-bottom-color: #dedede!important;
         box-shadow: none!important;
+    }
+    .normal{
+      width: 100%!important;
+      .swiper-slide{
+        width:100%!important;
+      }
+      .swiper-container{
+        height: 250px!important;
+      }
     }
 }

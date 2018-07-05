@@ -1,10 +1,10 @@
 expandable {
     .expand-wrapper {
-        height: 0;
+        // height: 0;
         transition: 0.3s linear;
     }
-    .expanded {
-        height: 60px !important;
+    .collapsed {
+        height: 0 !important;
         //    position: absolute;
         //    top:20px;
     }

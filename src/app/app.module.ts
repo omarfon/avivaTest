@@ -82,6 +82,7 @@ import { RecipesProvider } from '../providers/recipes/recipes';
 import { DependentsProvider } from '../providers/dependents/dependents';
 import { CrudparentProvider } from '../providers/crudparent/crudparent';
 import { CodePage } from '../pages/code/code';
+import { DateparentProvider } from '../providers/dateparent/dateparent';
 
 @NgModule({
   declarations: [
@@ -159,7 +160,8 @@ import { CodePage } from '../pages/code/code';
     PayuTestProvider,
     RecipesProvider,
     DependentsProvider,
-    CrudparentProvider
+    CrudparentProvider,
+    DateparentProvider
   ]
 })
 export class AppModule {

@@ -53,9 +53,9 @@
                 </div>
         </ion-card>
       </div>
-      <h4 class="tituloPagos">Terminemos... escoge la forma en la que vas a pagar y listo...</h4>
-    <div padding>
-        <h4 text-center class="tituloMetodos">Metodos de Pago</h4>
+      <div padding>
+        <!-- <h4 text-center class="tituloMetodos">Metodos de Pago</h4> -->
+        <h4 class="tituloPagos">Escoge la forma en la que vas a pagar y listo...</h4>
         <ion-segment [(ngModel)]="pago">
             <ion-segment-button value="enLocal">
                 En local
@@ -68,29 +68,31 @@
     <div [ngSwitch]="pago">
         <ion-list *ngSwitchCase="'enLocal'">
             <div class="resumen" >
-            <div padding>
+              <div padding>
                 <button *ngIf="!depe"
                         ion-button color="secondary"
                         class="botonAccept"
                         [class.button-disabled]="true"
                         block
-                        (click)="next()">Confirmar cita</button>
+                        (click)="next()">Confirmar cita
+                </button>
                 <button *ngIf="depe"
                       ion-button
                       color="secondary"
                       class="botonAccept"
                       [class.button-disabled]="true"
-                      block (click)="nextDepe()">Confirmar cita</button>
+                      block (click)="nextDepe()">Confirmar cita
+                </button>
             </div>
-        </div>
-    </ion-list>
+          </div>
+      </ion-list>
         <ion-list *ngSwitchCase="'enClinica'">
             <div class="resumen" >
 
 
 
         <div padding>
-            <button ion-button color="secondary" class="botonAccept" [class.button-disabled]="true" block (click)="payCulqi()">Pagar ahora con culqi</button>
+            <button ion-button color="secondary" class="botonAccept" [class.button-disabled]="true" block (click)="payCulqi()">Pago con tarjeta</button>
         </div>
 
         <!-- <div padding>

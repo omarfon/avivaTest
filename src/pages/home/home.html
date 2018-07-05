@@ -36,7 +36,7 @@
     <div class="down30">
         <mat-accordion padding>
 
-            <mat-expansion-panel (click)="obtenerUltimaFecha()">
+            <mat-expansion-panel >
                 <mat-expansion-panel-header>
                     <ion-col col-2>
                         <ion-icon name="alarm"></ion-icon>
@@ -45,28 +45,29 @@
                         <p class="font11">Próxima Cita</p>
                     </ion-col>
 
-                </mat-expansion-panel-header>
-                <p *ngIf="ensenar === 0" class="textoRecetas">Aun no tienes citas programadas</p>
-                <div class="containerExpand">
-                    <div *ngIf="tasks">
-                        <div *ngFor="let task of tasks; index as i; first as isFirst">
-                            <ion-row class="down10" *ngIf="isFirst">
-                                <ion-col col-3>
-                                    <ion-avatar item-start>
-                                        <img src="http://dappapache02.eastus.cloudapp.azure.com:4200/img/professionals/{{task.professional.id}}.png">
-                                    </ion-avatar>
-                                </ion-col>
-                                <ion-col col-9>
-                                    <h3 class="tituloCitas" [ngClass]="{celeste:''}">Dr.{{task.professional.fullName | slice:0:25 | uppercase}}</h3>
-                                    <p class="especialidad">{{ task.service.basicService.description | lowercase }}</p>
-                                    <p class="sede">{{ task.service.center.name | lowercase }}</p>
-                                    <p class="day">{{ task.appointmentDateTime | date:'EEEE d , MMMM ' : 'es' }} </p>
-                                    <p class="hour">{{ task.appointmentDateTime | date: 'HH:mm' }}</p>
-                                </ion-col>
-                            </ion-row>
-                        </div>
+                </mat-expansion-panel-header >
+                <div class="containerExpand" >
+                  <div *ngIf="tasks else notasks">
+                    <div *ngFor="let task of tasks; index as i; first as isFirst">
+                      <ion-row class="down10" >
+                        <ion-col col-3>
+                          <ion-avatar item-start>
+                            <img src="http://dappapache02.eastus.cloudapp.azure.com:4200/img/professionals/{{task.professional.id}}.png">
+                          </ion-avatar>
+                        </ion-col>
+                        <ion-col col-9>
+                          <h3 class="tituloCitas" [ngClass]="{celeste:''}">Dr.{{task.professional.fullName | slice:0:25 | uppercase}}</h3>
+                          <p class="especialidad">{{ task.service.basicService.description | lowercase }}</p>
+                          <p class="sede">{{ task.service.center.name | lowercase }}</p>
+                          <p class="day">{{ task.appointmentDateTime | date:'EEEE d , MMMM ' : 'es' }} </p>
+                          <p class="hour">{{ task.appointmentDateTime | date: 'HH:mm' }}</p>
+                        </ion-col>
+                      </ion-row>
                     </div>
-
+                  </div>
+                    <div *ngIf="tasks < 1">
+                      <p  class="textoRecetas">Aun no tienes citas programadas</p>
+                    </div>
                 </div>
             </mat-expansion-panel>
 
@@ -120,7 +121,7 @@
                 </div>
             </mat-expansion-panel> -->
 
-            <mat-expansion-panel>
+            <!-- <mat-expansion-panel [disabled]="dissabled == guest">
                 <mat-expansion-panel-header>
                     <ion-col col-2>
                         <ion-icon name="flask"></ion-icon>
@@ -133,7 +134,7 @@
                 <div class="containerExpand">
                     <p class="textoRecetas">Aqui aparecerán los resultados de tus últimas citas proximamente</p>
                 </div>
-            </mat-expansion-panel>
+            </mat-expansion-panel> -->
 
         </mat-accordion>
 

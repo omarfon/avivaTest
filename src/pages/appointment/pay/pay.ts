@@ -110,7 +110,7 @@ export class PayPage {
     // console.log('elprecio:',this.price)
     // console.log("this.openCulqi");
     const settings = {
-      title: 'Cita para',
+      title: 'Pago Online',
       description: "prueba",
       currency: "PEN",
       amount: this.price * 100
@@ -128,9 +128,10 @@ export class PayPage {
     const i = setInterval(function () {
       // si se puede realizar el pago con culqi
       this.culqiData = JSON.parse(localStorage.getItem('culqiData'));
-      console.log('this.culqiData:', this.culqiData)
+      // console.log('this.culqiData:', this.culqiData);
       if (this.culqiData.status == "ok") {
-        console.log('lo que me llega en culqiData:', this.culqiData);
+        this.culqiData.status = "";
+        localStorage.setItem('culqiData', JSON.stringify(this.culqiData));
         clearInterval(i);
         loadingPago.dismiss();
         let alert = this.alertCtrl.create({
@@ -148,6 +149,8 @@ export class PayPage {
       }
       // si no se puede realizar el pago con culqi
       else if (this.culqiData.status == "error") {
+        this.culqiData.status = "";
+        localStorage.setItem('culqiData', JSON.stringify(this.culqiData));
         const self = this;
         clearInterval(i);
         loadingPago.dismiss();

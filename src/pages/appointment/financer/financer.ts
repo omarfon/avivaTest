@@ -73,6 +73,8 @@ export class FinancerPage {
   public parents;
   vcolor = false;
   ccolor = false;
+  yes = false;
+  no = false;
 
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
@@ -134,6 +136,8 @@ export class FinancerPage {
       this.isInsurance = true;
       this.secure = true;
       this.open = true;
+      this.yes = true;
+      this.no = false;
     } else if (item == 2) {
       // PARTICULAR
       this.financierProvider.getPrice(1, this.doctor.service.id, this.doctor.service.id, this.available).subscribe(data => {
@@ -146,6 +150,8 @@ export class FinancerPage {
         this.secure = false;
         this.isInsuranceName = false;
         this.isInsurance = false;
+        this.no = true;
+        this.yes = false;
       });
     }
   }
@@ -190,6 +196,23 @@ export class FinancerPage {
     this.vcolor = false;
   }
 
+  passFinancerParent(depe){
+    this.addFamily = false;
+    this.personOk = true;
+    this.depe = depe;
+    this.vcolor = false;
+    this.ccolor = true;
+  }
+
+  cleanDepe(){
+    this.secureOk = false;
+    this.depe = {};
+    this.openParents()
+    // console.log(this.depe);
+    // this.personOk = false;
+    // this.vcolor = false;
+    // this.ccolor = false;
+  }
   // mostrar el modal de la creación de familiares
   showDetailCreateParents(){
       let modal = this.modalCtrl.create(CreateparentPage);

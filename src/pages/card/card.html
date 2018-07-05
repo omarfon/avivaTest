@@ -13,12 +13,6 @@
 
     <div id="busqueda">
         <ion-list padding>
-            <!-- <ion-item>
-                <ion-label floating>Busqueda por Sede</ion-label>
-                <ion-select [(ngModel)]="sede" (click)="allMedicsForCenter()">
-                    <ion-option value="{{center.id}}" *ngFor="let center of centers">{{center.name}}</ion-option>
-                </ion-select>
-            </ion-item> -->
             <ion-item>
                 <ion-label floating>Busca por especialidad</ion-label>
                 <ion-select [(ngModel)]="id" #specialty (ionChange)="onChangueSpecialty(specialty.value)">
@@ -69,26 +63,41 @@
                     <ion-col col-12>
                         <expandable [expandHeight]="itemExpandHeight" [expanded]="doctor.expanded" [doctor]="doctor" [available]="available" [horas]="horas">
                             <div class="row">
-                                <!-- <div col-12 class="diasLibres">
-                                    <h6>{{dia | date:'EEEE d , MMMM ' : 'es'}}</h6>
-                                </div> -->
-                                <div col-1 class="icono">
-                                    <ion-icon item-start name="arrow-dropleft"></ion-icon>
-                                </div>
-                                <div col-10>
-                                    <ion-slides class="dentroExpandable">
-                                        <ion-slide *ngFor="let hora of horas">
+                                  <ion-slides class="normal">
+                                    <ion-slide>
+                                      <div>
+                                        <h3>turno mañana</h3>
+                                        <ion-row>
+                                          <ion-col col-3 *ngFor="let hora of horas; let i = index">
                                             <div (click)="goToFinancer(doctor, available, hora)" class="horas">
-                                                <p>
-                                                    {{ hora.hour | slice:0:5}}
-                                                </p>
+                                              <p>
+                                                {{ hora.hour | slice:0:5}}
+                                              </p>
                                             </div>
-                                        </ion-slide>
-                                    </ion-slides>
-                                </div>
-                                <div col-1 class="icono">
-                                    <ion-icon item-end name="arrow-dropright"></ion-icon>
-                                </div>
+                                          </ion-col>
+                                        </ion-row>
+                                        </div>
+                                      </ion-slide>
+                                    <ion-slide>
+                                    <h3>turno tarde</h3>
+                                    <ion-row>
+                                      <ion-col col-3>
+
+                                      </ion-col>
+                                    </ion-row>
+                                  </ion-slide>
+
+                                  <ion-slide>
+                                      <h3>turno noche</h3>
+                                      <ion-row>
+                                        <ion-col col-3>
+
+                                        </ion-col>
+                                      </ion-row>
+                                    </ion-slide>
+                              </ion-slides>
+
+
                             </div>
                         </expandable>
                     </ion-col>

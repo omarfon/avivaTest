@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
+import 'rxjs/add/Observable/of';
 
 
 
@@ -34,7 +35,6 @@ export class AppointmentProvider {
   getAppointmentsPeruser(): Observable<string[]> {
     const authorization = localStorage.getItem('authorization');
     let headers = new HttpHeaders({"Authorization": authorization});
-
     return this.http.get(this.apiUrl + 'appointments/patient', {headers})
                     .map((resp:any) =>{
                         return resp;

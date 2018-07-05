@@ -5,10 +5,25 @@
     </button>
         <ion-title> Mi Citas </ion-title>
     </ion-navbar>
+    <ion-toolbar color="primary">
+      <ion-segment [(ngModel)]="citas" color="secondary">
+        <ion-segment-button value="miscitas">
+          <p>Mis citas</p>
+        </ion-segment-button>
+        <ion-segment-button value="citasfamiliares">
+          <p>citas familiares</p>
+        </ion-segment-button>
+        <!-- <ion-segment-button value="nocamera">
+          <ion-icon name="camera"></ion-icon>
+        </ion-segment-button> -->
+      </ion-segment>
+    </ion-toolbar>
 </ion-header>
 
 <ion-content>
-    <ion-list *ngFor='let task of tasks'>
+  <div [ngSwitch]="citas">
+      <div *ngSwitchCase="'miscitas'">
+        <ion-list *ngFor='let task of tasks'>
         <ion-card (click)="gotoDetails(task)" class="bordeDerecho" *ngIf="task ">
             <ion-item>
                 <ion-row>
@@ -37,5 +52,44 @@
             </ion-item>
         </ion-card>
     </ion-list>
+      </div>
+      <div *ngSwitchCase="'citasfamiliares'">
+          <ion-list *ngFor='let taskpa of tasksParents'>
+              <ion-card (click)="gotoDetails(task)" class="bordeDerecho" *ngIf="taskpa">
+                  <ion-item>
+                      <ion-row>
+                          <ion-col col-4>
+                              <ion-avatar item-start>
+                                  <img src="http://dappapache02.eastus.cloudapp.azure.com:4200/img/professionals/{{taskpa.appointments[0].professional.id}}.png">
+                              </ion-avatar>
+                          </ion-col>
+                          <ion-col col-8>
+                              <p class="nombreFamiliar">{{taskpa.user.patientName}}</p>
+                              <p class="parentesco">hijo</p>
+                              <h3 class="tituloCitas">Dr. {{taskpa.appointments[0].professional.fullName | slice:0:25 | lowercase}}</h3>
+                              <p class="especialidad">{{ taskpa.appointments[0].service.basicService.description | lowercase }}</p>
+                              <p class="sede">{{ taskpa.appointments[0].service.center.name | lowercase }}</p>
+                          </ion-col>
+                          <ion-col col-12 class="gris">
+                              <ion-row>
+                                  <ion-col class="diaCita">
+                                      <p class="day">{{ taskpa.appointments[0].appointmentDateTime | date:'EEEE d , MMMM ' : 'es' }} </p>
+                                  </ion-col>
+                                  <ion-col class="hourCita">
+                                      <p class="hour">{{ taskpa.appointments[0].appointmentDateTime | date: 'HH:mm' }}</p>
+                                  </ion-col>
+                              </ion-row>
+
+                          </ion-col>
+                      </ion-row>
+                  </ion-item>
+              </ion-card>
+          </ion-list>
+        </div>
+      <!-- <div *ngSwitchCase="'nocamera'">
+          lo que hay dentro de nocamera
+        </div> -->
+  </div>
+
     <p *ngIf="mostrar == 0" class="textoCitasNulo">No tienes citas programadas</p>
 </ion-content>
