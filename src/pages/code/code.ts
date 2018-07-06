@@ -40,7 +40,8 @@ export class CodePage {
       this.formCode = this.form.group({
           primero : [],
           segundo : [],
-          tercero : []
+          tercero : [],
+          cuarto  : []
       });
       console.log(this.formCode.value);
       console.log(this.formCode.value.primero);
@@ -58,28 +59,32 @@ export class CodePage {
     let uno = codigo.primero;
     let dos = codigo.segundo;
     let tres = codigo.tercero;
-    let code = uno + dos + tres;
+    let cuatro = codigo.cuarto;
+    let code = uno + dos + tres + cuatro;
     // console.log(code);
     this.datos.code = code;
+    this.datos.id = this.code.id;
     // console.log('data armada:', this.datos);
     this.crudPvr.createNewUser(this.datos).subscribe(data =>{
       this.createOk = data;
 
-      console.log('data que viene de la creación:', data);
+      // console.log('data que viene de la creación:', data);
      let email = this.createOk.data.middleware.email;
      let password = this.createOk.data.middleware.passwordHash;
 
      this.userService.doSignInforNewRegister(email, password).subscribe(data =>{
         this.loginOk = data;
 
-      console.log('datos que vienen del logueo: por registro:', this.loginOk);
+      // console.log('datos que vienen del logueo: por registro:', this.loginOk);
         localStorage.setItem('idTokenUser', data.patientId);
         localStorage.setItem('emailUser', data.emailPaciente);
         localStorage.setItem('authorization', data.authorization);
         localStorage.setItem('role', data.role);
+        localStorage.setItem('patientName', data.patientName);
+
         this.events.publish('user:logged', 'logged');
         if(this.hora ){
-          console.log(this.hora, this.doctor, this.available);
+          // console.log(this.hora, this.doctor, this.available);
           this.navCtrl.setRoot(FinancerPage, {
             doctor: this.doctor,
             available: this.available,
@@ -95,11 +100,10 @@ export class CodePage {
   }
 
   sendCode(){
-    let email = this.datos.email;
+    let email = {email:this.datos.email}
       this.crudPvr.validateEmail(email).subscribe(data=>{
           this.code = data;
-          console.log('data del codigo', this.code);
-          this.navCtrl.push(HomePage)
+          console.log('lño que me llega del vaildate:', this.code)
       });
   }
 

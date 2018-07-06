@@ -18,11 +18,18 @@
     <form [formGroup]="registerForm" (ngSubmit)="registerNewUser(registerForm.value)"  novalidate>
 
         <ion-row>
-            <ion-item>
+            <!-- <ion-item>
                 <ion-label floating>Nombres:</ion-label>
                 <ion-input type="text" formControlName="name" name="name"></ion-input>
                 <p color="danger" ion-text *ngIf="registerForm.get('name').hasError('required')">Nombre requerido</p>
-            </ion-item>
+            </ion-item> -->
+            <mat-form-field class="example-full-width">
+              <input matInput
+                    type="text"
+                     placeholder="Nombres:"
+                     formControlName="name">
+
+            </mat-form-field>
 
             <ion-item>
                 <ion-label floating>Apellido Paterno</ion-label>
@@ -51,7 +58,11 @@
             <ion-col col-6>
                 <ion-item class="outpadding">
                     <ion-label floating>Fecha de nacimiento:</ion-label>
-                    <ion-input type="date" formControlName="birthdate" name="date_of_birth" placeholder="Fecha de nacimiento"></ion-input>
+                    <ion-datetime displayFormat="DD/MM/YYYY"
+                                  formControlName="birthdate"
+                                  name="date_of_birth"
+                                  max="{{actual}}"></ion-datetime>
+                    <!-- <ion-input type="date" formControlName="birthdate" name="date_of_birth" placeholder="Fecha de nacimiento"></ion-input> -->
                     <p color="danger" ion-text *ngIf="registerForm.get('birthdate').hasError('required')">Fecha de Nacimiento requerido</p>
                 </ion-item>
             </ion-col>
@@ -65,7 +76,6 @@
                         <ion-option value=D.N.I>D.N.I</ion-option>
                         <ion-option value=2>Pasaporte</ion-option>
                         <ion-option value=3>C.E.</ion-option>
-                        <ion-option value=4>No Tiene</ion-option>
                     </ion-select>
                 </ion-item>
             </ion-col>

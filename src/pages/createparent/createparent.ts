@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams, ViewController } from 'ionic-angular';
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { DependentsProvider } from '../../providers/dependents/dependents';
-
+import * as moment from 'moment';
 
 @Component({
   selector: 'page-createparent',
@@ -15,12 +15,14 @@ export class CreateparentPage {
   public parents;
   public _parents;
   public createParents;
+  public actual;
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
               public fb: FormBuilder,
               public viewCtrl: ViewController,
               public dependentsPvr: DependentsProvider,
               public crudPvr: CrudparentProvider) {
+          this.actual = moment().format('YYYY-MM-DD');
 
           this.dependentsPvr.getDependens().subscribe(data =>{
               this.parents = data;

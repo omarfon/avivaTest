@@ -14,7 +14,7 @@ export class MyDateModalPage {
 
   task: Object;
 
-  constructor(public navCtrl: NavController, 
+  constructor(public navCtrl: NavController,
               public navParams: NavParams,
               public viewCtrl: ViewController,
               public toastCtrl: ToastController,
@@ -22,7 +22,7 @@ export class MyDateModalPage {
               public actionSheetCtrl: ActionSheetController,
               public appointmentProvider: AppointmentProvider,
               public modalCtrl: ModalController) {
-          
+
         this.task = navParams.get('task');
         console.log('task de modalPage:' ,this.task);
   }
@@ -32,7 +32,7 @@ export class MyDateModalPage {
   desactivateTask(task){
 
     let confirm = this.alertCtrl.create({
-      title: 'ELMINAR',
+      title: 'ANULAR CITA',
       message: '¿Estas seguro que quieres eliminar esta cita?',
       buttons: [
         {

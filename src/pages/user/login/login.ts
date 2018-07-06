@@ -66,7 +66,7 @@ export class LoginPage {
         if( !this.hora )
         this.navCtrl.push(HomePage )
         else
-          this.navCtrl.push(FinancerPage, {hora: this.hora, available: this.available , doctor:this.doctor });
+          this.navCtrl.setRoot(CardPage, {hora: this.hora, available: this.available , doctor:this.doctor });
       },
       err => {
         this.msg = "Usuario o contraseña incorrecta."
@@ -76,7 +76,7 @@ export class LoginPage {
 
   registrarUsuario(){
     if(this.hora !== undefined)
-      this.navCtrl.push(RegisterPage , {hora: this.hora, available: this.available, doctor: this.doctor, texto: "viene con data"});
+      this.navCtrl.setRoot(RegisterPage , {hora: this.hora, available: this.available, doctor: this.doctor, texto: "viene con data"});
     else
       this.navCtrl.push(RegisterPage, {texto: "vienen sin data"});
   }

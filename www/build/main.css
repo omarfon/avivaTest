@@ -37507,8 +37507,21 @@ page-code .center {
 }
 
 page-code .codigoreen {
-  color: #96999C;
+  color: #00B6A3;
   font-size: 1em;
+  text-transform: lowercase;
+  font-size: 1.2em;
+  font-weight: lighter;
+  border: 1px solid #00B6A3;
+  border-radius: 10px;
+}
+
+page-code .newCode {
+  color: #062F51;
+  font-size: 1.1em;
+  width: 90%;
+  margin-left: 5%;
+  margin-top: 80px;
 }
 
 page-createparent {
@@ -37979,7 +37992,7 @@ page-my-date-modal ion-label {
 page-my-date-modal .blue {
   color: #062F51;
   text-align: left;
-  font-size: 1em;
+  font-size: .9em;
   font-weight: 400;
   text-transform: capitalize;
 }
@@ -38329,4 +38342,8 @@ page-register .registroDeUsuarioTitulo {
   color: #00B6A3;
   width: 85%;
   margin-left: 7.5%;
+}
+
+page-register .example-full-width {
+  width: 100%;
 }

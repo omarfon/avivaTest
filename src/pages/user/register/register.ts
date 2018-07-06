@@ -6,6 +6,7 @@ import { UserProvider } from '../../../providers/user/user';
 import { CrudparentProvider } from '../../../providers/crudparent/crudparent';
 import * as shajs from 'sha.js';
 import { CodePage } from '../../code/code';
+import * as moment from 'moment';
 
 
 @Component({
@@ -28,6 +29,7 @@ export class RegisterPage {
   private texto;
 
   private resolve;
+  private actual;
 
 cambio:boolean = false;
 
@@ -44,6 +46,8 @@ cambio:boolean = false;
     this.texto = this.navParams.get('texto');
     console.log(this.hora, this.available,this.doctor, this.texto);
 
+    this.actual = moment().format('YYYY-MM-DD');
+    // console.log('fecha actual:',this.actual);
 
     this.registerForm = this.fb.group({
       name: ['',  [ Validators.required ]],

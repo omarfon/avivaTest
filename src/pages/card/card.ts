@@ -59,6 +59,9 @@ export class CardPage {
   itemExpandHeight: number = 250;
   changueColor: Boolean = false;
 
+  hora:any = [];
+
+
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
               public modalCtrl: ModalController,
@@ -67,9 +70,16 @@ export class CardPage {
               public render: Renderer2,
               public viewCtrl: ViewController,
               public alertContrl: AlertController
-
-
 ){
+  this.hora = this.navParams.get('hora');
+  this.doctor = this.navParams.get('doctor');
+  this.available = this.navParams.get('available');
+
+  if(this.hora ){
+    this.navCtrl.push(FinancerPage, {hora:this.hora, doctor: this.doctor, available: this.available})
+  }else{
+      console.log("no trae data, seguir con el proceso normal");
+  }
   this.id=1;
   this.fromDate = moment().format("YYYY-MM-DD");
   this.toDate = moment().add(this.numDays,"day").format("YYYY-MM-DD");

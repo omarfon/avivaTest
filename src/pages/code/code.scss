@@ -20,8 +20,21 @@ page-code {
     margin-top:30px;
   }
   .codigoreen{
-    color:#96999C;
+    color:color($colors,secondary);
     font-size:1em;
+    text-transform: lowercase;
+    font-size:1.2em;
+    font-weight:lighter;
+    border:1px solid color($colors,secondary);
+    border-radius:10px;
+  }
+  .newCode{
+    color:#062F51;
+    font-size:1.1em;
+    width:90%;
+    margin-left: 5%;
+    margin-top:80px;
+
   }
 }
 
