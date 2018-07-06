@@ -71,7 +71,9 @@
         <ion-col col-12>
           <ion-item>
             <ion-label fixed>Nacimiento:</ion-label>
-            <ion-input type="date" formControlName="date_of_birth" name="date_of_birth"></ion-input>
+            <ion-datetime displayFormat="DD/MM/YYYY"
+                                  formControlName="date_of_birth"
+                                  max="{{actual}}"></ion-datetime>
           </ion-item>
         </ion-col>
 
@@ -80,8 +82,8 @@
             <ion-item>
               <ion-label fixed>Sexo:</ion-label>
               <ion-select formControlName="gender" name="gender">
-                <ion-option value="HOMBRE">M</ion-option>
-                <ion-option value="MUJER">F</ion-option>
+                <ion-option value="HOMBRE">HOMBRE</ion-option>
+                <ion-option value="MUJER">MUJER</ion-option>
               </ion-select>
             </ion-item>
           </ion-col>

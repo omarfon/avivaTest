@@ -3,6 +3,7 @@ import { NavController, NavParams, AlertController } from 'ionic-angular';
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { DependentsProvider } from '../../providers/dependents/dependents';
 import { CrudparentProvider } from '../../providers/crudparent/crudparent';
+import * as moment from 'moment';
 
 
 @Component({
@@ -18,6 +19,7 @@ export class MyparentsPage {
   public formFamily: FormGroup;
   public createParents;
   public parents;
+  public actual;
 
 
 
@@ -27,6 +29,7 @@ export class MyparentsPage {
               public dependentsPvr: DependentsProvider,
               public crudPvr: CrudparentProvider,
               public alertCtrl: AlertController) {
+                this.actual = moment().format('YYYY-MM-DD');
 
                 this.dependentsPvr.getDependens().subscribe(data =>{
                  this.dependens = data;
