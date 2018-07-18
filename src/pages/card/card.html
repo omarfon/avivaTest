@@ -65,28 +65,24 @@
                             <div class="row">
                                   <ion-slides class="normal">
                                     <ion-slide>
-                                      <div>
-                                        <h3>turno mañana</h3>
+                                        <!-- <h3>turno mañana</h3> -->
                                         <ion-row>
-                                          <ion-col col-3 *ngFor="let hora of horas; let i = index">
-                                            <div (click)="goToFinancer(doctor, available, hora)" class="horas">
-                                              <p>
+                                          <ion-col col-3 *ngFor="let hora of horas; let i = index" [ngClass]="{'borrar' :hora.isAvailable == false}">
+                                            <div  (click)="goToFinancer(doctor, available, hora)" class="horas" >
+                                              <p >
                                                 {{ hora.hour | slice:0:5}}
                                               </p>
                                             </div>
                                           </ion-col>
                                         </ion-row>
-                                        </div>
                                       </ion-slide>
                                     <ion-slide>
                                     <h3>turno tarde</h3>
                                     <ion-row>
                                       <ion-col col-3>
-
                                       </ion-col>
                                     </ion-row>
                                   </ion-slide>
-
                                   <ion-slide>
                                       <h3>turno noche</h3>
                                       <ion-row>
@@ -96,8 +92,6 @@
                                       </ion-row>
                                     </ion-slide>
                               </ion-slides>
-
-
                             </div>
                         </expandable>
                     </ion-col>

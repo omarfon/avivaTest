@@ -4,6 +4,7 @@ import { Injectable } from '@angular/core';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import { MyApp } from '../../app/app.component';
+import { errorHandler } from '@angular/platform-browser/src/browser';
 
 @Injectable()
 export class CrudparentProvider {
@@ -14,9 +15,9 @@ private api = "http://dappapache02.eastus.cloudapp.azure.com:4200/api/v2/users/r
 
 private apiCreate = "http://dappapache02.eastus.cloudapp.azure.com:4200/api/v2/users/register/";
 
-// private apiValidate = "http://dappapache02.eastus.cloudapp.azure.com:4200/api/v2/users/validateemail";
+private apiValidate = "http://dappapache02.eastus.cloudapp.azure.com:4200/api/v2/users/validateemail";
 
-private apiValidate = "http://192.168.1.133:4000/api/v2/users/validateemail";
+// private apiValidate = "http://192.168.1.133:4000/api/v2/users/validateemail";
 
   constructor(public http: HttpClient) {
     console.log('Hello CrudparentProvider Provider');

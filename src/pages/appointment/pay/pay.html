@@ -51,6 +51,13 @@
                         {{ 'S/. ' + price + '.00'}}
                     </p>
                 </div>
+                <div  *ngIf="depe"
+                    class="centrar">
+                    <p class="izquierda">Cita reservada para:</p>
+                    <p class="blue" item-end type="text" disabled="true">
+                        {{ depe.name}}
+                    </p>
+                </div>
         </ion-card>
       </div>
       <div padding>

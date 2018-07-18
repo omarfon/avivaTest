@@ -62,7 +62,7 @@ export class HelloProvider {
       "Authorization": authorization
     });
     // headers.append("Authorization", authorization);
-    let params = {query: `query {centers{service(id:${serviceId}){id ,professional(id:${id}){id, fullName, cmp, image, service{id, description }, availables(fromDateString:"${fromDate}",toDateString:"${toDate}"){date,hours{ hour, listjson}}}}}}`};
+    let params = {query: `query {centers{service(id:${serviceId}){id ,professional(id:${id}){id, fullName, cmp, image, service{id, description }, availables(fromDateString:"${fromDate}",toDateString:"${toDate}"){date,hours{ hour, listjson, isAvailable}}}}}}`};
     return this.http.post(this.apiUrl, params, {headers})
                     .map((resp:any)=>{
                       return resp.data.centers[0].service.professional.availables;
@@ -75,7 +75,7 @@ export class HelloProvider {
       "Authorization": authorization
     });
     // headers.append("Authorization", authorization);
-    let params = {query: `query {centers{service(id:${serviceId}){id ,professionals{id, fullName, cmp, image, service{id, description }, availables(fromDateString:"${fromDate}",toDateString:"${toDate}"){date,hours{ hour, listjson}}}}}}`};
+    let params = {query: `query {centers{service(id:${serviceId}){id ,professionals{id, fullName, cmp, image, service{id, description }, availables(fromDateString:"${fromDate}",toDateString:"${toDate}"){date,hours{ hour, listjson, isAvailable}}}}}}`};
     return this.http.post(this.apiUrl, params, {headers})
                     .map((resp:any)=>{
                       return resp.data.centers[0].service.professionals;

@@ -18,18 +18,11 @@
     <form [formGroup]="registerForm" (ngSubmit)="registerNewUser(registerForm.value)"  novalidate>
 
         <ion-row>
-            <!-- <ion-item>
+            <ion-item>
                 <ion-label floating>Nombres:</ion-label>
                 <ion-input type="text" formControlName="name" name="name"></ion-input>
                 <p color="danger" ion-text *ngIf="registerForm.get('name').hasError('required')">Nombre requerido</p>
-            </ion-item> -->
-            <mat-form-field class="example-full-width">
-              <input matInput
-                    type="text"
-                     placeholder="Nombres:"
-                     formControlName="name">
-
-            </mat-form-field>
+            </ion-item>
 
             <ion-item>
                 <ion-label floating>Apellido Paterno</ion-label>
@@ -49,7 +42,7 @@
                     <ion-select formControlName="gender" name="gender">
                         <!-- <ion-option value=1>Indistinto</ion-option> -->
                         <ion-option value="HOMBRE">Hombre</ion-option>
-                        <!-- <ion-option value=3>Mujer</ion-option> -->
+                        <ion-option value="MUJER">Mujer</ion-option>
                     </ion-select>
                     <p color="danger" ion-text *ngIf="registerForm.get('gender').hasError('required')">Genero requerido</p>
                 </ion-item>
@@ -113,16 +106,15 @@
             <p color="danger" ion-text *ngIf="registerForm.get('password').hasError('required')">Contraseña requerida</p>
             <p color="danger" ion-text *ngIf="registerForm.get('password').hasError('minLength')">Minimo 8 caracteres</p>
         </ion-item>
-<!--
+
         <ion-item>
             <ion-label stacked>Repetir contraseña:</ion-label>
             <ion-input type="password" formControlName="password_confirmation" name="password_confirmation"></ion-input>
-            <p color="danger" ion-text *ngIf="registerForm.get('password_confirmation').hasError('required')">No coincide con la contraseña</p>
-        </ion-item> -->
+        </ion-item>
 
 
 
-        <button ion-button type="submit" [disabled]="!registerForm.valid" full color="primary" class="alto50">Registro</button>
+        <button ion-button type="submit" [disabled]="!registerForm.valid || !validacion()" full color="primary" class="alto50">Registro</button>
 
         <ion-grid>
             <ion-row>

@@ -81,4 +81,16 @@
             text-transform: capitalize;
             font-size:1.1em;
         }
+        .iconoDerecha{
+          text-align:right;
+        }
+        .centrado{
+          display:flex;
+          justify-content: flex-start;
+          align-items: center;
+            p{
+              margin-left: 10px;
+              color:#A7A9AC;
+            }
+        }
     }

@@ -59,12 +59,19 @@ cambio:boolean = false;
       documentNumber: ['',  [ Validators.required]],
       phone: ['',  [ Validators.required, Validators.minLength(9), Validators.maxLength(9) ]],
       email: ['',  [ Validators.required, Validators.email ]],
-      password: ['',  [ Validators.required, Validators.minLength(8) ]]
-      // password_confirmation: ['',  [ Validators.required ]]
+      password: ['',  [ Validators.required, Validators.minLength(8) ]],
+      password_confirmation: ['',  [ Validators.required ]]
     });
-    // , {validator: this.areEqual('password', 'password_confirmation')}
   }
 
+  validacion(){
+    const valid = this.registerForm.value;
+    if(valid.password == valid.password_confirmation){
+      return true;
+    }else{
+      return false;
+    }
+  }
 
   goToLogin(){
     this.navCtrl.push(LoginPage);
@@ -79,15 +86,6 @@ cambio:boolean = false;
     terminos.present();
   }
 
-  // areEqual(passwordKey: string, passwordConfirmationKey: string) {
-  //   return (group: FormGroup) => {
-  //     let passwordInput = group.controls[passwordKey];
-  //     let passwordConfirmationInput = group.controls[passwordConfirmationKey];
-  //     if (passwordInput.value !== passwordConfirmationInput.value) {
-  //       return passwordConfirmationInput.setErrors({notEquivalent: true})
-  //     }
-  //   }
-  // }
 
   changue(){
     this.cambio = true;
@@ -118,15 +116,24 @@ cambio:boolean = false;
       let email = {email:datos.email}
       this.crudPvr.validateEmail(email).subscribe(data =>{
         this.resolve = data;
-        // console.log(this.resolve);
+        console.log(this.resolve);
         if(this.resolve.result == "ok"){
           this.navCtrl.push(CodePage, {
             datos: datos , hora : this.hora , available: this.available , doctor: this.doctor
-          });
-        }else{
-            console.log("mantener por error hasta solucionar el error");
+          })
+        }else {
+            let alert = this.alertCtrl.create({
+              title:"Correo Utilizado",
+              subTitle:"el correo que ha ingresado ya existe, talvez lo ingresó mal o pruebe con otro",
+              buttons: [
+                {
+                text:'Intentar de nuevo',
+                role: 'cancel'
+                }
+              ]
+            });
+            alert.present();
         }
       });
     }
-
 }

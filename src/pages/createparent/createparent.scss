@@ -1,13 +1,13 @@
 page-createparent {
   background:rgba(0,0,0,.5);
-    ion-content{
-      width:90%;
-      margin-left:5%;
-      margin-top:30px;
-      height: 90%;
-      text-align:center;
-      border-radius:10px;
-    }
+    // ion-content{
+    //   width:90%;
+    //   margin-left:5%;
+    //   margin-top:30px;
+    //   height: 90%;
+    //   text-align:center;
+    //   border-radius:10px;
+    // }
     .tituloFamiliar{
       color:#00B6A3;
       text-align: left;
@@ -39,5 +39,8 @@ page-createparent {
     }
     .guardaryContinuar{
       margin-top:-25px;
+    }
+    ion-scroll{
+      min-height: 80%;
     }
 }

@@ -1,3 +1,4 @@
+import { DetailRecipePage } from './../pages/detail-recipe/detail-recipe';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/compiler/src/core';
 import { MyparentsPage } from './../pages/myparents/myparents';
 import { CreateparentPage } from './../pages/createparent/createparent';
@@ -83,6 +84,8 @@ import { DependentsProvider } from '../providers/dependents/dependents';
 import { CrudparentProvider } from '../providers/crudparent/crudparent';
 import { CodePage } from '../pages/code/code';
 import { DateparentProvider } from '../providers/dateparent/dateparent';
+import { RecipePage } from '../pages/recipe/recipe';
+
 
 @NgModule({
   declarations: [
@@ -107,7 +110,9 @@ import { DateparentProvider } from '../providers/dateparent/dateparent';
     PayuPage,
     CreateparentPage,
     MyparentsPage,
-    CodePage
+    CodePage,
+    DetailRecipePage,
+    RecipePage
   ],
   imports: [
     BrowserModule,
@@ -146,6 +151,8 @@ import { DateparentProvider } from '../providers/dateparent/dateparent';
     CreateparentPage,
     MyparentsPage,
     CodePage,
+    DetailRecipePage,
+    RecipePage
   ],
   providers: [
     StatusBar,

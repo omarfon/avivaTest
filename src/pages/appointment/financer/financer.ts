@@ -94,6 +94,7 @@ export class FinancerPage {
     this.dependentsPvr.getDependens().subscribe(data =>{
       this.parents = data;
       console.log(this.parents);
+
     });
 
 
@@ -153,6 +154,7 @@ export class FinancerPage {
         this.no = true;
         this.yes = false;
       });
+      this.secureOk = true;
     }
   }
 
@@ -215,11 +217,11 @@ export class FinancerPage {
   }
   // mostrar el modal de la creación de familiares
   showDetailCreateParents(){
-      let modal = this.modalCtrl.create(CreateparentPage);
-      modal.present();
-      modal.onDidDismiss(data =>{
-       this.parents = data;
-      });
+      this.navCtrl.push(CreateparentPage);
+      // modal.present();
+      // modal.onDidDismiss(data =>{
+      //  this.parents = data;
+      // });
   }
 
   // función para ir a pagos

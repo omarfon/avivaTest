@@ -16,25 +16,33 @@
       <form [formGroup]="formCode" (ngSubmit)="saveData(formCode.value)" novalidate>
      <ion-row>
          <ion-col class="rectanguloInput">
-            <ion-input type="number"
+           <ion-input type="tel"
+                        minlength="1"
+                        maxlength="1"
                        [(ngModel)]="primero"
                        formControlName="primero"
                         ></ion-input>
           </ion-col>
          <ion-col class="rectanguloInput">
-            <ion-input type="number"
+            <ion-input type="tel"
+                      minlength="1"
+                      maxlength="1"
                         [(ngModel)]="segundo"
                         formControlName="segundo"
                         ></ion-input>
           </ion-col>
          <ion-col class="rectanguloInput">
-           <ion-input type="number"
+           <ion-input type="tel"
+                      minlength="1"
+                      maxlength="1"
                       tercero="tercero"
                       formControlName="tercero"
                       ngModel></ion-input>
           </ion-col>
           <ion-col class="rectanguloInput">
-              <ion-input type="number"
+              <ion-input type="tel"
+                      minlength="1"
+                      maxlength="1"
                          tercero="cuarto"
                          formControlName="cuarto"
                          ngModel></ion-input>

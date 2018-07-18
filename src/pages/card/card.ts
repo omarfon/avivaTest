@@ -165,7 +165,7 @@ expandedItem(doctor, available){
 
 goToFinancer(doctor, available, hora){
   let role = localStorage.getItem('role');
-  if(  role === 'guest'){
+  if(  role === 'public'){
        let datos = this.navCtrl.push(LoginPage,
         {hora : hora,
         doctor: doctor,

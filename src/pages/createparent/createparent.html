@@ -14,96 +14,92 @@
   </ion-row>
 </div>
 
-<form [formGroup]="formFamily" (ngSubmit)="saveData(formFamily.value)" novalidate>
-  <ion-list>
-    <ion-grid>
+  <form [formGroup]="formFamily" (ngSubmit)="saveData(formFamily.value)" novalidate>
+    <ion-list>
+      <ion-grid>
 
-      <ion-item>
-        <ion-label stacked>Nombres:</ion-label>
-        <ion-input formControlName="name" type="text" maxlength="40">
-        </ion-input>
-      </ion-item>
+        <ion-item>
+          <ion-label stacked>Nombres:</ion-label>
+          <ion-input formControlName="name" type="text" maxlength="40">
+          </ion-input>
+        </ion-item>
 
-<ion-item>
-  <ion-label stacked>Apellido Paterno:</ion-label>
-  <ion-input formControlName="paternal_surname" type="text" maxlength="40">
-  </ion-input>
-</ion-item>
-
-<ion-item>
-  <ion-label stacked>Apellido Materno:</ion-label>
-  <ion-input formControlName="maternal_surname" type="text" maxlength="40">
-  </ion-input>
-</ion-item>
-
-<ion-col col-12>
   <ion-item>
-    <ion-label stacked>Nacimiento:</ion-label>
-    <ion-datetime displayFormat="MM/DD/YYYY"
-                  formControlName="date_of_birth"
-                  name="date_of_birth"
-                  max="{{actual}}"></ion-datetime>
-    <!-- <ion-input type="date" formControlName="date_of_birth" name="date_of_birth"></ion-input> -->
+    <ion-label stacked>Apellido Paterno:</ion-label>
+    <ion-input formControlName="paternal_surname" type="text" maxlength="40">
+    </ion-input>
   </ion-item>
-</ion-col>
 
-<ion-row>
-  <ion-col col-6>
+  <ion-item>
+    <ion-label stacked>Apellido Materno:</ion-label>
+    <ion-input formControlName="maternal_surname" type="text" maxlength="40">
+    </ion-input>
+  </ion-item>
+
+  <ion-col col-12>
     <ion-item>
-      <ion-label stacked>Sexo:</ion-label>
-      <ion-select formControlName="gender" name="gender">
-        <ion-option value="HOMBRE">Hombre</ion-option>
-        <ion-option value="MUJER">MUJER</ion-option>
+      <ion-label stacked>Documento:</ion-label>
+      <ion-select [(ngModel)]="change" formControlName="type_document" name="type_document" floating>
+        <ion-option value="D.N.I">DNI</ion-option>
+        <ion-option value="carne_extranjeria">Carne de Extranjeria</ion-option>
+        <ion-option value="pasaporte">Pasaporte</ion-option>
       </ion-select>
     </ion-item>
   </ion-col>
 
+  <ion-col col-12>
+    <ion-item>
+      <ion-label stacked> Nº Documento:</ion-label>
+      <ion-input *ngIf="change === 'D.N.I'" type="number" formControlName="dni" name="dni" minlength="8" maxlength="8" stacked></ion-input>
+      <ion-input *ngIf="change === 'carne_extranjeria'" type="tel" formControlName="dni" name="dni" minlength="12" maxlength="12"
+        stacked></ion-input>
+      <ion-input *ngIf="change === 'pasaporte'" type="tel" formControlName="dni" name="dni" minlength="12" maxlength="12" stacked></ion-input>
+      <!-- <p color="danger" ion-text *ngIf="registerForm.get('dni').hasError('required')">DNI requerido</p> -->
+    </ion-item>
+  </ion-col>
 
-<ion-col col-6>
-  <ion-item>
-    <ion-label stacked>Documento:</ion-label>
-    <ion-select [(ngModel)]="change" formControlName="type_document" name="type_document" floating>
-      <ion-option value="D.N.I">DNI</ion-option>
-      <ion-option value="carne_extranjeria">Carne de Extranjeria</ion-option>
-      <ion-option value="pasaporte">Pasaporte</ion-option>
-    </ion-select>
-  </ion-item>
-</ion-col>
+  </ion-grid>
 
-<ion-col col-12>
-  <ion-item>
-    <ion-label stacked> Nº Documento:</ion-label>
-    <ion-input *ngIf="change === 'D.N.I'" type="number" formControlName="dni" name="dni" minlength="8" maxlength="8" floating></ion-input>
-    <ion-input *ngIf="change === 'carne_extranjeria'" type="tel" formControlName="dni" name="dni" minlength="12" maxlength="12"
-      floating></ion-input>
-    <ion-input *ngIf="change === 'pasaporte'" type="tel" formControlName="dni" name="dni" minlength="12" maxlength="12" floating></ion-input>
-    <!-- <p color="danger" ion-text *ngIf="registerForm.get('dni').hasError('required')">DNI requerido</p> -->
-  </ion-item>
-</ion-col>
-</ion-row>
-</ion-grid>
+  <ion-col col-12>
+      <ion-item>
+        <ion-label stacked>Sexo:</ion-label>
+        <ion-select formControlName="gender" name="gender">
+          <ion-option value="HOMBRE">Hombre</ion-option>
+          <ion-option value="MUJER">Mujer</ion-option>
+        </ion-select>
+      </ion-item>
+    </ion-col>
 
-<ion-col col-12>
-  <ion-item>
-    <ion-label stacked>Parentesco:</ion-label>
-    <ion-select formControlName="kindred" name="kindred" floating>
-      <!-- <ion-option value="father">Padre</ion-option>
-      <ion-option value="mother">Madre</ion-option> -->
-      <ion-option value="hijo/a">hijo/a</ion-option>
-      <!-- <ion-option value="daughter">Hija</ion-option>
-      <ion-option value="uncle">Tio</ion-option>
-      <ion-option value="aunt">Tia</ion-option> -->
-    </ion-select>
-  </ion-item>
-</ion-col>
+    <ion-col col-12>
+        <ion-item>
+          <ion-label stacked>Nacimiento:</ion-label>
+          <ion-datetime displayFormat="MM/DD/YYYY"
+                        formControlName="date_of_birth"
+                        name="date_of_birth"
+                        max="{{actual}}"></ion-datetime>
+          <!-- <ion-input type="date" formControlName="date_of_birth" name="date_of_birth"></ion-input> -->
+        </ion-item>
+      </ion-col>
 
-    </ion-list>
-
-    <button ion-button type="submit"
-            [disabled]="!formFamily.valid"
-            block
-            color="secondary"
-            class="guardaryContinuar">Guardar y continuar</button>
-  </form>
+  <ion-col col-12>
+    <ion-item>
+      <ion-label stacked>Parentesco:</ion-label>
+      <ion-select formControlName="kindred" name="kindred" floating>
+        <!-- <ion-option value="father">Padre</ion-option>
+        <ion-option value="mother">Madre</ion-option> -->
+        <ion-option value="hijo/a">hijo/a</ion-option>
+        <!-- <ion-option value="daughter">Hija</ion-option>
+        <ion-option value="uncle">Tio</ion-option>
+        <ion-option value="aunt">Tia</ion-option> -->
+      </ion-select>
+    </ion-item>
+  </ion-col>
+      </ion-list>
+      <button ion-button type="submit"
+              [disabled]="!formFamily.valid"
+              block
+              color="secondary"
+              class="guardaryContinuar">Guardar y continuar</button>
+    </form>
 
 </ion-content>

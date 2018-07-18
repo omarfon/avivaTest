@@ -4,6 +4,7 @@ import { NavController, NavParams, ViewController } from 'ionic-angular';
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { DependentsProvider } from '../../providers/dependents/dependents';
 import * as moment from 'moment';
+import { FinancerPage } from '../appointment/financer/financer';
 
 @Component({
   selector: 'page-createparent',
@@ -77,8 +78,7 @@ export class CreateparentPage {
       this.createParents = data;
       this.dependentsPvr.getDependens().subscribe(dat =>{
           this._parents = dat;
-          console.log(this.parents);
-        this.viewCtrl.dismiss(this._parents);
+         this.navCtrl.push(FinancerPage, {parents:this._parents})
         });
     });
   }

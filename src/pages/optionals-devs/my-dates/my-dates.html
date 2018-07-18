@@ -7,21 +7,68 @@
     </ion-navbar>
     <ion-toolbar color="primary">
       <ion-segment [(ngModel)]="citas" color="secondary">
+        <ion-segment-button value="citaspasadas">
+          <p>Citas Pasadas</p>
+        </ion-segment-button>
         <ion-segment-button value="miscitas">
           <p>Mis citas</p>
         </ion-segment-button>
         <ion-segment-button value="citasfamiliares">
           <p>citas familiares</p>
         </ion-segment-button>
-        <!-- <ion-segment-button value="nocamera">
-          <ion-icon name="camera"></ion-icon>
-        </ion-segment-button> -->
       </ion-segment>
     </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <div [ngSwitch]="citas">
+    <div *ngSwitchCase="'citaspasadas'">
+        <ion-list *ngFor='let citaspa of citaspasadas'>
+            <ion-card class="bordeDerecho" *ngIf="citaspa ">
+                <ion-item>
+                    <ion-row>
+                        <ion-col col-4>
+                            <ion-avatar item-start>
+                                <img src="http://dappapache02.eastus.cloudapp.azure.com:4200/img/professionals/{{citaspa.codigo_personal}}.png">
+                            </ion-avatar>
+                        </ion-col>
+                        <ion-col col-8>
+                            <h3 class="tituloCitas">{{citaspa.apellido1 | lowercase}} {{citaspa.apellido2 | lowercase}} {{citaspa.nombre | lowercase}}</h3>
+                            <p class="especialidad">{{ citaspa.servicio_basico | lowercase }}</p>
+                            <p class="sede">{{ citaspa.nombre_centro | lowercase }}</p>
+                        </ion-col>
+                        <ion-grid>
+                          <ion-row *ngIf="citaspa.tiene_receta == 1">
+                              <ion-col col-10 class="centrado">
+                                  <p>receta para esta cita:</p>
+                              </ion-col>
+                              <ion-col col-2>
+                                <button ion-button
+                                clear
+                                class="iconoDerecha">
+                                    <ion-icon name="attach"
+                                      (click)="goToRecipe(citaspa)">
+                                    </ion-icon>
+                                  </button>
+                              </ion-col>
+                            </ion-row>
+                        </ion-grid>
+                        <ion-col col-12 class="gris">
+                            <ion-row>
+                                <ion-col class="diaCita">
+                                    <p class="day">{{ citaspa.fecha | date:'EEEE d , MMMM ' : 'es' }} </p>
+                                </ion-col>
+                                <ion-col class="hourCita">
+                                    <p class="hour">{{ citaspa.hora | date: 'HH:mm' }}</p>
+                                </ion-col>
+                            </ion-row>
+                        </ion-col>
+                    </ion-row>
+                </ion-item>
+            </ion-card>
+        </ion-list>
+        <p *ngIf="sinpasadas == 0" class="textoCitasNulo">No tienes citas pasadas</p>
+    </div>
       <div *ngSwitchCase="'miscitas'">
         <ion-list *ngFor='let task of tasks'>
         <ion-card (click)="gotoDetails(task)" class="bordeDerecho" *ngIf="task ">
@@ -52,6 +99,7 @@
             </ion-item>
         </ion-card>
     </ion-list>
+    <p *ngIf="mostrar == 0" class="textoCitasNulo">No tienes citas programadas</p>
       </div>
       <div *ngSwitchCase="'citasfamiliares'">
           <ion-list *ngFor='let taskpa of tasksParents'>
@@ -85,11 +133,9 @@
                   </ion-item>
               </ion-card>
           </ion-list>
+          <p *ngIf="sinParents == 0" class="textoCitasNulo">No tienes citas para familiares</p>
         </div>
-      <!-- <div *ngSwitchCase="'nocamera'">
-          lo que hay dentro de nocamera
-        </div> -->
   </div>
 
-    <p *ngIf="mostrar == 0" class="textoCitasNulo">No tienes citas programadas</p>
+
 </ion-content>

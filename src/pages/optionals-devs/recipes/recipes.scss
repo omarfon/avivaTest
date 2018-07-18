@@ -1,51 +1,33 @@
 page-recipes {
-  // aqui comienzan los estilos para la toma de la medicina
-  .cuadrados{
-    height: 80px;
-    background:#F5F5F5;
-    width:95%;
-    margin-left:5%;
-    color:#444D4D;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction:column;
-      p{
-        // margin-top:-5px;
-        font-size:.8em;
-        margin-top:15px;
-      }
-      .cantidad{
-        color:#9483C8;
-        font-size:1.8em;
-        margin-top:10px;
-      }
-    }
-    .nombrePastilla{
-    color:#00B6A3;
-    font-size:1.3em;
-    font-weight: 400;
-    margin-top:10px;
-    text-align: right;
-    margin-right:30px;
-  }
-  .cantidadDeDias, .inicio{
-    color:#444D4D;
-  }
-  .tituloDeLasTomas{
-    color:#00B6A3;
-    font-size:1.2em!important;
-    font-weight:600;
-    text-align: center;
-    margin-top:30px!important;
-    margin-bottom:0;
-  }
-  img{
-     width:50px!important;
-     height: auto;
-  }
-  .down{
-    margin-bottom: 30px;
-    border-bottom: .5px solid #DFDFDF;
-  }
+ .especialidad{
+   text-align: right;
+   margin-right: 20px;
+   color:grey;
+   font-weight: 500;
+   span{
+     color:#00B6A3;
+     margin:0!important;
+     padding:0!important;
+     text-align: left;
+   }
+ }
+ .iconoReceta{
+   text-align: center;
+   h4{
+     color:grey;
+     text-align: center;
+     margin-top:10px;
+   }
+   ion-icon{
+     color:#007198;
+     font-size:3em;
+   }
+ }
+ .doctor{
+   text-align: right;
+   margin-right:20px;
+   color:grey;
+ }
+
+
 }

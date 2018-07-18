@@ -33,6 +33,7 @@ export class MyparentsPage {
 
                 this.dependentsPvr.getDependens().subscribe(data =>{
                  this.dependens = data;
+                 console.log('los dependientes:', this.dependens);
                 })
 
                 this.formFamily = this.fb.group({

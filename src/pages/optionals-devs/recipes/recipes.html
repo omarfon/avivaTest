@@ -4,90 +4,23 @@
   </ion-navbar>
 
 </ion-header>
+<ion-content>
+    <ion-card *ngFor="let recipe of recipes"
+              (click)="goToDetailRecipe(recipe)">
+        <ion-row>
+          <ion-col col-4
+                    class="iconoReceta">
+              <h4>receta</h4>
+              <ion-icon name="paper"></ion-icon>
+              <p class="fecha">{{recipe.prescripciones[0].inicio_prescripcion | date:'dd/MM/y'}}</p>
+          </ion-col>
+          <ion-col col-8>
+            <p class="especialidad"> <span> Especialidad: </span>{{recipe.prescripciones[0].servicio}} </p>
+            <p class="doctor">Doctor: {{recipe.prescripciones[0].apellidop_personal}} {{recipe.prescripciones[0].apellidom_personal}}</p>
 
+          </ion-col>
+        </ion-row>
 
-<ion-content >
-  <div padding *ngIf="recipes">
-            <div *ngFor="let recipe of recipes">
-              <ion-row>
-                <ion-col col-3>
-                    <img src="assets/imgs/recipes/{{recipe.formasfar_pk}}.png" alt="">
-                </ion-col>
-                <ion-col col-9 >
-                    <p class="nombrePastilla"
-                      *ngIf="recipe.marca_comercial">
-                      {{recipe.marca_comercial}}
-                    </p>
-                    <p class="nombrePastilla"
-                       *ngIf="recipe.marca_comercial == null">
-                       {{recipe.nombre_generico}}
-                      </p>
-                </ion-col>
-              </ion-row>
-                 <!-- inicio de los datos de la pastilla -->
+    </ion-card>
 
-              <p class="cantidadDeDias">Tratamiento de 5 dias</p>
-              <p class="inicio">Inicio de Tratamiento: {{recipe.inicio_prescripcion | date: "dd MMMM yyyy"}}</p>
-               <!-- fin de los datos de la pastilla -->
-
-             <!-- inicio de los cuadros para las toma de pastilla -->
-              <div *ngIf="recipes && recipe.cada_x_horas == 8"
-                    class="down">
-                <h4 class="tituloDeLasTomas"> tomas de 3 veces por día</h4>
-                <ion-row padding>
-                  <ion-col class="cuadrados">
-                    <p> 6am - 9am</p>
-                    <p class="cantidad">{{recipe.cantidad_dosis}}</p>
-                    </ion-col>
-                  <ion-col class="cuadrados">
-                    <p> 2pm - 4pm</p>
-                    <p class="cantidad"> {{recipe.cantidad_dosis}} </p>
-                  </ion-col>
-                  <ion-col class="cuadrados">
-                    <p>10pm - 12m</p>
-                    <p class="cantidad"> {{recipe.cantidad_dosis}} </p>
-                  </ion-col>
-                </ion-row>
-            </div>
-
-            <div *ngIf="recipes && recipe.cada_x_horas == 12"
-                  class="down">
-              <p class="tituloDeLasTomas"> tomas de 2 veces por día</p>
-              <ion-row padding>
-                <ion-col class="cuadrados">
-                  <p> 6am-9am</p>
-                  <p class="cantidad">{{recipe.cantidad_dosis}}</p>
-                </ion-col>
-                <ion-col class="cuadrados">
-                  <p>6pm-9m</p>
-                  <p class="cantidad"> {{recipe.cantidad_dosis}} </p>
-                </ion-col>
-              </ion-row>
-            </div>
-
-            <div *ngIf="recipes && recipe.cada_x_horas == 6"
-            class="down">
-                <p class="tituloDeLasTomas"> tomas de 4 veces por día</p>
-                <ion-row padding>
-                  <ion-col class="cuadrados">
-                    <p> 6am-8am</p>
-                    <p class="cantidad">{{recipe.cantidad_dosis}}</p>
-                  </ion-col>
-                  <ion-col class="cuadrados">
-                      <p> 12m-2pm</p>
-                      <p class="cantidad">{{recipe.cantidad_dosis}}</p>
-                    </ion-col>
-                    <ion-col class="cuadrados">
-                        <p> 6pm-8pm</p>
-                        <p class="cantidad">{{recipe.cantidad_dosis}}</p>
-                      </ion-col>
-                  <ion-col class="cuadrados">
-                    <p>12m-2am</p>
-                    <p class="cantidad"> {{recipe.cantidad_dosis}} </p>
-                  </ion-col>
-                </ion-row>
-              </div>
-
-          </div>
-        </div>
 </ion-content>

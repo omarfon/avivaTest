@@ -2,6 +2,7 @@ import { RecipesProvider } from './../../../providers/recipes/recipes';
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { RecursiveTemplateAstVisitor } from '@angular/compiler';
+import { DetailRecipePage } from '../../detail-recipe/detail-recipe';
 
 
 @Component({
@@ -10,7 +11,7 @@ import { RecursiveTemplateAstVisitor } from '@angular/compiler';
 })
 export class RecipesPage {
 
-  id = 18439;
+
   public recipes;
 
   constructor(public navCtrl: NavController,
@@ -24,11 +25,9 @@ export class RecipesPage {
     //   this.recipes = data;
     //   console.log(this.recipes);
 
-    this.recipesPvr.getRecipes(this.id).subscribe((data:any) =>{
+    this.recipesPvr.getAllRecipes().subscribe((data:any) =>{
         this.recipes = data;
         console.log(this.recipes);
-
-
     });
   }
 
@@ -36,6 +35,9 @@ export class RecipesPage {
     console.log('ionViewDidLoad RecipesPage');
   }
 
-
-
+  goToDetailRecipe(recipe){
+    this.navCtrl.push(DetailRecipePage, {
+      recipe:recipe
+    })
+  }
 }
