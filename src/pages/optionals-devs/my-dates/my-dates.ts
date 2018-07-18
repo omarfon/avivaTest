@@ -56,8 +56,8 @@ export class MyDatesPage {
           console.log('las citas de los familiares:', this.tasksParents);
         });
   }
-  gotoDetails(task){
-    this.navCtrl.push(MyDateModalPage, { task:task , tasks: this.tasks});
+  gotoDetails(taskpa){
+    this.navCtrl.push(MyDateModalPage, { taskpa:taskpa , tasks: this.tasks});
   }
   goToRecipe(citaspa){
     let id = citaspa.encuentro_pk;

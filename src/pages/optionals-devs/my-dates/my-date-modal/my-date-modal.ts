@@ -12,7 +12,8 @@ import { HomePage } from '../../../home/home';
 })
 export class MyDateModalPage {
 
-  task: Object;
+  private task;
+  private tasks;
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
@@ -23,7 +24,8 @@ export class MyDateModalPage {
               public appointmentProvider: AppointmentProvider,
               public modalCtrl: ModalController) {
 
-        this.task = navParams.get('task');
+        this.tasks = navParams.get('taskpa');
+        this.task = this.tasks.appointments[0];
         console.log('task de modalPage:' ,this.task);
   }
   dismiss() {
