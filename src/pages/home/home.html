@@ -41,10 +41,15 @@
                     <ion-col col-2>
                         <ion-icon name="alarm"></ion-icon>
                     </ion-col>
-                    <ion-col col-10>
+                    <ion-col col-8>
                         <p class="font11">Próxima Cita</p>
+                      </ion-col>
+                      <ion-col col-2>
+                          <ion-badge *ngIf="citapendiente"
+                                      class="badgeIcon"
+                                      color="notifi" item-end>{{citapendiente}}
+                          </ion-badge>
                     </ion-col>
-
                 </mat-expansion-panel-header >
                 <div class="containerExpand" >
                   <div *ngIf="tasks else notasks">
@@ -94,12 +99,24 @@
                     <ion-col col-2>
                         <ion-icon name="medkit"></ion-icon>
                     </ion-col>
-                    <ion-col col-10>
+                    <ion-col col-8>
                         <p class="font11">Recetas y Medicamentos</p>
+                    </ion-col>
+                    <ion-col col-2>
+                        <ion-badge *ngIf="citapendiente"
+                                      class="badgeIcon"
+                                      color="verde" item-end>{{recipendiente}}
+                          </ion-badge>
                     </ion-col>
                 </mat-expansion-panel-header>
                 <div class="containerExpand">
-                    <p class="textoRecetas">Las recetas y médicamentos de sus últimas citas aparecerán aquí , despues de registrado</p>
+                    <p *ngIf="!tasks" class="textoRecetas">Las recetas y médicamentos de sus últimas citas aparecerán aquí , despues de registrado</p>
+                    <div *ngIf="tasks">
+                      <div  *ngFor="let recipe of recipes; index as i; last as isLast">
+                            <!-- <h1 *ngIf="isLast">{{recipe.prescripciones.nombre_generico}}</> -->
+                      </div>
+
+                    </div>
                 </div>
             </mat-expansion-panel>
 

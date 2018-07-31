@@ -37,7 +37,7 @@ export class MyDatesPage {
             this.citas = 'miscitas';
             this.tasks = data;
             this.mostrar = this.tasks.length;
-            console.log('mis citas:',this.tasks);
+            // console.log('mis citas:',this.tasks);
             // console.log('tasks:', this.tasks);
           },
           err =>{
@@ -57,8 +57,15 @@ export class MyDatesPage {
         });
   }
   gotoDetails(taskpa){
-    this.navCtrl.push(MyDateModalPage, { taskpa:taskpa , tasks: this.tasks});
+      this.navCtrl.push(MyDateModalPage, { taskpa:taskpa});
+      console.log('taskpa:', taskpa);
   }
+
+  goToDetailsTask(task){
+    console.log('task datos:', task);
+    this.navCtrl.push(MyDateModalPage, {task:task});
+  }
+
   goToRecipe(citaspa){
     let id = citaspa.encuentro_pk;
     this.recipePvr.getRecipes(id).subscribe((data:any)=>{

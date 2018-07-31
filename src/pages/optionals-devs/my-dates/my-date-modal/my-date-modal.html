@@ -1,7 +1,8 @@
 <ion-header>
 
-    <ion-navbar color="azul">
-        <ion-title class="titleHeader">Mis citas - {{ task.service.basicService.description | slice:0:6 }}</ion-title>
+    <ion-navbar color="verde">
+        <ion-title *ngIf="taskpa" class="titleHeader">Cita familiar </ion-title>
+        <ion-title *ngIf="task" class="titleHeader">Mis citas</ion-title>
         <!-- <ion-buttons end>
             <button ion-button icon-only color="royal" (click)="dismiss()">
       </button>
@@ -11,36 +12,45 @@
 
 
 <ion-content has-header="true">
+
+
     <ion-list>
 
-        <img id="profile-image" src="http://dappapache02.eastus.cloudapp.azure.com:4200/img/professionals/{{task.professional.id}}.png">
+        <img *ngIf="taskpa" id="profile-image" src="http://dappapache02.eastus.cloudapp.azure.com:4200/img/professionals/{{taskpa.professional.id}}.png">
+        <img *ngIf="task" id="profile-image" src="http://dappapache02.eastus.cloudapp.azure.com:4200/img/professionals/{{task.professional.id}}.png">
 
-        <h3 class="nombreDoctor" text-center>{{ task.professional.fullName | lowercase }} </h3>
+        <h3 *ngIf="taskpa" class="nombreDoctor" text-center>{{ taskpa.professional.fullName | lowercase }} </h3>
+        <h3 *ngIf="task" class="nombreDoctor" text-center>{{ task.professional.fullName | lowercase }} </h3>
 
         <ion-item>
             <ion-icon item-start><i class="fa fa-hospital-o" aria-hidden="true"></i></ion-icon>
             <ion-label class="heightNoventa">Sede:</ion-label>
-            <ion-label class="blue"> {{ task.service.center.name | lowercase }}</ion-label>
+            <ion-label *ngIf="taskpa" class="blue"> {{ taskpa.service.center.name | lowercase }}</ion-label>
+            <ion-label *ngIf="task" class="blue"> {{ task.service.center.name | lowercase }}</ion-label>
         </ion-item>
         <ion-item>
             <ion-icon item-start><i class="fa fa-heartbeat" aria-hidden="true"></i></ion-icon>
             <ion-label class="heightNoventa">Especialidad:</ion-label>
-            <ion-label class="blue"> {{ task.service.basicService.description | lowercase }}</ion-label>
+            <ion-label *ngIf="taskpa" class="blue"> {{ taskpa.service.basicService.description | lowercase }}</ion-label>
+            <ion-label *ngIf="task" class="blue"> {{ task.service.basicService.description | lowercase }}</ion-label>
         </ion-item>
         <ion-item>
             <ion-icon item-start><i class="fa fa-calendar-check-o" aria-hidden="true"></i></ion-icon>
             <ion-label class="heightNoventa">Fecha:</ion-label>
-            <ion-label class="blue"> {{ task.appointmentDateTime | date:'EEEE d , MMMM ' : 'es' }}</ion-label>
+            <ion-label *ngIf="taskpa" class="blue"> {{ taskpa.appointmentDateTime | date:'EEEE d , MMMM ' : 'es' }}</ion-label>
+            <ion-label *ngIf="task" class="blue"> {{ task.appointmentDateTime | date:'EEEE d , MMMM ' : 'es' }}</ion-label>
         </ion-item>
         <ion-item>
             <ion-icon item-start><i class="fa fa-clock-o" aria-hidden="true"></i></ion-icon>
             <ion-label class="heightNoventa">Hora:</ion-label>
-            <ion-label class="blue"> {{ task.appointmentDateTime | date: 'HH:mm' }}</ion-label>
+            <ion-label *ngIf="taskpa" class="blue"> {{ taskpa.appointmentDateTime | date: 'HH:mm' }}</ion-label>
+            <ion-label *ngIf="task" class="blue"> {{ task.appointmentDateTime | date: 'HH:mm' }}</ion-label>
         </ion-item>
         <ion-item>
             <ion-icon item-start><i class="fa fa-universal-access" aria-hidden="true"></i></ion-icon>
             <ion-label class="heightNoventa">Seguro:</ion-label>
-            <ion-label class="blue"> {{ task.plan.description | lowercase }}</ion-label>
+            <ion-label *ngIf="taskpa" class="blue"> {{ taskpa.plan.description | lowercase }}</ion-label>
+            <ion-label *ngIf="task" class="blue"> {{ task.plan.description | lowercase }}</ion-label>
         </ion-item>
 
         <!-- <ion-item>
@@ -68,7 +78,8 @@
         <ion-item>
             <ion-row>
                 <ion-col col-6>
-                    <button ion-button block color="secondary" (click)='desactivateTask(task)'>ANULAR CITA</button>
+                    <button *ngIf="taskpa" ion-button block color="secondary" (click)='desactivateTask(taskpa)'>ANULAR CITA</button>
+                    <button *ngIf="task" ion-button block color="secondary" (click)='desactivateTask(taskpa)'>ANULAR CITA</button>
                 </ion-col>
                 <ion-col col-6>
                     <button ion-button block (click)="dismiss()">VOLVER</button>
@@ -76,6 +87,7 @@
             </ion-row>
         </ion-item>
     </ion-list>
+
 
 
 </ion-content>

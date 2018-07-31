@@ -2,7 +2,6 @@ import { AppointmentProvider } from './../../../../providers/appoinment/appoinme
 import { Component } from '@angular/core';
 import { NavController, NavParams, ActionSheetController, ViewController, ToastController, AlertController, ModalController } from 'ionic-angular';
 import { MyDatesPage } from '../my-dates';
-import { HomePage } from '../../../home/home';
 
 
 
@@ -14,6 +13,7 @@ export class MyDateModalPage {
 
   private task;
   private tasks;
+  private taskpa;
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
@@ -23,10 +23,13 @@ export class MyDateModalPage {
               public actionSheetCtrl: ActionSheetController,
               public appointmentProvider: AppointmentProvider,
               public modalCtrl: ModalController) {
-
-        this.tasks = navParams.get('taskpa');
-        this.task = this.tasks.appointments[0];
-        console.log('task de modalPage:' ,this.task);
+                this.tasks = navParams.get('taskpa');
+                this.task = navParams.get('task');
+                if(this.tasks){
+                  this.taskpa = this.tasks.appointments[0];
+                }
+        console.log('los datos del task:', this.task);
+        console.log('taskpa de modalPage:' ,this.taskpa);
   }
   dismiss() {
     this.viewCtrl.dismiss();

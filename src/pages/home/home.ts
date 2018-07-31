@@ -1,3 +1,4 @@
+import { RecipesProvider } from './../../providers/recipes/recipes';
 import { AuthorizationPublicProvider } from '../../providers/authorization-public/authorization-public';
 import { Component } from '@angular/core';
 import { NavController, AlertController } from 'ionic-angular';
@@ -16,16 +17,22 @@ export class HomePage {
   cardthree: any = []
   itemExpanded: boolean = true;
   itemExpandHeight: number = 100;
+  private citapendiente;
 
   public tasks;
   public ensenar;
   public nombre;
-
+  public recipes;
+  private recipendiente;
+  private lastRecipe;
   constructor(public navCtrl : NavController,
               public appointmentProvider : AppointmentProvider,
               private autho : AuthorizationPublicProvider,
-              private alertCtrl: AlertController
+              private alertCtrl: AlertController,
+              private recipesPvr: RecipesProvider
 ) {
+
+
 
   let nombrePatient = localStorage.getItem('patientName');
   let separador = " ";
@@ -63,6 +70,15 @@ export class HomePage {
     obtenerUltimaFecha(){
         this.appointmentProvider.getAppointmentsPeruser().subscribe(data =>{
           this.tasks = data;
+          this.citapendiente = this.tasks.length;
+
+          this.recipesPvr.getAllRecipes().subscribe((data:any) =>{
+            this.recipes = data;
+            this.recipendiente = this.recipes.length;
+            console.log('recipes:', this.recipes);
+            // console.log(this.recipendiente);
+        });
+
       });
     }
 

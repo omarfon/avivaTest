@@ -71,7 +71,7 @@
     </div>
       <div *ngSwitchCase="'miscitas'">
         <ion-list *ngFor='let task of tasks'>
-        <ion-card (click)="gotoDetails(task)" class="bordeDerecho" *ngIf="task ">
+        <ion-card (click)="goToDetailsTask(task)" class="bordeDerecho" *ngIf="task ">
             <ion-item>
                 <ion-row>
                     <ion-col col-4>
@@ -112,10 +112,17 @@
                               </ion-avatar>
                           </ion-col>
                           <ion-col col-8>
-                              <p class="nombreFamiliar">{{taskpa.appointments[0].patient.name}}</p>
-                              <h3 class="tituloCitas">Dr. {{taskpa.appointments[0].professional.fullName | slice:0:25 | lowercase}}</h3>
-                              <p class="especialidad">{{ taskpa.appointments[0].service.basicService.description | lowercase }}</p>
-                              <p class="sede">{{ taskpa.appointments[0].service.center.name | lowercase }}</p>
+                              <ion-row>
+                                <ion-col col-12
+                                  class="nombreFamiliarBox">
+                                  <p class="nombreFamiliar">Cita para: {{taskpa.appointments[0].patient.name}}</p>
+                                </ion-col>
+                                <ion-col col-12>
+                                  <h3 class="tituloCitas">Dr. {{taskpa.appointments[0].professional.fullName | slice:0:25 | lowercase}}</h3>
+                                  <p class="especialidad">{{ taskpa.appointments[0].service.basicService.description | lowercase }}</p>
+                                  <p class="sede">{{ taskpa.appointments[0].service.center.name | lowercase }}</p>
+                                </ion-col>
+                              </ion-row>
                           </ion-col>
                           <ion-col col-12 class="gris">
                               <ion-row>

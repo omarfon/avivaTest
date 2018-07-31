@@ -188,6 +188,7 @@ export class FinancerPage {
   this.depe = depe;
   this.vcolor = true;
   this.ccolor = false;
+  this.price = null;
   }
 
   // mostrar los familiares adjuntos o la opción de crear uno nuevo

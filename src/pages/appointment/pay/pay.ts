@@ -104,7 +104,10 @@ export class PayPage {
   }
 
   openCulqi() {
-
+    let loadingPago = this.loadingCtrl.create({
+      content: "Haciendo el cobro...",
+    });
+    loadingPago.present();
     let appointment = this.currentAppointment;
     // console.log(Culqi);
     // console.log('elprecio:',this.price)
@@ -120,10 +123,6 @@ export class PayPage {
     console.log('settings:', settings, this.culqiData);
     Culqi.settings(settings);
 
-    let loadingPago = this.loadingCtrl.create({
-      content: "Haciendo el cobro...",
-    });
-    loadingPago.present();
 
     const i = setInterval(function () {
       // si se puede realizar el pago con culqi
@@ -400,13 +399,12 @@ export class PayPage {
 
   next() {
     if (this.currentAppointment === null) {
-
+      let loading = this.loadingCtrl.create({
+        content: "creando cita"
+      });
+      loading.present();
       this.appointmentProvider.createAppointment(this.subida).subscribe(data => {
         // console.log("se ha creado la cita");
-        let loading = this.loadingCtrl.create({
-          content: "creando cita"
-        });
-        loading.present();
         let alert = this.alertCtrl.create({
           title: "Creación de cita",
           subTitle: "la cita que reservaste ha sido creada satisfactoriamente.",

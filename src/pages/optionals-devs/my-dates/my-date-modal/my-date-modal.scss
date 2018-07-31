@@ -47,6 +47,9 @@ page-my-date-modal {
         font-weight: 400;
         text-transform: capitalize;
     }
+    ion-navbar ion-icon{
+      color:#fff;
+    }
     ion-icon {
         color: #A7A9AB;
         font-size: .7em;
@@ -57,7 +60,7 @@ page-my-date-modal {
     .toolbar-title,
     .toolbar-title-md {
         font-size: 1.3em!important;
-        text-align: center;
+        // text-align: center;
         font-weight: 400;
     }
     .item-inner {
@@ -66,4 +69,10 @@ page-my-date-modal {
     .heightNoventa {
         margin-right: 0!important;
     }
+   .segment-md-secondary{
+     color:#fff!important;
+   }
+   ion-segment-button .segment-activated{
+     color:#fff!important;
+   }
 }

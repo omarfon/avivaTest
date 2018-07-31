@@ -36,7 +36,7 @@
         .bar-button-default-md:hover:not(.disable-hover),
         .bar-button-clear-md-default:hover:not(.disable-hover),
         .bar-button-md-default:hover:not(.disable-hover) {
-            color: #fff;
+            color: #fff!important;
         }
         .textoCitasNulo {
             color: #A7A9AC;
@@ -92,5 +92,19 @@
               margin-left: 10px;
               color:#A7A9AC;
             }
+        }
+        .nombreFamiliarBox{
+          background: #00B6A3;
+          margin:0!important;
+          padding:0!important;
+          p {
+            color:#fff;
+            padding:.2em .5em;
+            text-align: right;
+            margin-right: 20px;
+          }
+        }
+        .segment-md-secondary .segment-button{
+          color:#fff!important;
         }
     }
