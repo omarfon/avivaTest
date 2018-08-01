@@ -8,19 +8,18 @@
     <ion-card *ngFor="let recipe of recipes"
               (click)="goToDetailRecipe(recipe)">
         <ion-row>
-          <ion-col col-4
-                    class="iconoReceta">
-              <h4>receta</h4>
-              <ion-icon name="paper"></ion-icon>
-              <p class="fecha">{{recipe.prescripciones[0].inicio_prescripcion | date:'dd/MM/y'}}</p>
+          <ion-col col-4>
+            <div class="iconoReceta">
+              <p class="dia">{{recipe.prescripciones[0].inicio_prescripcion | date:'dd'}}</p>
+              <p class="mes">{{recipe.prescripciones[0].inicio_prescripcion | date:'MMMM'}}</p>
+            </div>
           </ion-col>
           <ion-col col-8>
-            <p class="especialidad"> <span> Especialidad: </span>{{recipe.prescripciones[0].servicio}} </p>
-            <p class="doctor">Doctor: {{recipe.prescripciones[0].apellidop_personal}} {{recipe.prescripciones[0].apellidom_personal}}</p>
-
+            <p class="especialidad"> Especialidad:</p>
+            <p class="resultado">{{recipe.prescripciones[0].servicio}}</p>
+            <p class="especialidad">Doctor:</p>
+            <p class="resultado">{{recipe.prescripciones[0].apellidop_personal}} {{recipe.prescripciones[0].apellidom_personal}}</p>
           </ion-col>
         </ion-row>
-
     </ion-card>
-
 </ion-content>

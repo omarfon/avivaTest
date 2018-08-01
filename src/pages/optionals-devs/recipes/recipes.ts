@@ -3,6 +3,8 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { RecursiveTemplateAstVisitor } from '@angular/compiler';
 import { DetailRecipePage } from '../../detail-recipe/detail-recipe';
+import * as moment from 'moment';
+import { SELECT_MULTIPLE_PANEL_PADDING_X } from '@angular/material';
 
 
 @Component({
@@ -13,22 +15,15 @@ export class RecipesPage {
 
 
   public recipes;
+  public _recipes;
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
               public recipesPvr: RecipesProvider) {
 
-    // ahora esta implementado así.... pero no funcionará
-    // porque lo que tiene que pasar es tener un endpoint que me traiga todos las recetas
-
-    // this.recipesPvr.getAllRecipes().subscribe(data=>{
-    //   this.recipes = data;
-    //   console.log(this.recipes);
-
-    this.recipesPvr.getAllRecipes().subscribe((data:any) =>{
-        this.recipes = data;
-        console.log(this.recipes);
-    });
+  this.recipesPvr.getAllRecipes().subscribe(data =>{
+    this.recipes = data;
+  });
   }
 
   ionViewDidLoad() {

@@ -1,6 +1,6 @@
 webpackJsonp([0],{
 
-/***/ 151:
+/***/ 152:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -111,7 +111,7 @@ var CreateparentPage = (function () {
 
 /***/ }),
 
-/***/ 152:
+/***/ 153:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -124,7 +124,7 @@ var CreateparentPage = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__providers_crudparent_crudparent__ = __webpack_require__(67);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_sha_js__ = __webpack_require__(390);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_sha_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_sha_js__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__code_code__ = __webpack_require__(153);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__code_code__ = __webpack_require__(154);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_moment__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8_moment__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -262,7 +262,7 @@ var RegisterPage = (function () {
 
 /***/ }),
 
-/***/ 153:
+/***/ 154:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -382,7 +382,7 @@ var CodePage = (function () {
 
 /***/ }),
 
-/***/ 154:
+/***/ 155:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -453,7 +453,7 @@ var AuthorizationPublicProvider = (function () {
 
 /***/ }),
 
-/***/ 156:
+/***/ 157:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -903,13 +903,13 @@ var PayPage = (function () {
 
 /***/ }),
 
-/***/ 158:
+/***/ 159:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MyDatesPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__recipe_recipe__ = __webpack_require__(403);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__providers_recipes_recipes__ = __webpack_require__(159);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__providers_recipes_recipes__ = __webpack_require__(98);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_ionic_angular__ = __webpack_require__(14);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_appoinment_appoinment__ = __webpack_require__(53);
@@ -998,91 +998,6 @@ var MyDatesPage = (function () {
 
 /***/ }),
 
-/***/ 159:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return RecipesProvider; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_rxjs_Observable__ = __webpack_require__(5);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_rxjs_Observable___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_rxjs_Observable__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__(81);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_catch__ = __webpack_require__(52);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_catch___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_catch__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_map__ = __webpack_require__(51);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_map__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_filter__ = __webpack_require__(394);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_filter___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_filter__);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-
-
-
-var RecipesProvider = (function () {
-    function RecipesProvider(http) {
-        this.http = http;
-        this.apiUrl = "http://dappapache02.eastus.cloudapp.azure.com:4200/api/v2/ebooking/getPrescripcionesEncuentro?encuentroId=";
-        console.log('Hello RecipesProvider Provider');
-    }
-    RecipesProvider.prototype.getAllRecipes = function () {
-        var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Headers */]({ 'Content-Type': 'application/json', 'Authorization': localStorage.getItem('authorization') });
-        var options = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["d" /* RequestOptions */]({ headers: headers });
-        return this.http.get(this.apiUrl, options)
-            .map(this.extractData)
-            .catch(this.handleError);
-    };
-    RecipesProvider.prototype.getFilterRecipes = function () {
-        var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Headers */]({ 'Content-Type': 'application/json', 'Authorization': localStorage.getItem('authorization') });
-        var options = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["d" /* RequestOptions */]({ headers: headers });
-        return this.http.get(this.apiUrl, options)
-            .map(this.extractData)
-            .catch(this.handleError);
-    };
-    RecipesProvider.prototype.getRecipes = function (id) {
-        var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Headers */]({ 'Content-Type': 'application/json', 'Authorization': localStorage.getItem('authorization') });
-        var options = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["d" /* RequestOptions */]({ headers: headers });
-        return this.http.get(this.apiUrl + ("" + id), options)
-            .map(this.extractData)
-            .catch(this.handleError);
-    };
-    RecipesProvider.prototype.extractData = function (res) {
-        var body = res.json();
-        return body || {};
-    };
-    RecipesProvider.prototype.handleError = function (error) {
-        var errMsg;
-        if (error instanceof __WEBPACK_IMPORTED_MODULE_1__angular_http__["e" /* Response */]) {
-            var body = error.json() || '';
-            var err = body.error || JSON.stringify(body);
-            errMsg = error.status + " - " + (error.statusText || '') + " " + err;
-        }
-        else {
-            errMsg = error.message ? error.message : error.toString();
-        }
-        console.error(errMsg);
-        return __WEBPACK_IMPORTED_MODULE_0_rxjs_Observable__["Observable"].throw(errMsg);
-    };
-    RecipesProvider = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_2__angular_core__["B" /* Injectable */])(),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */]])
-    ], RecipesProvider);
-    return RecipesProvider;
-}());
-
-//# sourceMappingURL=recipes.js.map
-
-/***/ }),
-
 /***/ 182:
 /***/ (function(module, exports) {
 
@@ -1124,14 +1039,16 @@ var DetailRecipePage = (function () {
         this.navParams = navParams;
         this.recipe = this.navParams.get('recipe');
         this.recetas = this.recipe.prescripciones;
-        console.log('la receta:', this.recipe);
+        this.date = this.recipe.prescripciones[0];
+        console.log('el resultado:', this.recipe);
+        console.log('los datos:', this.date);
     }
     DetailRecipePage.prototype.ionViewDidLoad = function () {
         console.log('ionViewDidLoad DetailRecipePage');
     };
     DetailRecipePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-detail-recipe',template:/*ion-inline-start:"/proyectos/IonicPruebas/ApolloIonicVersionOne/src/pages/detail-recipe/detail-recipe.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title>detalle receta</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n    <div padding *ngIf="recetas">\n        <div *ngFor="let recipe of recetas">\n          <ion-row>\n            <ion-col col-3>\n                <img src="assets/imgs/recipes/{{recipe.formasfar_pk}}.png" alt="">\n            </ion-col>\n            <ion-col col-9 >\n                <p class="nombrePastilla"\n                  *ngIf="recipe.marca_comercial">\n                  {{recipe.marca_comercial}}\n                </p>\n                <p class="nombrePastilla"\n                   *ngIf="recipe.marca_comercial == null">\n                   {{recipe.nombre_generico}}\n                  </p>\n            </ion-col>\n          </ion-row>\n\n          <p class="cantidadDeDias">Tratamiento de 5 dias</p>\n          <p class="inicio">Inicio de Tratamiento: {{recipe.inicio_prescripcion | date: "dd MMMM yyyy"}}</p>\n\n\n\n          <div *ngIf="recetas && recipe.cada_x_horas == 8"\n                class="down">\n            <h4 class="tituloDeLasTomas"> tomas de 3 veces por día</h4>\n            <ion-row padding>\n              <ion-col class="cuadrados">\n                <p> 6-9 am</p>\n                <p class="cantidad">{{recipe.cantidad_dosis}}</p>\n                </ion-col>\n              <ion-col class="cuadrados">\n                <p> 2-4 pm</p>\n                <p class="cantidad"> {{recipe.cantidad_dosis}} </p>\n              </ion-col>\n              <ion-col class="cuadrados">\n                <p>10-12 m</p>\n                <p class="cantidad"> {{recipe.cantidad_dosis}} </p>\n              </ion-col>\n            </ion-row>\n        </div>\n\n        <div *ngIf="recetas && recipe.cada_x_horas == 12"\n              class="down">\n          <p class="tituloDeLasTomas"> tomas de 2 veces por día</p>\n          <ion-row padding>\n            <ion-col class="cuadrados">\n              <p> 6-9 am</p>\n              <p class="cantidad">{{recipe.cantidad_dosis}}</p>\n            </ion-col>\n            <ion-col class="cuadrados">\n              <p>6-9 pm</p>\n              <p class="cantidad"> {{recipe.cantidad_dosis}} </p>\n            </ion-col>\n          </ion-row>\n        </div>\n\n        <div *ngIf="recetas && recipe.cada_x_horas == 6"\n        class="down">\n            <p class="tituloDeLasTomas"> tomas de 4 veces por día</p>\n            <ion-row padding>\n              <ion-col class="cuadrados">\n                <p> 6-8 am</p>\n                <p class="cantidad">{{recipe.cantidad_dosis}}</p>\n              </ion-col>\n              <ion-col class="cuadrados">\n                  <p> 12-2 pm</p>\n                  <p class="cantidad">{{recipe.cantidad_dosis}}</p>\n                </ion-col>\n                <ion-col class="cuadrados">\n                    <p> 6-8 pm</p>\n                    <p class="cantidad">{{recipe.cantidad_dosis}}</p>\n                  </ion-col>\n              <ion-col class="cuadrados">\n                <p>12-2 m</p>\n                <p class="cantidad"> {{recipe.cantidad_dosis}} </p>\n              </ion-col>\n            </ion-row>\n          </div>\n\n          <div *ngIf="recetas && recipe.cada_x_horas == 24"\n          class="down">\n              <p class="tituloDeLasTomas"> toma de 1 vez por día</p>\n              <ion-row padding>\n                <ion-col class="cuadrados">\n                  <p> 6-8 am</p>\n                  <p class="cantidad">{{recipe.cantidad_dosis}}</p>\n                </ion-col>\n\n              </ion-row>\n            </div>\n\n      </div>\n    </div>\n</ion-content>\n'/*ion-inline-end:"/proyectos/IonicPruebas/ApolloIonicVersionOne/src/pages/detail-recipe/detail-recipe.html"*/,
+            selector: 'page-detail-recipe',template:/*ion-inline-start:"/proyectos/IonicPruebas/ApolloIonicVersionOne/src/pages/detail-recipe/detail-recipe.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title>detalle receta</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content >\n  <div class="contenedorDatos">\n    <ion-grid>\n      <ion-row>\n          <ion-col col-4>\n            <div class="iconoReceta">\n              <p class="dia">{{date.inicio_prescripcion | date:\'dd\'}}</p>\n              <p class="mes">{{date.inicio_prescripcion | date:\'MMMM\'}}</p>\n            </div>\n          </ion-col>\n          <ion-col col-8>\n            <p class="especialidad"> Especialidad:</p>\n            <p class="resultado">{{date.servicio}}</p>\n            <p class="especialidad">Doctor:</p>\n            <p class="resultado">{{date.apellidop_personal}} {{date.apellidom_personal}}</p>\n          </ion-col>\n        </ion-row>\n    </ion-grid>\n  </div>\n\n    <div *ngIf="recetas">\n        <div *ngFor="let recipe of recetas">\n          <ion-card>\n            <ion-card-header>\n                <ion-row>\n                    <ion-col col-3\n                          class="containerIconAndDays">\n                        <img src="assets/imgs/recipes/{{recipe.formasfar_pk}}.png" alt="">\n                        <p class="cantidadDeDias">{{recipe.dias_duracion_prescripcion}}</p>\n                        <p class="dias">días</p>\n                    </ion-col>\n                    <ion-col col-9\n                             class="containerDatosPastilla">\n                        <h3 class="nombrePastilla"\n                           *ngIf="recipe.nombre_generico">\n                           {{recipe.nombre_generico}}\n                    </h3>\n                        <p class="textoAlternativo"\n                        *ngIf="recipe.marca_comercial">\n                        o puedes encontrarlo como:\n                        </p>\n                        <p class="nombrePastilla"\n                          *ngIf="recipe.marca_comercial">\n                          {{recipe.marca_comercial}}\n                        </p>\n                          <p class="inicio">Inicio: {{recipe.inicio_prescripcion | date: "dd MMMM yyyy"}}</p>\n                    </ion-col>\n                  </ion-row>\n            </ion-card-header>\n            <ion-card-content>\n                <div *ngIf="recetas && recipe.cada_x_horas == 8"\n                class="down">\n            <h4 class="tituloDeLasTomas"> tomas de 3 veces por día</h4>\n            <ion-row padding>\n              <ion-col class="cuadrados">\n                <p> 6-9 am</p>\n                <p class="cantidad">{{recipe.cantidad_dosis}}</p>\n                </ion-col>\n              <ion-col class="cuadrados">\n                <p> 2-4 pm</p>\n                <p class="cantidad"> {{recipe.cantidad_dosis}} </p>\n              </ion-col>\n              <ion-col class="cuadrados">\n                <p>10-12 m</p>\n                <p class="cantidad"> {{recipe.cantidad_dosis}} </p>\n              </ion-col>\n            </ion-row>\n        </div>\n\n        <div *ngIf="recetas && recipe.cada_x_horas == 12"\n              class="down">\n          <p class="tituloDeLasTomas"> tomas de 2 veces por día</p>\n          <ion-row padding>\n            <ion-col class="cuadrados">\n              <p> 6-9 am</p>\n              <p class="cantidad">{{recipe.cantidad_dosis}}</p>\n            </ion-col>\n            <ion-col class="cuadrados">\n              <p>6-9 pm</p>\n              <p class="cantidad"> {{recipe.cantidad_dosis}} </p>\n            </ion-col>\n          </ion-row>\n        </div>\n\n        <div *ngIf="recetas && recipe.cada_x_horas == 6"\n        class="down">\n            <p class="tituloDeLasTomas"> tomas de 4 veces por día</p>\n            <ion-row padding>\n              <ion-col class="cuadrados">\n                <p> 6-8 am</p>\n                <p class="cantidad">{{recipe.cantidad_dosis}}</p>\n              </ion-col>\n              <ion-col class="cuadrados">\n                  <p> 12-2 pm</p>\n                  <p class="cantidad">{{recipe.cantidad_dosis}}</p>\n                </ion-col>\n                <ion-col class="cuadrados">\n                    <p> 6-8 pm</p>\n                    <p class="cantidad">{{recipe.cantidad_dosis}}</p>\n                  </ion-col>\n              <ion-col class="cuadrados">\n                <p>12-2 m</p>\n                <p class="cantidad"> {{recipe.cantidad_dosis}} </p>\n              </ion-col>\n            </ion-row>\n          </div>\n\n          <div *ngIf="recetas && recipe.cada_x_horas == 24"\n          class="down">\n              <p class="tituloDeLasTomas"> toma de 1 vez por día</p>\n              <ion-row padding>\n                <ion-col class="cuadrados">\n                  <p> 6-8 am</p>\n                  <p class="cantidad">{{recipe.cantidad_dosis}}</p>\n                </ion-col>\n\n              </ion-row>\n            </div>\n            </ion-card-content>\n          </ion-card>\n\n\n\n\n      </div>\n    </div>\n</ion-content>\n'/*ion-inline-end:"/proyectos/IonicPruebas/ApolloIonicVersionOne/src/pages/detail-recipe/detail-recipe.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */]])
@@ -1389,7 +1306,7 @@ var FinancierProvider = (function () {
 
 /***/ }),
 
-/***/ 393:
+/***/ 394:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1398,7 +1315,7 @@ var FinancierProvider = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__ = __webpack_require__(51);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_filter__ = __webpack_require__(394);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_filter__ = __webpack_require__(393);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_filter___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_filter__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_catch__ = __webpack_require__(52);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_catch___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_catch__);
@@ -1838,7 +1755,7 @@ var RecipePage = (function () {
     };
     RecipePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-recipe',template:/*ion-inline-start:"/proyectos/IonicPruebas/ApolloIonicVersionOne/src/pages/recipe/recipe.html"*/'\n<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title>receta</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n    <div padding *ngIf="recetas">\n        <div *ngFor="let recipe of recetas">\n          <ion-row>\n            <ion-col col-3>\n                <img src="assets/imgs/recipes/{{recipe.formasfar_pk}}.png" alt="">\n            </ion-col>\n            <ion-col col-9 >\n                <p class="nombrePastilla"\n                  *ngIf="recipe.marca_comercial">\n                  {{recipe.marca_comercial}}\n                </p>\n                <p class="nombrePastilla"\n                   *ngIf="recipe.marca_comercial == null">\n                   {{recipe.nombre_generico}}\n                  </p>\n            </ion-col>\n          </ion-row>\n\n          <p class="cantidadDeDias">Tratamiento de 5 dias</p>\n          <p class="inicio">Inicio de Tratamiento: {{recipe.inicio_prescripcion | date: "dd MMMM yyyy"}}</p>\n\n\n\n          <div *ngIf="recipes && recipe.cada_x_horas == 8"\n                class="down">\n            <h4 class="tituloDeLasTomas"> tomas de 3 veces por día</h4>\n            <ion-row padding>\n              <ion-col class="cuadrados">\n                <p> 6am - 9am</p>\n                <p class="cantidad">{{recipe.cantidad_dosis}}</p>\n                </ion-col>\n              <ion-col class="cuadrados">\n                <p> 2pm - 4pm</p>\n                <p class="cantidad"> {{recipe.cantidad_dosis}} </p>\n              </ion-col>\n              <ion-col class="cuadrados">\n                <p>10pm - 12m</p>\n                <p class="cantidad"> {{recipe.cantidad_dosis}} </p>\n              </ion-col>\n            </ion-row>\n        </div>\n\n        <div *ngIf="recipes && recipe.cada_x_horas == 12"\n              class="down">\n          <p class="tituloDeLasTomas"> tomas de 2 veces por día</p>\n          <ion-row padding>\n            <ion-col class="cuadrados">\n              <p> 6am-9am</p>\n              <p class="cantidad">{{recipe.cantidad_dosis}}</p>\n            </ion-col>\n            <ion-col class="cuadrados">\n              <p>6pm-9m</p>\n              <p class="cantidad"> {{recipe.cantidad_dosis}} </p>\n            </ion-col>\n          </ion-row>\n        </div>\n\n        <div *ngIf="recipes && recipe.cada_x_horas == 6"\n        class="down">\n            <p class="tituloDeLasTomas"> tomas de 4 veces por día</p>\n            <ion-row padding>\n              <ion-col class="cuadrados">\n                <p> 6am-8am</p>\n                <p class="cantidad">{{recipe.cantidad_dosis}}</p>\n              </ion-col>\n              <ion-col class="cuadrados">\n                  <p> 12m-2pm</p>\n                  <p class="cantidad">{{recipe.cantidad_dosis}}</p>\n                </ion-col>\n                <ion-col class="cuadrados">\n                    <p> 6pm-8pm</p>\n                    <p class="cantidad">{{recipe.cantidad_dosis}}</p>\n                  </ion-col>\n              <ion-col class="cuadrados">\n                <p>12m-2am</p>\n                <p class="cantidad"> {{recipe.cantidad_dosis}} </p>\n              </ion-col>\n            </ion-row>\n          </div>\n\n          <div *ngIf="recipes && recipe.cada_x_horas == 24"\n        class="down">\n            <p class="tituloDeLasTomas"> toma de 1 vez por día</p>\n            <ion-row padding>\n              <ion-col class="cuadrados">\n                <p> 6am-8am</p>\n                <p class="cantidad">{{recipe.cantidad_dosis}}</p>\n              </ion-col>\n\n            </ion-row>\n          </div>\n\n      </div>\n    </div>\n</ion-content>\n'/*ion-inline-end:"/proyectos/IonicPruebas/ApolloIonicVersionOne/src/pages/recipe/recipe.html"*/,
+            selector: 'page-recipe',template:/*ion-inline-start:"/proyectos/IonicPruebas/ApolloIonicVersionOne/src/pages/recipe/recipe.html"*/'\n<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title>Detalle de receta</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content >\n    <div *ngIf="recetas">\n        <div *ngFor="let recipe of recetas">\n          <ion-card>\n            <ion-card-header>\n                <ion-row>\n                    <ion-col col-3\n                          class="containerIconAndDays">\n                        <img src="assets/imgs/recipes/{{recipe.formasfar_pk}}.png" alt="">\n                        <p class="cantidadDeDias">{{recipe.dias_duracion_prescripcion}}</p>\n                        <p class="dias">días</p>\n                    </ion-col>\n                    <ion-col col-9\n                             class="containerDatosPastilla">\n                        <h3 class="nombrePastilla"\n                           *ngIf="recipe.nombre_generico">\n                           {{recipe.nombre_generico}}\n                    </h3>\n                        <p class="textoAlternativo"\n                        *ngIf="recipe.marca_comercial">\n                        o puedes encontrarlo como:\n                        </p>\n                        <p class="nombrePastilla"\n                          *ngIf="recipe.marca_comercial">\n                          {{recipe.marca_comercial}}\n                        </p>\n                          <p class="inicio">Inicio: {{recipe.inicio_prescripcion | date: "dd MMMM yyyy"}}</p>\n                    </ion-col>\n                  </ion-row>\n            </ion-card-header>\n            <ion-card-content>\n                <div *ngIf="recetas && recipe.cada_x_horas == 8"\n                class="down">\n            <h4 class="tituloDeLasTomas"> tomas de 3 veces por día</h4>\n            <ion-row padding>\n              <ion-col class="cuadrados">\n                <p> 6-9 am</p>\n                <p class="cantidad">{{recipe.cantidad_dosis}}</p>\n                </ion-col>\n              <ion-col class="cuadrados">\n                <p> 2-4 pm</p>\n                <p class="cantidad"> {{recipe.cantidad_dosis}} </p>\n              </ion-col>\n              <ion-col class="cuadrados">\n                <p>10-12 m</p>\n                <p class="cantidad"> {{recipe.cantidad_dosis}} </p>\n              </ion-col>\n            </ion-row>\n        </div>\n\n        <div *ngIf="recetas && recipe.cada_x_horas == 12"\n              class="down">\n          <p class="tituloDeLasTomas"> tomas de 2 veces por día</p>\n          <ion-row padding>\n            <ion-col class="cuadrados">\n              <p> 6-9 am</p>\n              <p class="cantidad">{{recipe.cantidad_dosis}}</p>\n            </ion-col>\n            <ion-col class="cuadrados">\n              <p>6-9 pm</p>\n              <p class="cantidad"> {{recipe.cantidad_dosis}} </p>\n            </ion-col>\n          </ion-row>\n        </div>\n\n        <div *ngIf="recetas && recipe.cada_x_horas == 6"\n        class="down">\n            <p class="tituloDeLasTomas"> tomas de 4 veces por día</p>\n            <ion-row padding>\n              <ion-col class="cuadrados">\n                <p> 6-8 am</p>\n                <p class="cantidad">{{recipe.cantidad_dosis}}</p>\n              </ion-col>\n              <ion-col class="cuadrados">\n                  <p> 12-2 pm</p>\n                  <p class="cantidad">{{recipe.cantidad_dosis}}</p>\n                </ion-col>\n                <ion-col class="cuadrados">\n                    <p> 6-8 pm</p>\n                    <p class="cantidad">{{recipe.cantidad_dosis}}</p>\n                  </ion-col>\n              <ion-col class="cuadrados">\n                <p>12-2 m</p>\n                <p class="cantidad"> {{recipe.cantidad_dosis}} </p>\n              </ion-col>\n            </ion-row>\n          </div>\n\n          <div *ngIf="recetas && recipe.cada_x_horas == 24"\n          class="down">\n              <p class="tituloDeLasTomas"> toma de 1 vez por día</p>\n              <ion-row padding>\n                <ion-col class="cuadrados">\n                  <p> 6-8 am</p>\n                  <p class="cantidad">{{recipe.cantidad_dosis}}</p>\n                </ion-col>\n\n              </ion-row>\n            </div>\n            </ion-card-content>\n          </ion-card>\n\n\n\n\n      </div>\n    </div>\n</ion-content>\n'/*ion-inline-end:"/proyectos/IonicPruebas/ApolloIonicVersionOne/src/pages/recipe/recipe.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */]])
@@ -1858,7 +1775,7 @@ var RecipePage = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__providers_appoinment_appoinment__ = __webpack_require__(53);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(14);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__my_dates__ = __webpack_require__(158);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__my_dates__ = __webpack_require__(159);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1943,7 +1860,7 @@ var MyDateModalPage = (function () {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return RecipesPage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__providers_recipes_recipes__ = __webpack_require__(159);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__providers_recipes_recipes__ = __webpack_require__(98);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(14);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__detail_recipe_detail_recipe__ = __webpack_require__(183);
@@ -1962,18 +1879,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 var RecipesPage = (function () {
     function RecipesPage(navCtrl, navParams, recipesPvr) {
-        // ahora esta implementado así.... pero no funcionará
-        // porque lo que tiene que pasar es tener un endpoint que me traiga todos las recetas
         var _this = this;
         this.navCtrl = navCtrl;
         this.navParams = navParams;
         this.recipesPvr = recipesPvr;
-        // this.recipesPvr.getAllRecipes().subscribe(data=>{
-        //   this.recipes = data;
-        //   console.log(this.recipes);
         this.recipesPvr.getAllRecipes().subscribe(function (data) {
             _this.recipes = data;
-            console.log(_this.recipes);
         });
     }
     RecipesPage.prototype.ionViewDidLoad = function () {
@@ -1986,7 +1897,7 @@ var RecipesPage = (function () {
     };
     RecipesPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["m" /* Component */])({
-            selector: 'page-recipes',template:/*ion-inline-start:"/proyectos/IonicPruebas/ApolloIonicVersionOne/src/pages/optionals-devs/recipes/recipes.html"*/'<ion-header>\n  <ion-navbar color="primary">\n    <ion-title>Mis Recetas</ion-title>\n  </ion-navbar>\n\n</ion-header>\n<ion-content>\n    <ion-card *ngFor="let recipe of recipes"\n              (click)="goToDetailRecipe(recipe)">\n        <ion-row>\n          <ion-col col-4\n                    class="iconoReceta">\n              <h4>receta</h4>\n              <ion-icon name="paper"></ion-icon>\n              <p class="fecha">{{recipe.prescripciones[0].inicio_prescripcion | date:\'dd/MM/y\'}}</p>\n          </ion-col>\n          <ion-col col-8>\n            <p class="especialidad"> <span> Especialidad: </span>{{recipe.prescripciones[0].servicio}} </p>\n            <p class="doctor">Doctor: {{recipe.prescripciones[0].apellidop_personal}} {{recipe.prescripciones[0].apellidom_personal}}</p>\n\n          </ion-col>\n        </ion-row>\n\n    </ion-card>\n\n</ion-content>\n'/*ion-inline-end:"/proyectos/IonicPruebas/ApolloIonicVersionOne/src/pages/optionals-devs/recipes/recipes.html"*/,
+            selector: 'page-recipes',template:/*ion-inline-start:"/proyectos/IonicPruebas/ApolloIonicVersionOne/src/pages/optionals-devs/recipes/recipes.html"*/'<ion-header>\n  <ion-navbar color="primary">\n    <ion-title>Mis Recetas</ion-title>\n  </ion-navbar>\n\n</ion-header>\n<ion-content>\n    <ion-card *ngFor="let recipe of recipes"\n              (click)="goToDetailRecipe(recipe)">\n        <ion-row>\n          <ion-col col-4>\n            <div class="iconoReceta">\n              <p class="dia">{{recipe.prescripciones[0].inicio_prescripcion | date:\'dd\'}}</p>\n              <p class="mes">{{recipe.prescripciones[0].inicio_prescripcion | date:\'MMMM\'}}</p>\n            </div>\n          </ion-col>\n          <ion-col col-8>\n            <p class="especialidad"> Especialidad:</p>\n            <p class="resultado">{{recipe.prescripciones[0].servicio}}</p>\n            <p class="especialidad">Doctor:</p>\n            <p class="resultado">{{recipe.prescripciones[0].apellidop_personal}} {{recipe.prescripciones[0].apellidom_personal}}</p>\n          </ion-col>\n        </ion-row>\n    </ion-card>\n</ion-content>\n'/*ion-inline-end:"/proyectos/IonicPruebas/ApolloIonicVersionOne/src/pages/optionals-devs/recipes/recipes.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["j" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["k" /* NavParams */],
@@ -2023,7 +1934,7 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__pages_detail_recipe_detail_recipe__ = __webpack_require__(183);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__pages_myparents_myparents__ = __webpack_require__(266);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__pages_createparent_createparent__ = __webpack_require__(151);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__pages_createparent_createparent__ = __webpack_require__(152);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__pages_payu_payu__ = __webpack_require__(395);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_platform_browser__ = __webpack_require__(29);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_core__ = __webpack_require__(0);
@@ -2038,12 +1949,12 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__pages_card_card__ = __webpack_require__(61);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__pages_charge_charge__ = __webpack_require__(511);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__pages_user_login_login__ = __webpack_require__(68);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__pages_user_register_register__ = __webpack_require__(152);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__pages_user_register_register__ = __webpack_require__(153);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__pages_user_profile_profile__ = __webpack_require__(401);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__pages_appointment_search_search__ = __webpack_require__(512);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__pages_appointment_financer_financer__ = __webpack_require__(80);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__pages_appointment_pay_pay__ = __webpack_require__(156);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__pages_optionals_devs_my_dates_my_dates__ = __webpack_require__(158);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__pages_appointment_pay_pay__ = __webpack_require__(157);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__pages_optionals_devs_my_dates_my_dates__ = __webpack_require__(159);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__pages_optionals_devs_irm_irm__ = __webpack_require__(402);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__pages_optionals_devs_recipes_recipes__ = __webpack_require__(405);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__pages_optionals_devs_recomendations_recomendations__ = __webpack_require__(513);
@@ -2055,20 +1966,20 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_31__providers_financier_financier__ = __webpack_require__(389);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_32__providers_user_user__ = __webpack_require__(97);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_33__providers_appoinment_appoinment__ = __webpack_require__(53);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_34__providers_authorization_public_authorization_public__ = __webpack_require__(154);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_34__providers_authorization_public_authorization_public__ = __webpack_require__(155);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_35__angular_forms__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_36_ng2_search_filter__ = __webpack_require__(563);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_37__components_expandable_expandable_component__ = __webpack_require__(564);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_38__angular_platform_browser_animations__ = __webpack_require__(565);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_39__material_module__ = __webpack_require__(567);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_40__pages_appointment_master_detail_master_detail__ = __webpack_require__(608);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_41__providers_hello_hello__ = __webpack_require__(393);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_41__providers_hello_hello__ = __webpack_require__(394);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_42__pages_datos_datos__ = __webpack_require__(609);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_43__providers_payu_test_payu_test__ = __webpack_require__(396);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_44__providers_recipes_recipes__ = __webpack_require__(159);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_44__providers_recipes_recipes__ = __webpack_require__(98);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_45__providers_dependents_dependents__ = __webpack_require__(79);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_46__providers_crudparent_crudparent__ = __webpack_require__(67);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_47__pages_code_code__ = __webpack_require__(153);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_47__pages_code_code__ = __webpack_require__(154);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_48__providers_dateparent_dateparent__ = __webpack_require__(610);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_49__pages_recipe_recipe__ = __webpack_require__(403);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -2511,9 +2422,9 @@ webpackContext.id = 492;
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MyApp; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__pages_code_code__ = __webpack_require__(153);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__pages_code_code__ = __webpack_require__(154);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__pages_myparents_myparents__ = __webpack_require__(266);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__pages_createparent_createparent__ = __webpack_require__(151);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__pages_createparent_createparent__ = __webpack_require__(152);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__pages_card_card__ = __webpack_require__(61);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_ionic_angular__ = __webpack_require__(14);
@@ -2523,10 +2434,10 @@ webpackContext.id = 492;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__pages_user_login_login__ = __webpack_require__(68);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__pages_user_profile_profile__ = __webpack_require__(401);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__pages_optionals_devs_irm_irm__ = __webpack_require__(402);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__pages_optionals_devs_my_dates_my_dates__ = __webpack_require__(158);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__pages_user_register_register__ = __webpack_require__(152);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__pages_optionals_devs_my_dates_my_dates__ = __webpack_require__(159);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__pages_user_register_register__ = __webpack_require__(153);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__pages_optionals_devs_recipes_recipes__ = __webpack_require__(405);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__pages_appointment_pay_pay__ = __webpack_require__(156);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__pages_appointment_pay_pay__ = __webpack_require__(157);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__pages_appointment_financer_financer__ = __webpack_require__(80);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -2949,8 +2860,8 @@ var MaterialModule = (function () {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HomePage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__providers_recipes_recipes__ = __webpack_require__(159);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__providers_authorization_public_authorization_public__ = __webpack_require__(154);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__providers_recipes_recipes__ = __webpack_require__(98);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__providers_authorization_public_authorization_public__ = __webpack_require__(155);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_ionic_angular__ = __webpack_require__(14);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__card_card__ = __webpack_require__(61);
@@ -3037,10 +2948,13 @@ var HomePage = (function () {
         Object(__WEBPACK_IMPORTED_MODULE_2__angular_core__["m" /* Component */])({
             selector: 'page-home',template:/*ion-inline-start:"/proyectos/IonicPruebas/ApolloIonicVersionOne/src/pages/home/home.html"*/'<ion-header>\n    <ion-navbar color="primary" hideBackButton="true" persistent="true">\n        <button ion-button menuToggle>\n        <ion-icon name="menu"></ion-icon>\n        </button>\n        <ion-title> Home Page</ion-title>\n        <ion-buttons *ngIf="nombre"\n                          end>\n          <button ion-button\n                  item-end\n                  class="logueado"\n                  clear>\n                  Hola {{nombre}}\n          </button>\n        </ion-buttons>\n    </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n    <ion-card button class="principal" (click)="irACard()">\n        <ion-item>\n            <ion-row>\n                <ion-col col-2>\n                    <ion-icon name="contact"></ion-icon>\n                </ion-col>\n                <ion-col col-9>\n                    <p class="reserve">Reservar cita</p>\n                </ion-col>\n                <ion-col col-1>\n                    <ion-icon name="arrow-dropright"></ion-icon>\n                </ion-col>\n            </ion-row>\n        </ion-item>\n    </ion-card>\n\n    <div class="down30">\n        <mat-accordion padding>\n\n            <mat-expansion-panel >\n                <mat-expansion-panel-header>\n                    <ion-col col-2>\n                        <ion-icon name="alarm"></ion-icon>\n                    </ion-col>\n                    <ion-col col-8>\n                        <p class="font11">Próxima Cita</p>\n                      </ion-col>\n                      <ion-col col-2>\n                          <ion-badge *ngIf="citapendiente"\n                                      class="badgeIcon"\n                                      color="notifi" item-end>{{citapendiente}}\n                          </ion-badge>\n                    </ion-col>\n                </mat-expansion-panel-header >\n                <div class="containerExpand" >\n                  <div *ngIf="tasks else notasks">\n                    <div *ngFor="let task of tasks; index as i; first as isFirst">\n                      <ion-row class="down10" >\n                        <ion-col col-3>\n                          <ion-avatar item-start>\n                            <img src="http://dappapache02.eastus.cloudapp.azure.com:4200/img/professionals/{{task.professional.id}}.png">\n                          </ion-avatar>\n                        </ion-col>\n                        <ion-col col-9>\n                          <h3 class="tituloCitas" [ngClass]="{celeste:\'\'}">Dr.{{task.professional.fullName | slice:0:25 | uppercase}}</h3>\n                          <p class="especialidad">{{ task.service.basicService.description | lowercase }}</p>\n                          <p class="sede">{{ task.service.center.name | lowercase }}</p>\n                          <p class="day">{{ task.appointmentDateTime | date:\'EEEE d , MMMM \' : \'es\' }} </p>\n                          <p class="hour">{{ task.appointmentDateTime | date: \'HH:mm\' }}</p>\n                        </ion-col>\n                      </ion-row>\n                    </div>\n                  </div>\n                    <div *ngIf="tasks < 1">\n                      <p  class="textoRecetas">Aun no tienes citas programadas, estas aparecerán una vez te hayas registrado</p>\n                    </div>\n                </div>\n            </mat-expansion-panel>\n\n            <!-- <mat-expansion-panel>\n                <mat-expansion-panel-header>\n                    <ion-col col-2>\n                        <ion-icon name="filing"></ion-icon>\n                    </ion-col>\n                    <ion-col col-10>\n                        <p class="font11">Mi Historia Médica</p>\n                    </ion-col>\n\n                </mat-expansion-panel-header>\n                <div class="containerExpand">\n\n                    <h3>contenido Historia médica</h3>\n\n                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad vitae, saepe dolore odio recusandae quibusdam corporis mollitia a quod, suscipit modi nobis quo culpa in eveniet, sed officiis. Dignissimos, tempora.\n                </div>\n            </mat-expansion-panel> -->\n\n            <mat-expansion-panel>\n                <mat-expansion-panel-header>\n                    <ion-col col-2>\n                        <ion-icon name="medkit"></ion-icon>\n                    </ion-col>\n                    <ion-col col-8>\n                        <p class="font11">Recetas y Medicamentos</p>\n                    </ion-col>\n                    <ion-col col-2>\n                        <ion-badge *ngIf="citapendiente"\n                                      class="badgeIcon"\n                                      color="verde" item-end>{{recipendiente}}\n                          </ion-badge>\n                    </ion-col>\n                </mat-expansion-panel-header>\n                <div class="containerExpand">\n                    <p *ngIf="!tasks" class="textoRecetas">Las recetas y médicamentos de sus últimas citas aparecerán aquí , despues de registrado</p>\n                    <div *ngIf="tasks">\n                      <div  *ngFor="let recipe of recipes; index as i; last as isLast">\n                            <!-- <h1 *ngIf="isLast">{{recipe.prescripciones.nombre_generico}}</> -->\n                      </div>\n\n                    </div>\n                </div>\n            </mat-expansion-panel>\n\n            <!-- <mat-expansion-panel>\n                <mat-expansion-panel-header>\n                    <ion-col col-2>\n                        <ion-icon name="list-box"></ion-icon>\n                    </ion-col>\n                    <ion-col col-10>\n                        <p class="font11">Recomendaciones</p>\n                    </ion-col>\n\n                </mat-expansion-panel-header>\n                <div class="containerExpand">\n\n                    <h3>contenido Recomendaciones</h3>\n\n                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad vitae, saepe dolore odio recusandae quibusdam corporis mollitia a quod, suscipit modi nobis quo culpa in eveniet, sed officiis. Dignissimos, tempora.\n                </div>\n            </mat-expansion-panel> -->\n\n            <!-- <mat-expansion-panel [disabled]="dissabled == guest">\n                <mat-expansion-panel-header>\n                    <ion-col col-2>\n                        <ion-icon name="flask"></ion-icon>\n                    </ion-col>\n                    <ion-col col-10>\n                        <p class="font11">Resultados</p>\n                    </ion-col>\n\n                </mat-expansion-panel-header>\n                <div class="containerExpand">\n                    <p class="textoRecetas">Aqui aparecerán los resultados de tus últimas citas proximamente</p>\n                </div>\n            </mat-expansion-panel> -->\n\n        </mat-accordion>\n\n    </div>\n    <!-- <h1>home</h1>\n    <p (click)="irACard()">Ir a Card</p> -->\n</ion-content>\n'/*ion-inline-end:"/proyectos/IonicPruebas/ApolloIonicVersionOne/src/pages/home/home.html"*/
         }),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["j" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["j" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_5__providers_appoinment_appoinment__["a" /* AppointmentProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__providers_appoinment_appoinment__["a" /* AppointmentProvider */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1__providers_authorization_public_authorization_public__["a" /* AuthorizationPublicProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__providers_authorization_public_authorization_public__["a" /* AuthorizationPublicProvider */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["b" /* AlertController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["b" /* AlertController */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_0__providers_recipes_recipes__["a" /* RecipesProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__providers_recipes_recipes__["a" /* RecipesProvider */]) === "function" && _e || Object])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_3_ionic_angular__["j" /* NavController */],
+            __WEBPACK_IMPORTED_MODULE_5__providers_appoinment_appoinment__["a" /* AppointmentProvider */],
+            __WEBPACK_IMPORTED_MODULE_1__providers_authorization_public_authorization_public__["a" /* AuthorizationPublicProvider */],
+            __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["b" /* AlertController */],
+            __WEBPACK_IMPORTED_MODULE_0__providers_recipes_recipes__["a" /* RecipesProvider */]])
     ], HomePage);
     return HomePage;
-    var _a, _b, _c, _d, _e;
 }());
 
 //# sourceMappingURL=home.js.map
@@ -3256,7 +3170,7 @@ var DatosPage = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__appointment_financer_financer__ = __webpack_require__(80);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_moment__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_moment__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__providers_hello_hello__ = __webpack_require__(393);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__providers_hello_hello__ = __webpack_require__(394);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -3547,11 +3461,11 @@ var CrudparentProvider = (function () {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LoginPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(14);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__register_register__ = __webpack_require__(152);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__register_register__ = __webpack_require__(153);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__home_home__ = __webpack_require__(60);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_user_user__ = __webpack_require__(97);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__card_card__ = __webpack_require__(61);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__providers_authorization_public_authorization_public__ = __webpack_require__(154);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__providers_authorization_public_authorization_public__ = __webpack_require__(155);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -3732,8 +3646,8 @@ var DependentsProvider = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_financier_financier__ = __webpack_require__(389);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__user_login_login__ = __webpack_require__(68);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__providers_appoinment_appoinment__ = __webpack_require__(53);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__pay_pay__ = __webpack_require__(156);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__createparent_createparent__ = __webpack_require__(151);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__pay_pay__ = __webpack_require__(157);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__createparent_createparent__ = __webpack_require__(152);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__payu_payu__ = __webpack_require__(395);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__providers_dependents_dependents__ = __webpack_require__(79);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -4082,6 +3996,91 @@ var UserProvider = (function () {
 }());
 
 //# sourceMappingURL=user.js.map
+
+/***/ }),
+
+/***/ 98:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return RecipesProvider; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_rxjs_Observable__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_rxjs_Observable___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_rxjs_Observable__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__(81);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_catch__ = __webpack_require__(52);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_catch___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_catch__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_map__ = __webpack_require__(51);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_map__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_filter__ = __webpack_require__(393);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_filter___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_filter__);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+
+var RecipesProvider = (function () {
+    function RecipesProvider(http) {
+        this.http = http;
+        this.apiUrl = "http://dappapache02.eastus.cloudapp.azure.com:4200/api/v2/ebooking/getPrescripcionesEncuentro?encuentroId=";
+        console.log('Hello RecipesProvider Provider');
+    }
+    RecipesProvider.prototype.getAllRecipes = function () {
+        var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Headers */]({ 'Content-Type': 'application/json', 'Authorization': localStorage.getItem('authorization') });
+        var options = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["d" /* RequestOptions */]({ headers: headers });
+        return this.http.get(this.apiUrl, options)
+            .map(this.extractData)
+            .catch(this.handleError);
+    };
+    RecipesProvider.prototype.getFilterRecipes = function () {
+        var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Headers */]({ 'Content-Type': 'application/json', 'Authorization': localStorage.getItem('authorization') });
+        var options = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["d" /* RequestOptions */]({ headers: headers });
+        return this.http.get(this.apiUrl, options)
+            .map(this.extractData)
+            .catch(this.handleError);
+    };
+    RecipesProvider.prototype.getRecipes = function (id) {
+        var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Headers */]({ 'Content-Type': 'application/json', 'Authorization': localStorage.getItem('authorization') });
+        var options = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["d" /* RequestOptions */]({ headers: headers });
+        return this.http.get(this.apiUrl + ("" + id), options)
+            .map(this.extractData)
+            .catch(this.handleError);
+    };
+    RecipesProvider.prototype.extractData = function (res) {
+        var body = res.json();
+        return body || {};
+    };
+    RecipesProvider.prototype.handleError = function (error) {
+        var errMsg;
+        if (error instanceof __WEBPACK_IMPORTED_MODULE_1__angular_http__["e" /* Response */]) {
+            var body = error.json() || '';
+            var err = body.error || JSON.stringify(body);
+            errMsg = error.status + " - " + (error.statusText || '') + " " + err;
+        }
+        else {
+            errMsg = error.message ? error.message : error.toString();
+        }
+        console.error(errMsg);
+        return __WEBPACK_IMPORTED_MODULE_0_rxjs_Observable__["Observable"].throw(errMsg);
+    };
+    RecipesProvider = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_2__angular_core__["B" /* Injectable */])(),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */]])
+    ], RecipesProvider);
+    return RecipesProvider;
+}());
+
+//# sourceMappingURL=recipes.js.map
 
 /***/ })
 

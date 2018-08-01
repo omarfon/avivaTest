@@ -40973,9 +40973,9 @@ page-datos .botonPrimero {
 }
 
 page-detail-recipe .cuadrados {
-  height: 80px;
+  height: 60px;
   background: #F5F5F5;
-  width: 95%;
+  width: 90%;
   margin-left: 5%;
   color: #444D4D;
   display: -webkit-box;
@@ -40999,22 +40999,24 @@ page-detail-recipe .cuadrados {
 
 page-detail-recipe .cuadrados p {
   font-size: .8em;
-  margin-top: 15px;
+  color: #BABCC2;
+  margin-bottom: 5px;
 }
 
 page-detail-recipe .cuadrados .cantidad {
-  color: #9483C8;
+  color: #444D4D;
   font-size: 1.8em;
-  margin-top: 10px;
+  margin-top: 0;
 }
 
 page-detail-recipe .nombrePastilla {
-  color: #00B6A3;
-  font-size: 1.3em;
+  color: #007198;
+  font-size: .9em;
   font-weight: 400;
   margin-top: 10px;
+  margin-bottom: 5px;
   text-align: right;
-  margin-right: 30px;
+  margin-right: 10px;
 }
 
 page-detail-recipe .cantidadDeDias, page-detail-recipe .inicio {
@@ -41023,21 +41025,118 @@ page-detail-recipe .cantidadDeDias, page-detail-recipe .inicio {
 
 page-detail-recipe .tituloDeLasTomas {
   color: #00B6A3;
-  font-size: 1.2em !important;
-  font-weight: 600;
+  font-size: 1.1em !important;
+  font-weight: 400;
   text-align: center;
-  margin-top: 30px !important;
   margin-bottom: 0;
+  margin-top: 0;
 }
 
 page-detail-recipe img {
   width: 50px !important;
   height: auto;
+  margin-top: 10px;
 }
 
 page-detail-recipe .down {
-  margin-bottom: 30px;
-  border-bottom: .5px solid #DFDFDF;
+  margin-bottom: 10px;
+}
+
+page-detail-recipe .contenedorDatos {
+  height: 120px;
+  margin-bottom: 2em;
+}
+
+page-detail-recipe .especialidad {
+  margin-right: 20px;
+  color: #BABCC2;
+  font-weight: 600;
+  font-size: 1.1em;
+  margin-left: 10px;
+}
+
+page-detail-recipe .resultado {
+  color: #BABCC2;
+  font-weight: 200;
+  font-size: 1em;
+  margin-top: -5px;
+  margin-left: 10px;
+}
+
+page-detail-recipe .iconoReceta {
+  text-align: center;
+  border-right: .2px solid #444D4D;
+  height: 100px;
+}
+
+page-detail-recipe .iconoReceta h4 {
+  color: grey;
+  text-align: center;
+  margin-top: 10px;
+}
+
+page-detail-recipe .iconoReceta ion-icon {
+  color: #007198;
+  font-size: 3em;
+}
+
+page-detail-recipe .dia {
+  margin-top: 20px;
+  font-size: 3.5em;
+  font-weight: 600;
+  color: #BABCC2;
+}
+
+page-detail-recipe .mes {
+  color: #BABCC2;
+  margin-top: -60px;
+  font-size: 1.1em;
+}
+
+page-detail-recipe .cantidadDeDias {
+  margin-top: 20px;
+  font-size: 3.5em;
+  font-weight: 600;
+  color: #BABCC2;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+page-detail-recipe .textoAlternativo {
+  color: #BABCC2;
+  font-size: 1em;
+  margin-top: 0;
+  margin-bottom: 0;
+  text-align: right;
+  margin-right: 10px;
+}
+
+page-detail-recipe .containerIconAndDays {
+  text-align: center;
+}
+
+page-detail-recipe .dias {
+  margin-top: -15px;
+  color: #BABCC2;
+}
+
+page-detail-recipe .inicio {
+  color: #444D4D;
+  text-align: right;
+  margin-top: 10px;
+  margin-right: 10px;
+}
+
+page-detail-recipe ion-card-header {
+  padding: 0 16px !important;
+  -webkit-box-sizing: border-box !important;
+  box-sizing: border-box !important;
+}
+
+page-detail-recipe .containerDatosPastilla {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  overflow: auto;
 }
 
 page-home .down30 {
@@ -41491,21 +41590,24 @@ page-my-date-modal ion-segment-button .segment-activated {
 }
 
 page-recipes .especialidad {
-  text-align: right;
   margin-right: 20px;
-  color: grey;
-  font-weight: 500;
+  color: #BABCC2;
+  font-weight: 600;
+  font-size: 1.1em;
+  margin-left: 10px;
 }
 
-page-recipes .especialidad span {
-  color: #00B6A3;
-  margin: 0 !important;
-  padding: 0 !important;
-  text-align: left;
+page-recipes .resultado {
+  color: #BABCC2;
+  font-weight: 200;
+  font-size: 1em;
+  margin-top: -5px;
+  margin-left: 10px;
 }
 
 page-recipes .iconoReceta {
   text-align: center;
+  border-right: .2px solid #00B6A3;
 }
 
 page-recipes .iconoReceta h4 {
@@ -41519,10 +41621,16 @@ page-recipes .iconoReceta ion-icon {
   font-size: 3em;
 }
 
-page-recipes .doctor {
-  text-align: right;
-  margin-right: 20px;
-  color: grey;
+page-recipes .dia {
+  font-size: 3.5em;
+  font-weight: 600;
+  color: #BABCC2;
+}
+
+page-recipes .mes {
+  color: #BABCC2;
+  margin-top: -20px;
+  font-size: 1.1em;
 }
 
 page-payu {
@@ -41635,9 +41743,9 @@ page-payu .item-inner {
 }
 
 page-recipe .cuadrados {
-  height: 80px;
+  height: 60px;
   background: #F5F5F5;
-  width: 95%;
+  width: 90%;
   margin-left: 5%;
   color: #444D4D;
   display: -webkit-box;
@@ -41661,19 +41769,24 @@ page-recipe .cuadrados {
 
 page-recipe .cuadrados p {
   font-size: .8em;
+  color: #BABCC2;
+  margin-bottom: 5px;
 }
 
 page-recipe .cuadrados .cantidad {
-  color: #9483C8;
+  color: #444D4D;
   font-size: 1.8em;
-  margin-top: 10px;
+  margin-top: 0;
 }
 
 page-recipe .nombrePastilla {
-  color: #9483C8;
-  font-size: 1.2em;
+  color: #007198;
+  font-size: .9em;
   font-weight: 400;
   margin-top: 10px;
+  margin-bottom: 5px;
+  text-align: right;
+  margin-right: 10px;
 }
 
 page-recipe .cantidadDeDias, page-recipe .inicio {
@@ -41681,20 +41794,119 @@ page-recipe .cantidadDeDias, page-recipe .inicio {
 }
 
 page-recipe .tituloDeLasTomas {
-  color: #9483C8;
-  font-size: 1.2em !important;
-  font-weight: 600;
+  color: #00B6A3;
+  font-size: 1.1em !important;
+  font-weight: 400;
   text-align: center;
+  margin-bottom: 0;
+  margin-top: 0;
 }
 
 page-recipe img {
   width: 50px !important;
   height: auto;
+  margin-top: 10px;
 }
 
 page-recipe .down {
-  margin-bottom: 30px;
-  border-bottom: .5px solid #DFDFDF;
+  margin-bottom: 10px;
+}
+
+page-recipe .contenedorDatos {
+  height: 120px;
+  margin-bottom: 2em;
+}
+
+page-recipe .especialidad {
+  margin-right: 20px;
+  color: #BABCC2;
+  font-weight: 600;
+  font-size: 1.1em;
+  margin-left: 10px;
+}
+
+page-recipe .resultado {
+  color: #BABCC2;
+  font-weight: 200;
+  font-size: 1em;
+  margin-top: -5px;
+  margin-left: 10px;
+}
+
+page-recipe .iconoReceta {
+  text-align: center;
+  border-right: .2px solid #444D4D;
+  height: 100px;
+}
+
+page-recipe .iconoReceta h4 {
+  color: grey;
+  text-align: center;
+  margin-top: 10px;
+}
+
+page-recipe .iconoReceta ion-icon {
+  color: #007198;
+  font-size: 3em;
+}
+
+page-recipe .dia {
+  margin-top: 20px;
+  font-size: 3.5em;
+  font-weight: 600;
+  color: #BABCC2;
+}
+
+page-recipe .mes {
+  color: #BABCC2;
+  margin-top: -60px;
+  font-size: 1.1em;
+}
+
+page-recipe .cantidadDeDias {
+  margin-top: 20px;
+  font-size: 3.5em;
+  font-weight: 600;
+  color: #BABCC2;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+page-recipe .textoAlternativo {
+  color: #BABCC2;
+  font-size: 1em;
+  margin-top: 0;
+  margin-bottom: 0;
+  text-align: right;
+  margin-right: 10px;
+}
+
+page-recipe .containerIconAndDays {
+  text-align: center;
+}
+
+page-recipe .dias {
+  margin-top: -15px;
+  color: #BABCC2;
+}
+
+page-recipe .inicio {
+  color: #444D4D;
+  text-align: right;
+  margin-top: 10px;
+  margin-right: 10px;
+}
+
+page-recipe ion-card-header {
+  padding: 0 16px !important;
+  -webkit-box-sizing: border-box !important;
+  box-sizing: border-box !important;
+}
+
+page-recipe .containerDatosPastilla {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  overflow: auto;
 }
 
 page-login .bajar {

@@ -1,18 +1,22 @@
 page-recipes {
  .especialidad{
-   text-align: right;
    margin-right: 20px;
-   color:grey;
-   font-weight: 500;
-   span{
-     color:#00B6A3;
-     margin:0!important;
-     padding:0!important;
-     text-align: left;
-   }
+   color:#BABCC2;
+   font-weight: 600;
+   font-size:1.1em;
+   margin-left:10px;
+ }
+ .resultado{
+   color:#BABCC2;
+   font-weight: 200;
+   font-size:1em;
+   margin-top:-5px;
+   margin-left:10px;
  }
  .iconoReceta{
    text-align: center;
+   border-right: .2px solid #00B6A3;
+  //  height: 90%;
    h4{
      color:grey;
      text-align: center;
@@ -23,10 +27,15 @@ page-recipes {
      font-size:3em;
    }
  }
- .doctor{
-   text-align: right;
-   margin-right:20px;
-   color:grey;
+ .dia{
+   font-size:3.5em;
+   font-weight: 600;
+   color:#BABCC2;
+ }
+ .mes{
+   color:#BABCC2;
+   margin-top: -20px;
+   font-size:1.1em;
  }
 
 
