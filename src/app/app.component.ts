@@ -20,6 +20,7 @@ import { FinancerPage } from '../pages/appointment/financer/financer';
 
 
 @Component({
+  selector: 'page-slide',
   templateUrl: 'app.html'
 })
 export class MyApp {

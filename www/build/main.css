@@ -39858,6 +39858,10 @@ date-picker .top-banner .text-center {
   display: none;
 }
 
+date-picker .top-banner .item-md.item-block .item-inner {
+  border-bottom: none !important;
+}
+
 .modal-wrapper {
   background-color: transparent !important;
 }
@@ -39949,7 +39953,6 @@ date-picker .disabled {
 }
 
 .fondoColor {
-  background-image: url("../assets/imgs/fondo.png");
   background-repeat: no-repeat;
   background-color: #00B6A3 !important;
   width: 100%;
@@ -39972,6 +39975,12 @@ date-picker .disabled {
 
 .lista .item .item-icon {
   padding-left: 20px;
+}
+
+.containerData {
+  background: #fff !important;
+  text-align: center;
+  height: 150px;
 }
 
 expandable .expand-wrapper {

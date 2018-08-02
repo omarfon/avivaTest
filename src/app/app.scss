@@ -66,6 +66,9 @@ date-picker .top-banner {
     .text-center {
         display: none;
     }
+    .item-md.item-block .item-inner{
+        border-bottom:none!important;
+    }
 }
 
 .modal-wrapper {
@@ -132,7 +135,7 @@ date-picker .disabled {
 }
 
 .fondoColor {
-    background-image: url("../assets/imgs/fondo.png");
+    // background-image: url("../assets/imgs/fondo.png");
     background-repeat: no-repeat;
     background-color: #00B6A3!important;
     width: 100%;
@@ -156,10 +159,19 @@ date-picker .disabled {
 .lista .item .item-icon {
     padding-left: 20px;
 }
+// si eliminamos desde aquie el borde o manipulamos cualquiero otro elemento,
+//podríamos alterar el look and feel de toda la aplicación
 
-// .lista .list-md .item-block .item-inner .list-md {
-//     // border-bottom: none!important;
+// .item-md.item-block .item-inner{
+//   border-bottom:none!important;
 // }
-// .outLine .lista .list-md .item-block .item-inner .list-md {
-//     border-bottom: none!important;
+.containerData{
+  background: #fff!important;
+  text-align: center;
+  height:150px;
+}
+// page-slide {
+//   .item-md.item-block .item-inner{
+//   border-bottom:none!important;
+// }
 // }
