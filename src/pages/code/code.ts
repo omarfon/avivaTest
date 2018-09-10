@@ -26,12 +26,12 @@ export class CodePage {
   public loginOk;
 
 
-  constructor(public navCtrl: NavController,
-              public navParams: NavParams,
-              public crudPvr: CrudparentProvider,
-              public form: FormBuilder,
+  constructor(public navCtrl:     NavController,
+              public navParams:   NavParams,
+              public crudPvr:     CrudparentProvider,
+              public form:        FormBuilder,
               public userService: UserProvider,
-              public events: Events) {
+              public events:      Events) {
 
       this.hora = this.navParams.get('hora');
       this.available = this.navParams.get('available');
@@ -103,7 +103,7 @@ export class CodePage {
     let email = {email:this.datos.email}
       this.crudPvr.validateEmail(email).subscribe(data=>{
           this.code = data;
-          console.log('lño que me llega del vaildate:', this.code)
+          console.log('lo que me llega del vaildate:', this.code)
       });
   }
 

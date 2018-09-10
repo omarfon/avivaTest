@@ -39922,12 +39922,11 @@ date-picker .disabled {
 }
 
 .imagen {
-  width: 100px;
-  height: 100px;
+  width: 120px;
+  height: 120px;
   background: rgba(255, 255, 255, 0.5);
   border-radius: 50%;
-  margin-left: calc(50% - 50px);
-  margin-top: 50px;
+  padding-top: 50px !important;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -39947,8 +39946,8 @@ date-picker .disabled {
 }
 
 .iconAdd {
-  color: #00B6A3;
-  font-size: 2em;
+  color: #14A59C;
+  font-size: 3em;
   font-weight: bold;
 }
 
@@ -39961,6 +39960,7 @@ date-picker .disabled {
 
 .flecha {
   padding-left: 0;
+  margin-top: -50px;
 }
 
 .lista {
@@ -39978,9 +39978,36 @@ date-picker .disabled {
 }
 
 .containerData {
-  background: #fff !important;
+  background: #14A59C !important;
   text-align: center;
-  height: 150px;
+  height: 240px;
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+
+.nombreUsuario {
+  color: #fff;
+  text-align: center;
+  margin-top: -20px;
+}
+
+cabecera {
+  display: block;
+  overflow: hidden;
 }
 
 expandable .expand-wrapper {
@@ -40214,6 +40241,7 @@ page-financer .cuadrado {
 page-financer .cuadrado button {
   height: 50px;
   width: 90%;
+  border-radius: 10px;
 }
 
 page-financer .me, page-financer .fam {
@@ -40584,7 +40612,7 @@ page-pay .centrar {
 
 page-pay .centrar .izquierda {
   color: #062F51;
-  margin-left: 40px;
+  margin-left: 20px;
 }
 
 page-pay .containerTextoPago {
@@ -40628,13 +40656,18 @@ page-card .item-md {
   background: transparent !important;
 }
 
+page-card #busqueda {
+  width: 100%;
+  height: 250px;
+}
+
 page-card .swiper-slide {
   width: 60px !important;
   height: auto;
 }
 
 page-card .dentroExpandable {
-  height: 70px;
+  height: 60px;
 }
 
 page-card .dentroExpandable p {
@@ -40643,6 +40676,8 @@ page-card .dentroExpandable p {
 
 page-card .swiper-container {
   height: 55px !important;
+  width: 95%;
+  margin-left: 2.5%;
 }
 
 page-card .centerItemsDays {
@@ -40774,7 +40809,6 @@ page-card .input-has-value .label-md[floating] {
 }
 
 page-card .horas {
-  margin-right: 15px;
   font-size: 1em;
   display: -webkit-box;
   display: -webkit-flex;
@@ -40839,11 +40873,44 @@ page-card .normal .swiper-slide {
 }
 
 page-card .normal .swiper-container {
-  height: 250px !important;
+  height: auto !important;
+}
+
+page-card .slide-zoom .ng-star-inserted {
+  height: 50px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
 page-card .borrar {
   display: none !important;
+}
+
+cabecera {
+  background-color: #287195;
+  color: #fff;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
 }
 
 page-code .codigoValida {

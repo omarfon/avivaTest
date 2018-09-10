@@ -113,27 +113,24 @@ date-picker .disabled {
 }
 
 .imagen {
-    width: 100px;
-    height: 100px;
+    width: 120px;
+    height: 120px;
     background: rgba(255, 255, 255, 0.5);
     border-radius: 50%;
-    margin-left: calc(50% - 50px);
-    margin-top: 50px;
+    padding-top:50px!important;
     display: flex;
     justify-content: center;
     align-items: center;
-}
 
+}
 .imagen:tap {
     width: 90%;
 }
-
 .iconAdd {
-    color: #00B6A3;
-    font-size: 2em;
+    color: #14A59C;
+    font-size: 3em;
     font-weight: bold;
 }
-
 .fondoColor {
     // background-image: url("../assets/imgs/fondo.png");
     background-repeat: no-repeat;
@@ -141,11 +138,10 @@ date-picker .disabled {
     width: 100%;
     height: 100%;
 }
-
 .flecha {
     padding-left: 0;
+    margin-top:-50px;
 }
-
 .lista {
     margin-top: 40px;
 }
@@ -159,19 +155,21 @@ date-picker .disabled {
 .lista .item .item-icon {
     padding-left: 20px;
 }
-// si eliminamos desde aquie el borde o manipulamos cualquiero otro elemento,
-//podríamos alterar el look and feel de toda la aplicación
-
-// .item-md.item-block .item-inner{
-//   border-bottom:none!important;
-// }
 .containerData{
-  background: #fff!important;
+  background: #14A59C!important;
   text-align: center;
-  height:150px;
+  height:240px;
+  position: relative;
+  // margin-top:-50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap:wrap;
+
 }
-// page-slide {
-//   .item-md.item-block .item-inner{
-//   border-bottom:none!important;
-// }
-// }
+.nombreUsuario{
+  color:#fff;
+  text-align: center;
+  margin-top:-20px;
+}
+

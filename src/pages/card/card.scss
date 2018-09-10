@@ -9,23 +9,25 @@ page-card {
     .item-md {
         background: transparent!important;
     }
-    // #busqueda {
-    //     background: #287195!important;
-    // }
+    #busqueda {
+        width: 100%;
+        // border-radius:10px;
+        height:250px;
+    }
     .swiper-slide {
         width: 60px!important;
         height: auto;
     }
     .dentroExpandable {
-        height: 70px;
+        height: 60px;
         p {
             margin-top: -15px,
         }
     }
     .swiper-container {
         height: 55px!important;
-        // width: 95%;
-        // margin-left: 2.5%;
+        width: 95%;
+        margin-left: 2.5%;
     }
     .centerItemsDays {
         text-align: center;
@@ -124,7 +126,6 @@ page-card {
         color: #287195;
     }
     .horas {
-        margin-right: 15px;
         font-size: 1em;
         display: flex;
         justify-content: center;
@@ -168,10 +169,23 @@ page-card {
         width:100%!important;
       }
       .swiper-container{
-        height: 250px!important;
+        height: auto!important;
       }
+    }
+    .slide-zoom .ng-star-inserted{
+      height: 50px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
     .borrar{
       display: none!important;
     }
-}
+  }
+      cabecera{
+        background-color: #287195;
+          color: #fff;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+      }

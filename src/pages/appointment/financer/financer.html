@@ -12,7 +12,7 @@
   <div>
 <ion-row padding>
   <ion-col class="cuadrado">
-    <button ion-button round
+    <button ion-button
             color="gris"
             [ngClass]="{verde:vcolor == true}"
             (click)="passFinancer()">
@@ -23,7 +23,6 @@
   <ion-col class="cuadrado">
     <button ion-button
             (click)="openParents()"
-            round
             color="gris"
             [ngClass]="{verde:ccolor == true}">
               un familiar
@@ -43,7 +42,7 @@
             <h3 class="nombrePariente">{{depe.name}}</h3>
             <p *ngIf="depe.relation"
                 class="parentesco">{{depe.relation.name}}</p>
-            <p class="edad">7 años</p>
+            <p class="edad">{{depe.birthdate | date:"Y"}}</p>
         </ion-col>
 
       </ion-row>

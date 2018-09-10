@@ -64,7 +64,6 @@ export class MyApp {
 
 
     this.userToken = localStorage.getItem('idTokenUser');
-
     // XXX: Listen for events. Specialy for user logged.
     events.subscribe('user:logged', userLogged => {
       if(userLogged !== undefined && userLogged !== ""){

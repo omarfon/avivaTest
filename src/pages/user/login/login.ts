@@ -56,6 +56,7 @@ export class LoginPage {
     this.userService.doSignIn(formulario.value.email.toLowerCase(), formulario.value.password.toLowerCase())
     .subscribe(
       data => {
+        console.log('data:', data);
         this.msg = "";
         localStorage.setItem('idTokenUser', data.patientId);
         localStorage.setItem('emailUser', formulario.value.email);
@@ -70,8 +71,7 @@ export class LoginPage {
       },
       err => {
         this.msg = "Usuario o contraseña incorrecta."
-      }
-    )
+      })
   }
 
   registrarUsuario(){

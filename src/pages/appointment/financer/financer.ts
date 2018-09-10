@@ -92,16 +92,16 @@ export class FinancerPage {
     this.isAndroid = platform.is('android');
 
     this.dependentsPvr.getDependens().subscribe(data =>{
-      this.parents = data;
+      this.parents.map(parent =>{
+
+      })
+
       console.log(this.parents);
-
     });
-
-
     this.financierProvider.getFinanciers().subscribe(data => { this.items = data; this.items.shift(); });
-
     this.doctor = this.navParams.get('doctor');
     this.available = this.navParams.get('available');
+    console.log(this.available);
     this.hora = this.navParams.get('hora');
     // this.subida = this.hora.listjson;
 

@@ -14,9 +14,11 @@
           </button>
         </ion-buttons>
     </ion-navbar>
+
 </ion-header>
 
-<ion-content padding>
+<ion-content padding >
+
     <ion-card button class="principal" (click)="irACard()">
         <ion-item>
             <ion-row>
@@ -53,14 +55,14 @@
                 </mat-expansion-panel-header >
                 <div class="containerExpand" >
                   <div *ngIf="tasks else notasks">
-                    <div *ngFor="let task of tasks; index as i; first as isFirst">
-                      <ion-row class="down10" >
+                    <div *ngFor="let task of tasks; first as isFirst">
+                      <ion-row class="down10" *ngIf="isFirst">
                         <ion-col col-3>
                           <ion-avatar item-start>
                             <img src="http://dappapache02.eastus.cloudapp.azure.com:4200/img/professionals/{{task.professional.id}}.png">
                           </ion-avatar>
                         </ion-col>
-                        <ion-col col-9>
+                        <ion-col col-9 >
                           <h3 class="tituloCitas" [ngClass]="{celeste:''}">Dr.{{task.professional.fullName | slice:0:25 | uppercase}}</h3>
                           <p class="especialidad">{{ task.service.basicService.description | lowercase }}</p>
                           <p class="sede">{{ task.service.center.name | lowercase }}</p>
@@ -113,7 +115,11 @@
                     <p *ngIf="!tasks" class="textoRecetas">Las recetas y médicamentos de sus últimas citas aparecerán aquí , despues de registrado</p>
                     <div *ngIf="tasks">
                       <div  *ngFor="let recipe of recipes; index as i; last as isLast">
-                            <!-- <h1 *ngIf="isLast">{{recipe.prescripciones.nombre_generico}}</> -->
+                           <div *ngIf="isLast">
+                                <div *ngFor="let receta of recipe.prescripciones">
+                                    <h1>{{receta.marca_comercial}}</h1>
+                                </div>
+                           </div>
                       </div>
 
                     </div>

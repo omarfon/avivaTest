@@ -1,15 +1,15 @@
 <ion-menu [content]="contenido" persistent="true">
-    <ion-header color="primary">
+    <ion-header color="light">
         <!-- <ion-toolbar>
             <ion-title>More Health</ion-title>
-        </ion-toolbar>     -->
+        </ion-toolbar> -->
     </ion-header>
     <ion-content class="fondoColor">
       <div class="containerData">
         <button ion-button text-center class="imagen" (click)="goPage(pro)">
             <ion-icon class="iconAdd flecha" name="add"></ion-icon>
         </button>
-        <p>Nombre de Usuario Registrado</p>
+        <p class="nombreUsuario">Nombre de Usuario Registrado</p>
       </div>
         <ion-list class="lista">
             <button ion-item (click)="goPage(hom)" class="outLine">

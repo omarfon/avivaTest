@@ -9,6 +9,7 @@ import 'rxjs/add/operator/filter';
 export class RecipesProvider {
 
   private apiUrl = "http://dappapache02.eastus.cloudapp.azure.com:4200/api/v2/ebooking/getPrescripcionesEncuentro?encuentroId=";
+  private apiAll = "http://dappapache02.eastus.cloudapp.azure.com:4200/api/v2/ebooking/getPrescripcionesEncuentro";
 
 
   constructor(public http: Http) {
@@ -19,7 +20,7 @@ export class RecipesProvider {
     let headers = new Headers({'Content-Type': 'application/json', 'Authorization': localStorage.getItem('authorization')});
     let options = new RequestOptions({headers});
 
-    return this.http.get(this.apiUrl , options)
+    return this.http.get(this.apiAll , options)
                     .map(this.extractData)
                     .catch(this.handleError);
 

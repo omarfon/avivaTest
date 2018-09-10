@@ -1,9 +1,10 @@
 import { NgModule } from '@angular/core';
+import { CabeceraComponent } from './cabecera/cabecera';
 @NgModule({
-	declarations: [
+	declarations: [CabeceraComponent
     ],
 	imports: [],
-	exports: [
+	exports: [CabeceraComponent
     ]
 })
 export class ComponentsModule {}

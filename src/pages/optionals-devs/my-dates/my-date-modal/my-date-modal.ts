@@ -34,7 +34,7 @@ export class MyDateModalPage {
   dismiss() {
     this.viewCtrl.dismiss();
   }
-  desactivateTask(task){
+  desactivateTask(task, taskpa){
 
     let confirm = this.alertCtrl.create({
       title: 'ANULAR CITA',
@@ -43,9 +43,15 @@ export class MyDateModalPage {
         {
           text: 'SI',
           handler: data => {
-            this.appointmentProvider.destroyAppointment(task).subscribe( data => {
-              this.navCtrl.push(MyDatesPage);
-            });
+            if(task){
+              this.appointmentProvider.destroyAppointment(task).subscribe( data => {
+                this.navCtrl.push(MyDatesPage);
+              });
+            }else{
+              this.appointmentProvider.destroyAppointment(taskpa).subscribe( data => {
+                this.navCtrl.push(MyDatesPage);
+              });
+            }
           }
         },
         {

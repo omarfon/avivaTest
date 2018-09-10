@@ -11,6 +11,7 @@ import { AppointmentProvider } from '../../providers/appoinment/appoinment';
 })
 export class HomePage {
 
+
   card: any = []
   cardone: any = []
   cardtwo: any = []
@@ -18,6 +19,7 @@ export class HomePage {
   itemExpanded: boolean = true;
   itemExpandHeight: number = 100;
   private citapendiente;
+  private lastAppointment;
 
   public tasks;
   public ensenar;
@@ -32,8 +34,6 @@ export class HomePage {
               private recipesPvr: RecipesProvider
 ) {
 
-
-
   let nombrePatient = localStorage.getItem('patientName');
   let separador = " ";
   if(nombrePatient){
@@ -47,7 +47,9 @@ export class HomePage {
       localStorage.setItem('authorization', data.authorization);
       // localStorage.setItem('idTokenUser', data.patientId);
       localStorage.setItem('role', data.role);
-      this.obtenerUltimaFecha()
+      if(data.role == 'user'){
+        this.obtenerUltimaFecha()
+      }
     },(err:any)=>{
       let alert = this.alertCtrl.create({
         title:'Problema con el servidor',
@@ -62,10 +64,14 @@ export class HomePage {
       alert.present();
     });
   }else{
-    this.obtenerUltimaFecha()
+    let rol = localStorage.getItem("role");
+    if(rol && rol == 'user' ){
+        this.obtenerUltimaFecha()
+      }
   }
 
     }
+
 
     obtenerUltimaFecha(){
         this.appointmentProvider.getAppointmentsPeruser().subscribe(data =>{
@@ -76,11 +82,11 @@ export class HomePage {
             this.recipes = data;
             this.recipendiente = this.recipes.length;
             console.log('recipes:', this.recipes);
-            // console.log(this.recipendiente);
+            console.log(this.recipendiente);
         });
-
       });
     }
+
 
   irACard(){
 this.navCtrl.push(CardPage);

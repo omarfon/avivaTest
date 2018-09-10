@@ -1,3 +1,4 @@
+import { CabeceraComponent } from '../components/cabecera/cabecera';
 import { DetailRecipePage } from './../pages/detail-recipe/detail-recipe';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/compiler/src/core';
 import { MyparentsPage } from './../pages/myparents/myparents';
@@ -13,7 +14,6 @@ import { HttpModule } from '@angular/http';
 import localeEs from '@angular/common/locales/es';
 import { registerLocaleData } from '@angular/common';
 registerLocaleData(localeEs);
-
 
 // aqui las importaciones de las imagenes
 import { MyApp } from './app.component';
@@ -34,7 +34,6 @@ import { SearchPage } from '../pages/appointment/search/search';
 import { FinancerPage } from '../pages/appointment/financer/financer';
 import { PayPage } from '../pages/appointment/pay/pay';
 
-
 // aqui las importaciones para los modulos adiciionales
 import { MyDatesPage } from '../pages/optionals-devs/my-dates/my-dates';
 import { IrmPage } from '../pages/optionals-devs/irm/irm';
@@ -54,18 +53,14 @@ import { typeDefs } from "./schema";
 import { mocks } from "./mocks";
 // componentes para la busqueda
 
-
 // providers
 import { FinancierProvider } from '../providers/financier/financier';
 import { UserProvider } from '../providers/user/user';
 import { AppointmentProvider } from './../providers/appoinment/appoinment';
 import { AuthorizationPublicProvider } from '../providers/authorization-public/authorization-public';
-
-
 //widgets
 import * as moment from 'moment';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
 
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { ExpandableComponent } from '../components/expandable/expandable.component';
@@ -85,7 +80,6 @@ import { CrudparentProvider } from '../providers/crudparent/crudparent';
 import { CodePage } from '../pages/code/code';
 import { DateparentProvider } from '../providers/dateparent/dateparent';
 import { RecipePage } from '../pages/recipe/recipe';
-
 
 @NgModule({
   declarations: [
@@ -112,7 +106,8 @@ import { RecipePage } from '../pages/recipe/recipe';
     MyparentsPage,
     CodePage,
     DetailRecipePage,
-    RecipePage
+    RecipePage,
+    CabeceraComponent
   ],
   imports: [
     BrowserModule,
