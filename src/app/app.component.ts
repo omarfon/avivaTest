@@ -16,6 +16,8 @@ import { RegisterPage } from '../pages/user/register/register';
 import { RecipesPage } from '../pages/optionals-devs/recipes/recipes';
 import { PayPage } from '../pages/appointment/pay/pay';
 import { FinancerPage } from '../pages/appointment/financer/financer';
+import { RecoverycodePage } from '../pages/recoverycode/recoverycode';
+import { RecoveryPage } from '../pages/recovery/recovery';
 
 
 
@@ -44,9 +46,14 @@ export class MyApp {
   crea  = CreateparentPage;
   mypa  = MyparentsPage;
   code  = CodePage;
+  recode = RecoverycodePage;
+  recov  = RecoveryPage;
 
-
-
+  public fotoId = localStorage.getItem('image');
+  private url = "http://dappapache02.eastus.cloudapp.azure.com:4200" ;
+  public foto;
+  public patientName = localStorage.getItem('patientName');
+              // public userPvr: UserProvider
 
 
   constructor(public platform: Platform,
@@ -55,6 +62,9 @@ export class MyApp {
               public menuCtrl: MenuController,
               public events: Events
               ) {
+                this.foto = this.url + `${this.fotoId}`;
+                console.log(this.foto);
+
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
@@ -69,7 +79,8 @@ export class MyApp {
       if(userLogged !== undefined && userLogged !== ""){
           this.userToken = localStorage.getItem('idTokenUser');
         }
-     })
+     });
+
   }
 
 
@@ -88,6 +99,7 @@ export class MyApp {
     localStorage.removeItem('authorization');
     localStorage.removeItem('role');
     localStorage.removeItem('patientName');
+    localStorage.removeItem('image');
     this.userToken = null;
     this.menu.setRoot(LoginPage);
     this.menuCtrl.close();

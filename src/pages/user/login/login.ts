@@ -1,4 +1,5 @@
-import { PayuPage } from './../../payu/payu';
+import { RecoveryPage } from './../../recovery/recovery';
+
 import { Component } from '@angular/core';
 import { NavController, NavParams, AlertController, Events, ViewController } from 'ionic-angular';
 import { RegisterPage } from '../register/register';
@@ -55,7 +56,7 @@ export class LoginPage {
   startSesion(formulario: NgForm){
     this.userService.doSignIn(formulario.value.email.toLowerCase(), formulario.value.password.toLowerCase())
     .subscribe(
-      data => {
+      (data:any) => {
         console.log('data:', data);
         this.msg = "";
         localStorage.setItem('idTokenUser', data.patientId);
@@ -63,6 +64,7 @@ export class LoginPage {
         localStorage.setItem('authorization', data.authorization);
         localStorage.setItem('role', data.role);
         localStorage.setItem('patientName', data.patientName);
+        localStorage.setItem('image', data.photoUrl);
         this.events.publish('user:logged', 'logged');
         if( !this.hora )
         this.navCtrl.push(HomePage )
@@ -83,5 +85,8 @@ export class LoginPage {
 
   goToHome(){
     this.navCtrl.push(HomePage);
+  }
+  goToRecovery(){
+      this.navCtrl.push(RecoveryPage);
   }
 }

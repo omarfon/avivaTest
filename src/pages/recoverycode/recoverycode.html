@@ -1,0 +1,93 @@
+<ion-header>
+
+    <ion-navbar color="primary">
+      <ion-title>Código de Recuperación</ion-title>
+    </ion-navbar>
+
+  </ion-header>
+
+
+  <ion-content padding>
+
+    <p class="codigoValida">hemos enviado al correo el código de validación con el que podrás recuperar tu cuenta....</p>
+   <ion-row>
+     <form [formGroup]="formCode" (ngSubmit)="saveData(formCode.value)" novalidate>
+     <div col-12 padding >
+       <ion-row padding>
+           <ion-col class="rectanguloInput">
+             <ion-input type="tel"
+                          minlength="1"
+                          maxlength="1"
+                         [(ngModel)]="primero"
+                         formControlName="primero"
+                          ></ion-input>
+            </ion-col>
+           <ion-col class="rectanguloInput">
+              <ion-input type="tel"
+                        minlength="1"
+                        maxlength="1"
+                          [(ngModel)]="segundo"
+                          formControlName="segundo"
+                          ></ion-input>
+            </ion-col>
+           <ion-col class="rectanguloInput">
+             <ion-input type="tel"
+                        minlength="1"
+                        maxlength="1"
+                        tercero="tercero"
+                        formControlName="tercero"
+                        ngModel></ion-input>
+            </ion-col>
+            <ion-col class="rectanguloInput">
+                <ion-input type="tel"
+                        minlength="1"
+                        maxlength="1"
+                           tercero="cuarto"
+                           formControlName="cuarto"
+                           ngModel></ion-input>
+               </ion-col>
+              </ion-row>
+              <div>
+                  <p class="tituloContraseña">Cambia la contraseña</p>
+                   <ion-item>
+                       <ion-label floating>contraseña nueva</ion-label>
+                       <ion-input type="password"
+                                   formControlName="password"
+                                   ngModel>
+                       </ion-input>
+                     </ion-item>
+
+                     <ion-item>
+                         <ion-label floating>Repetir contraseña nueva</ion-label>
+                         <ion-input type="password"
+                                     formControlName="passwordRepeat"
+                                     ngModel>
+                         </ion-input>
+                       </ion-item>
+                </div>
+              <div class="center">
+                <button ion-button
+                        block
+                         type="submit"
+                         class="botonRecuperar"
+                         [disabled]="!formCode.valid || !validacion()">
+                   Recuperar
+                </button>
+              </div>
+     </div>
+
+    </form>
+  </ion-row>
+
+
+   <div class="center">
+     <p class="newCode">Si no recibiste o caducó tu codigo puedes solicitar uno nuevo.</p>
+     <button ion-button
+            class="codigoreen"
+            clear
+            (click)="sendCode()">reenviar códido
+   </button>
+   </div>
+
+  </ion-content>
+

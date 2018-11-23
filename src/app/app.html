@@ -6,10 +6,26 @@
     </ion-header>
     <ion-content class="fondoColor">
       <div class="containerData">
-        <button ion-button text-center class="imagen" (click)="goPage(pro)">
-            <ion-icon class="iconAdd flecha" name="add"></ion-icon>
-        </button>
-        <p class="nombreUsuario">Nombre de Usuario Registrado</p>
+        <ion-row>
+          <ion-col col-12>
+              <button ion-button text-center
+              class="imagen"
+              (click)="goPage(pro)"
+              *ngIf="!foto">
+                <ion-icon class="iconAdd flecha" name="add"></ion-icon>
+              </button>
+          </ion-col>
+          <ion-col col-12 *ngIf="foto">
+              <div class="imagenPerfil"
+              (click)="goPage(pro)">
+                <img src="{{foto}}" alt="">
+              </div>
+          </ion-col>
+          <ion-col col-12>
+            <p class="nombreUsuario" *ngIf="foto">{{patientName}}</p>
+          </ion-col>
+        </ion-row>
+
       </div>
         <ion-list class="lista">
             <button ion-item (click)="goPage(hom)" class="outLine">

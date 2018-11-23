@@ -159,17 +159,19 @@ date-picker .disabled {
   background: #14A59C!important;
   text-align: center;
   height:240px;
-  position: relative;
-  // margin-top:-50px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap:wrap;
+  // margin-top:50px;
 
 }
 .nombreUsuario{
   color:#fff;
   text-align: center;
-  margin-top:-20px;
 }
+.imagenPerfil {
+  width: 100px;
+  margin-left: calc( 50% - 50px);
+  margin-top: 40px;
+      img{
+        border-radius: 50%;
+      }
 
+}

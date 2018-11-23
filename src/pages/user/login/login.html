@@ -32,6 +32,8 @@
         </form>
         <button ion-button (click)="startSesion(formulario)" block class="inicioSesion">iniciar Sesión</button>
     </div>
+    <p (click)="goToRecovery()"
+        class="textoOlvido">Olvidé mi contraseña</p>
     <p *ngIf="this.hora == undefined"
       class="noLogin"
       (click)="goToHome()">Continuar como invitado</p>

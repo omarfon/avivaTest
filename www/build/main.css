@@ -1,3 +1,4 @@
+@charset "UTF-8";
 .ion-ios-add:before {
   content: "\f102";
 }
@@ -39981,28 +39982,21 @@ date-picker .disabled {
   background: #14A59C !important;
   text-align: center;
   height: 240px;
-  position: relative;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-flex-wrap: wrap;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
 }
 
 .nombreUsuario {
   color: #fff;
   text-align: center;
-  margin-top: -20px;
+}
+
+.imagenPerfil {
+  width: 100px;
+  margin-left: calc( 50% - 50px);
+  margin-top: 40px;
+}
+
+.imagenPerfil img {
+  border-radius: 50%;
 }
 
 cabecera {
@@ -41985,6 +41979,81 @@ page-recipe .containerDatosPastilla {
   overflow: auto;
 }
 
+page-recovery .botonEnviar {
+  margin-top: 20px;
+  height: 45px;
+}
+
+page-recovery .textoRecuperacion {
+  color: #062F51;
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  font-size: 1em;
+  font-weight: 200;
+  line-height: 130%;
+}
+
+page-recoverycode .codigoValida {
+  color: #96999C;
+  text-align: center;
+  font-size: 1em;
+  font-weight: 300;
+  width: 90%;
+  margin-left: 5%;
+}
+
+page-recoverycode .rectanguloInput {
+  border: 2px solid #96999C;
+  height: 70px;
+  margin: 2px;
+  border-radius: 5px;
+}
+
+page-recoverycode .center {
+  text-align: center;
+  margin-top: 20px;
+}
+
+page-recoverycode .codigoreen {
+  color: #00B6A3;
+  font-size: 1em;
+  text-transform: lowercase;
+  font-size: 1.2em;
+  font-weight: lighter;
+  border: 1px solid #00B6A3;
+  border-radius: 10px;
+}
+
+page-recoverycode .botonRecuperar {
+  background: #00B6A3;
+  width: 100%;
+}
+
+page-recoverycode .newCode {
+  color: #062F51;
+  font-size: .9em;
+  width: 90%;
+  margin-left: 5%;
+  margin-top: 20px;
+}
+
+page-recoverycode .tituloContraseña {
+  width: 90%;
+  margin-left: 5%;
+  color: #062F51;
+  text-align: center;
+  font-size: 1.1em;
+  margin-bottom: 0 !important;
+}
+
+page-recoverycode .text-input-md {
+  font-size: 2em;
+  color: #00B6A3;
+  text-align: center;
+  font-weight: 600;
+}
+
 page-login .bajar {
   padding-top: 30px;
   padding-bottom: 10px;
@@ -42056,15 +42125,25 @@ page-login .item-ios {
   background-color: transparent !important;
 }
 
-page-profile .cargaImagen {
-  background-color: red;
-  border-radius: 10%;
-  height: 90px;
-  margin-left: calc( 50% - 45px);
+page-login .textoOlvido {
+  color: #00b6a3;
+  text-align: center;
+  margin-bottom: 20px;
+  font-weight: 600;
+  border: 1px solid #00b6a3;
+  padding-top: .5em;
+  padding-bottom: .5em;
+  border-radius: 10px;
+  width: 50%;
+  margin-left: 25%;
+}
+
+page-profile .cargaImagen img {
+  height: 140px;
+  margin-left: calc( 50% - 70px);
   margin-top: 10px;
-  width: 90px;
-  background-image: url("https://2.bp.blogspot.com/-XAKF8wOcXO0/Vz2j93PBZGI/AAAAAAAEHkA/idzUNuD0AxISY46OSl8iyap09BtwuyIrQCLcB/s1600/rostros-bonitos-de-mujeres-desconocidas_25.jpg");
-  background-size: cover;
+  width: 140px;
+  border-radius: 50%;
 }
 
 page-profile h4 {
@@ -42085,6 +42164,18 @@ page-profile .alto50 {
   height: 50px !important;
   margin-top: 15px;
   background: #00B6A3;
+}
+
+page-profile .tituloCambioContraseña {
+  color: #00B6A3;
+  text-align: center;
+  width: 50%;
+  margin-left: 25%;
+  margin-top: 20px;
+}
+
+page-profile .tituloCambioContraseña h4 {
+  font-size: 1em;
 }
 
 page-register .bajas {

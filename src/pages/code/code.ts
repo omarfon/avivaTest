@@ -76,11 +76,11 @@ export class CodePage {
         this.loginOk = data;
 
       // console.log('datos que vienen del logueo: por registro:', this.loginOk);
-        localStorage.setItem('idTokenUser', data.patientId);
-        localStorage.setItem('emailUser', data.emailPaciente);
-        localStorage.setItem('authorization', data.authorization);
-        localStorage.setItem('role', data.role);
-        localStorage.setItem('patientName', data.patientName);
+        localStorage.setItem('idTokenUser', this.loginOk.patientId);
+        localStorage.setItem('emailUser', this.loginOk.emailPaciente);
+        localStorage.setItem('authorization', this.loginOk.authorization);
+        localStorage.setItem('role', this.loginOk.role);
+        localStorage.setItem('patientName', this.loginOk.patientName);
 
         this.events.publish('user:logged', 'logged');
         if(this.hora ){

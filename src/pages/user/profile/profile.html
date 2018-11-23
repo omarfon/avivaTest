@@ -1,9 +1,3 @@
-<!--
-  Generated template for the ProfilePage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
 
     <ion-navbar color="primary">
@@ -13,63 +7,88 @@
 </ion-header>
 
 <ion-content padding>
-    <!-- <div class="cargaImagen">
-        <img src="#" alt="">
-    </div> -->
-
-    <h4>Nombre Usuario</h4>
+  <form  [formGroup]="formCode" (ngSubmit)="changePassword(formCode.value)" novalidate>
     <ion-row>
-
-        <ion-col col-12>
-            <ion-item>
-                <ion-label stacked>Nombre de usuario</ion-label>
-                <ion-input type="text" value="">Nombre de usuario</ion-input>
-            </ion-item>
-        </ion-col>
-
-        <ion-col col-12>
-            <ion-item>
-                <ion-label stacked>apellidos de usuario</ion-label>
-                <ion-input type="text" value="">Apellidos de usuario</ion-input>
-            </ion-item>
-        </ion-col>
-
         <ion-col col-6>
-            <ion-item>
-                <ion-label stacked>Sexo</ion-label>
-                <ion-input type="text" value="">Sexo</ion-input>
-            </ion-item>
+            <div class="cargaImagen"
+         (click)="getImage()">
+        <img src="{{foto}}" alt="">
+    </div>
         </ion-col>
-
         <ion-col col-6>
-            <ion-item>
-                <ion-label stacked>Fecha de nacimiento</ion-label>
-                <ion-input type="text" value="">Apellidos de usuario</ion-input>
-            </ion-item>
+            <ion-col col-12>
+                <ion-item>
+                    <ion-label stacked>Nombre de usuario</ion-label>
+                    <ion-input type="text" value=""
+                              disabled>Nombre de usuario</ion-input>
+                </ion-item>
+            </ion-col>
+
+            <ion-col col-12>
+                <ion-item>
+                    <ion-label stacked>apellidos de usuario</ion-label>
+                    <ion-input type="text" value=""
+                               disabled>Apellidos de usuario</ion-input>
+                </ion-item>
+            </ion-col>
+
+          </ion-col>
+          <ion-col col-12>
+            <ion-row>
+              <ion-col col-6>
+                  <ion-item>
+                      <ion-label stacked>Sexo</ion-label>
+                      <ion-input type="text" value="">Sexo</ion-input>
+                  </ion-item>
+              </ion-col>
+                  <ion-col col-6>
+                      <ion-item>
+                          <ion-label stacked>Fecha de nacimiento</ion-label>
+                          <ion-input type="text" value="">Apellidos de usuario</ion-input>
+                      </ion-item>
+                  </ion-col>
+
+                  <ion-col col-12>
+                      <ion-item>
+                          <ion-label stacked>Correo Electronico</ion-label>
+                          <ion-input type="text" value="">Correo</ion-input>
+                      </ion-item>
+                  </ion-col>
+            </ion-row>
         </ion-col>
 
-        <ion-col col-12>
-            <ion-item>
-                <ion-label stacked>Correo Electronico</ion-label>
-                <ion-input type="text" value="">Correo</ion-input>
-            </ion-item>
-        </ion-col>
 
-        <ion-col col-12>
-            <ion-item>
-                <ion-label stacked>Contraseña</ion-label>
-                <ion-input type="text" value="">Contraseña</ion-input>
-            </ion-item>
-        </ion-col>
+          <div class="tituloCambioContraseña">
+            <h4 >Cambiar Contraseña</h4>
+          </div>
+          <ion-col col-12>
+              <ion-item>
+                  <ion-label stacked>Contraseña Actual</ion-label>
+                  <ion-input type="text" value="" formControlName="oldPassword" ngModel>Contraseña actual</ion-input>
+              </ion-item>
+          </ion-col>
 
-        <ion-col col-12>
-            <ion-item>
-                <ion-label stacked>Confirmar Contraseña</ion-label>
-                <ion-input type="text" value="">Confirmar contraseña</ion-input>
-            </ion-item>
-        </ion-col>
+          <ion-col col-12>
+              <ion-item>
+                  <ion-label stacked>Contraseña</ion-label>
+                  <ion-input type="text" value="" formControlName="password" ngModel>Nueva contraseña</ion-input>
+              </ion-item>
+          </ion-col>
+
+          <ion-col col-12>
+              <ion-item>
+                  <ion-label stacked>Confirmar Contraseña</ion-label>
+                  <ion-input type="text" value="" formControlName="passwordRepeat"
+                  ngModel>Confirmar nueva contraseña</ion-input>
+              </ion-item>
+          </ion-col>
+
     </ion-row>
 
-    <button ion-button color="primary" block class="alto50">volver</button>
+    <button ion-button color="primary" block class="alto50"
+                                        type="submit"
+                                       [disabled]="!formCode.valid || !validacion()"
+                                       >cambiar contraseña</button>
+  </form>
 
 </ion-content>

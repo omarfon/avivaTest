@@ -4,6 +4,7 @@ import { Component } from '@angular/core';
 import { NavController, AlertController } from 'ionic-angular';
 import { CardPage } from '../card/card';
 import { AppointmentProvider } from '../../providers/appoinment/appoinment';
+import { DependentsProvider } from '../../providers/dependents/dependents';
 
 @Component({
   selector: 'page-home',
@@ -27,11 +28,16 @@ export class HomePage {
   public recipes;
   private recipendiente;
   private lastRecipe;
+
+  public misCitas;
+  public depesCitas;
+
   constructor(public navCtrl : NavController,
-              public appointmentProvider : AppointmentProvider,
-              private autho : AuthorizationPublicProvider,
-              private alertCtrl: AlertController,
-              private recipesPvr: RecipesProvider
+    private autho : AuthorizationPublicProvider,
+    private alertCtrl: AlertController,
+    private recipesPvr: RecipesProvider,
+    public appointmentProvider : AppointmentProvider,
+    public dependensProvider: DependentsProvider
 ) {
 
   let nombrePatient = localStorage.getItem('patientName');
@@ -70,8 +76,24 @@ export class HomePage {
       }
   }
 
-    }
+  // traer las citas del usuario principal y de sus dependientes
+      // citas usuario:
+      this.appointmentProvider.getAppointmentsPeruser().subscribe(data=>{
+          this.misCitas = data;
+          console.log('this.misCitas', this.misCitas);
+      });
+      // mis citas:
+      this.dependensProvider.getdependesDay().subscribe(data =>{
+        this.depesCitas = data;
+        console.log('this.depesCitas:', this.depesCitas);
+      });
 
+      const citasMiasPendientes = this.misCitas ;
+      const citasDepends = { ...this.depesCitas };
+      const todasLasCitas = {...citasMiasPendientes, ...citasDepends};
+      console.log('todasLasCitas:', todasLasCitas);
+
+    }
 
     obtenerUltimaFecha(){
         this.appointmentProvider.getAppointmentsPeruser().subscribe(data =>{
@@ -86,6 +108,9 @@ export class HomePage {
         });
       });
     }
+
+
+
 
 
   irACard(){

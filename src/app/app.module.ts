@@ -1,3 +1,4 @@
+import { RecoveryPage } from './../pages/recovery/recovery';
 import { CabeceraComponent } from '../components/cabecera/cabecera';
 import { DetailRecipePage } from './../pages/detail-recipe/detail-recipe';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/compiler/src/core';
@@ -80,6 +81,9 @@ import { CrudparentProvider } from '../providers/crudparent/crudparent';
 import { CodePage } from '../pages/code/code';
 import { DateparentProvider } from '../providers/dateparent/dateparent';
 import { RecipePage } from '../pages/recipe/recipe';
+import { RecoverycodePage } from '../pages/recoverycode/recoverycode';
+
+
 
 @NgModule({
   declarations: [
@@ -107,7 +111,9 @@ import { RecipePage } from '../pages/recipe/recipe';
     CodePage,
     DetailRecipePage,
     RecipePage,
-    CabeceraComponent
+    CabeceraComponent,
+    RecoveryPage,
+    RecoverycodePage
   ],
   imports: [
     BrowserModule,
@@ -147,7 +153,9 @@ import { RecipePage } from '../pages/recipe/recipe';
     MyparentsPage,
     CodePage,
     DetailRecipePage,
-    RecipePage
+    RecipePage,
+    RecoveryPage,
+    RecoverycodePage
   ],
   providers: [
     StatusBar,

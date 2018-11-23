@@ -1,13 +1,10 @@
 page-profile {
-    .cargaImagen {
-        background-color: red;
-        border-radius: 10%;
-        height: 90px;
-        margin-left: calc( 50% - 45px);
+    .cargaImagen img{
+        height: 140px;
+        margin-left: calc( 50% - 70px);
         margin-top: 10px;
-        width: 90px;
-        background-image: url('https://2.bp.blogspot.com/-XAKF8wOcXO0/Vz2j93PBZGI/AAAAAAAEHkA/idzUNuD0AxISY46OSl8iyap09BtwuyIrQCLcB/s1600/rostros-bonitos-de-mujeres-desconocidas_25.jpg');
-        background-size: cover;
+        width: 140px;
+        border-radius: 50%;
     }
     h4 {
         text-align: center;
@@ -25,5 +22,15 @@ page-profile {
         height: 50px!important;
         margin-top: 15px;
         background: #00B6A3;
+    }
+    .tituloCambioContraseña{
+      color:#00B6A3;
+      text-align: center;
+      width:50%;
+      margin-left:25%;
+      margin-top:20px;
+          h4{
+            font-size:1em;
+          }
     }
 }
