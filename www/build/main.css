@@ -39990,13 +39990,16 @@ date-picker .disabled {
 }
 
 .imagenPerfil {
-  width: 100px;
+  width: 120px;
+  height: 120px;
   margin-left: calc( 50% - 50px);
   margin-top: 40px;
 }
 
 .imagenPerfil img {
   border-radius: 50%;
+  width: 120px;
+  height: 120px;
 }
 
 cabecera {
@@ -41314,7 +41317,7 @@ page-home .mat-expansion-indicator {
 }
 
 page-home img {
-  width: 120px;
+  width: 90px;
   border-radius: 10%;
 }
 
@@ -41325,12 +41328,13 @@ page-home .down10 {
 page-home .tituloCitas {
   text-align: right;
   color: #287195 !important;
+  font-size: .9em;
 }
 
 page-home .especialidad {
   text-align: right;
   color: #00B6A3;
-  font-size: 1.2em;
+  font-size: .8em;
   margin-top: -5px;
 }
 
@@ -41339,7 +41343,7 @@ page-home .day,
 page-home .hour {
   text-align: right;
   color: #A7A9AC;
-  font-size: 1.2em;
+  font-size: .9em;
   margin-top: -8px;
 }
 
@@ -41354,6 +41358,34 @@ page-home .textoRecetas {
 page-home .logueado {
   font-size: .8em;
   margin-right: 10px;
+}
+
+page-home .contenedorIcono img {
+  width: 40px;
+}
+
+page-home .contenedorNombrePastilla {
+  text-align: right;
+}
+
+page-home .contenedorNombrePastilla p {
+  color: #A7A9AC;
+  font-size: 1em;
+  text-align: right;
+}
+
+page-home .nombreMedicamento {
+  font-weight: 900;
+  color: #A7A9AC;
+}
+
+page-home .vecesXdia {
+  color: #92DCE8;
+  font-size: .8em;
+}
+
+page-home .contenedorReceta .item-md {
+  background-color: transparent !important;
 }
 
 page-myparents .nombrePariente {
@@ -41567,6 +41599,27 @@ page-my-dates .nombreFamiliarBox p {
 
 page-my-dates .segment-md-secondary .segment-button {
   color: #fff !important;
+}
+
+page-my-dates .containerDepends {
+  background: #F3F6F6;
+  height: 80px;
+  margin-bottom: 40px;
+  text-align: center;
+  position: -webkit-sticky;
+  position: sticky;
+}
+
+page-my-dates .botonConImagen {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+page-my-dates .nombreUsuarios {
+  color: #A7A9AC;
+  font-size: .9em;
+  margin-top: 0;
 }
 
 page-my-date-modal #content {
@@ -42167,15 +42220,28 @@ page-profile .alto50 {
 }
 
 page-profile .tituloCambioContraseña {
-  color: #00B6A3;
   text-align: center;
   width: 50%;
   margin-left: 25%;
-  margin-top: 20px;
+  margin-top: 40px;
 }
 
 page-profile .tituloCambioContraseña h4 {
+  font-size: 1.2em;
+  color: #00719A;
+}
+
+page-profile .labelDatos {
+  color: #00B6A3;
   font-size: 1em;
+  margin-top: 0;
+}
+
+page-profile .dato {
+  margin-top: 0;
+  margin-bottom: 0;
+  color: #96999C;
+  font-size: 1.1em;
 }
 
 page-register .bajas {

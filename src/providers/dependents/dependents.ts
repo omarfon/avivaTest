@@ -11,6 +11,7 @@ export class DependentsProvider {
   private apiDelete = "http://dappapache02.eastus.cloudapp.azure.com:4200/api/v2/users/removecontact?userId=";
   private apiDatesParents = "http://dappapache02.eastus.cloudapp.azure.com:4200/api/v2/ebooking/appointments/patientContacts";
   private apiOldDates = "http://dappapache02.eastus.cloudapp.azure.com:4200/api/v2/ebooking/encuentrosPaciente";
+  private apiDatesParentsv2 = "http://dappapache02.eastus.cloudapp.azure.com:4200/api/v2/ebooking/encuentros-paciente-contacto";
 
 
   constructor(public http: HttpClient) {
@@ -38,6 +39,16 @@ export class DependentsProvider {
                     });
 
   }
+  getDependentDay(id){
+    const authorization = localStorage.getItem('authorization');
+    let headers = new HttpHeaders({"Authorization": authorization});
+
+    return this.http.get(this.apiDatesParentsv2 + `/${id}`, {headers})
+                    .map(data =>{
+                      return data;
+                    });
+  }
+
   // con esta llamada se esta trayendo las citas pasadas del usuario validado
   getOldDependetsDay(){
     const authorization = localStorage.getItem('authorization');

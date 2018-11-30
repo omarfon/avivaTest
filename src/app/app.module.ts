@@ -84,6 +84,10 @@ import { RecipePage } from '../pages/recipe/recipe';
 import { RecoverycodePage } from '../pages/recoverycode/recoverycode';
 
 
+import { Camera } from '@ionic-native/camera';
+import { File } from '@ionic-native/file';
+import { FileTransfer } from '@ionic-native/file-transfer';
+
 
 @NgModule({
   declarations: [
@@ -171,7 +175,10 @@ import { RecoverycodePage } from '../pages/recoverycode/recoverycode';
     RecipesProvider,
     DependentsProvider,
     CrudparentProvider,
-    DateparentProvider
+    DateparentProvider,
+    Camera,
+    File,
+    FileTransfer
   ]
 })
 export class AppModule {

@@ -11,11 +11,11 @@
           <p>Citas Pasadas</p>
         </ion-segment-button>
         <ion-segment-button value="miscitas">
-          <p>Mis citas</p>
+          <p>Proximas citas</p>
         </ion-segment-button>
-        <ion-segment-button value="citasfamiliares">
+        <!-- <ion-segment-button value="citasfamiliares">
           <p>citas familiares</p>
-        </ion-segment-button>
+        </ion-segment-button> -->
       </ion-segment>
     </ion-toolbar>
 </ion-header>
@@ -23,6 +23,26 @@
 <ion-content>
   <div [ngSwitch]="citas">
     <div *ngSwitchCase="'citaspasadas'">
+      <div class="containerDepends">
+          <ion-row>
+            <ion-col col-3>
+              <button ion-button
+              class="botonConImagen"
+                      (click)="getDatesUser()">
+                <img src="" alt="">
+              </button>
+              <p class="nombreUsuarios">principal</p>
+            </ion-col>
+            <ion-col *ngFor="let dep of dependens">
+              <button ion-button
+              class="botonConImagen"
+                      (click)="getDatesDepends(dep)">
+                  <img src="" alt="">
+              </button>
+              <p class="nombreUsuarios">{{dep.name}}</p>
+            </ion-col>
+          </ion-row>
+      </div>
         <ion-list *ngFor='let citaspa of citaspasadas'>
             <ion-card class="bordeDerecho" *ngIf="citaspa ">
                 <ion-item>
@@ -99,48 +119,46 @@
             </ion-item>
         </ion-card>
     </ion-list>
-    <p *ngIf="mostrar == 0" class="textoCitasNulo">No tienes citas programadas</p>
-      </div>
-      <div *ngSwitchCase="'citasfamiliares'">
-          <ion-list *ngFor='let taskpa of tasksParents'>
-              <ion-card (click)="gotoDetails(taskpa)" class="bordeDerecho" *ngIf="taskpa.appointments[0]">
-                  <ion-item>
-                      <ion-row>
-                          <ion-col col-4>
-                              <ion-avatar item-start>
-                                  <img src="http://dappapache02.eastus.cloudapp.azure.com:4200/img/professionals/{{taskpa.appointments[0].professional.id}}.png">
-                              </ion-avatar>
-                          </ion-col>
-                          <ion-col col-8>
-                              <ion-row>
-                                <ion-col col-12
-                                  class="nombreFamiliarBox">
-                                  <p class="nombreFamiliar">Cita para: {{taskpa.appointments[0].patient.name}}</p>
-                                </ion-col>
-                                <ion-col col-12>
-                                  <h3 class="tituloCitas">Dr. {{taskpa.appointments[0].professional.fullName | slice:0:25 | lowercase}}</h3>
-                                  <p class="especialidad">{{ taskpa.appointments[0].service.basicService.description | lowercase }}</p>
-                                  <p class="sede">{{ taskpa.appointments[0].service.center.name | lowercase }}</p>
-                                </ion-col>
-                              </ion-row>
-                          </ion-col>
-                          <ion-col col-12 class="gris">
-                              <ion-row>
-                                  <ion-col class="diaCita">
-                                      <p class="day">{{ taskpa.appointments[0].appointmentDateTime | date:'EEEE d , MMMM ' : 'es' }} </p>
-                                  </ion-col>
-                                  <ion-col class="hourCita">
-                                      <p class="hour">{{ taskpa.appointments[0].appointmentDateTime | date: 'HH:mm' }}</p>
-                                  </ion-col>
-                              </ion-row>
+    <p *ngIf="mostrar == 0 || sinParents == 0" class="textoCitasNulo">No tienes citas programadas</p>
 
+    <ion-list *ngFor='let taskpa of tasksParents'>
+        <ion-card (click)="gotoDetails(taskpa)" class="bordeDerecho" *ngIf="taskpa.appointments[0]">
+            <ion-item>
+                <ion-row>
+                    <ion-col col-4>
+                        <ion-avatar item-start>
+                            <img src="http://dappapache02.eastus.cloudapp.azure.com:4200/img/professionals/{{taskpa.appointments[0].professional.id}}.png">
+                        </ion-avatar>
+                    </ion-col>
+                    <ion-col col-8>
+                        <ion-row>
+                          <ion-col col-12
+                            class="nombreFamiliarBox">
+                            <p class="nombreFamiliar">Cita para: {{taskpa.appointments[0].patient.name}}</p>
                           </ion-col>
-                      </ion-row>
-                  </ion-item>
-              </ion-card>
-          </ion-list>
-          <p *ngIf="sinParents == 0" class="textoCitasNulo">No tienes citas para familiares</p>
-        </div>
+                          <ion-col col-12>
+                            <h3 class="tituloCitas">Dr. {{taskpa.appointments[0].professional.fullName | slice:0:25 | lowercase}}</h3>
+                            <p class="especialidad">{{ taskpa.appointments[0].service.basicService.description | lowercase }}</p>
+                            <p class="sede">{{ taskpa.appointments[0].service.center.name | lowercase }}</p>
+                          </ion-col>
+                        </ion-row>
+                    </ion-col>
+                    <ion-col col-12 class="gris">
+                        <ion-row>
+                            <ion-col class="diaCita">
+                                <p class="day">{{ taskpa.appointments[0].appointmentDateTime | date:'EEEE d , MMMM ' : 'es' }} </p>
+                            </ion-col>
+                            <ion-col class="hourCita">
+                                <p class="hour">{{ taskpa.appointments[0].appointmentDateTime | date: 'HH:mm' }}</p>
+                            </ion-col>
+                        </ion-row>
+
+                    </ion-col>
+                </ion-row>
+            </ion-item>
+        </ion-card>
+    </ion-list>
+      </div>
   </div>
 
 

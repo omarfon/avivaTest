@@ -26,7 +26,8 @@ export class LoginPage {
   private doctor;
   private available;
   private authPublic;
-
+  public change = false;
+  password_type: string = 'password';
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
               public userService: UserProvider,
@@ -65,6 +66,7 @@ export class LoginPage {
         localStorage.setItem('role', data.role);
         localStorage.setItem('patientName', data.patientName);
         localStorage.setItem('image', data.photoUrl);
+        // localStorage.setItem('')
         this.events.publish('user:logged', 'logged');
         if( !this.hora )
         this.navCtrl.push(HomePage )
@@ -88,5 +90,10 @@ export class LoginPage {
   }
   goToRecovery(){
       this.navCtrl.push(RecoveryPage);
+  }
+
+  changeType(){
+  // cambie el password type
+    this.password_type = this.password_type === 'text' ? 'password' : 'text';
   }
 }

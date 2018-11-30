@@ -5,7 +5,9 @@ import { NavController, NavParams, AlertController } from 'ionic-angular';
 import * as shajs from 'sha.js';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserProvider } from '../../../providers/user/user';
-
+import { Camera, CameraOptions } from '@ionic-native/camera';
+import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer';
+import { File } from '@ionic-native/file';
 
 @Component({
   selector: 'page-profile',
@@ -19,22 +21,46 @@ export class ProfilePage {
   public fotoId = localStorage.getItem('image');
   private url = "http://dappapache02.eastus.cloudapp.azure.com:4200" ;
   public foto;
+  public image;
 
   public formCode: FormGroup;
+
+  public password_type: string = 'password';
+  public passwordold_type: string = 'password';
+
+  public datosPaciente;
+  public correoElectronico;
+  public nacimiento;
+
+  timemark = new Date().getTime();
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
               public form: FormBuilder,
               public alertCtrl: AlertController,
-              public userPvr: UserProvider) {
+              public userPvr: UserProvider,
+              public camera: Camera,
+              public transfer: FileTransfer) {
                 this.formCode = this.form.group({
                   oldPassword  : [],
                   password   : ['', [Validators.required]],
                   passwordRepeat   : ['', [Validators.required]]
               });
-              // public userPvr: UserProvider
-      this.foto = this.url + `${this.fotoId}`;
-      console.log(this.foto);
+
+              // carga de la foto de perfil
+              this.foto = this.url + `${this.fotoId}`;
+              // console.log(this.foto);
+      // carga de los datos del usuario, aqui se le manda el id del usuario para obtener los datos con usrPvr-> getDatosPaciente
+              const id = localStorage.getItem('idTokenUser');
+              this.userPvr.getDatosPaciente(id).subscribe(data =>{
+                this.datosPaciente = data;
+                console.log('this.datosPaciente:', this.datosPaciente);
+              });
+            this.correoElectronico = localStorage.getItem('emailUser');
+  }
+
+  ionViewDidLoad() {
+    console.log('ionViewDidLoad ProfilePage');
   }
 
   validacion(){
@@ -46,12 +72,109 @@ export class ProfilePage {
     }
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad ProfilePage');
+  takePicture(){
+    let alert = this.alertCtrl.create({
+      title:'Tu foto de Perfil',
+      message:'puedes cambiar la imagen para tu perfil',
+      buttons: [
+        {
+          text:'tomar foto',
+          handler: data =>{
+            this.getPicture();
+          }
+        },
+        {
+          text:'cargar Imagen',
+          handler: data =>{
+            this.getPictureOfDevice();
+          }
+        }
+      ]
+    });
+    alert.present();
   }
-  getImage(){
-    console.log('obteniendo imagen de camara');
+
+
+  getPicture(){
+    let options: CameraOptions = {
+      destinationType: this.camera.DestinationType.FILE_URI,
+      sourceType: this.camera.PictureSourceType.CAMERA,
+      mediaType: this.camera.MediaType.PICTURE,
+      encodingType: this.camera.EncodingType.JPEG,
+      targetWidth: 800,
+      targetHeight: 600,
+      quality: 100,
+      allowEdit: true,
+      saveToPhotoAlbum: true
+    }
+    this.camera.getPicture( options )
+    .then(imageData => {
+      this.image = imageData;
+      // this.image = this.image;
+      console.log('this.image:', this.image);
+
+      const fileTransfer: FileTransferObject = this.transfer.create();
+      const authorization = localStorage.getItem('authorization');
+    // let headers = new HttpHeaders({"Authorization": authorization});
+      const photo = this.image;
+      let options: FileUploadOptions = {
+        fileKey: 'photo',
+        fileName: 'photo',
+        chunkedMode: false,
+        mimeType: "image/jpeg",
+        headers: {authorization}
+      }
+      fileTransfer.upload(photo, 'http://dappapache02.eastus.cloudapp.azure.com:4200/api/v2/users/upload-photo', options).then(data =>{
+        this.foto = `http://dappapache02.eastus.cloudapp.azure.com:4200/${this.fotoId}`;
+      })
+      this.foto = photo;
+      console.log('this.foto:', this.foto);
+    })
+    .catch(error =>{
+      console.error( error );
+    });
   }
+
+  getPictureOfDevice(){
+    let options: CameraOptions = {
+      destinationType: this.camera.DestinationType.FILE_URI,
+      sourceType: this.camera.PictureSourceType.PHOTOLIBRARY,
+      mediaType: this.camera.MediaType.PICTURE,
+      encodingType: this.camera.EncodingType.JPEG,
+      targetWidth: 800,
+      targetHeight: 600,
+      quality: 100,
+      saveToPhotoAlbum: true
+    }
+    this.camera.getPicture( options )
+    .then((imageData:any) => {
+
+      this.image = imageData;
+      // this.image = this.image;
+      console.log('this.image:', this.image);
+
+      const fileTransfer: FileTransferObject = this.transfer.create();
+      const authorization = localStorage.getItem('authorization');
+    // let headers = new HttpHeaders({"Authorization": authorization});
+      const photo = this.image;
+      let options: FileUploadOptions = {
+        fileKey: 'photo',
+        fileName: 'photo',
+        chunkedMode: false,
+        mimeType: "image/jpeg",
+        headers: {authorization}
+      }
+      fileTransfer.upload(photo, 'http://dappapache02.eastus.cloudapp.azure.com:4200/api/v2/users/upload-photo', options).then(data =>{
+        this.foto = `http://dappapache02.eastus.cloudapp.azure.com:4200/${this.fotoId}`;
+      })
+      this.foto = photo;
+      console.log('this.foto:', this.foto);
+    })
+    .catch(error =>{
+      console.error( error );
+    });
+  }
+
 
   changePassword(){
     let password = this.formCode.value.oldPassword;
@@ -88,4 +211,11 @@ this.userPvr.changePassword(password , passwordNew ).subscribe(data =>{
 });
 }
 
+changeType(){
+  this.password_type = this.password_type === 'text' ? 'password' : 'text';
+}
+
+changeOldType(){
+  this.passwordold_type = this.passwordold_type === 'text' ? 'password' : 'text';
+}
 }

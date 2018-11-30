@@ -27,7 +27,16 @@
 
             <ion-item>
                 <ion-label floating>Contraseña</ion-label>
-                <ion-input type="password" required name="password" ngModel></ion-input>
+                <ion-input [type]="password_type"
+                           name="password"
+                           ngModel>
+                </ion-input>
+                <button ion-button
+                        clear
+                        item-end
+                        (click)="changeType()">
+                  <ion-icon name="eye"></ion-icon>
+                </button>
             </ion-item>
         </form>
         <button ion-button (click)="startSesion(formulario)" block class="inicioSesion">iniciar Sesión</button>

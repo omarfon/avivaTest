@@ -64,37 +64,31 @@
                         </ion-col>
                         <ion-col col-9 >
                           <h3 class="tituloCitas" [ngClass]="{celeste:''}">Dr.{{task.professional.fullName | slice:0:25 | uppercase}}</h3>
-                          <p class="especialidad">{{ task.service.basicService.description | lowercase }}</p>
-                          <p class="sede">{{ task.service.center.name | lowercase }}</p>
-                          <p class="day">{{ task.appointmentDateTime | date:'EEEE d , MMMM ' : 'es' }} </p>
-                          <p class="hour">{{ task.appointmentDateTime | date: 'HH:mm' }}</p>
+                          <p class="especialidad">{{ task.service.basicService.description | lowercase }} / {{ task.service.center.name }}</p>
+                          <p class="day">{{ task.appointmentDateTime | date:'mediumDate' : 'es' }} - {{ task.appointmentDateTime | date: 'HH:mm' }} </p>
                         </ion-col>
                       </ion-row>
                     </div>
+                    <!-- <div *ngFor="let depes of depesCitas[0].appointments; first as isFirst">
+                        <ion-row class="down10" *ngIf="isFirst">
+                          <ion-col col-3>
+                            <ion-avatar item-start>
+                              <img src="http://dappapache02.eastus.cloudapp.azure.com:4200/img/professionals/{{task.professional.id}}.png">
+                            </ion-avatar>
+                          </ion-col>
+                          <ion-col col-9 >
+                            <h3 class="tituloCitas" [ngClass]="{celeste:''}">Dr.{{depes.professional.fullName | slice:0:25 | uppercase}}</h3>
+                            <p class="especialidad">{{ depes.service.basicService.description | lowercase }} / {{ depes.service.center.name }}</p>
+                            <p class="day">{{ depes.appointmentDateTime | date:'mediumDate' : 'es' }} - {{ depes.appointmentDateTime | date: 'HH:mm' }} </p>
+                          </ion-col>
+                        </ion-row>
+                      </div> -->
                   </div>
                     <div *ngIf="tasks < 1">
-                      <p  class="textoRecetas">Aun no tienes citas programadas, estas aparecerán una vez te hayas registrado</p>
+                      <p  class="textoRecetas">En este momento no tienes citas proximas...</p>
                     </div>
                 </div>
             </mat-expansion-panel>
-
-            <!-- <mat-expansion-panel>
-                <mat-expansion-panel-header>
-                    <ion-col col-2>
-                        <ion-icon name="filing"></ion-icon>
-                    </ion-col>
-                    <ion-col col-10>
-                        <p class="font11">Mi Historia Médica</p>
-                    </ion-col>
-
-                </mat-expansion-panel-header>
-                <div class="containerExpand">
-
-                    <h3>contenido Historia médica</h3>
-
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad vitae, saepe dolore odio recusandae quibusdam corporis mollitia a quod, suscipit modi nobis quo culpa in eveniet, sed officiis. Dignissimos, tempora.
-                </div>
-            </mat-expansion-panel> -->
 
             <mat-expansion-panel>
                 <mat-expansion-panel-header>
@@ -105,9 +99,9 @@
                         <p class="font11">Recetas y Medicamentos</p>
                     </ion-col>
                     <ion-col col-2>
-                        <ion-badge *ngIf="citapendiente"
+                        <ion-badge *ngIf="recipendiente"
                                       class="badgeIcon"
-                                      color="verde" item-end>{{recipendiente}}
+                                      color="verde" item-end>1
                           </ion-badge>
                     </ion-col>
                 </mat-expansion-panel-header>
@@ -115,10 +109,20 @@
                     <p *ngIf="!tasks" class="textoRecetas">Las recetas y médicamentos de sus últimas citas aparecerán aquí , despues de registrado</p>
                     <div *ngIf="tasks">
                       <div  *ngFor="let recipe of recipes; index as i; last as isLast">
-                           <div *ngIf="isLast">
-                                <div *ngFor="let receta of recipe.prescripciones">
-                                    <h1>{{receta.marca_comercial}}</h1>
-                                </div>
+                           <div *ngIf="i == 1">
+                                  <ion-list class="contenedorReceta">
+                                    <ion-item *ngFor="let receta of recipe.prescripciones">
+                                      <ion-row>
+                                        <ion-col col-3 class="contenedorIcono">
+                                            <img src="assets/imgs/recipes/{{receta.formasfar_pk}}.png" alt="">
+                                        </ion-col>
+                                        <ion-col col-9 class="contendorNombrePastilla">
+                                            <p class="nombreMedicamento">{{receta.marca_comercial}}</p>
+                                            <p class="vecesXdia"> {{ 24 / receta.cada_x_horas}} veces por día</p>
+                                        </ion-col>
+                                      </ion-row>
+                                    </ion-item>
+                                  </ion-list>
                            </div>
                       </div>
 
@@ -126,38 +130,6 @@
                 </div>
             </mat-expansion-panel>
 
-            <!-- <mat-expansion-panel>
-                <mat-expansion-panel-header>
-                    <ion-col col-2>
-                        <ion-icon name="list-box"></ion-icon>
-                    </ion-col>
-                    <ion-col col-10>
-                        <p class="font11">Recomendaciones</p>
-                    </ion-col>
-
-                </mat-expansion-panel-header>
-                <div class="containerExpand">
-
-                    <h3>contenido Recomendaciones</h3>
-
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad vitae, saepe dolore odio recusandae quibusdam corporis mollitia a quod, suscipit modi nobis quo culpa in eveniet, sed officiis. Dignissimos, tempora.
-                </div>
-            </mat-expansion-panel> -->
-
-            <!-- <mat-expansion-panel [disabled]="dissabled == guest">
-                <mat-expansion-panel-header>
-                    <ion-col col-2>
-                        <ion-icon name="flask"></ion-icon>
-                    </ion-col>
-                    <ion-col col-10>
-                        <p class="font11">Resultados</p>
-                    </ion-col>
-
-                </mat-expansion-panel-header>
-                <div class="containerExpand">
-                    <p class="textoRecetas">Aqui aparecerán los resultados de tus últimas citas proximamente</p>
-                </div>
-            </mat-expansion-panel> -->
 
         </mat-accordion>
 

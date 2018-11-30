@@ -23,7 +23,11 @@ export class MyDatesPage {
   private sinParents;
   citas;
   private citaspasadas;
+  private _citaspasadas;
+  private $citaspasadas ;
   private recipe;
+
+  public dependens;
 
   constructor(public navCtrl: NavController,
               public alertCtrl: AlertController,
@@ -32,7 +36,14 @@ export class MyDatesPage {
               public navParams: NavParams,
               public appointmentProvider: AppointmentProvider,
               public dependentsProvider: DependentsProvider,
-              public recipePvr: RecipesProvider) {
+              public recipePvr: RecipesProvider,
+              public dependentsPvr: DependentsProvider) {
+
+              this.dependentsPvr.getDependens().subscribe(data =>{
+                  this.dependens = data;
+              console.log('los dependientes:', this.dependens);
+                });
+
           this.appointmentProvider.getAppointmentsPeruser().subscribe(data =>{
             this.citas = 'miscitas';
             this.tasks = data;
@@ -48,7 +59,7 @@ export class MyDatesPage {
               this.citaspasadas = data;
               this.sinpasadas = this.citaspasadas.length;
               console.log('citas pasadas:', this.citaspasadas);
-          })
+          });
 
         this.dependentsProvider.getdependesDay().subscribe((data:any)=>{
           this.tasksParents = data;
@@ -72,5 +83,25 @@ export class MyDatesPage {
         this.recipe = data;
         this.navCtrl.push (RecipePage, {recipe: this.recipe})
     });
+  }
+
+  getDatesUser(){
+      // traer nuevamente las citas de el usuario pincipal y renderizarlas
+      this.dependentsProvider.getOldDependetsDay().subscribe((data:any)=>{
+        this._citaspasadas = data;
+        this.citaspasadas = this._citaspasadas;
+        this.sinpasadas = this.citaspasadas.length;
+        console.log('citas pasadas:', this.citaspasadas);
+    });
+  }
+
+  getDatesDepends(dep){
+    const id = dep.patientId;
+    this.dependentsProvider.getDependentDay(id).subscribe(data =>{
+      this.$citaspasadas = data;
+      console.log('citas de dependientes jalada:', this.$citaspasadas);
+      this.citaspasadas = this.$citaspasadas[0].encuentros;
+    })
+    // console.log('conseguir los datos del los dependientes', this.citaspasadas);
   }
 }

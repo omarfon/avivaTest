@@ -23,6 +23,7 @@ export class HomePage {
   private lastAppointment;
 
   public tasks;
+  public _tasks;
   public ensenar;
   public nombre;
   public recipes;
@@ -30,7 +31,8 @@ export class HomePage {
   private lastRecipe;
 
   public misCitas;
-  public depesCitas;
+  public depesCitas: any;
+  public dependientes;
 
   constructor(public navCtrl : NavController,
     private autho : AuthorizationPublicProvider,
@@ -82,38 +84,58 @@ export class HomePage {
           this.misCitas = data;
           console.log('this.misCitas', this.misCitas);
       });
-      // mis citas:
-      this.dependensProvider.getdependesDay().subscribe(data =>{
-        this.depesCitas = data;
-        console.log('this.depesCitas:', this.depesCitas);
-      });
-
-      const citasMiasPendientes = this.misCitas ;
-      const citasDepends = { ...this.depesCitas };
-      const todasLasCitas = {...citasMiasPendientes, ...citasDepends};
-      console.log('todasLasCitas:', todasLasCitas);
-
     }
 
     obtenerUltimaFecha(){
-        this.appointmentProvider.getAppointmentsPeruser().subscribe(data =>{
+        // citas del usuario principal
+      this.appointmentProvider.getAppointmentsPeruser().subscribe(data =>{
           this.tasks = data;
           this.citapendiente = this.tasks.length;
-
-          this.recipesPvr.getAllRecipes().subscribe((data:any) =>{
-            this.recipes = data;
-            this.recipendiente = this.recipes.length;
-            console.log('recipes:', this.recipes);
-            console.log(this.recipendiente);
+          console.log('this.tasks:', this.tasks);
         });
+            this.recipesPvr.getAllRecipes().subscribe((data:any) =>{
+              this.recipes = data;
+              this.recipendiente = this.recipes.length;
+              console.log('this._recipes:', this.recipes);
+          });
+      // citas de los dependientes
+      this.dependensProvider.getdependesDay().subscribe(data =>{
+        this.depesCitas = data.map(depes =>{
+            if(depes[0].appointments != []){
+                  depes.push(this.dependientes)
+            }else{
+
+            }
+        })
+
+
+
+        // console.log('this.depesCitas:', this.depesCitas);
+        // const depes = [];
+
+
+
       });
+
+      // if(!this.tasks){
+      //   // this.tasks = this.depesCitas[0].appointments[0];
+      //   console.log('this.recipes en obtenerUltimaReceta:');
+      // }else{
+      //   this.tasks = this._tasks;
+      // }
+
+        if(this.tasks > 1){
+        const citasAll = {...this.tasks, ...this.depesCitas};
+        console.log('todas las citas, incluidas las de principal:', citasAll);
+    }else{
+        const citasAll = {...this.depesCitas};
+        console.log('citas solo los dependientes', citasAll);
+    }
+
     }
 
 
-
-
-
   irACard(){
-this.navCtrl.push(CardPage);
-  }
+    this.navCtrl.push(CardPage);
+        }
 }

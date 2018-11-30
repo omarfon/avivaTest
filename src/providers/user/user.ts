@@ -12,7 +12,7 @@ export class UserProvider {
 
   private SERVER = "http://dappapache02.eastus.cloudapp.azure.com:4200";
   private apiUrl = `${this.SERVER}/api/v2/users/`;
-  // private apiUrl = 'http://dappapache02.eastus.cloudapp.azure.com:4000/api/v2/users/';
+  private apiUrlDatos = 'http://dappapache02.eastus.cloudapp.azure.com:4200/api/v2/ebooking/';
 
 
   constructor(public http: HttpClient) { }
@@ -80,16 +80,29 @@ export class UserProvider {
     return this.http.post(this.apiUrl + 'login-recovery', params, {headers})
                     .map(data => {
                       return data
+                    }).catch(e =>{
+                      return Observable.of(e)
                     });
   }
 
 
   changePassword(password, passwordNew){
     let params = {password: password, passwordNew: passwordNew };
-    console.log('los paramasque cambian la contraseña:', params);
+    // console.log('los paramasque cambian la contraseña:', params);
     const authorization = localStorage.getItem('authorization');
     let headers = new HttpHeaders({"Authorization": authorization});
     return this.http.put(this.apiUrl + 'update-password', params, {headers})
+                    .map(data => {
+                      return data
+                    }).catch(e =>{
+                      return Observable.of(e)
+                    });
+  }
+
+  getDatosPaciente(id){
+    const authorization = localStorage.getItem('authorization');
+    let headers = new HttpHeaders({"Authorization": authorization});
+    return this.http.get(this.apiUrlDatos + `datos-paciente?patientid=${id}`, {headers})
                     .map(data => {
                       return data
                     }).catch(e =>{

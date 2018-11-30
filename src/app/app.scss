@@ -160,18 +160,19 @@ date-picker .disabled {
   text-align: center;
   height:240px;
   // margin-top:50px;
-
 }
 .nombreUsuario{
   color:#fff;
   text-align: center;
 }
 .imagenPerfil {
-  width: 100px;
+  width: 120px;
+  height: 120px;
   margin-left: calc( 50% - 50px);
   margin-top: 40px;
       img{
         border-radius: 50%;
+        width: 120px;
+        height: 120px;
       }
-
 }

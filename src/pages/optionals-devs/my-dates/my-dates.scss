@@ -107,4 +107,21 @@
         .segment-md-secondary .segment-button{
           color:#fff!important;
         }
+        .containerDepends{
+          background: #F3F6F6;
+          height: 80px;
+          margin-bottom:40px;
+          text-align: center;
+          position: sticky    ;
+        }
+        .botonConImagen{
+          width: 40px;
+          height: 40px;
+          border-radius: 50%;
+        }
+        .nombreUsuarios{
+          color:#A7A9AC;
+          font-size:.9em;
+          margin-top:0;
+        }
     }

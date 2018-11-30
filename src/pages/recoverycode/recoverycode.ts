@@ -1,6 +1,6 @@
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Component } from '@angular/core';
-import { Events, NavController, NavParams } from 'ionic-angular';
+import { Events, NavController, NavParams, AlertController } from 'ionic-angular';
 import { UserProvider } from '../../providers/user/user';
 import { HomePage } from '../home/home';
 
@@ -20,7 +20,8 @@ export class RecoverycodePage {
               public navParams: NavParams,
               public form: FormBuilder,
               public usrPvr: UserProvider,
-              public events: Events) {
+              public events: Events,
+              public alertCtrl: AlertController) {
         this.datos = this.navParams.get('datos');
         console.log(this.datos);
 
@@ -64,23 +65,38 @@ export class RecoverycodePage {
 
   this.usrPvr.recoveryLogin(this.datos).subscribe(data => {
         this.logeo = data;
-        console.log('el logeo:', this.logeo);
-        console.log('datos que vienen del logueo: por registro:', this.logeo);
-          localStorage.setItem('idTokenUser', this.logeo.patientId);
-          localStorage.setItem('emailUser', this.logeo.emailPaciente);
-          localStorage.setItem('authorization', this.logeo.authorization);
-          localStorage.setItem('role', this.logeo.role);
-          localStorage.setItem('patientName', this.logeo.patientName);
-          localStorage.setItem('image', this.logeo.photoUrl);
+        if(this.logeo.ok == false){
+          console.log('el logeo:', this.logeo);
+          let alert = this.alertCtrl.create({
+            title:`${this.logeo.error.message}`,
+            message:`${this.logeo.error.help}`,
+            buttons: ['volver a intentar']
+          });
+          alert.present();
+        }else{
+          localStorage.setItem('usuario', this.logeo.userEmail);
+         localStorage.setItem('email', this.logeo.userEmail);
+         localStorage.setItem('authorization', this.logeo.authorization);
+         localStorage.setItem('id', this.logeo.patientId);
+         localStorage.setItem('role', this.logeo.role);
+         localStorage.setItem('photoUrl', this.logeo.photoUrl);
+         localStorage.setItem('patientName', this.logeo.patientName);
           this.events.publish('user:logged', 'logged');
-          if(this.logeo.role == 'user'){
+            console.log('this.logeo:', this.logeo);
+            let alert = this.alertCtrl.create({
+              title:"Cuenta recuperada",
+              message:"su cuenta se ha recuperado exitosamente",
+              buttons: [
+                {
+                  text:'ok'
+                }
+              ]
+            })
+            alert.present();
             this.navCtrl.setRoot(HomePage);
-          }else{
-            console.log('crear alert para reintentar');
-          }
-  });
+        }
+      });
+}
 
  }
 
-
-}

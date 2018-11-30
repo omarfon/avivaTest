@@ -53,6 +53,7 @@ export class MyApp {
   private url = "http://dappapache02.eastus.cloudapp.azure.com:4200" ;
   public foto;
   public patientName = localStorage.getItem('patientName');
+  timemark = new Date().getTime();
               // public userPvr: UserProvider
 
 
@@ -82,8 +83,6 @@ export class MyApp {
      });
 
   }
-
-
   goPage(pagina:any){
     if( pagina == this.hom)
       this.menu.setRoot(pagina)

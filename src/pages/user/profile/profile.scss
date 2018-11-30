@@ -24,13 +24,24 @@ page-profile {
         background: #00B6A3;
     }
     .tituloCambioContraseña{
-      color:#00B6A3;
       text-align: center;
       width:50%;
       margin-left:25%;
-      margin-top:20px;
+      margin-top:40px;
           h4{
-            font-size:1em;
+            font-size:1.2em;
+            color:#00719A;
           }
+    }
+    .labelDatos{
+      color:#00B6A3;
+      font-size:1em;
+      margin-top:0;
+    }
+    .dato{
+      margin-top:0;
+      margin-bottom:0;
+      color:#96999C;
+      font-size:1.1em;
     }
 }

@@ -1,9 +1,7 @@
 <ion-header>
-
     <ion-navbar color="primary">
         <ion-title>Mis Datos</ion-title>
     </ion-navbar>
-
 </ion-header>
 
 <ion-content padding>
@@ -11,55 +9,48 @@
     <ion-row>
         <ion-col col-6>
             <div class="cargaImagen"
-         (click)="getImage()">
-        <img src="{{foto}}" alt="">
-    </div>
+                  (click)="takePicture()">
+                  <img src="{{foto}}?{{timemark}}" alt="">
+            </div>
         </ion-col>
-        <ion-col col-6>
-            <ion-col col-12>
-                <ion-item>
-                    <ion-label stacked>Nombre de usuario</ion-label>
-                    <ion-input type="text" value=""
-                              disabled>Nombre de usuario</ion-input>
-                </ion-item>
-            </ion-col>
 
+          <ion-col col-6 *ngIf="datosPaciente">
             <ion-col col-12>
-                <ion-item>
-                    <ion-label stacked>apellidos de usuario</ion-label>
-                    <ion-input type="text" value=""
-                               disabled>Apellidos de usuario</ion-input>
-                </ion-item>
+              <ion-label stacked class="labelDatos">Nombres</ion-label>
+              <p class="dato">{{datosPaciente.nombre}}</p>
             </ion-col>
-
+            <ion-col col-12>
+              <ion-label stacked class="labelDatos">Apellidos</ion-label>
+              <p class="dato">{{datosPaciente.apellido1}} {{datosPaciente.apellido2}}</p>
+            </ion-col>
+            <ion-col col-12>
+                <ion-label stacked class="labelDatos">Sexo</ion-label>
+                <p class="dato">{{datosPaciente.sexo}}</p>
+            </ion-col>
+            <ion-col col-12>
+                <ion-label stacked class="labelDatos">Telefono</ion-label>
+                <p class="dato">{{datosPaciente.telefono1}}</p>
+            </ion-col>
           </ion-col>
-          <ion-col col-12>
+
+          <ion-col col-12 *ngIf="datosPaciente">
             <ion-row>
               <ion-col col-6>
-                  <ion-item>
-                      <ion-label stacked>Sexo</ion-label>
-                      <ion-input type="text" value="">Sexo</ion-input>
-                  </ion-item>
+                  <ion-label stacked class="labelDatos">Fecha de nacimiento</ion-label>
+                  <p class="dato">Fecha de nacimiento</p>
               </ion-col>
-                  <ion-col col-6>
-                      <ion-item>
-                          <ion-label stacked>Fecha de nacimiento</ion-label>
-                          <ion-input type="text" value="">Apellidos de usuario</ion-input>
-                      </ion-item>
-                  </ion-col>
 
-                  <ion-col col-12>
-                      <ion-item>
-                          <ion-label stacked>Correo Electronico</ion-label>
-                          <ion-input type="text" value="">Correo</ion-input>
-                      </ion-item>
-                  </ion-col>
+              <ion-col col-6 *ngIf="correoElectronico">
+                  <ion-label stacked class="labelDatos">Correo Electronico</ion-label>
+                  <p class="dato">{{correoElectronico}}</p>
+              </ion-col>
             </ion-row>
-        </ion-col>
+          </ion-col>
+
 
 
           <div class="tituloCambioContraseña">
-            <h4 >Cambiar Contraseña</h4>
+            <h4 >Cambio de Contraseña</h4>
           </div>
           <ion-col col-12>
               <ion-item>
@@ -71,24 +62,37 @@
           <ion-col col-12>
               <ion-item>
                   <ion-label stacked>Contraseña</ion-label>
-                  <ion-input type="text" value="" formControlName="password" ngModel>Nueva contraseña</ion-input>
+                  <ion-input value=""
+                             formControlName="password"
+                             ngModel
+                             [type]="password_type">Nueva contraseña
+                  </ion-input>
+                  <ion-icon name="eye" item-end (click)="changeType()"></ion-icon>
               </ion-item>
           </ion-col>
 
           <ion-col col-12>
               <ion-item>
                   <ion-label stacked>Confirmar Contraseña</ion-label>
-                  <ion-input type="text" value="" formControlName="passwordRepeat"
-                  ngModel>Confirmar nueva contraseña</ion-input>
+                  <ion-input
+                              value=""
+                              formControlName="passwordRepeat"
+                              ngModel
+                              [type]="passwordold_type">
+                              Confirmar nueva contraseña
+                  </ion-input>
+                  <ion-icon name="eye" item-end (click)="changeOldType()"></ion-icon>
               </ion-item>
           </ion-col>
-
     </ion-row>
 
-    <button ion-button color="primary" block class="alto50"
-                                        type="submit"
-                                       [disabled]="!formCode.valid || !validacion()"
-                                       >cambiar contraseña</button>
+    <button ion-button color="primary"
+            block
+            class="alto50"
+            type="submit"
+            [disabled]="!formCode.valid || !validacion()">
+            cambiar contraseña
+    </button>
   </form>
 
 </ion-content>

@@ -83,7 +83,7 @@ page-home {
         color: #A7A9AC!important;
     }
     img {
-        width: 120px;
+        width: 90px;
         border-radius: 10%;
     }
     .down10 {
@@ -92,11 +92,12 @@ page-home {
     .tituloCitas {
         text-align: right;
         color: #287195!important;
+        font-size:.9em;
     }
     .especialidad {
         text-align: right;
         color: #00B6A3;
-        font-size: 1.2em;
+        font-size: .8em;
         margin-top: -5px;
     }
     .sede,
@@ -104,7 +105,7 @@ page-home {
     .hour {
         text-align: right;
         color: #A7A9AC;
-        font-size: 1.2em;
+        font-size: .9em;
         margin-top: -8px;
     }
     .textoRecetas {
@@ -120,4 +121,28 @@ page-home {
         margin-right:10px;
     }
 
+    .contenedorIcono img{
+      width:40px;
+    }
+    .contenedorNombrePastilla {
+      text-align:right;
+      p{
+        color:#A7A9AC;
+        font-size:1em;
+        text-align:right;
+      }
+    }
+    .nombreMedicamento{
+      font-weight: 900;
+      color:#A7A9AC;
+    }
+    .vecesXdia{
+      color:#92DCE8;
+      font-size:.8em;
+    }
+    .contenedorReceta{
+      .item-md{
+        background-color:transparent!important;
+      }
+    }
 }
