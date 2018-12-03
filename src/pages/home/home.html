@@ -69,20 +69,21 @@
                         </ion-col>
                       </ion-row>
                     </div>
-                    <!-- <div *ngFor="let depes of depesCitas[0].appointments; first as isFirst">
-                        <ion-row class="down10" *ngIf="isFirst">
-                          <ion-col col-3>
-                            <ion-avatar item-start>
-                              <img src="http://dappapache02.eastus.cloudapp.azure.com:4200/img/professionals/{{task.professional.id}}.png">
-                            </ion-avatar>
-                          </ion-col>
-                          <ion-col col-9 >
-                            <h3 class="tituloCitas" [ngClass]="{celeste:''}">Dr.{{depes.professional.fullName | slice:0:25 | uppercase}}</h3>
-                            <p class="especialidad">{{ depes.service.basicService.description | lowercase }} / {{ depes.service.center.name }}</p>
-                            <p class="day">{{ depes.appointmentDateTime | date:'mediumDate' : 'es' }} - {{ depes.appointmentDateTime | date: 'HH:mm' }} </p>
-                          </ion-col>
-                        </ion-row>
-                      </div> -->
+                      <div *ngIf="citasDepes">
+                          <ion-row class="down10" >
+                            <ion-col col-3>
+                              <ion-avatar item-start>
+                                <img src="http://dappapache02.eastus.cloudapp.azure.com:4200/img/professionals/{{citasDepes.professional.id}}.png">
+                              </ion-avatar>
+                            </ion-col>
+                            <ion-col col-9 >
+                              <p class="nombreDepe">cita para: {{citasDepes.patient.name}}</p>
+                              <h3 class="tituloCitas" [ngClass]="{celeste:''}">Dr.{{citasDepes.professional.fullName | slice:0:25 | uppercase}}</h3>
+                              <p class="especialidad">{{ citasDepes.service.basicService.description | lowercase }} / {{ citasDepes.service.center.name }}</p>
+                              <p class="day">{{ citasDepes.appointmentDateTime | date:'mediumDate' : 'es' }} - {{ citasDepes.appointmentDateTime | date: 'HH:mm' }} </p>
+                            </ion-col>
+                          </ion-row>
+                        </div>
                   </div>
                     <div *ngIf="tasks < 1">
                       <p  class="textoRecetas">En este momento no tienes citas proximas...</p>
