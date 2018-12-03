@@ -63,7 +63,7 @@ export class HelloProvider {
     });
     // headers.append("Authorization", authorization);
     let params = {query: `query {centers{service(id:${serviceId}){id ,professional(id:${id}){id, fullName, cmp, image, service{id, description }, availables(fromDateString:"${fromDate}",toDateString:"${toDate}"){date,hours{ hour, listjson, isAvailable}}}}}}`};
-    console.log('params provider:', params);
+    // console.log('params provider:', params);
     return this.http.post(this.apiUrl, params, {headers})
                     .map((resp:any)=>{
                       return resp.data.centers[0].service.professional.availables;

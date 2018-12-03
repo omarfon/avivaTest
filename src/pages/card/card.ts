@@ -74,7 +74,9 @@ export class CardPage {
     this.available = this.navParams.get('available');
 
     if (this.hora) {
-      this.navCtrl.push(FinancerPage, { hora: this.hora, doctor: this.doctor, available: this.available })
+      this.navCtrl.push(FinancerPage, { hora: this.hora,
+                                        doctor: this.doctor,
+                                        available: this.available })
     } else {
       console.log("no trae data, seguir con el proceso normal");
     }
@@ -84,7 +86,7 @@ export class CardPage {
 
     this.helloPvr.getServicios().subscribe(servicios => {
       this.servicios = servicios;
-      console.log(this.servicios);
+      // console.log(this.servicios);
       if (servicios.length > 0) {
         this.getDoctorsList();
       }
@@ -104,7 +106,6 @@ export class CardPage {
       }
     });
   }
-
   getDoctorsList() {
     this.helloPvr.getDoctorsPerId(this.id).subscribe(doctores => {
       this._doctors = doctores.map(doctor => {
@@ -144,7 +145,6 @@ export class CardPage {
     });
   }
 
-
   expandedItem(doctor, available) {
     this.selectedDay = available;
     this.helloPvr.getAvailablesPerDoctor(doctor.id, doctor.service.id,  this.selectedDay.date, this.selectedDay.date).subscribe(hoy => {
@@ -160,10 +160,9 @@ export class CardPage {
       this.horas = this.dias;
       // console.log('las horas:', this.horas);
       this.dia = available.date;
-      console.log('dias', this.dias);
+      // console.log('dias', this.dias);
     })
   }
-
 
   goToFinancer(doctor, hora) {
     let role = localStorage.getItem('role');
@@ -176,7 +175,9 @@ export class CardPage {
         });
       // datos.present();
     } else {
-      this.navCtrl.push(FinancerPage, { doctor: doctor, available: this.selectedDay.date, hora: hora })
+      this.navCtrl.push(FinancerPage, { doctor: doctor,
+                                        available: this.selectedDay.date,
+                                        hora: hora })
     }
   }
 

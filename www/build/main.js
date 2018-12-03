@@ -1,11 +1,11 @@
 webpackJsonp([0],{
 
-/***/ 109:
+/***/ 108:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return RecoveryPage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__recoverycode_recoverycode__ = __webpack_require__(110);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__recoverycode_recoverycode__ = __webpack_require__(109);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__providers_user_user__ = __webpack_require__(60);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_ionic_angular__ = __webpack_require__(14);
@@ -77,7 +77,7 @@ var RecoveryPage = (function () {
 
 /***/ }),
 
-/***/ 110:
+/***/ 109:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -205,7 +205,7 @@ var RecoverycodePage = (function () {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AuthorizationPublicProvider; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_http__ = __webpack_require__(99);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_http__ = __webpack_require__(154);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Observable__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Observable___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_Observable__);
@@ -972,7 +972,7 @@ var PayPage = (function () {
     };
     PayPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_3__angular_core__["m" /* Component */])({
-            selector: 'page-pay',template:/*ion-inline-start:"/proyectos/IonicPruebas/ApolloIonicVersionOne/src/pages/appointment/pay/pay.html"*/'\n<ion-header>\n  <ion-navbar color="primary">\n    <ion-title>Pago</ion-title>\n  </ion-navbar>\n</ion-header>\n\n\n<ion-content >\n    <div class="container-gris">\n      <div class="containerResumen">\n        <ion-card>\n            <div class="containerTextoPago">\n                <h3 class="titleCardPago">Lo que has escogido hasta el momento</h3>\n            </div>\n            <div>\n                <ion-row class="centrar">\n                    <ion-col col-4>\n                        <img id="profile-image" src="http://dappapache02.eastus.cloudapp.azure.com:4200/img/professionals/{{doctor.id}}.png">\n                    </ion-col>\n                    <ion-col col-8>\n                        <h3 class="nombreDoctor" text-center>\n                            {{ doctor.fullName }}\n                        </h3>\n                        <div class="sedeContainer">\n                            <!-- <p bold class="izquierda">Sede:</p> -->\n                            <p class="sede" type="text" disabled="true">Mendiola</p>\n                        </div>\n                    </ion-col>\n                </ion-row>\n            </div>\n                <div  class="centrar">\n                    <p class="izquierda">Especialidad:</p>\n                    <p item-end class="blue" disabled="true"> {{ doctor.service.description }}</p>\n                </div>\n                <div  class="centrar">\n                    <p class="izquierda">Fecha:</p>\n                    <p item-end class="blue" disabled="true">\n                        {{ available | date:\'EEEE d , MMMM \' : \'es\' }}\n                    </p>\n                </div>\n                <div  class="centrar">\n                    <p class="izquierda">Hora:</p>\n                    <p class="blue" type="text" disabled="true">\n                        {{ hora.hour | slice:0:5}}\n                    </p>\n                </div>\n                <div  class="centrar">\n                    <p class="izquierda">Costo:</p>\n                    <p class="blue" item-end type="text" disabled="true">\n                        {{ \'S/. \' + price + \'.00\'}}\n                    </p>\n                </div>\n                <div  *ngIf="depe"\n                    class="centrar">\n                    <p class="izquierda">Cita reservada para:</p>\n                    <p class="blue" item-end type="text" disabled="true">\n                        {{ depe.name}}\n                    </p>\n                </div>\n        </ion-card>\n      </div>\n      <div padding>\n        <!-- <h4 text-center class="tituloMetodos">Metodos de Pago</h4> -->\n        <h4 class="tituloPagos">Escoge la forma en la que vas a pagar y listo...</h4>\n        <ion-segment [(ngModel)]="pago">\n            <ion-segment-button value="enLocal">\n                En local\n            </ion-segment-button>\n            <ion-segment-button value="enClinica">\n                Con tarjeta\n            </ion-segment-button>\n        </ion-segment>\n    </div>\n    <div [ngSwitch]="pago">\n        <ion-list *ngSwitchCase="\'enLocal\'">\n            <div class="resumen" >\n              <div padding>\n                <button *ngIf="!depe"\n                        ion-button color="secondary"\n                        class="botonAccept"\n                        [class.button-disabled]="true"\n                        block\n                        (click)="next()">Confirmar cita\n                </button>\n                <button *ngIf="depe"\n                      ion-button\n                      color="secondary"\n                      class="botonAccept"\n                      [class.button-disabled]="true"\n                      block (click)="nextDepe()">Confirmar cita\n                </button>\n            </div>\n          </div>\n      </ion-list>\n        <ion-list *ngSwitchCase="\'enClinica\'">\n            <div class="resumen" >\n\n\n\n        <div padding>\n            <button ion-button color="secondary" class="botonAccept" [class.button-disabled]="true" block (click)="payCulqi()">Pago con tarjeta</button>\n        </div>\n\n        <!-- <div padding>\n                <button ion-button color="secondary" class="botonAccept" [class.button-disabled]="true" block (click)="openModalPayu()">Pagar ahora con payu</button>\n            </div> -->\n\n\n    </div>\n        </ion-list>\n    </div>\n</div>\n\n</ion-content>\n'/*ion-inline-end:"/proyectos/IonicPruebas/ApolloIonicVersionOne/src/pages/appointment/pay/pay.html"*/,
+            selector: 'page-pay',template:/*ion-inline-start:"/proyectos/IonicPruebas/ApolloIonicVersionOne/src/pages/appointment/pay/pay.html"*/'\n<ion-header>\n  <ion-navbar color="primary">\n    <ion-title>Pago</ion-title>\n  </ion-navbar>\n</ion-header>\n\n\n<ion-content >\n    <div class="container-gris">\n      <div class="containerResumen">\n        <ion-card>\n            <div class="containerTextoPago">\n                <h3 class="titleCardPago">Lo que has escogido hasta el momento</h3>\n            </div>\n            <div>\n                <ion-row class="centrar">\n                    <ion-col col-4>\n                        <img id="profile-image" src="http://dappapache02.eastus.cloudapp.azure.com:4200/img/professionals/{{doctor.id}}.png">\n                    </ion-col>\n                    <ion-col col-8>\n                        <h3 class="nombreDoctor" text-center>\n                            {{ doctor.fullName }}\n                        </h3>\n                        <div class="sedeContainer">\n                            <!-- <p bold class="izquierda">Sede:</p> -->\n                            <p class="sede" type="text" disabled="true">Mendiola</p>\n                        </div>\n                    </ion-col>\n                </ion-row>\n            </div>\n                <div  class="centrar">\n                    <p class="izquierda">Especialidad:</p>\n                    <p item-end class="blue" disabled="true"> {{ doctor.service.description }}</p>\n                </div>\n                <div  class="centrar">\n                    <p class="izquierda">Fecha:</p>\n                    <p item-end class="blue" disabled="true">\n                        {{ available | date:\'EEEE d , MMMM \' : \'es\' }}\n                    </p>\n                </div>\n                <div  class="centrar">\n                    <p class="izquierda">Hora:</p>\n                    <p class="blue" type="text" disabled="true">\n                        {{ hora.hour | slice:0:5}}\n                    </p>\n                </div>\n                <div  class="centrar">\n                    <p class="izquierda">Costo:</p>\n                    <p class="blue" item-end type="text" disabled="true">\n                        S/.{{ price }}\n                    </p>\n                </div>\n                <div  *ngIf="depe"\n                    class="centrar">\n                    <p class="izquierda">Cita reservada para:</p>\n                    <p class="blue" item-end type="text" disabled="true">\n                        {{ depe.name}}\n                    </p>\n                </div>\n        </ion-card>\n      </div>\n      <div padding>\n        <!-- <h4 text-center class="tituloMetodos">Metodos de Pago</h4> -->\n        <h4 class="tituloPagos">Escoge la forma en la que vas a pagar y listo...</h4>\n        <ion-segment [(ngModel)]="pago">\n            <ion-segment-button value="enLocal">\n                En local\n            </ion-segment-button>\n            <ion-segment-button value="enClinica">\n                Con tarjeta\n            </ion-segment-button>\n        </ion-segment>\n    </div>\n    <div [ngSwitch]="pago">\n        <ion-list *ngSwitchCase="\'enLocal\'">\n            <div class="resumen" >\n              <div padding>\n                <button *ngIf="!depe"\n                        ion-button color="secondary"\n                        class="botonAccept"\n                        [class.button-disabled]="true"\n                        block\n                        (click)="next()">Confirmar cita\n                </button>\n                <button *ngIf="depe"\n                      ion-button\n                      color="secondary"\n                      class="botonAccept"\n                      [class.button-disabled]="true"\n                      block (click)="nextDepe()">Confirmar cita\n                </button>\n            </div>\n          </div>\n      </ion-list>\n        <ion-list *ngSwitchCase="\'enClinica\'">\n            <div class="resumen" >\n\n\n\n        <div padding>\n            <button ion-button color="secondary" class="botonAccept" [class.button-disabled]="true" block (click)="payCulqi()">Pago con tarjeta</button>\n        </div>\n\n        <!-- <div padding>\n                <button ion-button color="secondary" class="botonAccept" [class.button-disabled]="true" block (click)="openModalPayu()">Pagar ahora con payu</button>\n            </div> -->\n\n\n    </div>\n        </ion-list>\n    </div>\n</div>\n\n</ion-content>\n'/*ion-inline-end:"/proyectos/IonicPruebas/ApolloIonicVersionOne/src/pages/appointment/pay/pay.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_4_ionic_angular__["j" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["k" /* NavParams */],
@@ -1264,7 +1264,7 @@ webpackEmptyAsyncContext.id = 228;
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return FinancierProvider; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__(99);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common_http__ = __webpack_require__(35);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Observable__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Observable___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_Observable__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_catch__ = __webpack_require__(52);
@@ -1298,43 +1298,42 @@ var FinancierProvider = (function () {
         this.apiUrl = this.SERVER + "/api/v2/ebooking/";
     }
     FinancierProvider.prototype.getFinanciers = function () {
-        return this.http.get(this.apiUrl + 'payers', {})
-            .map(this.extractData)
-            .catch(this.handleError);
+        var authorization = localStorage.getItem('authorization');
+        var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["c" /* HttpHeaders */]({ "Authorization": authorization });
+        return this.http.get(this.apiUrl + 'payers', { headers: headers })
+            .map(function (data) {
+            return data;
+        }).catch(function (e) {
+            return __WEBPACK_IMPORTED_MODULE_2_rxjs_Observable__["Observable"].of(e);
+        });
     };
     FinancierProvider.prototype.getFinancier = function (financier_id) {
-        return this.http.get(this.apiUrl + financier_id)
-            .map(this.extractData)
-            .catch(this.handleError);
+        var authorization = localStorage.getItem('authorization');
+        var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["c" /* HttpHeaders */]({ "Authorization": authorization });
+        return this.http.get(this.apiUrl + ("" + financier_id), { headers: headers })
+            .map(function (data) {
+            return data;
+        }).catch(function (e) {
+            return __WEBPACK_IMPORTED_MODULE_2_rxjs_Observable__["Observable"].of(e);
+        });
     };
     FinancierProvider.prototype.getPrice = function (center_id, basic_service_id, doctor_id, proposed_date) {
         // let params = { proposed_date: proposed_date, center_id: center_id, basic_service_id: basic_service_id, doctor_id: doctor_id }
-        return this.http.get(this.apiUrl + ("appointments/price/" + center_id + "/" + basic_service_id + "/" + doctor_id + "/" + proposed_date))
-            .map(this.extractData)
-            .catch(this.handleError);
-    };
-    FinancierProvider.prototype.extractData = function (res) {
-        var body = res.json();
-        return body || {};
-    };
-    FinancierProvider.prototype.handleError = function (error) {
-        var errMsg;
-        if (error instanceof __WEBPACK_IMPORTED_MODULE_1__angular_http__["e" /* Response */]) {
-            var body = error.json() || '';
-            var err = body.error || JSON.stringify(body);
-            errMsg = error.status + " - " + (error.statusText || '') + " " + err;
-        }
-        else {
-            errMsg = error.message ? error.message : error.toString();
-        }
-        console.error(errMsg);
-        return __WEBPACK_IMPORTED_MODULE_2_rxjs_Observable__["Observable"].throw(errMsg);
+        var authorization = localStorage.getItem('authorization');
+        var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["c" /* HttpHeaders */]({ "Authorization": authorization });
+        return this.http.get(this.apiUrl + ("appointments/price/" + center_id + "/" + basic_service_id + "/" + doctor_id + "/" + proposed_date), { headers: headers })
+            .map(function (data) {
+            return data;
+        }).catch(function (e) {
+            return __WEBPACK_IMPORTED_MODULE_2_rxjs_Observable__["Observable"].of(e);
+        });
     };
     FinancierProvider = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["B" /* Injectable */])(),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["a" /* HttpClient */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["a" /* HttpClient */]) === "function" && _a || Object])
     ], FinancierProvider);
     return FinancierProvider;
+    var _a;
 }());
 
 //# sourceMappingURL=financier.js.map
@@ -1456,7 +1455,7 @@ var PayuPage = (function () {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PayuTestProvider; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_common_http__ = __webpack_require__(38);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_common_http__ = __webpack_require__(35);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -1571,7 +1570,7 @@ var PayuTestProvider = (function () {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HelloProvider; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_common_http__ = __webpack_require__(38);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_common_http__ = __webpack_require__(35);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__ = __webpack_require__(43);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__);
@@ -1643,7 +1642,7 @@ var HelloProvider = (function () {
         });
         // headers.append("Authorization", authorization);
         var params = { query: "query {centers{service(id:" + serviceId + "){id ,professional(id:" + id + "){id, fullName, cmp, image, service{id, description }, availables(fromDateString:\"" + fromDate + "\",toDateString:\"" + toDate + "\"){date,hours{ hour, listjson, isAvailable}}}}}}" };
-        console.log('params provider:', params);
+        // console.log('params provider:', params);
         return this.http.post(this.apiUrl, params, { headers: headers })
             .map(function (resp) {
             return resp.data.centers[0].service.professional.availables;
@@ -1705,7 +1704,7 @@ var DetailRecipePage = (function () {
     };
     DetailRecipePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-detail-recipe',template:/*ion-inline-start:"/proyectos/IonicPruebas/ApolloIonicVersionOne/src/pages/detail-recipe/detail-recipe.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title>detalle receta</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content >\n  <div class="contenedorDatos">\n    <ion-grid>\n      <ion-row>\n          <ion-col col-4>\n            <div class="iconoReceta">\n              <p class="dia">{{date.inicio_prescripcion | date:\'dd\'}}</p>\n              <p class="mes">{{date.inicio_prescripcion | date:\'MMMM\'}}</p>\n            </div>\n          </ion-col>\n          <ion-col col-8>\n            <p class="especialidad"> Especialidad:</p>\n            <p class="resultado">{{date.servicio}}</p>\n            <p class="especialidad">Doctor:</p>\n            <p class="resultado">{{date.apellidop_personal}} {{date.apellidom_personal}}</p>\n          </ion-col>\n        </ion-row>\n    </ion-grid>\n  </div>\n\n    <div *ngIf="recetas">\n        <div *ngFor="let recipe of recetas">\n          <ion-card>\n            <ion-card-header>\n                <ion-row>\n                    <ion-col col-3\n                          class="containerIconAndDays">\n                        <img src="assets/imgs/recipes/{{recipe.formasfar_pk}}.png" alt="">\n                        <p class="cantidadDeDias">{{recipe.dias_duracion_prescripcion}}</p>\n                        <p class="dias">días</p>\n                    </ion-col>\n                    <ion-col col-9\n                             class="containerDatosPastilla">\n                        <h3 class="nombrePastilla"\n                           *ngIf="recipe.nombre_generico">\n                           {{recipe.nombre_generico}}\n                    </h3>\n                        <p class="textoAlternativo"\n                        *ngIf="recipe.marca_comercial">\n                        o puedes encontrarlo como:\n                        </p>\n                        <p class="nombrePastilla"\n                          *ngIf="recipe.marca_comercial">\n                          {{recipe.marca_comercial}}\n                        </p>\n                          <p class="inicio">Inicio: {{recipe.inicio_prescripcion | date: "dd MMMM yyyy"}}</p>\n                    </ion-col>\n                  </ion-row>\n            </ion-card-header>\n            <ion-card-content>\n                <div *ngIf="recetas && recipe.cada_x_horas == 8"\n                class="down">\n            <h4 class="tituloDeLasTomas"> tomas de 3 veces por día</h4>\n            <ion-row padding>\n              <ion-col class="cuadrados">\n                <p> 6-9 am</p>\n                <p class="cantidad">{{recipe.cantidad_dosis}}</p>\n                </ion-col>\n              <ion-col class="cuadrados">\n                <p> 2-4 pm</p>\n                <p class="cantidad"> {{recipe.cantidad_dosis}} </p>\n              </ion-col>\n              <ion-col class="cuadrados">\n                <p>10-12 m</p>\n                <p class="cantidad"> {{recipe.cantidad_dosis}} </p>\n              </ion-col>\n            </ion-row>\n        </div>\n\n        <div *ngIf="recetas && recipe.cada_x_horas == 12"\n              class="down">\n          <p class="tituloDeLasTomas"> tomas de 2 veces por día</p>\n          <ion-row padding>\n            <ion-col class="cuadrados">\n              <p> 6-9 am</p>\n              <p class="cantidad">{{recipe.cantidad_dosis}}</p>\n            </ion-col>\n            <ion-col class="cuadrados">\n              <p>6-9 pm</p>\n              <p class="cantidad"> {{recipe.cantidad_dosis}} </p>\n            </ion-col>\n          </ion-row>\n        </div>\n\n        <div *ngIf="recetas && recipe.cada_x_horas == 6"\n        class="down">\n            <p class="tituloDeLasTomas"> tomas de 4 veces por día</p>\n            <ion-row padding>\n              <ion-col class="cuadrados">\n                <p> 6-8 am</p>\n                <p class="cantidad">{{recipe.cantidad_dosis}}</p>\n              </ion-col>\n              <ion-col class="cuadrados">\n                  <p> 12-2 pm</p>\n                  <p class="cantidad">{{recipe.cantidad_dosis}}</p>\n                </ion-col>\n                <ion-col class="cuadrados">\n                    <p> 6-8 pm</p>\n                    <p class="cantidad">{{recipe.cantidad_dosis}}</p>\n                  </ion-col>\n              <ion-col class="cuadrados">\n                <p>12-2 m</p>\n                <p class="cantidad"> {{recipe.cantidad_dosis}} </p>\n              </ion-col>\n            </ion-row>\n          </div>\n\n          <div *ngIf="recetas && recipe.cada_x_horas == 24"\n          class="down">\n              <p class="tituloDeLasTomas"> toma de 1 vez por día</p>\n              <ion-row padding>\n                <ion-col class="cuadrados">\n                  <p> 6-8 am</p>\n                  <p class="cantidad">{{recipe.cantidad_dosis}}</p>\n                </ion-col>\n\n              </ion-row>\n            </div>\n            </ion-card-content>\n          </ion-card>\n\n\n\n\n      </div>\n    </div>\n</ion-content>\n'/*ion-inline-end:"/proyectos/IonicPruebas/ApolloIonicVersionOne/src/pages/detail-recipe/detail-recipe.html"*/,
+            selector: 'page-detail-recipe',template:/*ion-inline-start:"/proyectos/IonicPruebas/ApolloIonicVersionOne/src/pages/detail-recipe/detail-recipe.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title>detalle receta</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content >\n  <div class="contenedorDatos">\n    <ion-grid>\n      <ion-row>\n          <ion-col col-4>\n            <div class="iconoReceta">\n              <p class="dia">{{date.inicio_prescripcion | date:\'dd\'}}</p>\n              <p class="mes">{{date.inicio_prescripcion | date:\'MMMM\'}}</p>\n            </div>\n          </ion-col>\n          <ion-col col-8>\n            <p class="especialidad"> Especialidad:</p>\n            <p class="resultado">{{date.servicio}}</p>\n            <p class="especialidad">Doctor:</p>\n            <p class="resultado">{{date.apellidop_personal}} {{date.apellidom_personal}}</p>\n          </ion-col>\n        </ion-row>\n    </ion-grid>\n  </div>\n\n    <div *ngIf="recetas">\n        <div *ngFor="let recipe of recetas">\n          <ion-card>\n            <ion-card-header text-wrap>\n                <ion-row>\n                    <ion-col col-3\n                          class="containerIconAndDays">\n                        <img src="assets/imgs/recipes/{{recipe.formasfar_pk}}.png" alt="">\n                        <p class="cantidadDeDias">{{recipe.dias_duracion_prescripcion}}</p>\n                        <p class="dias">días</p>\n                    </ion-col>\n                    <ion-col col-9\n                             class="containerDatosPastilla">\n                        <h3 class="nombrePastilla"\n                           *ngIf="recipe.nombre_generico">\n                           {{recipe.nombre_generico}}\n                    </h3>\n                        <p class="textoAlternativo"\n                        *ngIf="recipe.marca_comercial">\n                        o puedes encontrarlo como:\n                        </p>\n                        <p class="nombrePastilla"\n                          *ngIf="recipe.marca_comercial">\n                          {{recipe.marca_comercial}}\n                        </p>\n                          <p class="inicio">Inicio: {{recipe.inicio_prescripcion | date: "dd MMMM yyyy"}}</p>\n                    </ion-col>\n                  </ion-row>\n            </ion-card-header>\n            <ion-card-content>\n                <div *ngIf="recetas && recipe.cada_x_horas == 8"\n                class="down">\n            <h4 class="tituloDeLasTomas"> tomas de 3 veces por día</h4>\n            <ion-row padding>\n              <ion-col class="cuadrados">\n                <p> 6-9 am</p>\n                <p class="cantidad">{{recipe.cantidad_dosis}}</p>\n                </ion-col>\n              <ion-col class="cuadrados">\n                <p> 2-4 pm</p>\n                <p class="cantidad"> {{recipe.cantidad_dosis}} </p>\n              </ion-col>\n              <ion-col class="cuadrados">\n                <p>10-12 m</p>\n                <p class="cantidad"> {{recipe.cantidad_dosis}} </p>\n              </ion-col>\n            </ion-row>\n        </div>\n\n        <div *ngIf="recetas && recipe.cada_x_horas == 12"\n              class="down">\n          <p class="tituloDeLasTomas"> tomas de 2 veces por día</p>\n          <ion-row padding>\n            <ion-col class="cuadrados">\n              <p> 6-9 am</p>\n              <p class="cantidad">{{recipe.cantidad_dosis}}</p>\n            </ion-col>\n            <ion-col class="cuadrados">\n              <p>6-9 pm</p>\n              <p class="cantidad"> {{recipe.cantidad_dosis}} </p>\n            </ion-col>\n          </ion-row>\n        </div>\n\n        <div *ngIf="recetas && recipe.cada_x_horas == 6"\n        class="down">\n            <p class="tituloDeLasTomas"> tomas de 4 veces por día</p>\n            <ion-row padding>\n              <ion-col class="cuadrados">\n                <p> 6-8 am</p>\n                <p class="cantidad">{{recipe.cantidad_dosis}}</p>\n              </ion-col>\n              <ion-col class="cuadrados">\n                  <p> 12-2 pm</p>\n                  <p class="cantidad">{{recipe.cantidad_dosis}}</p>\n                </ion-col>\n                <ion-col class="cuadrados">\n                    <p> 6-8 pm</p>\n                    <p class="cantidad">{{recipe.cantidad_dosis}}</p>\n                  </ion-col>\n              <ion-col class="cuadrados">\n                <p>12-2 m</p>\n                <p class="cantidad"> {{recipe.cantidad_dosis}} </p>\n              </ion-col>\n            </ion-row>\n          </div>\n\n          <div *ngIf="recetas && recipe.cada_x_horas == 24"\n          class="down">\n              <p class="tituloDeLasTomas"> toma de 1 vez por día</p>\n              <ion-row padding>\n                <ion-col class="cuadrados">\n                  <p> 6-8 am</p>\n                  <p class="cantidad">{{recipe.cantidad_dosis}}</p>\n                </ion-col>\n\n              </ion-row>\n            </div>\n            </ion-card-content>\n          </ion-card>\n\n\n\n\n      </div>\n    </div>\n</ion-content>\n'/*ion-inline-end:"/proyectos/IonicPruebas/ApolloIonicVersionOne/src/pages/detail-recipe/detail-recipe.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */]])
@@ -2348,7 +2347,7 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppModule; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__pages_recovery_recovery__ = __webpack_require__(109);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__pages_recovery_recovery__ = __webpack_require__(108);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_cabecera_cabecera__ = __webpack_require__(508);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__pages_detail_recipe_detail_recipe__ = __webpack_require__(398);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__pages_myparents_myparents__ = __webpack_require__(399);
@@ -2359,7 +2358,7 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_ionic_angular__ = __webpack_require__(14);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__ionic_native_splash_screen__ = __webpack_require__(400);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__ionic_native_status_bar__ = __webpack_require__(402);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__angular_http__ = __webpack_require__(99);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__angular_http__ = __webpack_require__(154);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__angular_common_locales_es__ = __webpack_require__(514);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__angular_common__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__app_component__ = __webpack_require__(515);
@@ -2377,7 +2376,7 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__pages_optionals_devs_recipes_recipes__ = __webpack_require__(409);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__pages_optionals_devs_recomendations_recomendations__ = __webpack_require__(518);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_28__pages_optionals_devs_my_dates_my_date_modal_my_date_modal__ = __webpack_require__(408);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_29__angular_common_http__ = __webpack_require__(38);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_29__angular_common_http__ = __webpack_require__(35);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_30_apollo_angular_link_http__ = __webpack_require__(519);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_31_apollo_cache_inmemory__ = __webpack_require__(534);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_32_apollo_angular__ = __webpack_require__(543);
@@ -2400,7 +2399,7 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_49__pages_code_code__ = __webpack_require__(158);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_50__providers_dateparent_dateparent__ = __webpack_require__(615);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_51__pages_recipe_recipe__ = __webpack_require__(407);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_52__pages_recoverycode_recoverycode__ = __webpack_require__(110);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_52__pages_recoverycode_recoverycode__ = __webpack_require__(109);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_53__ionic_native_camera__ = __webpack_require__(404);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_54__ionic_native_file__ = __webpack_require__(616);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_55__ionic_native_file_transfer__ = __webpack_require__(405);
@@ -2945,8 +2944,8 @@ var CabeceraComponent = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__pages_optionals_devs_recipes_recipes__ = __webpack_require__(409);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__pages_appointment_pay_pay__ = __webpack_require__(159);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__pages_appointment_financer_financer__ = __webpack_require__(81);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__pages_recoverycode_recoverycode__ = __webpack_require__(110);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__pages_recovery_recovery__ = __webpack_require__(109);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__pages_recoverycode_recoverycode__ = __webpack_require__(109);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__pages_recovery_recovery__ = __webpack_require__(108);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -3192,14 +3191,6 @@ var RecomendationsPage = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__providers_dependents_dependents__ = __webpack_require__(72);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_rxjs_add_operator_map__ = __webpack_require__(43);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_rxjs_add_operator_map__);
-var __assign = (this && this.__assign) || Object.assign || function(t) {
-    for (var s, i = 1, n = arguments.length; i < n; i++) {
-        s = arguments[i];
-        for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
-            t[p] = s[p];
-    }
-    return t;
-};
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -3287,14 +3278,14 @@ var HomePage = (function () {
         // citas de los dependientes
         this.dependensProvider.getdependesDay().subscribe(function (data) {
             _this.depesCitas = data;
-            console.log('this.depesCitas:', _this.depesCitas);
+            // console.log('this.depesCitas:', this.depesCitas);
             _this.depesCitas.map(function (depe) {
                 if (depe.appointments == 0) {
                     console.log('los depes que no tienen citas', depe);
                 }
                 else {
                     _this.citasDepes = depe.appointments[0];
-                    console.log('los depe con citas:', _this.citasDepes);
+                    // console.log('los depe con citas:', this.citasDepes);
                     if (_this.recipes && _this.citasDepes) {
                         _this.citapendiente = 2;
                     }
@@ -3304,14 +3295,13 @@ var HomePage = (function () {
                 }
             });
         });
-        if (this.tasks > 1) {
-            var citasAll = __assign({}, this.tasks, this.depesCitas);
-            console.log('todas las citas, incluidas las de principal:', citasAll);
-        }
-        else {
-            var citasAll = __assign({}, this.depesCitas);
-            console.log('citas solo los dependientes', citasAll);
-        }
+        //     if(this.tasks > 1){
+        //     const citasAll = {...this.tasks, ...this.depesCitas};
+        //     console.log('todas las citas, incluidas las de principal:', citasAll);
+        // }else{
+        //     const citasAll = {...this.depesCitas};
+        //     console.log('citas solo los dependientes', citasAll);
+        // }
     };
     HomePage.prototype.irACard = function () {
         this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_4__card_card__["a" /* CardPage */]);
@@ -3320,10 +3310,14 @@ var HomePage = (function () {
         Object(__WEBPACK_IMPORTED_MODULE_2__angular_core__["m" /* Component */])({
             selector: 'page-home',template:/*ion-inline-start:"/proyectos/IonicPruebas/ApolloIonicVersionOne/src/pages/home/home.html"*/'<ion-header>\n    <ion-navbar color="primary" hideBackButton="true" persistent="true">\n        <button ion-button menuToggle>\n        <ion-icon name="menu"></ion-icon>\n        </button>\n        <ion-title> Home Page</ion-title>\n        <ion-buttons *ngIf="nombre"\n                          end>\n          <button ion-button\n                  item-end\n                  class="logueado"\n                  clear>\n                  Hola {{nombre}}\n          </button>\n        </ion-buttons>\n    </ion-navbar>\n\n</ion-header>\n\n<ion-content padding >\n\n    <ion-card button class="principal" (click)="irACard()">\n        <ion-item>\n            <ion-row>\n                <ion-col col-2>\n                    <ion-icon name="contact"></ion-icon>\n                </ion-col>\n                <ion-col col-9>\n                    <p class="reserve">Reservar cita</p>\n                </ion-col>\n                <ion-col col-1>\n                    <ion-icon name="arrow-dropright"></ion-icon>\n                </ion-col>\n            </ion-row>\n        </ion-item>\n    </ion-card>\n\n    <div class="down30">\n        <mat-accordion padding>\n\n            <mat-expansion-panel >\n                <mat-expansion-panel-header>\n                    <ion-col col-2>\n                        <ion-icon name="alarm"></ion-icon>\n                    </ion-col>\n                    <ion-col col-8>\n                        <p class="font11">Próxima Cita</p>\n                      </ion-col>\n                      <ion-col col-2>\n                          <ion-badge *ngIf="citapendiente"\n                                      class="badgeIcon"\n                                      color="notifi" item-end>{{citapendiente}}\n                          </ion-badge>\n                    </ion-col>\n                </mat-expansion-panel-header >\n                <div class="containerExpand" >\n                  <div *ngIf="tasks else notasks">\n                    <div *ngFor="let task of tasks; first as isFirst">\n                      <ion-row class="down10" *ngIf="isFirst">\n                        <ion-col col-3>\n                          <ion-avatar item-start>\n                            <img src="http://dappapache02.eastus.cloudapp.azure.com:4200/img/professionals/{{task.professional.id}}.png">\n                          </ion-avatar>\n                        </ion-col>\n                        <ion-col col-9 >\n                          <h3 class="tituloCitas" [ngClass]="{celeste:\'\'}">Dr.{{task.professional.fullName | slice:0:25 | uppercase}}</h3>\n                          <p class="especialidad">{{ task.service.basicService.description | lowercase }} / {{ task.service.center.name }}</p>\n                          <p class="day">{{ task.appointmentDateTime | date:\'mediumDate\' : \'es\' }} - {{ task.appointmentDateTime | date: \'HH:mm\' }} </p>\n                        </ion-col>\n                      </ion-row>\n                    </div>\n                      <div *ngIf="citasDepes">\n                          <ion-row class="down10" >\n                            <ion-col col-3>\n                              <ion-avatar item-start>\n                                <img src="http://dappapache02.eastus.cloudapp.azure.com:4200/img/professionals/{{citasDepes.professional.id}}.png">\n                              </ion-avatar>\n                            </ion-col>\n                            <ion-col col-9 >\n                              <p class="nombreDepe">cita para: {{citasDepes.patient.name}}</p>\n                              <h3 class="tituloCitas" [ngClass]="{celeste:\'\'}">Dr.{{citasDepes.professional.fullName | slice:0:25 | uppercase}}</h3>\n                              <p class="especialidad">{{ citasDepes.service.basicService.description | lowercase }} / {{ citasDepes.service.center.name }}</p>\n                              <p class="day">{{ citasDepes.appointmentDateTime | date:\'mediumDate\' : \'es\' }} - {{ citasDepes.appointmentDateTime | date: \'HH:mm\' }} </p>\n                            </ion-col>\n                          </ion-row>\n                        </div>\n                  </div>\n                    <div *ngIf="tasks < 1">\n                      <p  class="textoRecetas">En este momento no tienes citas proximas...</p>\n                    </div>\n                </div>\n            </mat-expansion-panel>\n\n            <mat-expansion-panel>\n                <mat-expansion-panel-header>\n                    <ion-col col-2>\n                        <ion-icon name="medkit"></ion-icon>\n                    </ion-col>\n                    <ion-col col-8>\n                        <p class="font11">Recetas y Medicamentos</p>\n                    </ion-col>\n                    <ion-col col-2>\n                        <ion-badge *ngIf="recipendiente"\n                                      class="badgeIcon"\n                                      color="verde" item-end>1\n                          </ion-badge>\n                    </ion-col>\n                </mat-expansion-panel-header>\n                <div class="containerExpand">\n                    <p *ngIf="!tasks" class="textoRecetas">Las recetas y médicamentos de sus últimas citas aparecerán aquí , despues de registrado</p>\n                    <div *ngIf="tasks">\n                      <div  *ngFor="let recipe of recipes; index as i; last as isLast">\n                           <div *ngIf="i == 1">\n                                  <ion-list class="contenedorReceta">\n                                    <ion-item *ngFor="let receta of recipe.prescripciones">\n                                      <ion-row>\n                                        <ion-col col-3 class="contenedorIcono">\n                                            <img src="assets/imgs/recipes/{{receta.formasfar_pk}}.png" alt="">\n                                        </ion-col>\n                                        <ion-col col-9 class="contendorNombrePastilla">\n                                            <p class="nombreMedicamento">{{receta.marca_comercial}}</p>\n                                            <p class="vecesXdia"> {{ 24 / receta.cada_x_horas}} veces por día</p>\n                                        </ion-col>\n                                      </ion-row>\n                                    </ion-item>\n                                  </ion-list>\n                           </div>\n                      </div>\n\n                    </div>\n                </div>\n            </mat-expansion-panel>\n\n\n        </mat-accordion>\n\n    </div>\n    <!-- <h1>home</h1>\n    <p (click)="irACard()">Ir a Card</p> -->\n</ion-content>\n'/*ion-inline-end:"/proyectos/IonicPruebas/ApolloIonicVersionOne/src/pages/home/home.html"*/
         }),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["j" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["j" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__providers_authorization_public_authorization_public__["a" /* AuthorizationPublicProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__providers_authorization_public_authorization_public__["a" /* AuthorizationPublicProvider */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["b" /* AlertController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["b" /* AlertController */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_0__providers_recipes_recipes__["a" /* RecipesProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__providers_recipes_recipes__["a" /* RecipesProvider */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_5__providers_appoinment_appoinment__["a" /* AppointmentProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__providers_appoinment_appoinment__["a" /* AppointmentProvider */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_6__providers_dependents_dependents__["a" /* DependentsProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_6__providers_dependents_dependents__["a" /* DependentsProvider */]) === "function" && _f || Object])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_3_ionic_angular__["j" /* NavController */],
+            __WEBPACK_IMPORTED_MODULE_1__providers_authorization_public_authorization_public__["a" /* AuthorizationPublicProvider */],
+            __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["b" /* AlertController */],
+            __WEBPACK_IMPORTED_MODULE_0__providers_recipes_recipes__["a" /* RecipesProvider */],
+            __WEBPACK_IMPORTED_MODULE_5__providers_appoinment_appoinment__["a" /* AppointmentProvider */],
+            __WEBPACK_IMPORTED_MODULE_6__providers_dependents_dependents__["a" /* DependentsProvider */]])
     ], HomePage);
     return HomePage;
-    var _a, _b, _c, _d, _e, _f;
 }());
 
 //# sourceMappingURL=home.js.map
@@ -3336,7 +3330,7 @@ var HomePage = (function () {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppointmentProvider; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common_http__ = __webpack_require__(38);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common_http__ = __webpack_require__(35);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_catch__ = __webpack_require__(52);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_catch___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_catch__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map__ = __webpack_require__(43);
@@ -3534,7 +3528,7 @@ var MaterialModule = (function () {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return UserProvider; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common_http__ = __webpack_require__(38);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common_http__ = __webpack_require__(35);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Observable__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Observable___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_Observable__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_catch__ = __webpack_require__(52);
@@ -3781,7 +3775,7 @@ var MasterDetailPage = (function () {
     ], MasterDetailPage.prototype, "menu", void 0);
     MasterDetailPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_3__angular_core__["m" /* Component */])({
-            selector: 'page-master-detail',template:/*ion-inline-start:"/proyectos/IonicPruebas/ApolloIonicVersionOne/src/pages/appointment/master-detail/master-detail.html"*/'<ion-navbar>\n    <ion-title>Detalle de la cita</ion-title>\n</ion-navbar>\n\n\n\n<ion-content has-header="true">\n    <ion-list>\n\n        <img id="profile-image" src="http://dappapache02.eastus.cloudapp.azure.com:4200/img/professionals/{{appointment.id}}.png">\n\n        <h3 class="nombreDoctor" text-center>\n            {{ appointment.fullName }}\n        </h3>\n\n        <ion-item>\n            <ion-label bold>Sede:</ion-label>\n            <ion-label class="blue" type="text" disabled="true">\n                Mendiola\n            </ion-label>\n        </ion-item>\n        <ion-item>\n            <ion-label>Especialidad:</ion-label>\n            <ion-label item-end class="blue" disabled="true">\n                {{ appointment.service.description }}\n            </ion-label>\n        </ion-item>\n        <ion-item>\n            <ion-label>Fecha:</ion-label>\n            <ion-label item-end class="blue" disabled="true">\n                {{ date | date:\'EEEE d , MMMM \' : \'es\' }}\n            </ion-label>\n        </ion-item>\n        <ion-item>\n            <ion-label>Hora:</ion-label>\n            <ion-label class="blue" type="text" disabled="true">\n                {{ hora.hour | slice:0:5}}\n            </ion-label>\n        </ion-item>\n        <ion-item *ngIf="secure">\n            <ion-label>Cita con Seguro:</ion-label>\n            <ion-label class="blue" disabled="true">\n                {{insurance | lowercase}}\n            </ion-label>\n        </ion-item>\n\n        <ion-item>\n            <ion-label>Tipo de pago:</ion-label>\n            <ion-label class="blue" disabled="true">\n                {{paymentType | lowercase }}\n            </ion-label>\n        </ion-item>\n\n        <ion-item *ngIf="isCard">\n            <ion-label>Titular de la tarjeta:</ion-label>\n            <ion-label class="blue" disabled="true">\n                {{name | lowercase }}\n            </ion-label>\n        </ion-item>\n\n        <div *ngIf="isCard">\n            <ion-item>\n                <ion-label class="blue" type="text" maxlength="16" clearInput disabled="true">\n                    {{numMasCard}}\n                </ion-label>\n                <ion-icon item-end name="card"></ion-icon>\n            </ion-item>\n        </div>\n\n        <ion-item>\n            <ion-label>Costo:</ion-label>\n            <ion-label class="blue" item-end type="text" disabled="true">\n                {{ \'S/. \' + price }}.00\n            </ion-label>\n        </ion-item>\n\n        <div padding>\n            <button ion-button (click)="gotosave()" block color="secondary" class="heighButton">OK</button>\n        </div>\n        <p class="recomenda" color="secondary">Recuerde que deberá llegar 20 minutos antes para poder cancelar en caja y estar a tiempo en el consultorio.</p>\n\n    </ion-list>\n</ion-content>'/*ion-inline-end:"/proyectos/IonicPruebas/ApolloIonicVersionOne/src/pages/appointment/master-detail/master-detail.html"*/,
+            selector: 'page-master-detail',template:/*ion-inline-start:"/proyectos/IonicPruebas/ApolloIonicVersionOne/src/pages/appointment/master-detail/master-detail.html"*/'<ion-navbar>\n    <ion-title>Detalle de la cita</ion-title>\n</ion-navbar>\n\n\n\n<ion-content has-header="true">\n    <ion-list>\n\n        <img id="profile-image" src="http://dappapache02.eastus.cloudapp.azure.com:4200/img/professionals/{{appointment.id}}.png">\n\n        <h3 class="nombreDoctor" text-center>\n            {{ appointment.fullName }}\n        </h3>\n\n        <ion-item>\n            <ion-label bold>Sede:</ion-label>\n            <ion-label class="blue" type="text" disabled="true">\n                Mendiola\n            </ion-label>\n        </ion-item>\n        <ion-item>\n            <ion-label>Especialidad:</ion-label>\n            <ion-label item-end class="blue" disabled="true">\n                {{ appointment.service.description }}\n            </ion-label>\n        </ion-item>\n        <ion-item>\n            <ion-label>Fecha:</ion-label>\n            <ion-label item-end class="blue" disabled="true">\n                {{ date | date:\'EEEE d , MMMM \' : \'es\' }}\n            </ion-label>\n        </ion-item>\n        <ion-item>\n            <ion-label>Hora:</ion-label>\n            <ion-label class="blue" type="text" disabled="true">\n                {{ hora.hour | slice:0:5}}\n            </ion-label>\n        </ion-item>\n        <ion-item *ngIf="secure">\n            <ion-label>Cita con Seguro:</ion-label>\n            <ion-label class="blue" disabled="true">\n                {{insurance | lowercase}}\n            </ion-label>\n        </ion-item>\n\n        <ion-item>\n            <ion-label>Tipo de pago:</ion-label>\n            <ion-label class="blue" disabled="true">\n                {{paymentType | lowercase }}\n            </ion-label>\n        </ion-item>\n\n        <ion-item *ngIf="isCard">\n            <ion-label>Titular de la tarjeta:</ion-label>\n            <ion-label class="blue" disabled="true">\n                {{name | lowercase }}\n            </ion-label>\n        </ion-item>\n\n        <div *ngIf="isCard">\n            <ion-item>\n                <ion-label class="blue" type="text" maxlength="16" clearInput disabled="true">\n                    {{numMasCard}}\n                </ion-label>\n                <ion-icon item-end name="card"></ion-icon>\n            </ion-item>\n        </div>\n\n        <ion-item>\n            <ion-label>Costo:</ion-label>\n            <ion-label class="blue" item-end type="text" disabled="true">\n                {{ \'S/. \' + price }}\n            </ion-label>\n        </ion-item>\n\n        <div padding>\n            <button ion-button (click)="gotosave()" block color="secondary" class="heighButton">OK</button>\n        </div>\n        <p class="recomenda" color="secondary">Recuerde que deberá llegar 20 minutos antes para poder cancelar en caja y estar a tiempo en el consultorio.</p>\n\n    </ion-list>\n</ion-content>\n'/*ion-inline-end:"/proyectos/IonicPruebas/ApolloIonicVersionOne/src/pages/appointment/master-detail/master-detail.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["j" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["k" /* NavParams */],
@@ -3860,7 +3854,7 @@ var DatosPage = (function () {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DateparentProvider; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_common_http__ = __webpack_require__(38);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_common_http__ = __webpack_require__(35);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -3948,7 +3942,9 @@ var CardPage = (function () {
         this.doctor = this.navParams.get('doctor');
         this.available = this.navParams.get('available');
         if (this.hora) {
-            this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_3__appointment_financer_financer__["a" /* FinancerPage */], { hora: this.hora, doctor: this.doctor, available: this.available });
+            this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_3__appointment_financer_financer__["a" /* FinancerPage */], { hora: this.hora,
+                doctor: this.doctor,
+                available: this.available });
         }
         else {
             console.log("no trae data, seguir con el proceso normal");
@@ -3958,7 +3954,7 @@ var CardPage = (function () {
         this.toDate = __WEBPACK_IMPORTED_MODULE_4_moment__().add(this.numDays, "day").format("YYYY-MM-DD");
         this.helloPvr.getServicios().subscribe(function (servicios) {
             _this.servicios = servicios;
-            console.log(_this.servicios);
+            // console.log(this.servicios);
             if (servicios.length > 0) {
                 _this.getDoctorsList();
             }
@@ -4032,7 +4028,7 @@ var CardPage = (function () {
             _this.horas = _this.dias;
             // console.log('las horas:', this.horas);
             _this.dia = available.date;
-            console.log('dias', _this.dias);
+            // console.log('dias', this.dias);
         });
     };
     CardPage.prototype.goToFinancer = function (doctor, hora) {
@@ -4046,7 +4042,9 @@ var CardPage = (function () {
             // datos.present();
         }
         else {
-            this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_3__appointment_financer_financer__["a" /* FinancerPage */], { doctor: doctor, available: this.selectedDay.date, hora: hora });
+            this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_3__appointment_financer_financer__["a" /* FinancerPage */], { doctor: doctor,
+                available: this.selectedDay.date,
+                hora: hora });
         }
     };
     __decorate([
@@ -4078,7 +4076,7 @@ var CardPage = (function () {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LoginPage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__recovery_recovery__ = __webpack_require__(109);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__recovery_recovery__ = __webpack_require__(108);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(14);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__register_register__ = __webpack_require__(157);
@@ -4193,7 +4191,7 @@ var LoginPage = (function () {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CrudparentProvider; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_common_http__ = __webpack_require__(38);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_common_http__ = __webpack_require__(35);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__ = __webpack_require__(43);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__);
@@ -4279,7 +4277,7 @@ var CrudparentProvider = (function () {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DependentsProvider; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_common_http__ = __webpack_require__(38);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_common_http__ = __webpack_require__(35);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__ = __webpack_require__(43);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__);
@@ -4438,9 +4436,8 @@ var FinancerPage = (function () {
         this.no = false;
         this.isAndroid = platform.is('android');
         this.dependentsPvr.getDependens().subscribe(function (data) {
-            _this.parents.map(function (parent) {
-            });
-            console.log(_this.parents);
+            _this.parents = data;
+            console.log('this.parents:', _this.parents);
         });
         this.financierProvider.getFinanciers().subscribe(function (data) { _this.items = data; _this.items.shift(); });
         this.doctor = this.navParams.get('doctor');
@@ -4581,22 +4578,12 @@ var FinancerPage = (function () {
     };
     FinancerPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-financer',template:/*ion-inline-start:"/proyectos/IonicPruebas/ApolloIonicVersionOne/src/pages/appointment/financer/financer.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title>Financiador</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content>\n  <h4 class="parrafoFinanciador">Lo que nos queda es escoger para quien es la cita y el financiador, ya casi terminamos…</h4>\n  <div>\n<ion-row padding>\n  <ion-col class="cuadrado">\n    <button ion-button\n            color="gris"\n            [ngClass]="{verde:vcolor == true}"\n            (click)="passFinancer()">\n              para mi\n    </button>\n  </ion-col>\n\n  <ion-col class="cuadrado">\n    <button ion-button\n            (click)="openParents()"\n            color="gris"\n            [ngClass]="{verde:ccolor == true}">\n              un familiar\n    </button>\n  </ion-col>\n</ion-row>\n<div *ngIf="addFamily">\n    <ion-card *ngFor="let depe of parents"\n              (click)="passFinancerParent(depe)">\n      <ion-row>\n        <ion-col col-3>\n          <ion-avatar>\n            <img src="../assets/imgs/avatars/nino.png" alt="">\n          </ion-avatar>\n        </ion-col>\n        <ion-col col-9>\n            <h3 class="nombrePariente">{{depe.name}}</h3>\n            <p *ngIf="depe.relation"\n                class="parentesco">{{depe.relation.name}}</p>\n            <p class="edad">{{depe.birthdate | date:"Y"}}</p>\n        </ion-col>\n\n      </ion-row>\n    </ion-card>\n  </div>\n\n    <ion-row *ngIf="addFamily" padding>\n      <ion-card ion-button\n                (click)="showDetailCreateParents()"\n                class="buttonAddFamily">\n        <button ion-button clear item-start>\n          <ion-icon ios="ios-add" md="md-add" color="secondary"></ion-icon>\n        </button>\n        <p item-end>Agregar Familiar</p>\n      </ion-card>\n    </ion-row>\n\n    <!-- template que muestra los familiares que estan ya adjuntos -->\n\n  </div>\n  <!-- fin del template de los familiares adjuntos -->\n\n  <div *ngIf="depe">\n    <div *ngIf="personOk === true">\n      <ion-row>\n        <ion-col col-3\n                 class="cardEscogidoImg">\n            <img src="../assets/imgs/avatars/nino.png" alt="">\n        </ion-col>\n        <ion-col col-7\n                  class="containerNombre"\n                  >\n            <h3 class="nombrePariente">escogiste a: {{depe.name}}</h3>\n        </ion-col>\n        <ion-col col-2>\n            <button ion-button\n                    (click)="cleanDepe()"\n                    clear\n                    color="primary">\n              <ion-icon name="close"></ion-icon>\n            </button>\n          </ion-col>\n      </ion-row>\n    </div>\n  </div>\n  <ion-list class="medio" *ngIf="personOk === true">\n    <ion-card class="evaluate">\n      <ion-list>\n        <ion-item color="light" item-start (click)="evaluateEnsurance($event)">\n          <p *ngIf="yes == false && no == false">¿Cuenta con seguro?</p>\n          <p *ngIf="yes == true">Si tengo</p>\n          <p *ngIf="no == true">No tengo</p>\n          <ion-icon item-end name="arrow-dropdown"></ion-icon>\n        </ion-item>\n\n        <ion-list class="nombresLista" *ngIf="firtClick">\n          <button ion-item *ngFor="let quest of questions" (click)="validateSelected(quest.id)">\n            {{ quest.name }}\n          </button>\n        </ion-list>\n      </ion-list>\n    </ion-card>\n\n    <ion-card class="seguroList">\n      <ion-list>\n        <ion-item color="light" *ngIf="isInsuranceName" (click)="selectEnsurance($event)">\n          {{ myEnsuranceName }}\n        </ion-item>\n        <ion-list *ngIf="isInsurance">\n          <button ion-item *ngFor="let item of items" (click)="insuranceSelected(item.cod_pagador_pk, item.nombre_garante)">\n            {{ item.nombre_garante }}\n          </button>\n        </ion-list>\n      </ion-list>\n    </ion-card>\n\n    <div text-right class="precio" *ngIf="price!=undefined">\n      <p>Precio de la Consulta: {{ \'S/. \' + price }}.00</p>\n    </div>\n  </ion-list>\n\n  <button *ngIf="secureOk === true"\n          color="secondary"\n          ion-button\n          block\n          center\n          class="botonPagar"\n          (click)="goToPay()">\n      hacer el pago\n  </button>\n\n</ion-content>\n'/*ion-inline-end:"/proyectos/IonicPruebas/ApolloIonicVersionOne/src/pages/appointment/financer/financer.html"*/,
+            selector: 'page-financer',template:/*ion-inline-start:"/proyectos/IonicPruebas/ApolloIonicVersionOne/src/pages/appointment/financer/financer.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title>Financiador</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content>\n  <h4 class="parrafoFinanciador">Lo que nos queda es escoger para quien es la cita y el financiador, ya casi terminamos…</h4>\n  <div>\n<ion-row padding>\n  <ion-col class="cuadrado">\n    <button ion-button\n            color="gris"\n            [ngClass]="{verde:vcolor == true}"\n            (click)="passFinancer()">\n              para mi\n    </button>\n  </ion-col>\n\n  <ion-col class="cuadrado">\n    <button ion-button\n            (click)="openParents()"\n            color="gris"\n            [ngClass]="{verde:ccolor == true}">\n              un familiar\n    </button>\n  </ion-col>\n</ion-row>\n<div *ngIf="addFamily">\n    <ion-card *ngFor="let depe of parents"\n              (click)="passFinancerParent(depe)">\n      <ion-row>\n        <ion-col col-3>\n          <ion-avatar>\n            <img src="../assets/imgs/avatars/nino.png" alt="">\n          </ion-avatar>\n        </ion-col>\n        <ion-col col-9>\n            <h3 class="nombrePariente">{{depe.name}}</h3>\n            <p *ngIf="depe.relation"\n                class="parentesco">{{depe.relation.name}}</p>\n            <p class="edad">{{depe.birthdate | date:"Y"}}</p>\n        </ion-col>\n\n      </ion-row>\n    </ion-card>\n  </div>\n\n    <ion-row *ngIf="addFamily" padding>\n      <ion-card ion-button\n                (click)="showDetailCreateParents()"\n                class="buttonAddFamily">\n        <button ion-button clear item-start>\n          <ion-icon ios="ios-add" md="md-add" color="secondary"></ion-icon>\n        </button>\n        <p item-end>Agregar Familiar</p>\n      </ion-card>\n    </ion-row>\n\n    <!-- template que muestra los familiares que estan ya adjuntos -->\n\n  </div>\n  <!-- fin del template de los familiares adjuntos -->\n\n  <div *ngIf="depe">\n    <div *ngIf="personOk === true">\n      <ion-row>\n        <ion-col col-3\n                 class="cardEscogidoImg">\n            <img src="../assets/imgs/avatars/nino.png" alt="">\n        </ion-col>\n        <ion-col col-7\n                  class="containerNombre"\n                  >\n            <h3 class="nombrePariente">escogiste a: {{depe.name}}</h3>\n        </ion-col>\n        <ion-col col-2>\n            <button ion-button\n                    (click)="cleanDepe()"\n                    clear\n                    color="primary">\n              <ion-icon name="close"></ion-icon>\n            </button>\n          </ion-col>\n      </ion-row>\n    </div>\n  </div>\n  <ion-list class="medio" *ngIf="personOk === true">\n    <ion-card class="evaluate">\n      <ion-list>\n        <ion-item color="light" item-start (click)="evaluateEnsurance($event)">\n          <p *ngIf="yes == false && no == false">¿Cuenta con seguro?</p>\n          <p *ngIf="yes == true">Si tengo</p>\n          <p *ngIf="no == true">No tengo</p>\n          <ion-icon item-end name="arrow-dropdown"></ion-icon>\n        </ion-item>\n\n        <ion-list class="nombresLista" *ngIf="firtClick">\n          <button ion-item *ngFor="let quest of questions" (click)="validateSelected(quest.id)">\n            {{ quest.name }}\n          </button>\n        </ion-list>\n      </ion-list>\n    </ion-card>\n\n    <ion-card class="seguroList">\n      <ion-list>\n        <ion-item color="light" *ngIf="isInsuranceName" (click)="selectEnsurance($event)">\n          {{ myEnsuranceName }}\n        </ion-item>\n        <ion-list *ngIf="isInsurance">\n          <button ion-item *ngFor="let item of items" (click)="insuranceSelected(item.cod_pagador_pk, item.nombre_garante)">\n            {{ item.nombre_garante }}\n          </button>\n        </ion-list>\n      </ion-list>\n    </ion-card>\n\n    <div text-right class="precio" *ngIf="price!=undefined">\n      <p>Precio de la Consulta: {{ \'S/. \' + price }}</p>\n    </div>\n  </ion-list>\n\n  <button *ngIf="secureOk === true"\n          color="secondary"\n          ion-button\n          block\n          center\n          class="botonPagar"\n          (click)="goToPay()">\n      hacer el pago\n  </button>\n\n</ion-content>\n'/*ion-inline-end:"/proyectos/IonicPruebas/ApolloIonicVersionOne/src/pages/appointment/financer/financer.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["j" /* NavController */],
-            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["k" /* NavParams */],
-            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["l" /* Platform */],
-            __WEBPACK_IMPORTED_MODULE_1__angular_forms__["b" /* FormBuilder */],
-            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["b" /* AlertController */],
-            __WEBPACK_IMPORTED_MODULE_3__providers_financier_financier__["a" /* FinancierProvider */],
-            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["i" /* ModalController */],
-            __WEBPACK_IMPORTED_MODULE_5__providers_appoinment_appoinment__["a" /* AppointmentProvider */],
-            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["a" /* ActionSheetController */],
-            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["n" /* ViewController */],
-            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["g" /* LoadingController */],
-            __WEBPACK_IMPORTED_MODULE_9__providers_dependents_dependents__["a" /* DependentsProvider */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["j" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["j" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["k" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["k" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["l" /* Platform */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["l" /* Platform */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_1__angular_forms__["b" /* FormBuilder */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_forms__["b" /* FormBuilder */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["b" /* AlertController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["b" /* AlertController */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_3__providers_financier_financier__["a" /* FinancierProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__providers_financier_financier__["a" /* FinancierProvider */]) === "function" && _f || Object, typeof (_g = typeof __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["i" /* ModalController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["i" /* ModalController */]) === "function" && _g || Object, typeof (_h = typeof __WEBPACK_IMPORTED_MODULE_5__providers_appoinment_appoinment__["a" /* AppointmentProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__providers_appoinment_appoinment__["a" /* AppointmentProvider */]) === "function" && _h || Object, typeof (_j = typeof __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["a" /* ActionSheetController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["a" /* ActionSheetController */]) === "function" && _j || Object, typeof (_k = typeof __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["n" /* ViewController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["n" /* ViewController */]) === "function" && _k || Object, typeof (_l = typeof __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["g" /* LoadingController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["g" /* LoadingController */]) === "function" && _l || Object, typeof (_m = typeof __WEBPACK_IMPORTED_MODULE_9__providers_dependents_dependents__["a" /* DependentsProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_9__providers_dependents_dependents__["a" /* DependentsProvider */]) === "function" && _m || Object])
     ], FinancerPage);
     return FinancerPage;
+    var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l, _m;
 }());
 
 //# sourceMappingURL=financer.js.map
@@ -4610,7 +4597,7 @@ var FinancerPage = (function () {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return RecipesProvider; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_rxjs_Observable__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_rxjs_Observable___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_rxjs_Observable__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__(99);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__(154);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_catch__ = __webpack_require__(52);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_catch___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_catch__);

@@ -95,32 +95,31 @@ export class HomePage {
       // citas de los dependientes
       this.dependensProvider.getdependesDay().subscribe(data =>{
         this.depesCitas = data;
-        console.log('this.depesCitas:', this.depesCitas);
+        // console.log('this.depesCitas:', this.depesCitas);
         this.depesCitas.map(depe =>{
           if(depe.appointments == 0){
             console.log('los depes que no tienen citas', depe);
           }else{
             this.citasDepes = depe.appointments[0];
-            console.log('los depe con citas:', this.citasDepes);
-            if( this.recipes && this.citasDepes){
-                this.citapendiente = 2;
-            }else{
-              this.citapendiente = this.citapendiente;
-            }
+            // console.log('los depe con citas:', this.citasDepes);
+              if( this.recipes && this.citasDepes){
+                  this.citapendiente = 2;
+                }else{
+                  this.citapendiente = this.citapendiente;
+                }
           }
         });
       });
 
-        if(this.tasks > 1){
-        const citasAll = {...this.tasks, ...this.depesCitas};
-        console.log('todas las citas, incluidas las de principal:', citasAll);
-    }else{
-        const citasAll = {...this.depesCitas};
-        console.log('citas solo los dependientes', citasAll);
-    }
+    //     if(this.tasks > 1){
+    //     const citasAll = {...this.tasks, ...this.depesCitas};
+    //     console.log('todas las citas, incluidas las de principal:', citasAll);
+    // }else{
+    //     const citasAll = {...this.depesCitas};
+    //     console.log('citas solo los dependientes', citasAll);
+    // }
 
     }
-
 
   irACard(){
     this.navCtrl.push(CardPage);
