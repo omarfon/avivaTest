@@ -119,7 +119,7 @@
             </ion-item>
         </ion-card>
     </ion-list>
-    <p *ngIf="mostrar == 0 || sinParents == 0" class="textoCitasNulo">No tienes citas programadas</p>
+    <p *ngIf="mostrar == 0 && sinParents == 0" class="textoCitasNulo">No tienes citas programadas</p>
 
     <ion-list *ngFor='let taskpa of tasksParents'>
         <ion-card (click)="gotoDetails(taskpa)" class="bordeDerecho" *ngIf="taskpa.appointments[0]">

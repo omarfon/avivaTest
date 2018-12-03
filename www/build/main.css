@@ -41388,6 +41388,15 @@ page-home .contenedorReceta .item-md {
   background-color: transparent !important;
 }
 
+page-home .nombreDepe {
+  text-align: right;
+  background: #00B6A3;
+  color: #fff;
+  padding-top: .2em;
+  padding-bottom: .2em;
+  padding-right: 16px;
+}
+
 page-myparents .nombrePariente {
   color: #00B6A3;
   font-size: 1.3em;
