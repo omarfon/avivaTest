@@ -3,9 +3,6 @@ page-login {
         padding-top: 30px;
         padding-bottom: 10px;
     }
-    // .gris {
-    //     background-color: #F5F5F5;
-    // }
     .textoAzul {
         color: color($colors, gris);
         font-size: 1.1em;
@@ -14,11 +11,6 @@ page-login {
         margin-top: 30px;
         font-weight: 400;
     }
-    // .white {
-    //     padding-top: 40px;
-    //     background-color: #fff;
-    //     height: 42vh;
-    // }
     ion-input {
         margin-top: .5em;
     }
@@ -38,11 +30,7 @@ page-login {
         border: 1px solid color($colors, gris);
         margin-bottom: .5em;
     }
-    // .item-ios {
-    //     background-color: transparent;
-    // }
     .item-input ion-label {
-        // margin-left: 10px;
         color: grey;
     }
     .noMargin {
@@ -52,10 +40,10 @@ page-login {
     .noLogin {
         color: #287195;
         text-align: center;
-        width: 60%;
         margin-left: 20%;
         padding: .5em 2em;
         border-radius: 20px;
+        text-transform: lowercase;
         background: rgba(0, 182, 164, 0.021);
     }
     .noLogin:active {
@@ -79,5 +67,18 @@ page-login {
       border-radius: 10px;
       width: 50%;
       margin-left: 25%;
+    }
+    .containerInputs{
+      margin-top:35vh;
+    }
+    .register{
+      text-transform: lowercase;
+      width: 100%;
+      text-align: center;
+    }
+    .containerBotones{
+      display: flex;
+      justify-content: space-around;
+      align-items: center
     }
 }

@@ -1,12 +1,12 @@
-import { CodePage } from './../pages/code/code';
-import { MyparentsPage } from './../pages/myparents/myparents';
-import { CreateparentPage } from '../pages/createparent/createparent';
-import { CardPage } from './../pages/card/card';
 import { Component, ViewChild } from '@angular/core';
 import { Platform, NavController, MenuController, Events } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
+import { CardPage } from './../pages/card/card';
+import { CodePage } from './../pages/code/code';
+import { MyparentsPage } from './../pages/myparents/myparents';
+import { CreateparentPage } from '../pages/createparent/createparent';
 import { HomePage } from '../pages/home/home';
 import { LoginPage } from '../pages/user/login/login';
 import { ProfilePage } from './../pages/user/profile/profile';
@@ -18,6 +18,7 @@ import { PayPage } from '../pages/appointment/pay/pay';
 import { FinancerPage } from '../pages/appointment/financer/financer';
 import { RecoverycodePage } from '../pages/recoverycode/recoverycode';
 import { RecoveryPage } from '../pages/recovery/recovery';
+import { StartPage } from '../pages/start/start';
 
 
 
@@ -48,12 +49,14 @@ export class MyApp {
   code  = CodePage;
   recode = RecoverycodePage;
   recov  = RecoveryPage;
+  start  = StartPage;
 
   public fotoId = localStorage.getItem('image');
   private url = "http://dappapache02.eastus.cloudapp.azure.com:4200" ;
   public foto;
-  public patientName = localStorage.getItem('patientName');
+  public patientName = "";
   timemark = new Date().getTime();
+  public correo;
               // public userPvr: UserProvider
 
 
@@ -63,16 +66,22 @@ export class MyApp {
               public menuCtrl: MenuController,
               public events: Events
               ) {
-                this.foto = this.url + `${this.fotoId}`;
-                console.log(this.foto);
+
+        this.changeFoto();
 
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
       statusBar.styleDefault();
       splashScreen.hide();
-    });
 
+      // descomentar para poder redirigir cuando quieras ir a las paginas start
+      if(localStorage.getItem('role') !== 'user'){
+        this.menu.setRoot(StartPage);
+      }else{
+        this.menu.setRoot(HomePage);
+      }
+    });
 
     this.userToken = localStorage.getItem('idTokenUser');
     // XXX: Listen for events. Specialy for user logged.
@@ -82,7 +91,11 @@ export class MyApp {
         }
      });
 
+     events.subscribe('change:foto', ()=>{
+      this.changeFoto()
+     });
   }
+
   goPage(pagina:any){
     if( pagina == this.hom)
       this.menu.setRoot(pagina)
@@ -102,6 +115,13 @@ export class MyApp {
     this.userToken = null;
     this.menu.setRoot(LoginPage);
     this.menuCtrl.close();
+  }
+
+  changeFoto(){
+    this.fotoId = localStorage.getItem('image');
+    this.foto = "http://dappapache02.eastus.cloudapp.azure.com:4200" + `${this.fotoId}`;
+    this.patientName = localStorage.getItem('patientName');
+    this.correo = localStorage.getItem('emailUser');
   }
 
 

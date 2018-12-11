@@ -6,6 +6,8 @@ import { CardPage } from '../card/card';
 import { AppointmentProvider } from '../../providers/appoinment/appoinment';
 import { DependentsProvider } from '../../providers/dependents/dependents';
 import 'rxjs/add/operator/map'
+import * as moment from 'moment';
+
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
@@ -33,6 +35,7 @@ export class HomePage {
   public misCitas;
   public depesCitas;
   public citasDepes;
+  public diasFaltantes;
 
   constructor(public navCtrl : NavController,
     private autho : AuthorizationPublicProvider,
@@ -49,6 +52,7 @@ export class HomePage {
   }else{
     console.log("seguir normal es invitado")
   }
+
   const authorization = localStorage.getItem('authorization');
   if( !authorization ){
     this.autho.getKey().subscribe((data:any) =>{
@@ -90,7 +94,10 @@ export class HomePage {
             this.recipesPvr.getAllRecipes().subscribe((data:any) =>{
               this.recipes = data;
               this.recipendiente = this.recipes.length;
-              // console.log('this._recipes:', this.recipes);
+              console.log('this._recipes:', this.recipes);
+              const diaOne = moment(this.recipes.inicio_prescripcion);
+              const diaTwo = moment(this.recipes.fin_prescripcion)
+              this.diasFaltantes = diaOne.diff(diaTwo);
           });
       // citas de los dependientes
       this.dependensProvider.getdependesDay().subscribe(data =>{

@@ -68,6 +68,7 @@ export class LoginPage {
         localStorage.setItem('image', data.photoUrl);
         // localStorage.setItem('')
         this.events.publish('user:logged', 'logged');
+        this.events.publish('change:foto');
         if( !this.hora )
         this.navCtrl.push(HomePage )
         else

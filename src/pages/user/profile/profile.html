@@ -55,27 +55,37 @@
           <ion-col col-12>
               <ion-item>
                   <ion-label stacked>Contraseña Actual</ion-label>
-                  <ion-input type="text" value="" formControlName="oldPassword" ngModel>Contraseña actual</ion-input>
+                  <ion-input type="text"
+                             value=""
+                             formControlName="oldPassword"
+                             ngModel>Contraseña actual</ion-input>
               </ion-item>
+              <div *ngIf="formCode.get('oldPassword').errors && (formCode.get('oldPassword').touched || formCode.get('oldPassword').dirty)">
+                  <p class="error" *ngIf="formCode.get('oldPassword').hasError('required')">campo requerido</p>
+              </div>
           </ion-col>
 
           <ion-col col-12>
               <ion-item>
                   <ion-label stacked>Contraseña</ion-label>
                   <ion-input value=""
-                             formControlName="password"
+                             formControlName="passwordnew"
                              ngModel
                              [type]="password_type">Nueva contraseña
                   </ion-input>
                   <ion-icon name="eye" item-end (click)="changeType()"></ion-icon>
               </ion-item>
+              <div *ngIf="formCode.get('passwordnew').errors && (formCode.get('passwordnew').dirty || formCode.get('passwordnew').touched)">
+                  <p class="error" *ngIf="formCode.get('passwordnew').hasError('required')">campo requerido</p>
+                  <p class="error" *ngIf="formCode.get('passwordnew').hasError('pattern')">al menos un numero o un caracter especial</p>
+                  <p class="error" *ngIf="formCode.get('passwordnew').hasError('minlength')">minimo 8 caracteres</p>
+              </div>
           </ion-col>
 
           <ion-col col-12>
               <ion-item>
                   <ion-label stacked>Confirmar Contraseña</ion-label>
-                  <ion-input
-                              value=""
+                  <ion-input  value=""
                               formControlName="passwordRepeat"
                               ngModel
                               [type]="passwordold_type">
@@ -83,7 +93,13 @@
                   </ion-input>
                   <ion-icon name="eye" item-end (click)="changeOldType()"></ion-icon>
               </ion-item>
+              <div *ngIf="formCode.get('passwordRepeat').errors && (formCode.get('passwordRepeat').dirty || formCode.get('passwordRepeat').touched)">
+                  <p class="error" *ngIf="formCode.get('passwordRepeat').hasError('required')">campo requerido</p>
+                  <p class="error" *ngIf="formCode.get('passwordRepeat').hasError('pattern')">al menos un numero o un caracter especial</p>
+                  <p class="error" *ngIf="formCode.get('passwordRepeat').hasError('minlength')">minimo 8 caracteres</p>
+              </div>
           </ion-col>
+
     </ion-row>
 
     <button ion-button color="primary"

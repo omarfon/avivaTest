@@ -1,0 +1,37 @@
+
+<ion-content padding>
+  <div class="contenedorLogo">
+    <img src="assets/imgs/logoAviva.png" alt="logo aviva">
+  </div>
+<ion-slides pager>
+  <ion-slide>
+      primera Imagen
+  </ion-slide>
+
+  <ion-slide>
+      Segunda Imagen
+  </ion-slide>
+
+  <ion-slide>
+      Tercera Imagen
+  </ion-slide>
+</ion-slides>
+
+<div class="contenedorBotones">
+  <button ion-button
+          block
+          color="secondary"
+          (click)="goToLogin()"
+          class="botonInicio">
+    Login
+  </button>
+  <button ion-button
+          clear
+          (click)="goToRegister()"
+          color="primary"
+          class="botonRegister">
+    Registrarme
+  </button>
+</div>
+
+</ion-content>

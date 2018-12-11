@@ -39,13 +39,9 @@
             color: #fff!important;
         }
         .textoCitasNulo {
-            color: #A7A9AC;
+            color: #062F51;
             text-align: center;
-            width: 90%;
-            margin-left: 5%;
-            padding: 2em 4em;
-            margin-top: 20vh;
-            font-size: 1.4em;
+            font-size: 1.5em;
         }
         .gris {
             background: #F3F6F6;
@@ -94,16 +90,17 @@
             }
         }
         .nombreFamiliarBox{
-          background: #00B6A3;
           margin:0!important;
           padding:0!important;
           p {
+            background: #00B6A3;
             color:#fff;
             padding:.2em .5em;
             text-align: right;
-            margin-right: 20px;
+            margin-right: 10px;
           }
         }
+
         .segment-md-secondary .segment-button{
           color:#fff!important;
         }
@@ -121,7 +118,65 @@
         }
         .nombreUsuarios{
           color:#A7A9AC;
-          font-size:.9em;
+          font-size:.7em;
           margin-top:0;
         }
+        .principalName{
+          color:#A7A9AC;
+          font-size:.7em;
+          margin-top:0;
+        }
+        .nombrePrincipalBox{
+          margin: 0!important;
+          padding:0!important;
+          p{
+            background: #062F51!important;
+            color:#fff;
+            padding:.2em .5em;
+            text-align: right;
+            margin-right: 10px;
+          }
+        }
+        ion-slide{
+          width:100px!important;
+          text-align: center!important;
+        }
+        .swiper-container {
+          width: 100%;
+          margin-top:20px;
+      }
+      .botonConImagen{
+        p{
+          font-size:1.4em;
+        }
+      }
+      .botonConImagen:hover{
+        color:#FF634C;
+        background: none!important;
+        font-size: 1.2em;
+        width: 50px;
+        height:50px;
+        border: 2px dashed #FF634C;
+      }
+      .principalName{
+        color:#062F51;
+        font-size:.7em;
+        text-transform: capitalize!important;
+      }
+      ion-button:active{
+        background: red;
+      }
+      // .botonConImagen {
+      //   p{
+      //     font-size:1.4em;
+      //   }
+      // }
+      .contenedorSinCitas{
+        margin-top:20vh;
+      }
+      .imagenSinCitas{
+        width: 160px;
+        margin-left: calc(50% - 80px);
+      }
+
     }

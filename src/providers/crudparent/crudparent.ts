@@ -15,7 +15,7 @@ private api = "http://dappapache02.eastus.cloudapp.azure.com:4200/api/v2/users/r
 
 private apiCreate = "http://dappapache02.eastus.cloudapp.azure.com:4200/api/v2/users/register/";
 
-private apiValidate = "http://dappapache02.eastus.cloudapp.azure.com:4200/api/v2/users/validateemail";
+private apiValidate = "http://dappapache02.eastus.cloudapp.azure.com:4200/api/v2/users/validate-email/register";
 
 // private apiValidate = "http://192.168.1.133:4000/api/v2/users/validateemail";
 
