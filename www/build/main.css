@@ -39791,7 +39791,7 @@ ion-navbar.toolbar {
 
 page-app .fondoColor,
 page-app .scroll-content {
-  background: #007198 !important;
+  background: #fff !important;
   background-image: url(assets/imgs/fondo.png);
   background-repeat: no-repeat;
   background-size: cover;
@@ -39804,7 +39804,7 @@ page-app .scroll-content .list-md {
 
 page-app .fondoColor .item-md,
 page-app .scroll-content .item-md {
-  background-color: #00B6A3 !important;
+  background-color: #fff !important;
   color: #fff;
   margin-left: 20px;
 }
@@ -39922,26 +39922,6 @@ date-picker .disabled {
   visibility: hidden;
 }
 
-.imagen {
-  width: 120px;
-  height: 120px;
-  background: rgba(255, 255, 255, 0.5);
-  border-radius: 50%;
-  padding-top: 50px !important;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-  -ms-flex-align: center;
-  align-items: center;
-}
-
 .imagen:tap {
   width: 90%;
 }
@@ -39954,7 +39934,7 @@ date-picker .disabled {
 
 .fondoColor {
   background-repeat: no-repeat;
-  background-color: #00B6A3 !important;
+  background-color: #fff !important;
   width: 100%;
   height: 100%;
 }
@@ -39971,7 +39951,7 @@ date-picker .disabled {
 .lista .item {
   margin-top: .5em;
   background: transparent !important;
-  color: #fff;
+  color: #0D74AB;
 }
 
 .lista .item .item-icon {
@@ -39981,25 +39961,41 @@ date-picker .disabled {
 .containerData {
   background: #14A59C !important;
   text-align: center;
-  height: 240px;
+  height: 180px;
 }
 
 .nombreUsuario {
   color: #fff;
-  text-align: center;
+  text-align: left;
+  margin-left: 30px;
+  text-transform: lowercase;
+  font-size: 1.1em;
+  font-weight: 600;
 }
 
 .imagenPerfil {
-  width: 120px;
-  height: 120px;
-  margin-left: calc( 50% - 50px);
-  margin-top: 40px;
+  width: 60px;
+  height: 60px;
+  margin-top: 20px;
 }
 
 .imagenPerfil img {
   border-radius: 50%;
-  width: 120px;
-  height: 120px;
+  width: 60px !important;
+  height: 60px !important;
+  margin-left: 30px;
+}
+
+.correo {
+  color: #fff;
+  text-align: left;
+  margin-left: 30px;
+  font-size: 1.1em;
+  margin-top: -10px;
+}
+
+.contenedorDatosUsuario {
+  margin-top: -10px;
 }
 
 cabecera {
@@ -40893,7 +40889,7 @@ page-card .borrar {
   display: none !important;
 }
 
-cabecera {
+.cabecera {
   background-color: #287195;
   color: #fff;
   display: -webkit-box;
@@ -41397,6 +41393,17 @@ page-home .nombreDepe {
   padding-right: 16px;
 }
 
+page-home .inicioDePrescripcion {
+  color: #287195;
+  font-size: .7em;
+}
+
+page-home .diasFaltantes {
+  color: #00B6A3;
+  font-size: .8em;
+  font-weight: 600;
+}
+
 page-myparents .nombrePariente {
   color: #00B6A3;
   font-size: 1.3em;
@@ -41521,13 +41528,9 @@ page-my-dates .bar-button-md-default:hover:not(.disable-hover) {
 }
 
 page-my-dates .textoCitasNulo {
-  color: #A7A9AC;
+  color: #062F51;
   text-align: center;
-  width: 90%;
-  margin-left: 5%;
-  padding: 2em 4em;
-  margin-top: 20vh;
-  font-size: 1.4em;
+  font-size: 1.5em;
 }
 
 page-my-dates .gris {
@@ -41594,16 +41597,16 @@ page-my-dates .centrado p {
 }
 
 page-my-dates .nombreFamiliarBox {
-  background: #00B6A3;
   margin: 0 !important;
   padding: 0 !important;
 }
 
 page-my-dates .nombreFamiliarBox p {
+  background: #00B6A3;
   color: #fff;
   padding: .2em .5em;
   text-align: right;
-  margin-right: 20px;
+  margin-right: 10px;
 }
 
 page-my-dates .segment-md-secondary .segment-button {
@@ -41627,8 +41630,69 @@ page-my-dates .botonConImagen {
 
 page-my-dates .nombreUsuarios {
   color: #A7A9AC;
-  font-size: .9em;
+  font-size: .7em;
   margin-top: 0;
+}
+
+page-my-dates .principalName {
+  color: #A7A9AC;
+  font-size: .7em;
+  margin-top: 0;
+}
+
+page-my-dates .nombrePrincipalBox {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+page-my-dates .nombrePrincipalBox p {
+  background: #062F51 !important;
+  color: #fff;
+  padding: .2em .5em;
+  text-align: right;
+  margin-right: 10px;
+}
+
+page-my-dates ion-slide {
+  width: 100px !important;
+  text-align: center !important;
+}
+
+page-my-dates .swiper-container {
+  width: 100%;
+  margin-top: 20px;
+}
+
+page-my-dates .botonConImagen p {
+  font-size: 1.4em;
+}
+
+page-my-dates .botonConImagen:hover {
+  color: #FF634C;
+  background: none !important;
+  font-size: 1.2em;
+  width: 50px;
+  height: 50px;
+  border: 2px dashed #FF634C;
+}
+
+page-my-dates .principalName {
+  color: #062F51;
+  font-size: .7em;
+  text-transform: capitalize !important;
+}
+
+page-my-dates ion-button:active {
+  background: red;
+}
+
+page-my-dates .contenedorSinCitas {
+  margin-top: 20vh;
+}
+
+page-my-dates .imagenSinCitas {
+  width: 160px;
+  margin-left: calc(50% - 80px);
 }
 
 page-my-date-modal #content {
@@ -42116,6 +42180,28 @@ page-recoverycode .text-input-md {
   font-weight: 600;
 }
 
+page-start ion-content {
+  background: #fafafa !important;
+}
+
+page-start .contenedorLogo {
+  width: 50%;
+  margin-left: 25%;
+  margin-top: 50px;
+}
+
+page-start ion-slides {
+  height: 60vh;
+}
+
+page-start .contenedorBotones {
+  text-align: center;
+}
+
+page-start .botonInicio {
+  height: 50px;
+}
+
 page-login .bajar {
   padding-top: 30px;
   padding-bottom: 10px;
@@ -42167,10 +42253,10 @@ page-login .noMargin {
 page-login .noLogin {
   color: #287195;
   text-align: center;
-  width: 60%;
   margin-left: 20%;
   padding: .5em 2em;
   border-radius: 20px;
+  text-transform: lowercase;
   background: rgba(0, 182, 164, 0.021);
 }
 
@@ -42198,6 +42284,30 @@ page-login .textoOlvido {
   border-radius: 10px;
   width: 50%;
   margin-left: 25%;
+}
+
+page-login .containerInputs {
+  margin-top: 35vh;
+}
+
+page-login .register {
+  text-transform: lowercase;
+  width: 100%;
+  text-align: center;
+}
+
+page-login .containerBotones {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: space-around;
+  -ms-flex-pack: distribute;
+  justify-content: space-around;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
 page-profile .cargaImagen img {
@@ -42253,6 +42363,12 @@ page-profile .dato {
   font-size: 1.1em;
 }
 
+page-profile .error {
+  color: red;
+  font-size: .7em;
+  margin-left: 16px;
+}
+
 page-register .bajas {
   text-transform: lowercase;
   font-size: .8em;
@@ -42291,7 +42407,6 @@ page-register .alto50 {
 
 page-register .registroDeUsuarioTitulo {
   text-align: center;
-  margin-top: 1.5em;
   color: #00B6A3;
   width: 85%;
   margin-left: 7.5%;
@@ -42299,4 +42414,17 @@ page-register .registroDeUsuarioTitulo {
 
 page-register .example-full-width {
   width: 100%;
+}
+
+page-register .transparent {
+  background: none !important;
+}
+
+page-register .header-md::after {
+  background-image: none !important;
+}
+
+page-register .toolbar-background-md {
+  border-color: none;
+  background: none;
 }

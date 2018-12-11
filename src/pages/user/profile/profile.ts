@@ -1,13 +1,13 @@
-// import { UserProvider } from '../../../providers/user/user';
-import { LoginPage } from '../login/login';
 import { Component } from '@angular/core';
-import { NavController, NavParams, AlertController } from 'ionic-angular';
-import * as shajs from 'sha.js';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { LoginPage } from '../login/login';
+import { NavController, NavParams, AlertController, Events } from 'ionic-angular';
+import { FormControl, FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/forms';
 import { UserProvider } from '../../../providers/user/user';
 import { Camera, CameraOptions } from '@ionic-native/camera';
 import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer';
+import * as shajs from 'sha.js';
 import { File } from '@ionic-native/file';
+
 
 @Component({
   selector: 'page-profile',
@@ -34,23 +34,33 @@ export class ProfilePage {
 
   timemark = new Date().getTime();
 
+
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
               public form: FormBuilder,
               public alertCtrl: AlertController,
               public userPvr: UserProvider,
               public camera: Camera,
-              public transfer: FileTransfer) {
+              public transfer: FileTransfer,
+              public events: Events) {
                 this.formCode = this.form.group({
-                  oldPassword  : [],
-                  password   : ['', [Validators.required]],
-                  passwordRepeat   : ['', [Validators.required]]
-              });
+                  oldPassword  : ['' , [Validators.required]
+                                 ],
+                  passwordnew   :['', [Validators.required,
+                                        Validators.minLength(8),
+                                        Validators.pattern('(?=.*[A-Za-z])(?=.*[0-9@$!%*#?&])[A-Za-z0-9@$!%*#?&]{8,}')]
+                                  ],
+                  passwordRepeat :['', [Validators.required,
+                                        Validators.minLength(8),
+                                        Validators.pattern("(?=.*[A-Za-z])(?=.*[\\d@$!%*#?&])[A-Za-z\\d@$!%*#?&]{8,}")]
+                                  ]
+                                });
+                                console.log('el valor del formulario:', this.formCode);
 
               // carga de la foto de perfil
               this.foto = this.url + `${this.fotoId}`;
               // console.log(this.foto);
-      // carga de los datos del usuario, aqui se le manda el id del usuario para obtener los datos con usrPvr-> getDatosPaciente
+              // carga de los datos del usuario, aqui se le manda el id del usuario para obtener los datos con usrPvr-> getDatosPaciente
               const id = localStorage.getItem('idTokenUser');
               this.userPvr.getDatosPaciente(id).subscribe(data =>{
                 this.datosPaciente = data;
@@ -65,7 +75,7 @@ export class ProfilePage {
 
   validacion(){
     const valid = this.formCode.value;
-    if(valid.password == valid.passwordRepeat){
+    if(valid.passwordnew == valid.passwordRepeat){
       return true;
     }else{
       return false;
@@ -110,6 +120,7 @@ export class ProfilePage {
     this.camera.getPicture( options )
     .then(imageData => {
       this.image = imageData;
+      this.events.publish('change:foto');
       // this.image = this.image;
       console.log('this.image:', this.image);
 
@@ -157,6 +168,7 @@ export class ProfilePage {
       const authorization = localStorage.getItem('authorization');
     // let headers = new HttpHeaders({"Authorization": authorization});
       const photo = this.image;
+      this.events.publish('change:foto');
       let options: FileUploadOptions = {
         fileKey: 'photo',
         fileName: 'photo',

@@ -26,6 +26,8 @@ export class MyDatesPage {
   private _citaspasadas;
   private $citaspasadas ;
   private recipe;
+  private nombre;
+  private nombreCortado;
 
   public dependens;
 
@@ -39,6 +41,16 @@ export class MyDatesPage {
               public recipePvr: RecipesProvider,
               public dependentsPvr: DependentsProvider) {
 
+                const nombrePatient = localStorage.getItem('patientName');
+                const separador = " ";
+                if(nombrePatient){
+                  this.nombre = nombrePatient.split(separador ,  1);
+                  this.nombreCortado = nombrePatient.slice(0,1);
+                }else{
+                  console.log("seguir normal es invitado")
+                }
+
+
               this.dependentsPvr.getDependens().subscribe(data =>{
                   this.dependens = data;
               console.log('los dependientes:', this.dependens);
@@ -47,6 +59,7 @@ export class MyDatesPage {
           this.appointmentProvider.getAppointmentsPeruser().subscribe(data =>{
             this.citas = 'miscitas';
             this.tasks = data;
+            console.log('los tasks:', this.tasks);
             this.mostrar = this.tasks.length;
             // console.log('mis citas:',this.tasks);
             // console.log('tasks:', this.tasks);

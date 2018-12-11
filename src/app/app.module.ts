@@ -84,9 +84,11 @@ import { RecipePage } from '../pages/recipe/recipe';
 import { RecoverycodePage } from '../pages/recoverycode/recoverycode';
 
 
+
 import { Camera } from '@ionic-native/camera';
 import { File } from '@ionic-native/file';
 import { FileTransfer } from '@ionic-native/file-transfer';
+import { StartPage } from '../pages/start/start';
 
 
 @NgModule({
@@ -117,7 +119,8 @@ import { FileTransfer } from '@ionic-native/file-transfer';
     RecipePage,
     CabeceraComponent,
     RecoveryPage,
-    RecoverycodePage
+    RecoverycodePage,
+    StartPage
   ],
   imports: [
     BrowserModule,
@@ -159,7 +162,8 @@ import { FileTransfer } from '@ionic-native/file-transfer';
     DetailRecipePage,
     RecipePage,
     RecoveryPage,
-    RecoverycodePage
+    RecoverycodePage,
+    StartPage
   ],
   providers: [
     StatusBar,

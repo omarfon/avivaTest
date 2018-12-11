@@ -120,6 +120,8 @@
                                         <ion-col col-9 class="contendorNombrePastilla">
                                             <p class="nombreMedicamento">{{receta.marca_comercial}}</p>
                                             <p class="vecesXdia"> {{ 24 / receta.cada_x_horas}} veces por día</p>
+                                            <p class="inicioDePrescripcion"> {{receta.inicio_prescripcion | date}}</p>
+                                            <p class="diasFaltantes"> faltan {{diasFaltantes}} dias</p>
                                         </ion-col>
                                       </ion-row>
                                     </ion-item>

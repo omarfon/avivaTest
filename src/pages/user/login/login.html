@@ -1,18 +1,17 @@
 
 <ion-content class="gris">
 
-    <h5 class="bajar textoAzul" text-center> Ahora necesitamos tus datos para iniciar una reserva. Si no tienes cuenta aún, registrate ¡es súper fácil!</h5>
+    <!-- <h5 class="bajar textoAzul" text-center> Ahora necesitamos tus datos para iniciar una reserva. Si no tienes cuenta aún, registrate ¡es súper fácil!</h5> -->
 
 
-    <div class="white">
+    <!-- <div class="white">
         <div padding>
             <button ion-button (click)="registrarUsuario()" full color="primary" class="alto50">Registrarse</button>
         </div>
 
-    </div>
+    </div> -->
 
-    <h3 text-center class="noMargin">ó</h3>
-    <div padding>
+    <div padding class="containerInputs">
         <p style="text-align: center">{{msg}}</p>
 
         <form #formulario="ngForm">
@@ -43,8 +42,26 @@
     </div>
     <p (click)="goToRecovery()"
         class="textoOlvido">Olvidé mi contraseña</p>
-    <p *ngIf="this.hora == undefined"
-      class="noLogin"
-      (click)="goToHome()">Continuar como invitado</p>
+
+          <ion-row class="containerBotones">
+            <ion-col col-5>
+              <button ion-button
+                      clear
+                      *ngIf="this.hora == undefined"
+                      class="noLogin"
+                      block
+                (click)="goToHome()">Continuar como invitado
+              </button>
+            </ion-col>
+            <ion-col col-7>
+              <button ion-button
+                     clear
+                      block
+                      class="register"
+                      (click)="registrarUsuario()">
+                registrarme
+              </button>
+            </ion-col>
+          </ion-row>
 
 </ion-content>

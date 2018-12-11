@@ -29,13 +29,22 @@ page-register {
     }
     .registroDeUsuarioTitulo{
       text-align: center;
-      margin-top:1.5em;
+      // margin-top:35px!important;
       color:#00B6A3;
       width: 85%;
       margin-left:7.5%;
-
     }
     .example-full-width {
       width: 100%;
+    }
+    .transparent{
+      background: none!important;
+    }
+    .header-md::after{
+      background-image:none!important;
+    }
+    .toolbar-background-md{
+        border-color:none;
+        background: none;
     }
 }

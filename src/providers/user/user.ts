@@ -65,7 +65,7 @@ export class UserProvider {
     const authorization = localStorage.getItem('authorization');
     let headers = new HttpHeaders({"Authorization": authorization});
     console.log('params:', params);
-    return this.http.post(this.apiUrl + 'validateemail', params, {headers})
+    return this.http.post(this.apiUrl + 'validate-email/recovery', params, {headers})
                     .map(data =>{
                       return data
                     }).catch(e => {

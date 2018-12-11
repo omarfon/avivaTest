@@ -7,22 +7,23 @@
     <ion-content class="fondoColor">
       <div class="containerData">
         <ion-row>
-          <ion-col col-12>
+          <!-- <ion-col col-12>
               <button ion-button text-center
               class="imagen"
               (click)="goPage(pro)"
               *ngIf="!foto">
                 <ion-icon class="iconAdd flecha" name="add"></ion-icon>
               </button>
-          </ion-col>
+          </ion-col> -->
           <ion-col col-12 *ngIf="foto">
               <div class="imagenPerfil"
               (click)="goPage(pro)">
                 <img src="{{foto}}?{{timemark}}" alt="">
               </div>
           </ion-col>
-          <ion-col col-12>
+          <ion-col col-12 class="contenedorDatosUsuario">
             <p class="nombreUsuario" *ngIf="foto">{{patientName}}</p>
+            <p class="correo" *ngIf="correo" >{{correo}}</p>
           </ion-col>
         </ion-row>
 

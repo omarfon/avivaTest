@@ -68,7 +68,7 @@ export class RecoverycodePage {
         if(this.logeo.ok == false){
           console.log('el logeo:', this.logeo);
           let alert = this.alertCtrl.create({
-            title:`${this.logeo.error.message}`,
+            title:`Error en la operación`,
             message:`${this.logeo.error.help}`,
             buttons: ['volver a intentar']
           });
