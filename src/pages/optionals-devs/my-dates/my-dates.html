@@ -89,10 +89,12 @@
                 </ion-item>
             </ion-card>
         </ion-list>
-        <div *ngIf="sinpasadas == 0">
-            <img src="assets/images/logoAviva.png" alt="">
-          <p class="textoCitasNulo">No tienes citas pasadas</p>
-        </div  >
+        <div *ngIf="!citaspa">
+          <div class="imagenSinCitas">
+            <img src="assets/imgs/sinCitas.png" alt="">
+          </div>
+          <p class="textoCitasNulo">No tienes citas pendientes</p>
+        </div >
     </div>
       <div *ngSwitchCase="'miscitas'">
         <ion-list *ngFor='let task of tasks'>
@@ -127,7 +129,7 @@
             </ion-item>
         </ion-card>
     </ion-list>
-    <div *ngIf="mostrar == 0 || sinParents == 0" class="contenedorSinCitas">
+    <div *ngIf="mostrar == 0 && sinParents == 0" class="contenedorSinCitas">
       <div class="imagenSinCitas">
         <img src="assets/imgs/sinCitas.png" alt="">
       </div>

@@ -49,7 +49,7 @@
                       <ion-col col-2>
                           <ion-badge *ngIf="citapendiente"
                                       class="badgeIcon"
-                                      color="notifi" item-end>{{citapendiente}}
+                                      color="notifi" item-end>C
                           </ion-badge>
                     </ion-col>
                 </mat-expansion-panel-header >
@@ -85,7 +85,7 @@
                           </ion-row>
                         </div>
                   </div>
-                    <div *ngIf="tasks < 1">
+                    <div *ngIf="!tasks">
                       <p  class="textoRecetas">En este momento no tienes citas proximas...</p>
                     </div>
                 </div>
@@ -120,8 +120,8 @@
                                         <ion-col col-9 class="contendorNombrePastilla">
                                             <p class="nombreMedicamento">{{receta.marca_comercial}}</p>
                                             <p class="vecesXdia"> {{ 24 / receta.cada_x_horas}} veces por día</p>
-                                            <p class="inicioDePrescripcion"> {{receta.inicio_prescripcion | date}}</p>
-                                            <p class="diasFaltantes"> faltan {{diasFaltantes}} dias</p>
+                                            <p class="inicioDePrescripcion"> inicio: {{receta.inicio_prescripcion | date}}</p>
+                                            <p class="diasFaltantes"> quedan {{diasFaltantes}} dias de tratamiento.</p>
                                         </ion-col>
                                       </ion-row>
                                     </ion-item>

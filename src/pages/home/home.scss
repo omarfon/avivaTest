@@ -134,11 +134,12 @@ page-home {
     }
     .nombreMedicamento{
       font-weight: 900;
-      color:#A7A9AC;
+      color:#00B6A3;
     }
     .vecesXdia{
-      color:#92DCE8;
-      font-size:.8em;
+      color:#287195;
+      font-weight: 500;
+      font-size:.9em;
     }
     .contenedorReceta{
       .item-md{
@@ -155,11 +156,11 @@ page-home {
     }
     .inicioDePrescripcion{
       color:#287195;
-      font-size: .7em;
+      font-size: .8em;
     }
     .diasFaltantes{
-      color:#00B6A3;
+      color:#287195;
       font-size:.8em;
-      font-weight: 600;
+      font-weight: 400;
     }
 }

@@ -25,8 +25,8 @@ export class ProfilePage {
 
   public formCode: FormGroup;
 
-  public password_type: string = 'password';
-  public passwordold_type: string = 'password';
+  public password_type: string = 'text';
+  public passwordold_type: string = 'text';
 
   public datosPaciente;
   public correoElectronico;
@@ -224,10 +224,10 @@ this.userPvr.changePassword(password , passwordNew ).subscribe(data =>{
 }
 
 changeType(){
-  this.password_type = this.password_type === 'text' ? 'password' : 'text';
+  this.password_type = this.password_type === 'password' ? 'text' : 'password';
 }
 
 changeOldType(){
-  this.passwordold_type = this.passwordold_type === 'text' ? 'password' : 'text';
+  this.passwordold_type = this.passwordold_type === 'password' ? 'text' : 'password';
 }
 }
