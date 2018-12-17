@@ -1773,7 +1773,7 @@ var ProfilePage = (function () {
             ],
             passwordRepeat: ['', [__WEBPACK_IMPORTED_MODULE_3__angular_forms__["j" /* Validators */].required,
                     __WEBPACK_IMPORTED_MODULE_3__angular_forms__["j" /* Validators */].minLength(8),
-                    __WEBPACK_IMPORTED_MODULE_3__angular_forms__["j" /* Validators */].pattern("(?=.*[A-Za-z])(?=.*[\\d@$!%*#?&])[A-Za-z\\d@$!%*#?&]{8,}")]
+                    __WEBPACK_IMPORTED_MODULE_3__angular_forms__["j" /* Validators */].pattern("(?=.*[A-Za-z])(?=.*[0-9@$!%*#?&])[A-Za-z0-9@$!%*#?&]{8,}")]
             ]
         });
         console.log('el valor del formulario:', this.formCode);
