@@ -334,7 +334,7 @@ var CodePage = (function () {
         var code = uno + dos + tres + cuatro;
         console.log(code);
         this.datos.code = code;
-        // this.datos.id = this.code.id;
+        this.datos.id = this.code.id;
         console.log('data armada:', this.datos);
         this.crudPvr.createNewUser(this.datos).subscribe(function (data) {
             _this.createOk = data;
