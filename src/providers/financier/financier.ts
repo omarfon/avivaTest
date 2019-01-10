@@ -23,10 +23,10 @@ export class FinancierProvider {
   getFinanciers(): Observable<string[]> {
     const authorization = localStorage.getItem('authorization');
     let headers = new HttpHeaders({"Authorization": authorization});
-    return this.http.get(this.apiUrl + 'payers', {headers})
+    return this.http.get(this.apiUrl + 'financiadores-productos', {headers})
                     .map(data => {
                       return data
-                    }).catch(e =>{
+                  }).catch(e =>{
                       return Observable.of(e)
                     });
   }
@@ -37,16 +37,16 @@ export class FinancierProvider {
     return this.http.get(this.apiUrl + `${financier_id}`, {headers})
               .map(data => {
                 return data
-              }).catch(e =>{
+            }).catch(e =>{
                 return Observable.of(e)
               });
   }
 
-  getPrice(center_id, basic_service_id, doctor_id, proposed_date) {
+  getPrice(servicio_id, prestacion_id, producto_id, medico_id, proposed_date) {
     // let params = { proposed_date: proposed_date, center_id: center_id, basic_service_id: basic_service_id, doctor_id: doctor_id }
     const authorization = localStorage.getItem('authorization');
     let headers = new HttpHeaders({"Authorization": authorization});
-    return this.http.get(this.apiUrl + `appointments/price/${center_id}/${basic_service_id}/${doctor_id}/${proposed_date}`, {headers})
+    return this.http.get(this.apiUrl + `citas/precio-prestacion?servicio_id=${servicio_id}&prestacion_id=${prestacion_id}&producto_id=${producto_id}&medico_id=${medico_id}&fecha=${proposed_date}`, {headers})
                     .map(data => {
                       return data
                     }).catch(e =>{

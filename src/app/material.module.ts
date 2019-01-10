@@ -31,7 +31,8 @@ import { MatButtonModule,
             MatRadioModule,
             MatCardModule,
             MatButtonModule,
-            MatExpansionModule],
+            MatExpansionModule
+          ],
 
     exports: [MatButtonModule,
         MatTabsModule,
@@ -47,7 +48,8 @@ import { MatButtonModule,
         MatRadioModule,
         MatCardModule,
         MatButtonModule,
-        MatExpansionModule],
+        MatExpansionModule
+      ],
 })
 
 

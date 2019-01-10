@@ -5,6 +5,11 @@ import { DependentsProvider } from '../../providers/dependents/dependents';
 import { CrudparentProvider } from '../../providers/crudparent/crudparent';
 import * as moment from 'moment';
 
+import { FormRegisterPage } from '../form-register/form-register';
+// import {MatBottomSheet, MatBottomSheetRef} from '@angular/material';
+
+
+
 
 @Component({
   selector: 'page-myparents',
@@ -92,6 +97,10 @@ export class MyparentsPage {
       this.openForm = false;
         });
     });
+
+  }
+  activeAction(){
+    console.log('botom slider');
   }
 
   deleteParent(depe){

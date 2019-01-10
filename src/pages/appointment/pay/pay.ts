@@ -35,6 +35,7 @@ export class PayPage {
   private available; //fecha seleccionada//
   private hora; // fecha seleccionada
   private culqiData;
+  private prestacion;
 
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
@@ -58,6 +59,9 @@ export class PayPage {
     this.hora = this.navParams.get('hora');
     this.depe = this.navParams.get('depe');
     this.price = this.navParams.get('price');
+    this.prestacion = this.navParams.get('prestacion');
+    console.log('this.prestacion:', this.prestacion );
+
     this.subida = this.hora.listjson;
     console.log('la hora', this.hora);
 

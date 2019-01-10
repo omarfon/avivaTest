@@ -75,6 +75,7 @@ export class FinancerPage {
   ccolor = false;
   yes = false;
   no = false;
+  public prestacion;
 
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
@@ -88,25 +89,28 @@ export class FinancerPage {
     public viewCtrl: ViewController,
     public loadingCtrl: LoadingController,
     public dependentsPvr: DependentsProvider) {
+      this.doctor = this.navParams.get('doctor');
+      this.available = this.navParams.get('available');
+      console.log('available y doctor:', this.doctor);
+      this.hora = this.navParams.get('hora');
 
-    this.isAndroid = platform.is('android');
 
-    this.dependentsPvr.getDependens().subscribe(data =>{
-      this.parents = data
+      this.dependentsPvr.getDependens().subscribe(data =>{
+        this.parents = data
         console.log('this.parents:', this.parents);
       });
 
-    this.financierProvider.getFinanciers().subscribe(data => { this.items = data; this.items.shift(); });
-    this.doctor = this.navParams.get('doctor');
-    this.available = this.navParams.get('available');
-    console.log(this.available);
-    this.hora = this.navParams.get('hora');
-    // this.subida = this.hora.listjson;
+      this.financierProvider.getFinanciers().subscribe(data =>
+        { this.items = data;
+          console.log('los financiadores:', data);
+          // this.items.shift();
+        });
 
+          this.isAndroid = platform.is('android');
+
+          // this.subida = this.hora.listjson;
     let role = localStorage.getItem('role');
-
     if (role == 'guest') {
-      //  console.log('no hay mail');
       let datos = this.navCtrl.push(LoginPage,
         {
           hora: this.hora,
@@ -117,7 +121,6 @@ export class FinancerPage {
     } else {
       console.log("si hay constraseña. que pase");
     }
-
   }
 
   evaluateEnsurance() {
@@ -139,8 +142,16 @@ export class FinancerPage {
       this.no = false;
     } else if (item == 2) {
       // PARTICULAR
-      this.financierProvider.getPrice(1, this.doctor.service.id, this.doctor.service.id, this.available).subscribe(data => {
-        this.price = Math.round(parseFloat(data[0].prest_precio_val) * 100 + Number.EPSILON) / 100;
+      const servicio_id = this.doctor.service.id;
+      const prestacion_id = 44;
+      const producto_id = 1;
+      const medico_id = this.doctor.service.id;
+
+      this.financierProvider.getPrice( servicio_id, prestacion_id, producto_id, medico_id, this.available).subscribe(data => {
+        this.prestacion = data;
+        // this.price = Math.round(parseFloat(data[0].prest_precio_val) * 100 + Number.EPSILON) / 100;
+        this.price = this.prestacion[0].prest_precio_val;
+        console.log('el precio en particular:', this.price);
         this.isPlace = false;
         this.isCard = false;
         this.firtClick = false;
@@ -158,8 +169,17 @@ export class FinancerPage {
 
   insuranceSelected(item, itemName) {
     // SEGUROS
-    this.financierProvider.getPrice(1, this.doctor.service.id, this.doctor.service.id, this.available).subscribe(data => {
-      this.price = Math.round(parseFloat(data[0].prest_precio_val) * 100 + Number.EPSILON) / 100;
+    const servicio_id = this.doctor.service.id;
+    const prestacion_id = 44;
+    const producto_id = 1;
+    const medico_id = this.doctor.id;
+
+    this.financierProvider.getPrice(servicio_id, prestacion_id, producto_id, medico_id, this.available).subscribe(data => {
+      console.log('lo que me devuelve la llamada:', data);
+      this.prestacion = data;
+      // this.price = Math.round(parseFloat(data[0].prest_precio_val) * 100 + Number.EPSILON) / 100;
+      this.price = this.prestacion[0].prest_precio_val;
+      console.log('el precio en seguros:', this.price);
       this.myEnsuranceName = itemName;
       this.isInsuranceName = true;
       this.isInsurance = false;
@@ -230,7 +250,8 @@ export class FinancerPage {
       available: this.available,
       hora: this.hora,
       depe: this.depe,
-      price: this.price
+      price: this.price,
+      prestacion: this.prestacion
   });
   console.log('el precio', this.price);
   }

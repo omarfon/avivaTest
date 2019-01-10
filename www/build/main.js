@@ -1,4 +1,4 @@
-webpackJsonp([0],{
+webpackJsonp([1],{
 
 /***/ 109:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -64,8 +64,8 @@ var RecoveryPage = (function () {
         Object(__WEBPACK_IMPORTED_MODULE_2__angular_core__["m" /* Component */])({
             selector: 'page-recovery',template:/*ion-inline-start:"/proyectos/IonicPruebas/ApolloIonicVersionOne/src/pages/recovery/recovery.html"*/'<!--\n  Generated template for the RecoveryPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title>Recuperación de cuenta</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n<p class="textoRecuperacion">Ingresa tu correo electronico, seguido enviaremos un código de 4 digitos, con el cual podrás recuperar tu contraseña.</p>\n  <form [formGroup]="formCode" (ngSubmit)="saveData(formCode.value)">\n\n    <ion-item >\n      <ion-label floating>Ingresa tu correo electronico</ion-label>\n      <ion-input\n                type="email"\n                [(ngModel)]="email"\n                formControlName="email">\n              </ion-input>\n    </ion-item>\n\n    <button ion-button\n            block\n            color="primary"\n            type="submit"\n            class="botonEnviar">\n      enviar\n    </button>\n  </form>\n\n</ion-content>\n'/*ion-inline-end:"/proyectos/IonicPruebas/ApolloIonicVersionOne/src/pages/recovery/recovery.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_3_ionic_angular__["j" /* NavController */],
-            __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["k" /* NavParams */],
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_3_ionic_angular__["k" /* NavController */],
+            __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["l" /* NavParams */],
             __WEBPACK_IMPORTED_MODULE_4__angular_forms__["b" /* FormBuilder */],
             __WEBPACK_IMPORTED_MODULE_1__providers_user_user__["a" /* UserProvider */],
             __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["b" /* AlertController */]])
@@ -186,8 +186,8 @@ var RecoverycodePage = (function () {
         Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["m" /* Component */])({
             selector: 'page-recoverycode',template:/*ion-inline-start:"/proyectos/IonicPruebas/ApolloIonicVersionOne/src/pages/recoverycode/recoverycode.html"*/'<ion-header>\n\n    <ion-navbar color="primary">\n      <ion-title>Código de Recuperación</ion-title>\n    </ion-navbar>\n\n  </ion-header>\n\n\n  <ion-content padding>\n\n    <p class="codigoValida">hemos enviado al correo el código de validación con el que podrás recuperar tu cuenta....</p>\n   <ion-row>\n     <form [formGroup]="formCode" (ngSubmit)="saveData(formCode.value)" novalidate>\n     <div col-12 padding >\n       <ion-row padding>\n           <ion-col class="rectanguloInput">\n             <ion-input type="tel"\n                          minlength="1"\n                          maxlength="1"\n                         [(ngModel)]="primero"\n                         formControlName="primero"\n                          ></ion-input>\n            </ion-col>\n           <ion-col class="rectanguloInput">\n              <ion-input type="tel"\n                        minlength="1"\n                        maxlength="1"\n                          [(ngModel)]="segundo"\n                          formControlName="segundo"\n                          ></ion-input>\n            </ion-col>\n           <ion-col class="rectanguloInput">\n             <ion-input type="tel"\n                        minlength="1"\n                        maxlength="1"\n                        tercero="tercero"\n                        formControlName="tercero"\n                        ngModel></ion-input>\n            </ion-col>\n            <ion-col class="rectanguloInput">\n                <ion-input type="tel"\n                        minlength="1"\n                        maxlength="1"\n                           tercero="cuarto"\n                           formControlName="cuarto"\n                           ngModel></ion-input>\n               </ion-col>\n              </ion-row>\n              <div>\n                  <p class="tituloContraseña">Cambia la contraseña</p>\n                   <ion-item>\n                       <ion-label floating>contraseña nueva</ion-label>\n                       <ion-input type="password"\n                                   formControlName="password"\n                                   ngModel>\n                       </ion-input>\n                     </ion-item>\n\n                     <ion-item>\n                         <ion-label floating>Repetir contraseña nueva</ion-label>\n                         <ion-input type="password"\n                                     formControlName="passwordRepeat"\n                                     ngModel>\n                         </ion-input>\n                       </ion-item>\n                </div>\n              <div class="center">\n                <button ion-button\n                        block\n                         type="submit"\n                         class="botonRecuperar"\n                         [disabled]="!formCode.valid || !validacion()">\n                   Recuperar\n                </button>\n              </div>\n     </div>\n\n    </form>\n  </ion-row>\n\n\n   <div class="center">\n     <p class="newCode">Si no recibiste o caducó tu codigo puedes solicitar uno nuevo.</p>\n     <button ion-button\n            class="codigoreen"\n            clear\n            (click)="sendCode()">reenviar códido\n   </button>\n   </div>\n\n  </ion-content>\n\n'/*ion-inline-end:"/proyectos/IonicPruebas/ApolloIonicVersionOne/src/pages/recoverycode/recoverycode.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["j" /* NavController */],
-            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["k" /* NavParams */],
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["k" /* NavController */],
+            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["l" /* NavParams */],
             __WEBPACK_IMPORTED_MODULE_0__angular_forms__["b" /* FormBuilder */],
             __WEBPACK_IMPORTED_MODULE_3__providers_user_user__["a" /* UserProvider */],
             __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["c" /* Events */],
@@ -213,7 +213,7 @@ var RecoverycodePage = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_catch__ = __webpack_require__(52);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_catch___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_catch__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_add_observable_throw__ = __webpack_require__(505);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_add_observable_throw__ = __webpack_require__(506);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_add_observable_throw___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_rxjs_add_observable_throw__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -277,7 +277,7 @@ var AuthorizationPublicProvider = (function () {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CodePage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_forms__ = __webpack_require__(8);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__providers_crudparent_crudparent__ = __webpack_require__(71);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__providers_crudparent_crudparent__ = __webpack_require__(72);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_ionic_angular__ = __webpack_require__(14);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__home_home__ = __webpack_require__(53);
@@ -332,10 +332,10 @@ var CodePage = (function () {
         var tres = codigo.tercero;
         var cuatro = codigo.cuarto;
         var code = uno + dos + tres + cuatro;
-        // console.log(code);
+        console.log(code);
         this.datos.code = code;
-        this.datos.id = this.code.id;
-        // console.log('data armada:', this.datos);
+        // this.datos.id = this.code.id;
+        console.log('data armada:', this.datos);
         this.crudPvr.createNewUser(this.datos).subscribe(function (data) {
             _this.createOk = data;
             // console.log('data que viene de la creación:', data);
@@ -377,14 +377,10 @@ var CodePage = (function () {
         Object(__WEBPACK_IMPORTED_MODULE_2__angular_core__["m" /* Component */])({
             selector: 'page-code',template:/*ion-inline-start:"/proyectos/IonicPruebas/ApolloIonicVersionOne/src/pages/code/code.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title>Código de Validación</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n\n  <p class="codigoValida">hemos enviado al correo el código de validación , ingresalo y listo....</p>\n <ion-row>\n   <div col-2></div>\n   <div col-8>\n      <form [formGroup]="formCode" (ngSubmit)="saveData(formCode.value)" novalidate>\n     <ion-row>\n         <ion-col class="rectanguloInput">\n           <ion-input type="tel"\n                        minlength="1"\n                        maxlength="1"\n                       [(ngModel)]="primero"\n                       formControlName="primero"\n                        ></ion-input>\n          </ion-col>\n         <ion-col class="rectanguloInput">\n            <ion-input type="tel"\n                      minlength="1"\n                      maxlength="1"\n                        [(ngModel)]="segundo"\n                        formControlName="segundo"\n                        ></ion-input>\n          </ion-col>\n         <ion-col class="rectanguloInput">\n           <ion-input type="tel"\n                      minlength="1"\n                      maxlength="1"\n                      tercero="tercero"\n                      formControlName="tercero"\n                      ngModel></ion-input>\n          </ion-col>\n          <ion-col class="rectanguloInput">\n              <ion-input type="tel"\n                      minlength="1"\n                      maxlength="1"\n                         tercero="cuarto"\n                         formControlName="cuarto"\n                         ngModel></ion-input>\n             </ion-col>\n            </ion-row>\n            <div class="center">\n              <button ion-button\n                       type="submit">\n                 registrarme\n              </button>\n            </div>\n    </form>\n   </div>\n   <div col-2></div>\n </ion-row>\n\n\n <div class="center">\n   <p class="newCode">Si no recibiste o caduco tu codigo puedes solicitar uno nuevo.</p>\n   <button ion-button\n          class="codigoreen"\n          clear\n          (click)="sendCode()">reenviar códido\n </button>\n </div>\n\n</ion-content>\n'/*ion-inline-end:"/proyectos/IonicPruebas/ApolloIonicVersionOne/src/pages/code/code.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_3_ionic_angular__["j" /* NavController */],
-            __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["k" /* NavParams */],
-            __WEBPACK_IMPORTED_MODULE_1__providers_crudparent_crudparent__["a" /* CrudparentProvider */],
-            __WEBPACK_IMPORTED_MODULE_0__angular_forms__["b" /* FormBuilder */],
-            __WEBPACK_IMPORTED_MODULE_6__providers_user_user__["a" /* UserProvider */],
-            __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["c" /* Events */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["k" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["k" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["l" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["l" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1__providers_crudparent_crudparent__["a" /* CrudparentProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__providers_crudparent_crudparent__["a" /* CrudparentProvider */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_0__angular_forms__["b" /* FormBuilder */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_forms__["b" /* FormBuilder */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_6__providers_user_user__["a" /* UserProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_6__providers_user_user__["a" /* UserProvider */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["c" /* Events */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["c" /* Events */]) === "function" && _f || Object])
     ], CodePage);
     return CodePage;
+    var _a, _b, _c, _d, _e, _f;
 }());
 
 //# sourceMappingURL=code.js.map
@@ -396,7 +392,7 @@ var CodePage = (function () {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PayPage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__providers_crudparent_crudparent__ = __webpack_require__(71);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__providers_crudparent_crudparent__ = __webpack_require__(72);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__home_home__ = __webpack_require__(53);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_core__ = __webpack_require__(0);
@@ -445,6 +441,8 @@ var PayPage = (function () {
         this.hora = this.navParams.get('hora');
         this.depe = this.navParams.get('depe');
         this.price = this.navParams.get('price');
+        this.prestacion = this.navParams.get('prestacion');
+        console.log('this.prestacion:', this.prestacion);
         this.subida = this.hora.listjson;
         console.log('la hora', this.hora);
         this.myForm = this.fb.group({
@@ -823,15 +821,15 @@ var PayPage = (function () {
         Object(__WEBPACK_IMPORTED_MODULE_3__angular_core__["m" /* Component */])({
             selector: 'page-pay',template:/*ion-inline-start:"/proyectos/IonicPruebas/ApolloIonicVersionOne/src/pages/appointment/pay/pay.html"*/'\n<ion-header>\n  <ion-navbar color="primary">\n    <ion-title>Pago</ion-title>\n  </ion-navbar>\n</ion-header>\n\n\n<ion-content >\n    <div class="container-gris">\n      <div class="containerResumen">\n        <ion-card>\n            <div class="containerTextoPago">\n                <h3 class="titleCardPago">Lo que has escogido hasta el momento</h3>\n            </div>\n            <div>\n                <ion-row class="centrar">\n                    <ion-col col-4>\n                        <img id="profile-image" src="http://dappapache02.eastus.cloudapp.azure.com:4200/img/professionals/{{doctor.id}}.png">\n                    </ion-col>\n                    <ion-col col-8>\n                        <h3 class="nombreDoctor" text-center>\n                            {{ doctor.fullName }}\n                        </h3>\n                        <div class="sedeContainer">\n                            <!-- <p bold class="izquierda">Sede:</p> -->\n                            <p class="sede" type="text" disabled="true">Mendiola</p>\n                        </div>\n                    </ion-col>\n                </ion-row>\n            </div>\n                <div  class="centrar">\n                    <p class="izquierda">Especialidad:</p>\n                    <p item-end class="blue" disabled="true"> {{ doctor.service.description }}</p>\n                </div>\n                <div  class="centrar">\n                    <p class="izquierda">Fecha:</p>\n                    <p item-end class="blue" disabled="true">\n                        {{ available | date:\'EEEE d , MMMM \' : \'es\' }}\n                    </p>\n                </div>\n                <div  class="centrar">\n                    <p class="izquierda">Hora:</p>\n                    <p class="blue" type="text" disabled="true">\n                        {{ hora.hour | slice:0:5}}\n                    </p>\n                </div>\n                <div  class="centrar">\n                    <p class="izquierda">Costo:</p>\n                    <p class="blue" item-end type="text" disabled="true">\n                        S/.{{ price }}\n                    </p>\n                </div>\n                <div  *ngIf="depe"\n                    class="centrar">\n                    <p class="izquierda">Cita reservada para:</p>\n                    <p class="blue" item-end type="text" disabled="true">\n                        {{ depe.name}}\n                    </p>\n                </div>\n        </ion-card>\n      </div>\n      <div padding>\n        <!-- <h4 text-center class="tituloMetodos">Metodos de Pago</h4> -->\n        <h4 class="tituloPagos">Escoge la forma en la que vas a pagar y listo...</h4>\n        <ion-segment [(ngModel)]="pago">\n            <ion-segment-button value="enLocal">\n                En local\n            </ion-segment-button>\n            <ion-segment-button value="enClinica">\n                Con tarjeta\n            </ion-segment-button>\n        </ion-segment>\n    </div>\n    <div [ngSwitch]="pago">\n        <ion-list *ngSwitchCase="\'enLocal\'">\n            <div class="resumen" >\n              <div padding>\n                <button *ngIf="!depe"\n                        ion-button color="secondary"\n                        class="botonAccept"\n                        [class.button-disabled]="true"\n                        block\n                        (click)="next()">Confirmar cita\n                </button>\n                <button *ngIf="depe"\n                      ion-button\n                      color="secondary"\n                      class="botonAccept"\n                      [class.button-disabled]="true"\n                      block (click)="nextDepe()">Confirmar cita\n                </button>\n            </div>\n          </div>\n      </ion-list>\n        <ion-list *ngSwitchCase="\'enClinica\'">\n            <div class="resumen" >\n\n\n\n        <div padding>\n            <button ion-button color="secondary" class="botonAccept" [class.button-disabled]="true" block (click)="payCulqi()">Pago con tarjeta</button>\n        </div>\n\n        <!-- <div padding>\n                <button ion-button color="secondary" class="botonAccept" [class.button-disabled]="true" block (click)="openModalPayu()">Pagar ahora con payu</button>\n            </div> -->\n\n\n    </div>\n        </ion-list>\n    </div>\n</div>\n\n</ion-content>\n'/*ion-inline-end:"/proyectos/IonicPruebas/ApolloIonicVersionOne/src/pages/appointment/pay/pay.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_4_ionic_angular__["j" /* NavController */],
-            __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["k" /* NavParams */],
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_4_ionic_angular__["k" /* NavController */],
+            __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["l" /* NavParams */],
             __WEBPACK_IMPORTED_MODULE_2__angular_forms__["b" /* FormBuilder */],
             __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["b" /* AlertController */],
-            __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["i" /* ModalController */],
+            __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["j" /* ModalController */],
             __WEBPACK_IMPORTED_MODULE_5__providers_appoinment_appoinment__["a" /* AppointmentProvider */],
             __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["a" /* ActionSheetController */],
-            __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["n" /* ViewController */],
-            __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["g" /* LoadingController */],
+            __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["o" /* ViewController */],
+            __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["h" /* LoadingController */],
             __WEBPACK_IMPORTED_MODULE_0__providers_crudparent_crudparent__["a" /* CrudparentProvider */]])
     ], PayPage);
     return PayPage;
@@ -846,11 +844,11 @@ var PayPage = (function () {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CreateparentPage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__providers_crudparent_crudparent__ = __webpack_require__(71);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__providers_crudparent_crudparent__ = __webpack_require__(72);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(14);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_forms__ = __webpack_require__(8);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_dependents_dependents__ = __webpack_require__(72);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_dependents_dependents__ = __webpack_require__(73);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_moment__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_moment__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__appointment_financer_financer__ = __webpack_require__(81);
@@ -938,10 +936,10 @@ var CreateparentPage = (function () {
         Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["m" /* Component */])({
             selector: 'page-createparent',template:/*ion-inline-start:"/proyectos/IonicPruebas/ApolloIonicVersionOne/src/pages/createparent/createparent.html"*/'\n<ion-content padding class="gris">\n<div class="cienPorCiento">\n  <ion-row>\n    <ion-col col-9>\n      <h3 class="tituloFamiliar">Creación de cuenta Adicional</h3>\n    </ion-col>\n    <ion-col col-3 class="contenedorButton">\n      <button ion-button class="buttonClose">\n        <ion-icon name="close" color="secondary" class="close" round (click)="closeModal()">\n        </ion-icon>\n      </button>\n    </ion-col>\n  </ion-row>\n</div>\n\n  <form [formGroup]="formFamily" (ngSubmit)="saveData(formFamily.value)" novalidate>\n    <ion-list>\n      <ion-grid>\n\n        <ion-item>\n          <ion-label stacked>Nombres:</ion-label>\n          <ion-input formControlName="name" type="text" maxlength="40">\n          </ion-input>\n        </ion-item>\n\n  <ion-item>\n    <ion-label stacked>Apellido Paterno:</ion-label>\n    <ion-input formControlName="paternal_surname" type="text" maxlength="40">\n    </ion-input>\n  </ion-item>\n\n  <ion-item>\n    <ion-label stacked>Apellido Materno:</ion-label>\n    <ion-input formControlName="maternal_surname" type="text" maxlength="40">\n    </ion-input>\n  </ion-item>\n\n  <ion-col col-12>\n    <ion-item>\n      <ion-label stacked>Documento:</ion-label>\n      <ion-select [(ngModel)]="change" formControlName="type_document" name="type_document" floating>\n        <ion-option value="D.N.I">DNI</ion-option>\n        <ion-option value="carne_extranjeria">Carne de Extranjeria</ion-option>\n        <ion-option value="pasaporte">Pasaporte</ion-option>\n      </ion-select>\n    </ion-item>\n  </ion-col>\n\n  <ion-col col-12>\n    <ion-item>\n      <ion-label stacked> Nº Documento:</ion-label>\n      <ion-input *ngIf="change === \'D.N.I\'" type="number" formControlName="dni" name="dni" minlength="8" maxlength="8" stacked></ion-input>\n      <ion-input *ngIf="change === \'carne_extranjeria\'" type="tel" formControlName="dni" name="dni" minlength="12" maxlength="12"\n        stacked></ion-input>\n      <ion-input *ngIf="change === \'pasaporte\'" type="tel" formControlName="dni" name="dni" minlength="12" maxlength="12" stacked></ion-input>\n      <!-- <p color="danger" ion-text *ngIf="registerForm.get(\'dni\').hasError(\'required\')">DNI requerido</p> -->\n    </ion-item>\n  </ion-col>\n\n  </ion-grid>\n\n  <ion-col col-12>\n      <ion-item>\n        <ion-label stacked>Sexo:</ion-label>\n        <ion-select formControlName="gender" name="gender">\n          <ion-option value="HOMBRE">Hombre</ion-option>\n          <ion-option value="MUJER">Mujer</ion-option>\n        </ion-select>\n      </ion-item>\n    </ion-col>\n\n    <ion-col col-12>\n        <ion-item>\n          <ion-label stacked>Nacimiento:</ion-label>\n          <ion-datetime displayFormat="MM/DD/YYYY"\n                        formControlName="date_of_birth"\n                        name="date_of_birth"\n                        max="{{actual}}"></ion-datetime>\n          <!-- <ion-input type="date" formControlName="date_of_birth" name="date_of_birth"></ion-input> -->\n        </ion-item>\n      </ion-col>\n\n  <ion-col col-12>\n    <ion-item>\n      <ion-label stacked>Parentesco:</ion-label>\n      <ion-select formControlName="kindred" name="kindred" floating>\n        <!-- <ion-option value="father">Padre</ion-option>\n        <ion-option value="mother">Madre</ion-option> -->\n        <ion-option value="hijo/a">hijo/a</ion-option>\n        <!-- <ion-option value="daughter">Hija</ion-option>\n        <ion-option value="uncle">Tio</ion-option>\n        <ion-option value="aunt">Tia</ion-option> -->\n      </ion-select>\n    </ion-item>\n  </ion-col>\n      </ion-list>\n      <button ion-button type="submit"\n              [disabled]="!formFamily.valid"\n              block\n              color="secondary"\n              class="guardaryContinuar">Guardar y continuar</button>\n    </form>\n\n</ion-content>\n'/*ion-inline-end:"/proyectos/IonicPruebas/ApolloIonicVersionOne/src/pages/createparent/createparent.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["j" /* NavController */],
-            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["k" /* NavParams */],
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["k" /* NavController */],
+            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["l" /* NavParams */],
             __WEBPACK_IMPORTED_MODULE_3__angular_forms__["b" /* FormBuilder */],
-            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["n" /* ViewController */],
+            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["o" /* ViewController */],
             __WEBPACK_IMPORTED_MODULE_4__providers_dependents_dependents__["a" /* DependentsProvider */],
             __WEBPACK_IMPORTED_MODULE_0__providers_crudparent_crudparent__["a" /* CrudparentProvider */]])
     ], CreateparentPage);
@@ -963,7 +961,7 @@ var CreateparentPage = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_ionic_angular__ = __webpack_require__(14);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_appoinment_appoinment__ = __webpack_require__(55);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__my_date_modal_my_date_modal__ = __webpack_require__(408);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__providers_dependents_dependents__ = __webpack_require__(72);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__providers_dependents_dependents__ = __webpack_require__(73);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1064,13 +1062,13 @@ var MyDatesPage = (function () {
     };
     MyDatesPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_2__angular_core__["m" /* Component */])({
-            selector: 'page-my-dates',template:/*ion-inline-start:"/proyectos/IonicPruebas/ApolloIonicVersionOne/src/pages/optionals-devs/my-dates/my-dates.html"*/'<ion-header>\n    <ion-navbar color="primary" hideBackButton="true">\n        <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n        <ion-title> Mi citas </ion-title>\n    </ion-navbar>\n    <ion-toolbar color="primary">\n      <ion-segment [(ngModel)]="citas" color="secondary">\n        <ion-segment-button value="citaspasadas">\n          <p>Citas Pasadas</p>\n        </ion-segment-button>\n        <ion-segment-button value="miscitas">\n          <p>Proximas citas</p>\n        </ion-segment-button>\n        <!-- <ion-segment-button value="citasfamiliares">\n          <p>citas familiares</p>\n        </ion-segment-button> -->\n      </ion-segment>\n    </ion-toolbar>\n</ion-header>\n\n<ion-content>\n  <div [ngSwitch]="citas">\n    <div *ngSwitchCase="\'citaspasadas\'">\n      <ion-slides class="containerDepends">\n              <ion-slide>\n                  <button ion-button\n                          class="botonConImagen"\n                          (click)="getDatesUser()">\n                        <img src="" alt="">\n                        {{nombreCortado}}\n                  </button>\n                  <p class="principalName">{{nombre}}</p>\n              </ion-slide>\n\n                <ion-slide *ngFor="let dep of dependens">\n                    <button ion-button\n                            color="secondary"\n                            class="botonConImagen"\n                           (click)="getDatesDepends(dep)">\n                          <p>{{dep.name | slice:0:1}}</p>\n                      <img src="" alt="">\n                    </button>\n                    <p class="nombreUsuarios">{{dep.name}}</p>\n                  </ion-slide>\n      </ion-slides>\n        <ion-list *ngFor=\'let citaspa of citaspasadas\'>\n            <ion-card class="bordeDerecho" *ngIf="citaspa ">\n                <ion-item>\n                    <ion-row>\n                        <ion-col col-4>\n                            <ion-avatar item-start>\n                                <img src="http://dappapache02.eastus.cloudapp.azure.com:4200/img/professionals/{{citaspa.codigo_personal}}.png">\n                            </ion-avatar>\n                        </ion-col>\n                        <ion-col col-8>\n                            <h3 class="tituloCitas">{{citaspa.apellido1 | lowercase}} {{citaspa.apellido2 | lowercase}} {{citaspa.nombre | lowercase}}</h3>\n                            <p class="especialidad">{{ citaspa.servicio_basico | lowercase }}</p>\n                            <p class="sede">{{ citaspa.nombre_centro | lowercase }}</p>\n                        </ion-col>\n                        <ion-grid>\n                          <ion-row *ngIf="citaspa.tiene_receta == 1">\n                              <ion-col col-10 class="centrado">\n                                  <p>receta para esta cita:</p>\n                              </ion-col>\n                              <ion-col col-2>\n                                <button ion-button\n                                clear\n                                class="iconoDerecha">\n                                    <ion-icon name="attach"\n                                      (click)="goToRecipe(citaspa)">\n                                    </ion-icon>\n                                  </button>\n                              </ion-col>\n                            </ion-row>\n                        </ion-grid>\n                        <ion-col col-12 class="gris">\n                            <ion-row>\n                                <ion-col class="diaCita">\n                                    <p class="day">{{ citaspa.fecha | date:\'EEEE d , MMMM \' : \'es\' }} </p>\n                                </ion-col>\n                                <ion-col class="hourCita">\n                                    <p class="hour">{{ citaspa.hora | date: \'HH:mm\' }}</p>\n                                </ion-col>\n                            </ion-row>\n                        </ion-col>\n                    </ion-row>\n                </ion-item>\n            </ion-card>\n        </ion-list>\n        <div *ngIf="!citaspa">\n          <div class="imagenSinCitas">\n            <img src="assets/imgs/sinCitas.png" alt="">\n          </div>\n          <p class="textoCitasNulo">No tienes citas pendientes</p>\n        </div >\n    </div>\n      <div *ngSwitchCase="\'miscitas\'">\n        <ion-list *ngFor=\'let task of tasks\'>\n        <ion-card (click)="goToDetailsTask(task)" class="bordeDerecho" *ngIf="task ">\n            <ion-item>\n                <ion-row>\n                    <ion-col col-4>\n                        <ion-avatar item-start>\n                            <img src="http://dappapache02.eastus.cloudapp.azure.com:4200/img/professionals/{{task.professional.id}}.png">\n                        </ion-avatar>\n                    </ion-col>\n                    <ion-col col-8>\n                        <ion-col col-12 class="nombrePrincipalBox">\n                            <p >Cita para: {{task.patient.name}}</p>\n                      </ion-col>\n                        <h3 class="tituloCitas">{{task.professional.fullName | slice:0:25 | lowercase}}</h3>\n                        <p class="especialidad">{{ task.service.basicService.description | lowercase }}</p>\n                        <p class="sede">{{ task.service.center.name | lowercase }}</p>\n                    </ion-col>\n                    <ion-col col-12 class="gris">\n                        <ion-row>\n                            <ion-col class="diaCita">\n                                <p class="day">{{ task.appointmentDateTime | date:\'EEEE d , MMMM \' : \'es\' }} </p>\n                            </ion-col>\n                            <ion-col class="hourCita">\n                                <p class="hour">{{ task.appointmentDateTime | date: \'HH:mm\' }}</p>\n                            </ion-col>\n                        </ion-row>\n\n                    </ion-col>\n                </ion-row>\n            </ion-item>\n        </ion-card>\n    </ion-list>\n    <div *ngIf="mostrar == 0 && sinParents == 0" class="contenedorSinCitas">\n      <div class="imagenSinCitas">\n        <img src="assets/imgs/sinCitas.png" alt="">\n      </div>\n    <p class="textoCitasNulo">No tienes citas pendientes</p>\n    </div  >\n\n    <ion-list *ngFor=\'let taskpa of tasksParents\'>\n        <ion-card (click)="gotoDetails(taskpa)" class="bordeDerecho" *ngIf="taskpa.appointments[0]">\n            <ion-item>\n                <ion-row>\n                    <ion-col col-4>\n                        <ion-avatar item-start>\n                            <img src="http://dappapache02.eastus.cloudapp.azure.com:4200/img/professionals/{{taskpa.appointments[0].professional.id}}.png">\n                        </ion-avatar>\n                    </ion-col>\n                    <ion-col col-8>\n                        <ion-row>\n                          <ion-col col-12\n                            class="nombreFamiliarBox">\n                            <p class="nombreFamiliar">Cita para: {{taskpa.appointments[0].patient.name}}</p>\n                          </ion-col>\n                          <ion-col col-12>\n                            <h3 class="tituloCitas">Dr. {{taskpa.appointments[0].professional.fullName | slice:0:25 | lowercase}}</h3>\n                            <p class="especialidad">{{ taskpa.appointments[0].service.basicService.description | lowercase }}</p>\n                            <p class="sede">{{ taskpa.appointments[0].service.center.name | lowercase }}</p>\n                          </ion-col>\n                        </ion-row>\n                    </ion-col>\n                    <ion-col col-12 class="gris">\n                        <ion-row>\n                            <ion-col class="diaCita">\n                                <p class="day">{{ taskpa.appointments[0].appointmentDateTime | date:\'EEEE d , MMMM \' : \'es\' }} </p>\n                            </ion-col>\n                            <ion-col class="hourCita">\n                                <p class="hour">{{ taskpa.appointments[0].appointmentDateTime | date: \'HH:mm\' }}</p>\n                            </ion-col>\n                        </ion-row>\n\n                    </ion-col>\n                </ion-row>\n            </ion-item>\n        </ion-card>\n    </ion-list>\n      </div>\n  </div>\n\n\n</ion-content>\n'/*ion-inline-end:"/proyectos/IonicPruebas/ApolloIonicVersionOne/src/pages/optionals-devs/my-dates/my-dates.html"*/,
+            selector: 'page-my-dates',template:/*ion-inline-start:"/proyectos/IonicPruebas/ApolloIonicVersionOne/src/pages/optionals-devs/my-dates/my-dates.html"*/'<ion-header>\n    <ion-navbar color="primary" hideBackButton="true">\n        <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n        <ion-title> Mi citas </ion-title>\n    </ion-navbar>\n    <ion-toolbar color="primary">\n      <ion-segment [(ngModel)]="citas" color="secondary">\n        <ion-segment-button value="citaspasadas">\n          <p>Citas Pasadas</p>\n        </ion-segment-button>\n        <ion-segment-button value="miscitas">\n          <p>Proximas citas</p>\n        </ion-segment-button>\n        <!-- <ion-segment-button value="citasfamiliares">\n          <p>citas familiares</p>\n        </ion-segment-button> -->\n      </ion-segment>\n    </ion-toolbar>\n</ion-header>\n\n<ion-content>\n  <div [ngSwitch]="citas">\n    <div *ngSwitchCase="\'citaspasadas\'">\n      <ion-slides class="containerDepends">\n              <ion-slide>\n                  <button ion-button\n                          class="botonConImagen"\n                          (click)="getDatesUser()">\n                        <img src="" alt="">\n                        {{nombreCortado}}\n                  </button>\n                  <p class="principalName">{{nombre}}</p>\n              </ion-slide>\n\n                <ion-slide *ngFor="let dep of dependens">\n                    <button ion-button\n                            color="secondary"\n                            class="botonConImagen"\n                           (click)="getDatesDepends(dep)">\n                          <p>{{dep.name | slice:0:1}}</p>\n                      <img src="" alt="">\n                    </button>\n                    <p class="nombreUsuarios">{{dep.name}}</p>\n                  </ion-slide>\n      </ion-slides>\n        <ion-list *ngFor=\'let citaspa of citaspasadas\'>\n            <ion-card class="bordeDerecho" *ngIf="citaspa ">\n                <ion-item>\n                    <ion-row>\n                        <ion-col col-4>\n                            <ion-avatar item-start>\n                                <img src="http://dappapache02.eastus.cloudapp.azure.com:4200/img/professionals/{{citaspa.codigo_personal}}.png">\n                            </ion-avatar>\n                        </ion-col>\n                        <ion-col col-8>\n                            <h3 class="tituloCitas">{{citaspa.apellido1 | lowercase}} {{citaspa.apellido2 | lowercase}} {{citaspa.nombre | lowercase}}</h3>\n                            <p class="especialidad">{{ citaspa.servicio_basico | lowercase }}</p>\n                            <p class="sede">{{ citaspa.nombre_centro | lowercase }}</p>\n                        </ion-col>\n                        <ion-grid>\n                          <ion-row *ngIf="citaspa.tiene_receta == 1">\n                              <ion-col col-10 class="centrado">\n                                  <p>receta para esta cita:</p>\n                              </ion-col>\n                              <ion-col col-2>\n                                <button ion-button\n                                        clear\n                                        class="iconoDerecha">\n                                    <ion-icon name="attach"\n                                      (click)="goToRecipe(citaspa)">\n                                    </ion-icon>\n                                  </button>\n                              </ion-col>\n                            </ion-row>\n                        </ion-grid>\n                        <ion-col col-12 class="gris">\n                            <ion-row>\n                                <ion-col class="diaCita">\n                                    <p class="day">{{ citaspa.fecha | date:\'EEEE d , MMMM \' : \'es\' }} </p>\n                                </ion-col>\n                                <ion-col class="hourCita">\n                                    <p class="hour">{{ citaspa.hora | date: \'HH:mm\' }}</p>\n                                </ion-col>\n                            </ion-row>\n                        </ion-col>\n                    </ion-row>\n                </ion-item>\n            </ion-card>\n          </ion-list>\n              <div *ngIf="!citaspasadas">\n                <div class="imagenSinCitas">\n                  <img src="assets/imgs/sinCitas.png" alt="">\n                </div>\n                <p class="textoCitasNulo">No tienes citas pendientes</p>\n              </div >\n    </div>\n      <div *ngSwitchCase="\'miscitas\'">\n        <ion-list *ngFor=\'let task of tasks\'>\n        <ion-card (click)="goToDetailsTask(task)" class="bordeDerecho" *ngIf="task ">\n            <ion-item>\n                <ion-row>\n                    <ion-col col-4>\n                        <ion-avatar item-start>\n                            <img src="http://dappapache02.eastus.cloudapp.azure.com:4200/img/professionals/{{task.professional.id}}.png">\n                        </ion-avatar>\n                    </ion-col>\n                    <ion-col col-8>\n                        <ion-col col-12 class="nombrePrincipalBox">\n                            <p >Cita para: {{task.patient.name}}</p>\n                      </ion-col>\n                        <h3 class="tituloCitas">{{task.professional.fullName | slice:0:25 | lowercase}}</h3>\n                        <p class="especialidad">{{ task.service.basicService.description | lowercase }}</p>\n                        <p class="sede">{{ task.service.center.name | lowercase }}</p>\n                    </ion-col>\n                    <ion-col col-12 class="gris">\n                        <ion-row>\n                            <ion-col class="diaCita">\n                                <p class="day">{{ task.appointmentDateTime | date:\'EEEE d , MMMM \' : \'es\' }} </p>\n                            </ion-col>\n                            <ion-col class="hourCita">\n                                <p class="hour">{{ task.appointmentDateTime | date: \'HH:mm\' }}</p>\n                            </ion-col>\n                        </ion-row>\n\n                    </ion-col>\n                </ion-row>\n            </ion-item>\n        </ion-card>\n    </ion-list>\n    <div *ngIf="mostrar == 0 && sinParents == 0" class="contenedorSinCitas">\n      <div class="imagenSinCitas">\n        <img src="assets/imgs/sinCitas.png" alt="">\n      </div>\n    <p class="textoCitasNulo">No tienes citas pendientes</p>\n    </div  >\n\n    <ion-list *ngFor=\'let taskpa of tasksParents\'>\n        <ion-card (click)="gotoDetails(taskpa)" class="bordeDerecho" *ngIf="taskpa.appointments[0]">\n            <ion-item>\n                <ion-row>\n                    <ion-col col-4>\n                        <ion-avatar item-start>\n                            <img src="http://dappapache02.eastus.cloudapp.azure.com:4200/img/professionals/{{taskpa.appointments[0].professional.id}}.png">\n                        </ion-avatar>\n                    </ion-col>\n                    <ion-col col-8>\n                        <ion-row>\n                          <ion-col col-12\n                            class="nombreFamiliarBox">\n                            <p class="nombreFamiliar">Cita para: {{taskpa.appointments[0].patient.name}}</p>\n                          </ion-col>\n                          <ion-col col-12>\n                            <h3 class="tituloCitas">Dr. {{taskpa.appointments[0].professional.fullName | slice:0:25 | lowercase}}</h3>\n                            <p class="especialidad">{{ taskpa.appointments[0].service.basicService.description | lowercase }}</p>\n                            <p class="sede">{{ taskpa.appointments[0].service.center.name | lowercase }}</p>\n                          </ion-col>\n                        </ion-row>\n                    </ion-col>\n                    <ion-col col-12 class="gris">\n                        <ion-row>\n                            <ion-col class="diaCita">\n                                <p class="day">{{ taskpa.appointments[0].appointmentDateTime | date:\'EEEE d , MMMM \' : \'es\' }} </p>\n                            </ion-col>\n                            <ion-col class="hourCita">\n                                <p class="hour">{{ taskpa.appointments[0].appointmentDateTime | date: \'HH:mm\' }}</p>\n                            </ion-col>\n                        </ion-row>\n\n                    </ion-col>\n                </ion-row>\n            </ion-item>\n        </ion-card>\n    </ion-list>\n      </div>\n  </div>\n\n\n</ion-content>\n'/*ion-inline-end:"/proyectos/IonicPruebas/ApolloIonicVersionOne/src/pages/optionals-devs/my-dates/my-dates.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_3_ionic_angular__["j" /* NavController */],
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_3_ionic_angular__["k" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["b" /* AlertController */],
-            __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["i" /* ModalController */],
-            __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["n" /* ViewController */],
-            __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["k" /* NavParams */],
+            __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["j" /* ModalController */],
+            __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["o" /* ViewController */],
+            __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["l" /* NavParams */],
             __WEBPACK_IMPORTED_MODULE_4__providers_appoinment_appoinment__["a" /* AppointmentProvider */],
             __WEBPACK_IMPORTED_MODULE_6__providers_dependents_dependents__["a" /* DependentsProvider */],
             __WEBPACK_IMPORTED_MODULE_1__providers_recipes_recipes__["a" /* RecipesProvider */],
@@ -1101,19 +1099,27 @@ webpackEmptyAsyncContext.id = 185;
 /***/ }),
 
 /***/ 228:
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-function webpackEmptyAsyncContext(req) {
-	// Here Promise.resolve().then() is used instead of new Promise() to prevent
-	// uncatched exception popping up in devtools
-	return Promise.resolve().then(function() {
-		throw new Error("Cannot find module '" + req + "'.");
+var map = {
+	"../pages/form-register/form-register.module": [
+		620,
+		0
+	]
+};
+function webpackAsyncContext(req) {
+	var ids = map[req];
+	if(!ids)
+		return Promise.reject(new Error("Cannot find module '" + req + "'."));
+	return __webpack_require__.e(ids[1]).then(function() {
+		return __webpack_require__(ids[0]);
 	});
-}
-webpackEmptyAsyncContext.keys = function() { return []; };
-webpackEmptyAsyncContext.resolve = webpackEmptyAsyncContext;
-module.exports = webpackEmptyAsyncContext;
-webpackEmptyAsyncContext.id = 228;
+};
+webpackAsyncContext.keys = function webpackAsyncContextKeys() {
+	return Object.keys(map);
+};
+webpackAsyncContext.id = 228;
+module.exports = webpackAsyncContext;
 
 /***/ }),
 
@@ -1159,7 +1165,7 @@ var FinancierProvider = (function () {
     FinancierProvider.prototype.getFinanciers = function () {
         var authorization = localStorage.getItem('authorization');
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["c" /* HttpHeaders */]({ "Authorization": authorization });
-        return this.http.get(this.apiUrl + 'payers', { headers: headers })
+        return this.http.get(this.apiUrl + 'financiadores-productos', { headers: headers })
             .map(function (data) {
             return data;
         }).catch(function (e) {
@@ -1176,11 +1182,11 @@ var FinancierProvider = (function () {
             return __WEBPACK_IMPORTED_MODULE_2_rxjs_Observable__["Observable"].of(e);
         });
     };
-    FinancierProvider.prototype.getPrice = function (center_id, basic_service_id, doctor_id, proposed_date) {
+    FinancierProvider.prototype.getPrice = function (servicio_id, prestacion_id, producto_id, medico_id, proposed_date) {
         // let params = { proposed_date: proposed_date, center_id: center_id, basic_service_id: basic_service_id, doctor_id: doctor_id }
         var authorization = localStorage.getItem('authorization');
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["c" /* HttpHeaders */]({ "Authorization": authorization });
-        return this.http.get(this.apiUrl + ("appointments/price/" + center_id + "/" + basic_service_id + "/" + doctor_id + "/" + proposed_date), { headers: headers })
+        return this.http.get(this.apiUrl + ("citas/precio-prestacion?servicio_id=" + servicio_id + "&prestacion_id=" + prestacion_id + "&producto_id=" + producto_id + "&medico_id=" + medico_id + "&fecha=" + proposed_date), { headers: headers })
             .map(function (data) {
             return data;
         }).catch(function (e) {
@@ -1293,12 +1299,12 @@ var PayuPage = (function () {
         Object(__WEBPACK_IMPORTED_MODULE_2__angular_core__["m" /* Component */])({
             selector: 'page-payu',template:/*ion-inline-start:"/proyectos/IonicPruebas/ApolloIonicVersionOne/src/pages/payu/payu.html"*/'<ion-content padding>\n    <form [formGroup]="myForm" (ngSubmit)="saveData(myForm)" novalidate>\n      <ion-row>\n        <!-- cabecera del modal -->\n        <ion-col col-12\n                  class="backCabecera">\n          <ion-row>\n            <!-- espacio para las imagenes -->\n            <ion-col col-4>\n             <div class="imagenCheckout">\n\n             </div>\n            </ion-col>\n            <!-- div para el texto de titulo y subtitulo -->\n            <ion-col col-8>\n              <h5 class="tituloDeCita">Titulo de la cita</h5>\n              <p class="resumenCita">algún resumen</p>\n            </ion-col>\n          </ion-row>\n        </ion-col>\n        <!-- cuerpo del modal -->\n        <ion-col col-12\n                 class="backCuerpoModal">\n          <ion-row>\n            <ion-col \n                    col-12\n                    class="sinpading top10">\n              <ion-item>\n                  <ion-icon name="card" item-left></ion-icon>\n                <ion-input type="tel" \n                            placeholder="4111-1111-1111-1111"\n                            formControlName="numero"\n                            required\n                            minlength="16"\n                            maxlength="16"\n                            name="numero"\n                            >\n                </ion-input>\n              </ion-item>\n            </ion-col>\n            <ion-col\n                    col-6\n                    class="sinpading">\n              <ion-item>\n                  <ion-icon name="calendar" item-left></ion-icon>\n                <ion-input type="text" \n                            date="yyyy-mm"\n                            placeholder="YYYY/MM"\n                            formControlName="month"\n                            required \n                            maxlength="6">        \n                </ion-input>\n              </ion-item>\n            </ion-col>\n            <ion-col \n                    col-6\n                    class="sinpading">\n              <ion-item>\n                  <ion-icon name="unlock" item-left></ion-icon>\n                <ion-input type="tel" \n                            placeholder="CVV"\n                            formControlName="cvv"\n                            minLength="3" \n                            maxlength="3"\n                            name="cvv"\n                            required>\n                </ion-input>\n              </ion-item>\n            </ion-col>\n\n            <ion-col \n                    col-12\n                    class="sinpading top10">\n              <ion-item>\n                  <ion-icon name="at" item-left></ion-icon>\n                <ion-input type="email" \n                            formControlName = "mail"\n                            placeholder="Correo electrónico"\n                            name="mail">\n                </ion-input>\n                </ion-item>\n            </ion-col>\n            \n          </ion-row>\n          <div padding>\n              <button ion-button color="secondary" block type="submit" [disabled]="!myForm.valid" >Pagar S/ 45.50</button>\n            </div>\n        </ion-col>\n      </ion-row>\n    </form>\n</ion-content>\n'/*ion-inline-end:"/proyectos/IonicPruebas/ApolloIonicVersionOne/src/pages/payu/payu.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_3_ionic_angular__["j" /* NavController */],
-            __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["k" /* NavParams */],
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_3_ionic_angular__["k" /* NavController */],
+            __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["l" /* NavParams */],
             __WEBPACK_IMPORTED_MODULE_1__angular_forms__["b" /* FormBuilder */],
             __WEBPACK_IMPORTED_MODULE_0__providers_payu_test_payu_test__["a" /* PayuTestProvider */],
             __WEBPACK_IMPORTED_MODULE_5__providers_appoinment_appoinment__["a" /* AppointmentProvider */],
-            __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["n" /* ViewController */],
+            __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["o" /* ViewController */],
             __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["b" /* AlertController */]])
     ], PayuPage);
     return PayuPage;
@@ -1564,8 +1570,8 @@ var DetailRecipePage = (function () {
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
             selector: 'page-detail-recipe',template:/*ion-inline-start:"/proyectos/IonicPruebas/ApolloIonicVersionOne/src/pages/detail-recipe/detail-recipe.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title>detalle receta</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content >\n  <div class="contenedorDatos">\n    <ion-grid>\n      <ion-row>\n          <ion-col col-4>\n            <div class="iconoReceta">\n              <p class="dia">{{date.inicio_prescripcion | date:\'dd\'}}</p>\n              <p class="mes">{{date.inicio_prescripcion | date:\'MMMM\'}}</p>\n            </div>\n          </ion-col>\n          <ion-col col-8>\n            <p class="especialidad"> Especialidad:</p>\n            <p class="resultado">{{date.servicio}}</p>\n            <p class="especialidad">Doctor:</p>\n            <p class="resultado">{{date.apellidop_personal}} {{date.apellidom_personal}}</p>\n          </ion-col>\n        </ion-row>\n    </ion-grid>\n  </div>\n\n    <div *ngIf="recetas">\n        <div *ngFor="let recipe of recetas">\n          <ion-card>\n            <ion-card-header text-wrap>\n                <ion-row>\n                    <ion-col col-3\n                          class="containerIconAndDays">\n                        <img src="assets/imgs/recipes/{{recipe.formasfar_pk}}.png" alt="">\n                        <p class="cantidadDeDias">{{recipe.dias_duracion_prescripcion}}</p>\n                        <p class="dias">días</p>\n                    </ion-col>\n                    <ion-col col-9\n                             class="containerDatosPastilla">\n                        <h3 class="nombrePastilla"\n                           *ngIf="recipe.nombre_generico">\n                           {{recipe.nombre_generico}}\n                    </h3>\n                        <p class="textoAlternativo"\n                        *ngIf="recipe.marca_comercial">\n                        o puedes encontrarlo como:\n                        </p>\n                        <p class="nombrePastilla"\n                          *ngIf="recipe.marca_comercial">\n                          {{recipe.marca_comercial}}\n                        </p>\n                          <p class="inicio">Inicio: {{recipe.inicio_prescripcion | date: "dd MMMM yyyy"}}</p>\n                    </ion-col>\n                  </ion-row>\n            </ion-card-header>\n            <ion-card-content>\n                <div *ngIf="recetas && recipe.cada_x_horas == 8"\n                class="down">\n            <h4 class="tituloDeLasTomas"> tomas de 3 veces por día</h4>\n            <ion-row padding>\n              <ion-col class="cuadrados">\n                <p> 6-9 am</p>\n                <p class="cantidad">{{recipe.cantidad_dosis}}</p>\n                </ion-col>\n              <ion-col class="cuadrados">\n                <p> 2-4 pm</p>\n                <p class="cantidad"> {{recipe.cantidad_dosis}} </p>\n              </ion-col>\n              <ion-col class="cuadrados">\n                <p>10-12 m</p>\n                <p class="cantidad"> {{recipe.cantidad_dosis}} </p>\n              </ion-col>\n            </ion-row>\n        </div>\n\n        <div *ngIf="recetas && recipe.cada_x_horas == 12"\n              class="down">\n          <p class="tituloDeLasTomas"> tomas de 2 veces por día</p>\n          <ion-row padding>\n            <ion-col class="cuadrados">\n              <p> 6-9 am</p>\n              <p class="cantidad">{{recipe.cantidad_dosis}}</p>\n            </ion-col>\n            <ion-col class="cuadrados">\n              <p>6-9 pm</p>\n              <p class="cantidad"> {{recipe.cantidad_dosis}} </p>\n            </ion-col>\n          </ion-row>\n        </div>\n\n        <div *ngIf="recetas && recipe.cada_x_horas == 6"\n        class="down">\n            <p class="tituloDeLasTomas"> tomas de 4 veces por día</p>\n            <ion-row padding>\n              <ion-col class="cuadrados">\n                <p> 6-8 am</p>\n                <p class="cantidad">{{recipe.cantidad_dosis}}</p>\n              </ion-col>\n              <ion-col class="cuadrados">\n                  <p> 12-2 pm</p>\n                  <p class="cantidad">{{recipe.cantidad_dosis}}</p>\n                </ion-col>\n                <ion-col class="cuadrados">\n                    <p> 6-8 pm</p>\n                    <p class="cantidad">{{recipe.cantidad_dosis}}</p>\n                  </ion-col>\n              <ion-col class="cuadrados">\n                <p>12-2 m</p>\n                <p class="cantidad"> {{recipe.cantidad_dosis}} </p>\n              </ion-col>\n            </ion-row>\n          </div>\n\n          <div *ngIf="recetas && recipe.cada_x_horas == 24"\n          class="down">\n              <p class="tituloDeLasTomas"> toma de 1 vez por día</p>\n              <ion-row padding>\n                <ion-col class="cuadrados">\n                  <p> 6-8 am</p>\n                  <p class="cantidad">{{recipe.cantidad_dosis}}</p>\n                </ion-col>\n\n              </ion-row>\n            </div>\n            </ion-card-content>\n          </ion-card>\n\n\n\n\n      </div>\n    </div>\n</ion-content>\n'/*ion-inline-end:"/proyectos/IonicPruebas/ApolloIonicVersionOne/src/pages/detail-recipe/detail-recipe.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavParams */]])
     ], DetailRecipePage);
     return DetailRecipePage;
 }());
@@ -1582,8 +1588,8 @@ var DetailRecipePage = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(14);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(8);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_dependents_dependents__ = __webpack_require__(72);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_crudparent_crudparent__ = __webpack_require__(71);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_dependents_dependents__ = __webpack_require__(73);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_crudparent_crudparent__ = __webpack_require__(72);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_moment__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_moment__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -1601,6 +1607,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+// import {MatBottomSheet, MatBottomSheetRef} from '@angular/material';
 var MyparentsPage = (function () {
     function MyparentsPage(navCtrl, navParams, fb, dependentsPvr, crudPvr, alertCtrl) {
         var _this = this;
@@ -1669,6 +1676,9 @@ var MyparentsPage = (function () {
             });
         });
     };
+    MyparentsPage.prototype.activeAction = function () {
+        console.log('botom slider');
+    };
     MyparentsPage.prototype.deleteParent = function (depe) {
         var _this = this;
         console.log('lo que me trae depe', depe);
@@ -1706,8 +1716,8 @@ var MyparentsPage = (function () {
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
             selector: 'page-myparents',template:/*ion-inline-start:"/proyectos/IonicPruebas/ApolloIonicVersionOne/src/pages/myparents/myparents.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title>Mis Parientes</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n\n  <div >\n    <ion-card *ngFor="let depe of dependens">\n      <ion-row>\n        <ion-col col-4>\n          <ion-avatar>\n            <img src="../assets/imgs/avatars/nino.png" alt="">\n          </ion-avatar>\n        </ion-col>\n        <ion-col col-6>\n            <h3 class="nombrePariente">{{depe.name}}</h3>\n            <p  *ngIf="depe.relation"\n                class="parentesco">{{depe.relation.name}}</p>\n            <p class="edad">7 años</p>\n        </ion-col>\n        <ion-col col-2>\n          <button ion-button\n                  clear\n                  (click)="deleteParent(depe)">\n            <ion-icon name="close"></ion-icon>\n          </button>\n        </ion-col>\n      </ion-row>\n    </ion-card>\n  </div>\n  <div class="center">\n    <button ion-button\n            color="secondary"\n            (click)="showForm()">\n     Agregar familiar\n    </button>\n  </div>\n  <div *ngIf="openForm == true"\n        class="down20">\n      <div class="cienPorCiento">\n        <h3 class="tituloFamiliar">Creación de cuenta Adicional</h3>\n      </div>\n\n      <form [formGroup]="formFamily" (ngSubmit)="saveData(formFamily.value)" novalidate>\n          <ion-list>\n\n\n              <ion-item>\n                <ion-label stacked>Nombres:</ion-label>\n                <ion-input formControlName="name" type="text" maxlength="40">\n                </ion-input>\n              </ion-item>\n\n        <ion-item>\n          <ion-label stacked>Apellido Paterno:</ion-label>\n          <ion-input formControlName="paternal_surname" type="text" maxlength="40">\n          </ion-input>\n        </ion-item>\n\n        <ion-item>\n          <ion-label stacked>Apellido Materno:</ion-label>\n          <ion-input formControlName="maternal_surname" type="text" maxlength="40">\n          </ion-input>\n        </ion-item>\n\n        <ion-col col-6>\n          <ion-item>\n            <ion-label stacked>Documento:</ion-label>\n            <ion-select [(ngModel)]="change" formControlName="type_document" name="type_document" floating>\n              <ion-option value="D.N.I">DNI</ion-option>\n              <ion-option value="carne_extranjeria">Carne de Extranjeria</ion-option>\n              <ion-option value="pasaporte">Pasaporte</ion-option>\n            </ion-select>\n          </ion-item>\n        </ion-col>\n\n        <ion-col col-12>\n          <ion-item>\n            <ion-label stacked> Nº Documento:</ion-label>\n            <ion-input *ngIf="change === \'D.N.I\'" type="number" formControlName="dni" name="dni" minlength="8" maxlength="8" stacked></ion-input>\n            <ion-input *ngIf="change === \'carne_extranjeria\'" type="tel" formControlName="dni" name="dni" minlength="12" maxlength="12"\n            stacked></ion-input>\n            <ion-input *ngIf="change === \'pasaporte\'" type="tel" formControlName="dni" name="dni" minlength="12" maxlength="12" stacked></ion-input>\n            <!-- <p color="danger" ion-text *ngIf="registerForm.get(\'dni\').hasError(\'required\')">DNI requerido</p> -->\n          </ion-item>\n        </ion-col>\n\n        <ion-col col-6>\n            <ion-item>\n              <ion-label stacked>Sexo:</ion-label>\n              <ion-select formControlName="gender" name="gender">\n                <ion-option value="HOMBRE">Hombre</ion-option>\n                <ion-option value="MUJER">Mujer</ion-option>\n              </ion-select>\n            </ion-item>\n          </ion-col>\n\n          <ion-col col-12>\n              <ion-item>\n                <ion-label stacked>Nacimiento:</ion-label>\n                <ion-datetime displayFormat="DD/MM/YYYY"\n                                      formControlName="date_of_birth"\n                                      max="{{actual}}"></ion-datetime>\n              </ion-item>\n            </ion-col>\n\n\n        <ion-col col-12>\n          <ion-item>\n            <ion-label stacked>Parentesco:</ion-label>\n            <ion-select formControlName="kindred" name="kindred" floating>\n              <!-- <ion-option value="father">Padre</ion-option>\n              <ion-option value="mother">Madre</ion-option> -->\n              <ion-option value="hijo/a">hijo/a</ion-option>\n              <!-- <ion-option value="daughter">Hija</ion-option>\n              <ion-option value="uncle">Tio</ion-option>\n              <ion-option value="aunt">Tia</ion-option> -->\n            </ion-select>\n          </ion-item>\n        </ion-col>\n\n            </ion-list>\n\n            <button ion-button type="submit" [disabled]="!formFamily.valid" block color="secondary" class="guardaryContinuar">Guardar y continuar</button>\n          </form>\n  </div>\n\n</ion-content>\n'/*ion-inline-end:"/proyectos/IonicPruebas/ApolloIonicVersionOne/src/pages/myparents/myparents.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */],
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavParams */],
             __WEBPACK_IMPORTED_MODULE_2__angular_forms__["b" /* FormBuilder */],
             __WEBPACK_IMPORTED_MODULE_3__providers_dependents_dependents__["a" /* DependentsProvider */],
             __WEBPACK_IMPORTED_MODULE_4__providers_crudparent_crudparent__["a" /* CrudparentProvider */],
@@ -1946,8 +1956,8 @@ var ProfilePage = (function () {
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
             selector: 'page-profile',template:/*ion-inline-start:"/proyectos/IonicPruebas/ApolloIonicVersionOne/src/pages/user/profile/profile.html"*/'<ion-header>\n    <ion-navbar color="primary">\n        <ion-title>Mis Datos</ion-title>\n    </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n  <form  [formGroup]="formCode" (ngSubmit)="changePassword(formCode.value)" novalidate>\n    <ion-row>\n        <ion-col col-6>\n            <div class="cargaImagen"\n                  (click)="takePicture()">\n                  <img src="{{foto}}?{{timemark}}" alt="">\n            </div>\n        </ion-col>\n\n          <ion-col col-6 *ngIf="datosPaciente">\n            <ion-col col-12>\n              <ion-label stacked class="labelDatos">Nombres</ion-label>\n              <p class="dato">{{datosPaciente.nombre}}</p>\n            </ion-col>\n            <ion-col col-12>\n              <ion-label stacked class="labelDatos">Apellidos</ion-label>\n              <p class="dato">{{datosPaciente.apellido1}} {{datosPaciente.apellido2}}</p>\n            </ion-col>\n            <ion-col col-12>\n                <ion-label stacked class="labelDatos">Sexo</ion-label>\n                <p class="dato">{{datosPaciente.sexo}}</p>\n            </ion-col>\n            <ion-col col-12>\n                <ion-label stacked class="labelDatos">Telefono</ion-label>\n                <p class="dato">{{datosPaciente.telefono1}}</p>\n            </ion-col>\n          </ion-col>\n\n          <ion-col col-12 *ngIf="datosPaciente">\n            <ion-row>\n              <ion-col col-6>\n                  <ion-label stacked class="labelDatos">Fecha de nacimiento</ion-label>\n                  <p class="dato">{{datosPaciente.fecha_nac | date}}</p>\n              </ion-col>\n\n              <ion-col col-6 *ngIf="correoElectronico">\n                  <ion-label stacked class="labelDatos">Correo Electronico</ion-label>\n                  <p class="dato">{{correoElectronico}}</p>\n              </ion-col>\n            </ion-row>\n          </ion-col>\n\n\n\n          <div class="tituloCambioContraseña">\n            <h4 >Cambio de Contraseña</h4>\n          </div>\n          <ion-col col-12>\n              <ion-item>\n                  <ion-label stacked>Contraseña Actual</ion-label>\n                  <ion-input type="text"\n                             value=""\n                             formControlName="oldPassword"\n                             ngModel>Contraseña actual</ion-input>\n              </ion-item>\n              <div *ngIf="formCode.get(\'oldPassword\').errors && (formCode.get(\'oldPassword\').touched || formCode.get(\'oldPassword\').dirty)">\n                  <p class="error" *ngIf="formCode.get(\'oldPassword\').hasError(\'required\')">campo requerido</p>\n              </div>\n          </ion-col>\n\n          <ion-col col-12>\n              <ion-item>\n                  <ion-label stacked>Contraseña</ion-label>\n                  <ion-input value=""\n                             formControlName="passwordnew"\n                             ngModel\n                             [type]="password_type">Nueva contraseña\n                  </ion-input>\n                  <ion-icon name="eye" item-end (click)="changeType()"></ion-icon>\n              </ion-item>\n              <div *ngIf="formCode.get(\'passwordnew\').errors && (formCode.get(\'passwordnew\').dirty || formCode.get(\'passwordnew\').touched)">\n                  <p class="error" *ngIf="formCode.get(\'passwordnew\').hasError(\'required\')">campo requerido</p>\n                  <p class="error" *ngIf="formCode.get(\'passwordnew\').hasError(\'pattern\')">al menos un numero o un caracter especial</p>\n                  <p class="error" *ngIf="formCode.get(\'passwordnew\').hasError(\'minlength\')">minimo 8 caracteres</p>\n              </div>\n          </ion-col>\n\n          <ion-col col-12>\n              <ion-item>\n                  <ion-label stacked>Confirmar Contraseña</ion-label>\n                  <ion-input  value=""\n                              formControlName="passwordRepeat"\n                              ngModel\n                              [type]="passwordold_type">\n                              Confirmar nueva contraseña\n                  </ion-input>\n                  <ion-icon name="eye" item-end (click)="changeOldType()"></ion-icon>\n              </ion-item>\n              <div *ngIf="formCode.get(\'passwordRepeat\').errors && (formCode.get(\'passwordRepeat\').dirty || formCode.get(\'passwordRepeat\').touched)">\n                  <p class="error" *ngIf="formCode.get(\'passwordRepeat\').hasError(\'required\')">campo requerido</p>\n                  <p class="error" *ngIf="formCode.get(\'passwordRepeat\').hasError(\'pattern\')">al menos un numero o un caracter especial</p>\n                  <p class="error" *ngIf="formCode.get(\'passwordRepeat\').hasError(\'minlength\')">minimo 8 caracteres</p>\n              </div>\n          </ion-col>\n\n    </ion-row>\n\n    <button ion-button color="primary"\n            block\n            class="alto50"\n            type="submit"\n            [disabled]="!formCode.valid || !validacion()">\n            cambiar contraseña\n    </button>\n  </form>\n\n</ion-content>\n'/*ion-inline-end:"/proyectos/IonicPruebas/ApolloIonicVersionOne/src/pages/user/profile/profile.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["j" /* NavController */],
-            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["k" /* NavParams */],
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["k" /* NavController */],
+            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["l" /* NavParams */],
             __WEBPACK_IMPORTED_MODULE_3__angular_forms__["b" /* FormBuilder */],
             __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["b" /* AlertController */],
             __WEBPACK_IMPORTED_MODULE_4__providers_user_user__["a" /* UserProvider */],
@@ -1992,7 +2002,7 @@ var IrmPage = (function () {
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
             selector: 'page-irm',template:/*ion-inline-start:"/proyectos/IonicPruebas/ApolloIonicVersionOne/src/pages/optionals-devs/irm/irm.html"*/'<!--\n  Generated template for the IrmPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>irm</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n\n</ion-content>\n'/*ion-inline-end:"/proyectos/IonicPruebas/ApolloIonicVersionOne/src/pages/optionals-devs/irm/irm.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavParams */]])
     ], IrmPage);
     return IrmPage;
 }());
@@ -2034,8 +2044,8 @@ var RecipePage = (function () {
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
             selector: 'page-recipe',template:/*ion-inline-start:"/proyectos/IonicPruebas/ApolloIonicVersionOne/src/pages/recipe/recipe.html"*/'\n<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title>Detalle de receta</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n<ion-content >\n    <div *ngIf="recetas">\n        <div *ngFor="let recipe of recetas">\n          <ion-card>\n            <ion-card-header>\n                <ion-row>\n                    <ion-col col-3\n                          class="containerIconAndDays">\n                        <img src="assets/imgs/recipes/{{recipe.formasfar_pk}}.png" alt="">\n                        <p class="cantidadDeDias">{{recipe.dias_duracion_prescripcion}}</p>\n                        <p class="dias">días</p>\n                    </ion-col>\n                    <ion-col col-9\n                             class="containerDatosPastilla">\n                        <h3 class="nombrePastilla"\n                           *ngIf="recipe.nombre_generico">\n                           {{recipe.nombre_generico}}\n                    </h3>\n                        <p class="textoAlternativo"\n                        *ngIf="recipe.marca_comercial">\n                        o puedes encontrarlo como:\n                        </p>\n                        <p class="nombrePastilla"\n                          *ngIf="recipe.marca_comercial">\n                          {{recipe.marca_comercial}}\n                        </p>\n                          <p class="inicio">Inicio: {{recipe.inicio_prescripcion | date: "dd MMMM yyyy"}}</p>\n                    </ion-col>\n                  </ion-row>\n            </ion-card-header>\n            <ion-card-content>\n                <div *ngIf="recetas && recipe.cada_x_horas == 8"\n                class="down">\n            <h4 class="tituloDeLasTomas"> tomas de 3 veces por día</h4>\n            <ion-row padding>\n              <ion-col class="cuadrados">\n                <p> 6-9 am</p>\n                <p class="cantidad">{{recipe.cantidad_dosis}}</p>\n                </ion-col>\n              <ion-col class="cuadrados">\n                <p> 2-4 pm</p>\n                <p class="cantidad"> {{recipe.cantidad_dosis}} </p>\n              </ion-col>\n              <ion-col class="cuadrados">\n                <p>10-12 m</p>\n                <p class="cantidad"> {{recipe.cantidad_dosis}} </p>\n              </ion-col>\n            </ion-row>\n        </div>\n\n        <div *ngIf="recetas && recipe.cada_x_horas == 12"\n              class="down">\n          <p class="tituloDeLasTomas"> tomas de 2 veces por día</p>\n          <ion-row padding>\n            <ion-col class="cuadrados">\n              <p> 6-9 am</p>\n              <p class="cantidad">{{recipe.cantidad_dosis}}</p>\n            </ion-col>\n            <ion-col class="cuadrados">\n              <p>6-9 pm</p>\n              <p class="cantidad"> {{recipe.cantidad_dosis}} </p>\n            </ion-col>\n          </ion-row>\n        </div>\n\n        <div *ngIf="recetas && recipe.cada_x_horas == 6"\n        class="down">\n            <p class="tituloDeLasTomas"> tomas de 4 veces por día</p>\n            <ion-row padding>\n              <ion-col class="cuadrados">\n                <p> 6-8 am</p>\n                <p class="cantidad">{{recipe.cantidad_dosis}}</p>\n              </ion-col>\n              <ion-col class="cuadrados">\n                  <p> 12-2 pm</p>\n                  <p class="cantidad">{{recipe.cantidad_dosis}}</p>\n                </ion-col>\n                <ion-col class="cuadrados">\n                    <p> 6-8 pm</p>\n                    <p class="cantidad">{{recipe.cantidad_dosis}}</p>\n                  </ion-col>\n              <ion-col class="cuadrados">\n                <p>12-2 m</p>\n                <p class="cantidad"> {{recipe.cantidad_dosis}} </p>\n              </ion-col>\n            </ion-row>\n          </div>\n\n          <div *ngIf="recetas && recipe.cada_x_horas == 24"\n          class="down">\n              <p class="tituloDeLasTomas"> toma de 1 vez por día</p>\n              <ion-row padding>\n                <ion-col class="cuadrados">\n                  <p> 6-8 am</p>\n                  <p class="cantidad">{{recipe.cantidad_dosis}}</p>\n                </ion-col>\n\n              </ion-row>\n            </div>\n            </ion-card-content>\n          </ion-card>\n      </div>\n    </div>\n</ion-content>\n'/*ion-inline-end:"/proyectos/IonicPruebas/ApolloIonicVersionOne/src/pages/recipe/recipe.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavParams */]])
     ], RecipePage);
     return RecipePage;
 }());
@@ -2123,14 +2133,14 @@ var MyDateModalPage = (function () {
         Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["m" /* Component */])({
             selector: 'page-my-date-modal',template:/*ion-inline-start:"/proyectos/IonicPruebas/ApolloIonicVersionOne/src/pages/optionals-devs/my-dates/my-date-modal/my-date-modal.html"*/'<ion-header>\n\n    <ion-navbar color="verde">\n        <ion-title *ngIf="taskpa" class="titleHeader">Cita familiar </ion-title>\n        <ion-title *ngIf="task" class="titleHeader">Mis citas</ion-title>\n        <!-- <ion-buttons end>\n            <button ion-button icon-only color="royal" (click)="dismiss()">\n      </button>\n        </ion-buttons> -->\n    </ion-navbar>\n</ion-header>\n\n\n<ion-content has-header="true">\n\n\n    <ion-list>\n\n        <img *ngIf="taskpa" id="profile-image" src="http://dappapache02.eastus.cloudapp.azure.com:4200/img/professionals/{{taskpa.professional.id}}.png">\n        <img *ngIf="task" id="profile-image" src="http://dappapache02.eastus.cloudapp.azure.com:4200/img/professionals/{{task.professional.id}}.png">\n\n        <h3 *ngIf="taskpa" class="nombreDoctor" text-center>{{ taskpa.professional.fullName | lowercase }} </h3>\n        <h3 *ngIf="task" class="nombreDoctor" text-center>{{ task.professional.fullName | lowercase }} </h3>\n\n        <ion-item>\n            <ion-icon item-start><i class="fa fa-hospital-o" aria-hidden="true"></i></ion-icon>\n            <ion-label class="heightNoventa">Sede:</ion-label>\n            <ion-label *ngIf="taskpa" class="blue"> {{ taskpa.service.center.name | lowercase }}</ion-label>\n            <ion-label *ngIf="task" class="blue"> {{ task.service.center.name | lowercase }}</ion-label>\n        </ion-item>\n        <ion-item>\n            <ion-icon item-start><i class="fa fa-heartbeat" aria-hidden="true"></i></ion-icon>\n            <ion-label class="heightNoventa">Especialidad:</ion-label>\n            <ion-label *ngIf="taskpa" class="blue"> {{ taskpa.service.basicService.description | lowercase }}</ion-label>\n            <ion-label *ngIf="task" class="blue"> {{ task.service.basicService.description | lowercase }}</ion-label>\n        </ion-item>\n        <ion-item>\n            <ion-icon item-start><i class="fa fa-calendar-check-o" aria-hidden="true"></i></ion-icon>\n            <ion-label class="heightNoventa">Fecha:</ion-label>\n            <ion-label *ngIf="taskpa" class="blue"> {{ taskpa.appointmentDateTime | date:\'EEEE d , MMMM \' : \'es\' }}</ion-label>\n            <ion-label *ngIf="task" class="blue"> {{ task.appointmentDateTime | date:\'EEEE d , MMMM \' : \'es\' }}</ion-label>\n        </ion-item>\n        <ion-item>\n            <ion-icon item-start><i class="fa fa-clock-o" aria-hidden="true"></i></ion-icon>\n            <ion-label class="heightNoventa">Hora:</ion-label>\n            <ion-label *ngIf="taskpa" class="blue"> {{ taskpa.appointmentDateTime | date: \'HH:mm\' }}</ion-label>\n            <ion-label *ngIf="task" class="blue"> {{ task.appointmentDateTime | date: \'HH:mm\' }}</ion-label>\n        </ion-item>\n        <ion-item>\n            <ion-icon item-start><i class="fa fa-universal-access" aria-hidden="true"></i></ion-icon>\n            <ion-label class="heightNoventa">Seguro:</ion-label>\n            <ion-label *ngIf="taskpa" class="blue"> {{ taskpa.plan.description | lowercase }}</ion-label>\n            <ion-label *ngIf="task" class="blue"> {{ task.plan.description | lowercase }}</ion-label>\n        </ion-item>\n\n        <!-- <ion-item>\n            <ion-icon item-start><i class="fa fa-money" aria-hidden="true"></i></ion-icon>\n            <ion-label>Pago </ion-label>\n            <ion-label class="blue" item-end>{{task.payment_method | lowercase }}</ion-label>\n            <button item-end ion-button color="primary" (click)="editPayment(task)" *ngIf="task.payment_method == \'en local\'">\n          Editar\n        </button>\n        </ion-item> -->\n\n        <!-- <ion-item *ngIf="task.isCard">\n            <ion-icon item-start><i class="fa fa-money" aria-hidden="true"></i></ion-icon>\n            <ion-label>Pago </ion-label>\n            <ion-label class="blue" item-end>S/.{{task.amount}}.00</ion-label>\n            <ion-input value="{{task.numMasCard}}" type="text" maxlength="16" clearInput disabled="true"></ion-input>\n        </ion-item> -->\n\n        <!-- <ion-item>\n            <ion-icon item-start><i class="fa fa-usd" aria-hidden="true"></i></ion-icon>\n            <ion-label>Costo</ion-label>\n            <ion-label class="blue" item-end> S/.{{task.amount}}.00</ion-label>\n        </ion-item> -->\n\n        <ion-item>\n            <ion-row>\n                <ion-col col-6>\n                    <button *ngIf="taskpa" ion-button block color="secondary" (click)=\'desactivateTask(taskpa)\'>ANULAR CITA</button>\n                    <button *ngIf="task" ion-button block color="secondary" (click)=\'desactivateTask(task)\'>ANULAR CITA</button>\n                </ion-col>\n                <ion-col col-6>\n                    <button ion-button block (click)="dismiss()">VOLVER</button>\n                </ion-col>\n            </ion-row>\n        </ion-item>\n    </ion-list>\n\n\n\n</ion-content>\n'/*ion-inline-end:"/proyectos/IonicPruebas/ApolloIonicVersionOne/src/pages/optionals-devs/my-dates/my-date-modal/my-date-modal.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["j" /* NavController */],
-            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["k" /* NavParams */],
-            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["n" /* ViewController */],
-            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["m" /* ToastController */],
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["k" /* NavController */],
+            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["l" /* NavParams */],
+            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["o" /* ViewController */],
+            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["n" /* ToastController */],
             __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["b" /* AlertController */],
             __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["a" /* ActionSheetController */],
             __WEBPACK_IMPORTED_MODULE_0__providers_appoinment_appoinment__["a" /* AppointmentProvider */],
-            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["i" /* ModalController */]])
+            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["j" /* ModalController */]])
     ], MyDateModalPage);
     return MyDateModalPage;
 }());
@@ -2183,8 +2193,8 @@ var RecipesPage = (function () {
         Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["m" /* Component */])({
             selector: 'page-recipes',template:/*ion-inline-start:"/proyectos/IonicPruebas/ApolloIonicVersionOne/src/pages/optionals-devs/recipes/recipes.html"*/'<ion-header>\n  <ion-navbar color="primary">\n    <ion-title>Mis Recetas</ion-title>\n  </ion-navbar>\n\n</ion-header>\n<ion-content>\n    <ion-card *ngFor="let recipe of recipes"\n              (click)="goToDetailRecipe(recipe)">\n        <ion-row>\n          <ion-col col-4>\n            <div class="iconoReceta">\n              <p class="dia">{{recipe.prescripciones[0].inicio_prescripcion | date:\'dd\'}}</p>\n              <p class="mes">{{recipe.prescripciones[0].inicio_prescripcion | date:\'MMMM\'}}</p>\n            </div>\n          </ion-col>\n          <ion-col col-8>\n            <p class="especialidad"> Especialidad:</p>\n            <p class="resultado">{{recipe.prescripciones[0].servicio}}</p>\n            <p class="especialidad">Doctor:</p>\n            <p class="resultado">{{recipe.prescripciones[0].apellidop_personal}} {{recipe.prescripciones[0].apellidom_personal}}</p>\n          </ion-col>\n        </ion-row>\n    </ion-card>\n</ion-content>\n'/*ion-inline-end:"/proyectos/IonicPruebas/ApolloIonicVersionOne/src/pages/optionals-devs/recipes/recipes.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["j" /* NavController */],
-            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["k" /* NavParams */],
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["k" /* NavController */],
+            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["l" /* NavParams */],
             __WEBPACK_IMPORTED_MODULE_0__providers_recipes_recipes__["a" /* RecipesProvider */]])
     ], RecipesPage);
     return RecipesPage;
@@ -2234,7 +2244,7 @@ var StartPage = (function () {
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
             selector: 'page-start',template:/*ion-inline-start:"/proyectos/IonicPruebas/ApolloIonicVersionOne/src/pages/start/start.html"*/'\n<ion-content padding>\n  <div class="contenedorLogo">\n    <img src="assets/imgs/logoAviva.png" alt="logo aviva">\n  </div>\n<ion-slides pager>\n  <ion-slide>\n      primera Imagen\n  </ion-slide>\n\n  <ion-slide>\n      Segunda Imagen\n  </ion-slide>\n\n  <ion-slide>\n      Tercera Imagen\n  </ion-slide>\n</ion-slides>\n\n<div class="contenedorBotones">\n  <button ion-button\n          block\n          color="secondary"\n          (click)="goToLogin()"\n          class="botonInicio">\n    Login\n  </button>\n  <button ion-button\n          clear\n          (click)="goToRegister()"\n          color="primary"\n          class="botonRegister">\n    Registrarme\n  </button>\n</div>\n\n</ion-content>\n'/*ion-inline-end:"/proyectos/IonicPruebas/ApolloIonicVersionOne/src/pages/start/start.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavParams */]])
     ], StartPage);
     return StartPage;
 }());
@@ -2247,10 +2257,55 @@ var StartPage = (function () {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return FormRegisterPage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(14);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+/**
+ * Generated class for the FormRegisterPage page.
+ *
+ * See https://ionicframework.com/docs/components/#navigation for more info on
+ * Ionic pages and navigation.
+ */
+var FormRegisterPage = (function () {
+    function FormRegisterPage(navCtrl, navParams) {
+        this.navCtrl = navCtrl;
+        this.navParams = navParams;
+    }
+    FormRegisterPage.prototype.ionViewDidLoad = function () {
+        console.log('ionViewDidLoad FormRegisterPage');
+    };
+    FormRegisterPage = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
+            selector: 'page-form-register',template:/*ion-inline-start:"/proyectos/IonicPruebas/ApolloIonicVersionOne/src/pages/form-register/form-register.html"*/'<!--\n  Generated template for the FormRegisterPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>formRegister</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n\n</ion-content>\n'/*ion-inline-end:"/proyectos/IonicPruebas/ApolloIonicVersionOne/src/pages/form-register/form-register.html"*/,
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavParams */]])
+    ], FormRegisterPage);
+    return FormRegisterPage;
+}());
+
+//# sourceMappingURL=form-register.js.map
+
+/***/ }),
+
+/***/ 443:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__ = __webpack_require__(443);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__app_module__ = __webpack_require__(456);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_hammerjs__ = __webpack_require__(618);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__ = __webpack_require__(444);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__app_module__ = __webpack_require__(457);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_hammerjs__ = __webpack_require__(619);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_hammerjs___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_hammerjs__);
 
 
@@ -2260,13 +2315,13 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 
 /***/ }),
 
-/***/ 456:
+/***/ 457:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__pages_recovery_recovery__ = __webpack_require__(109);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_cabecera_cabecera__ = __webpack_require__(509);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_cabecera_cabecera__ = __webpack_require__(510);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__pages_detail_recipe_detail_recipe__ = __webpack_require__(398);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__pages_myparents_myparents__ = __webpack_require__(399);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__pages_createparent_createparent__ = __webpack_require__(160);
@@ -2277,51 +2332,52 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__ionic_native_splash_screen__ = __webpack_require__(400);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__ionic_native_status_bar__ = __webpack_require__(402);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__angular_http__ = __webpack_require__(155);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__angular_common_locales_es__ = __webpack_require__(515);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__angular_common_locales_es__ = __webpack_require__(516);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__angular_common__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__app_component__ = __webpack_require__(516);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__app_component__ = __webpack_require__(517);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__pages_home_home__ = __webpack_require__(53);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__pages_card_card__ = __webpack_require__(63);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__pages_charge_charge__ = __webpack_require__(517);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__pages_charge_charge__ = __webpack_require__(518);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__pages_user_login_login__ = __webpack_require__(54);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__pages_user_register_register__ = __webpack_require__(99);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__pages_user_profile_profile__ = __webpack_require__(403);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__pages_appointment_search_search__ = __webpack_require__(518);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__pages_appointment_search_search__ = __webpack_require__(519);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__pages_appointment_financer_financer__ = __webpack_require__(81);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__pages_appointment_pay_pay__ = __webpack_require__(159);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__pages_optionals_devs_my_dates_my_dates__ = __webpack_require__(162);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__pages_optionals_devs_irm_irm__ = __webpack_require__(406);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__pages_optionals_devs_recipes_recipes__ = __webpack_require__(409);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__pages_optionals_devs_recomendations_recomendations__ = __webpack_require__(519);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__pages_optionals_devs_recomendations_recomendations__ = __webpack_require__(520);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_28__pages_optionals_devs_my_dates_my_date_modal_my_date_modal__ = __webpack_require__(408);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_29__angular_common_http__ = __webpack_require__(35);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_30_apollo_angular_link_http__ = __webpack_require__(520);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_31_apollo_cache_inmemory__ = __webpack_require__(535);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_32_apollo_angular__ = __webpack_require__(544);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_30_apollo_angular_link_http__ = __webpack_require__(521);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_31_apollo_cache_inmemory__ = __webpack_require__(536);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_32_apollo_angular__ = __webpack_require__(545);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_33__providers_financier_financier__ = __webpack_require__(274);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_34__providers_user_user__ = __webpack_require__(61);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_35__providers_appoinment_appoinment__ = __webpack_require__(55);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_36__providers_authorization_public_authorization_public__ = __webpack_require__(156);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_37__angular_forms__ = __webpack_require__(8);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_38_ng2_search_filter__ = __webpack_require__(569);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_39__components_expandable_expandable_component__ = __webpack_require__(570);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_40__angular_platform_browser_animations__ = __webpack_require__(571);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_41__material_module__ = __webpack_require__(573);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_42__pages_appointment_master_detail_master_detail__ = __webpack_require__(614);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_38_ng2_search_filter__ = __webpack_require__(570);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_39__components_expandable_expandable_component__ = __webpack_require__(571);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_40__angular_platform_browser_animations__ = __webpack_require__(572);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_41__material_module__ = __webpack_require__(574);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_42__pages_appointment_master_detail_master_detail__ = __webpack_require__(615);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_43__providers_hello_hello__ = __webpack_require__(397);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_44__pages_datos_datos__ = __webpack_require__(615);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_44__pages_datos_datos__ = __webpack_require__(616);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_45__providers_payu_test_payu_test__ = __webpack_require__(396);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_46__providers_recipes_recipes__ = __webpack_require__(98);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_47__providers_dependents_dependents__ = __webpack_require__(72);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_48__providers_crudparent_crudparent__ = __webpack_require__(71);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_47__providers_dependents_dependents__ = __webpack_require__(73);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_48__providers_crudparent_crudparent__ = __webpack_require__(72);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_49__pages_code_code__ = __webpack_require__(158);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_50__providers_dateparent_dateparent__ = __webpack_require__(616);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_50__providers_dateparent_dateparent__ = __webpack_require__(617);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_51__pages_recipe_recipe__ = __webpack_require__(407);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_52__pages_recoverycode_recoverycode__ = __webpack_require__(110);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_53__ionic_native_camera__ = __webpack_require__(404);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_54__ionic_native_file__ = __webpack_require__(617);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_54__ionic_native_file__ = __webpack_require__(618);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_55__ionic_native_file_transfer__ = __webpack_require__(405);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_56__pages_start_start__ = __webpack_require__(410);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_57__pages_form_register_form_register__ = __webpack_require__(442);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -2397,6 +2453,7 @@ Object(__WEBPACK_IMPORTED_MODULE_13__angular_common__["i" /* registerLocaleData 
 
 
 
+
 var AppModule = (function () {
     function AppModule(apollo, httpLink) {
         // const schema = makeExecutableSchema({ typeDefs });
@@ -2437,13 +2494,16 @@ var AppModule = (function () {
                 __WEBPACK_IMPORTED_MODULE_1__components_cabecera_cabecera__["a" /* CabeceraComponent */],
                 __WEBPACK_IMPORTED_MODULE_0__pages_recovery_recovery__["a" /* RecoveryPage */],
                 __WEBPACK_IMPORTED_MODULE_52__pages_recoverycode_recoverycode__["a" /* RecoverycodePage */],
-                __WEBPACK_IMPORTED_MODULE_56__pages_start_start__["a" /* StartPage */]
+                __WEBPACK_IMPORTED_MODULE_56__pages_start_start__["a" /* StartPage */],
+                __WEBPACK_IMPORTED_MODULE_57__pages_form_register_form_register__["a" /* FormRegisterPage */]
             ],
             imports: [
                 __WEBPACK_IMPORTED_MODULE_6__angular_platform_browser__["a" /* BrowserModule */],
                 __WEBPACK_IMPORTED_MODULE_40__angular_platform_browser_animations__["a" /* BrowserAnimationsModule */],
                 __WEBPACK_IMPORTED_MODULE_8_ionic_angular__["f" /* IonicModule */].forRoot(__WEBPACK_IMPORTED_MODULE_14__app_component__["a" /* MyApp */], {}, {
-                    links: []
+                    links: [
+                        { loadChildren: '../pages/form-register/form-register.module#FormRegisterPageModule', name: 'FormRegisterPage', segment: 'form-register', priority: 'low', defaultHistory: [] }
+                    ]
                 }),
                 __WEBPACK_IMPORTED_MODULE_38_ng2_search_filter__["a" /* Ng2SearchPipeModule */],
                 __WEBPACK_IMPORTED_MODULE_29__angular_common_http__["b" /* HttpClientModule */],
@@ -2482,7 +2542,8 @@ var AppModule = (function () {
                 __WEBPACK_IMPORTED_MODULE_51__pages_recipe_recipe__["a" /* RecipePage */],
                 __WEBPACK_IMPORTED_MODULE_0__pages_recovery_recovery__["a" /* RecoveryPage */],
                 __WEBPACK_IMPORTED_MODULE_52__pages_recoverycode_recoverycode__["a" /* RecoverycodePage */],
-                __WEBPACK_IMPORTED_MODULE_56__pages_start_start__["a" /* StartPage */]
+                __WEBPACK_IMPORTED_MODULE_56__pages_start_start__["a" /* StartPage */],
+                __WEBPACK_IMPORTED_MODULE_57__pages_form_register_form_register__["a" /* FormRegisterPage */]
             ],
             providers: [
                 __WEBPACK_IMPORTED_MODULE_10__ionic_native_status_bar__["a" /* StatusBar */],
@@ -2513,7 +2574,7 @@ var AppModule = (function () {
 
 /***/ }),
 
-/***/ 508:
+/***/ 509:
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
@@ -2770,11 +2831,11 @@ webpackContext.keys = function webpackContextKeys() {
 };
 webpackContext.resolve = webpackContextResolve;
 module.exports = webpackContext;
-webpackContext.id = 508;
+webpackContext.id = 509;
 
 /***/ }),
 
-/***/ 509:
+/***/ 510:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2844,7 +2905,7 @@ var CabeceraComponent = (function () {
 
 /***/ }),
 
-/***/ 516:
+/***/ 517:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2981,16 +3042,16 @@ var MyApp = (function () {
     };
     __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_9" /* ViewChild */])('contenido'),
-        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */])
+        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavController */])
     ], MyApp.prototype, "menu", void 0);
     MyApp = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
             selector: 'page-slide',template:/*ion-inline-start:"/proyectos/IonicPruebas/ApolloIonicVersionOne/src/app/app.html"*/'<ion-menu [content]="contenido" persistent="true">\n    <ion-header color="light">\n        <!-- <ion-toolbar>\n            <ion-title>More Health</ion-title>\n        </ion-toolbar> -->\n    </ion-header>\n    <ion-content class="fondoColor">\n      <div class="containerData">\n        <ion-row>\n          <!-- <ion-col col-12>\n              <button ion-button text-center\n              class="imagen"\n              (click)="goPage(pro)"\n              *ngIf="!foto">\n                <ion-icon class="iconAdd flecha" name="add"></ion-icon>\n              </button>\n          </ion-col> -->\n          <ion-col col-12 *ngIf="foto">\n              <div class="imagenPerfil"\n              (click)="goPage(pro)">\n                <img src="{{foto}}?{{timemark}}" alt="">\n              </div>\n          </ion-col>\n          <ion-col col-12 class="contenedorDatosUsuario">\n            <p class="nombreUsuario" *ngIf="foto">{{patientName}}</p>\n            <p class="correo" *ngIf="correo" >{{correo}}</p>\n          </ion-col>\n        </ion-row>\n\n      </div>\n        <ion-list class="lista">\n            <button ion-item (click)="goPage(hom)" class="outLine">\n            <ion-icon item-start name="home"></ion-icon>\n            Home</button>\n\n            <button ion-item (click)="goPage(car)" class="outLine">\n            <ion-icon item-start name="medkit"></ion-icon>\n            Reservar</button>\n\n            <button ion-item (click)="goPage(myd)" *ngIf="userToken" class="outLine">\n             <ion-icon item-start name="clipboard"></ion-icon>\n             Mis citas</button>\n\n             <button ion-item (click)="goPage(rep)" *ngIf="userToken" class="outLine">\n              <ion-icon item-start name="document"></ion-icon>\n              Mis recetas</button>\n\n              <button ion-item (click)="goPage(mypa)" *ngIf="userToken" class="outLine">\n              <ion-icon item-start name="people"></ion-icon>\n              Mis parientes</button>\n\n            <button ion-item (click)="goPage(log)" *ngIf="!userToken" class="outLine">\n            <ion-icon item-start name="key"></ion-icon>\n            Login</button>\n\n\n            <button ion-item (click)="logout()" *ngIf="userToken" class="outLine">\n            <ion-icon item-start name="close-circle"></ion-icon>\n            terminar sesion</button>\n\n        </ion-list>\n    </ion-content>\n</ion-menu>\n\n<!-- regresarlo ap homePage -->\n<ion-nav [root]="hom" #contenido></ion-nav>\n'/*ion-inline-end:"/proyectos/IonicPruebas/ApolloIonicVersionOne/src/app/app.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* Platform */],
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* Platform */],
             __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */],
             __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__["a" /* SplashScreen */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* MenuController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* MenuController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["c" /* Events */]])
     ], MyApp);
     return MyApp;
@@ -3000,7 +3061,7 @@ var MyApp = (function () {
 
 /***/ }),
 
-/***/ 517:
+/***/ 518:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3030,7 +3091,7 @@ var ChargePage = (function () {
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
             selector: 'page-charge',template:/*ion-inline-start:"/proyectos/IonicPruebas/ApolloIonicVersionOne/src/pages/charge/charge.html"*/'\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>charge</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n\n</ion-content>\n'/*ion-inline-end:"/proyectos/IonicPruebas/ApolloIonicVersionOne/src/pages/charge/charge.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavParams */]])
     ], ChargePage);
     return ChargePage;
 }());
@@ -3039,7 +3100,7 @@ var ChargePage = (function () {
 
 /***/ }),
 
-/***/ 518:
+/***/ 519:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3069,7 +3130,7 @@ var SearchPage = (function () {
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
             selector: 'page-search',template:/*ion-inline-start:"/proyectos/IonicPruebas/ApolloIonicVersionOne/src/pages/appointment/search/search.html"*/'<!--\n  Generated template for the SearchPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>search</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n\n</ion-content>\n'/*ion-inline-end:"/proyectos/IonicPruebas/ApolloIonicVersionOne/src/pages/appointment/search/search.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavParams */]])
     ], SearchPage);
     return SearchPage;
 }());
@@ -3078,7 +3139,7 @@ var SearchPage = (function () {
 
 /***/ }),
 
-/***/ 519:
+/***/ 520:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3108,7 +3169,7 @@ var RecomendationsPage = (function () {
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
             selector: 'page-recomendations',template:/*ion-inline-start:"/proyectos/IonicPruebas/ApolloIonicVersionOne/src/pages/optionals-devs/recomendations/recomendations.html"*/'<!--\n  Generated template for the RecomendationsPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>recomendations</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n\n</ion-content>\n'/*ion-inline-end:"/proyectos/IonicPruebas/ApolloIonicVersionOne/src/pages/optionals-devs/recomendations/recomendations.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavParams */]])
     ], RecomendationsPage);
     return RecomendationsPage;
 }());
@@ -3128,7 +3189,7 @@ var RecomendationsPage = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_ionic_angular__ = __webpack_require__(14);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__card_card__ = __webpack_require__(63);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__providers_appoinment_appoinment__ = __webpack_require__(55);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__providers_dependents_dependents__ = __webpack_require__(72);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__providers_dependents_dependents__ = __webpack_require__(73);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_rxjs_add_operator_map__ = __webpack_require__(43);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_rxjs_add_operator_map__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_moment__ = __webpack_require__(1);
@@ -3256,7 +3317,7 @@ var HomePage = (function () {
         Object(__WEBPACK_IMPORTED_MODULE_2__angular_core__["m" /* Component */])({
             selector: 'page-home',template:/*ion-inline-start:"/proyectos/IonicPruebas/ApolloIonicVersionOne/src/pages/home/home.html"*/'<ion-header>\n    <ion-navbar color="primary" hideBackButton="true" persistent="true">\n        <button ion-button menuToggle>\n        <ion-icon name="menu"></ion-icon>\n        </button>\n        <ion-title> Home Page</ion-title>\n        <ion-buttons *ngIf="nombre"\n                          end>\n          <button ion-button\n                  item-end\n                  class="logueado"\n                  clear>\n                  Hola {{nombre}}\n          </button>\n        </ion-buttons>\n    </ion-navbar>\n\n</ion-header>\n\n<ion-content padding >\n\n    <ion-card button class="principal" (click)="irACard()">\n        <ion-item>\n            <ion-row>\n                <ion-col col-2>\n                    <ion-icon name="contact"></ion-icon>\n                </ion-col>\n                <ion-col col-9>\n                    <p class="reserve">Reservar cita</p>\n                </ion-col>\n                <ion-col col-1>\n                    <ion-icon name="arrow-dropright"></ion-icon>\n                </ion-col>\n            </ion-row>\n        </ion-item>\n    </ion-card>\n\n    <div class="down30">\n        <mat-accordion padding>\n\n            <mat-expansion-panel >\n                <mat-expansion-panel-header>\n                    <ion-col col-2>\n                        <ion-icon name="alarm"></ion-icon>\n                    </ion-col>\n                    <ion-col col-8>\n                        <p class="font11">Próxima Cita</p>\n                      </ion-col>\n                      <ion-col col-2>\n                          <ion-badge *ngIf="citapendiente"\n                                      class="badgeIcon"\n                                      color="notifi" item-end>C\n                          </ion-badge>\n                    </ion-col>\n                </mat-expansion-panel-header >\n                <div class="containerExpand" >\n                  <div *ngIf="tasks else notasks">\n                    <div *ngFor="let task of tasks; first as isFirst">\n                      <ion-row class="down10" *ngIf="isFirst">\n                        <ion-col col-3>\n                          <ion-avatar item-start>\n                            <img src="http://dappapache02.eastus.cloudapp.azure.com:4200/img/professionals/{{task.professional.id}}.png">\n                          </ion-avatar>\n                        </ion-col>\n                        <ion-col col-9 >\n                          <h3 class="tituloCitas" [ngClass]="{celeste:\'\'}">Dr.{{task.professional.fullName | slice:0:25 | uppercase}}</h3>\n                          <p class="especialidad">{{ task.service.basicService.description | lowercase }} / {{ task.service.center.name }}</p>\n                          <p class="day">{{ task.appointmentDateTime | date:\'mediumDate\' : \'es\' }} - {{ task.appointmentDateTime | date: \'HH:mm\' }} </p>\n                        </ion-col>\n                      </ion-row>\n                    </div>\n                      <div *ngIf="citasDepes">\n                          <ion-row class="down10" >\n                            <ion-col col-3>\n                              <ion-avatar item-start>\n                                <img src="http://dappapache02.eastus.cloudapp.azure.com:4200/img/professionals/{{citasDepes.professional.id}}.png">\n                              </ion-avatar>\n                            </ion-col>\n                            <ion-col col-9 >\n                              <p class="nombreDepe">cita para: {{citasDepes.patient.name}}</p>\n                              <h3 class="tituloCitas" [ngClass]="{celeste:\'\'}">Dr.{{citasDepes.professional.fullName | slice:0:25 | uppercase}}</h3>\n                              <p class="especialidad">{{ citasDepes.service.basicService.description | lowercase }} / {{ citasDepes.service.center.name }}</p>\n                              <p class="day">{{ citasDepes.appointmentDateTime | date:\'mediumDate\' : \'es\' }} - {{ citasDepes.appointmentDateTime | date: \'HH:mm\' }} </p>\n                            </ion-col>\n                          </ion-row>\n                        </div>\n                  </div>\n                    <div *ngIf="!tasks">\n                      <p  class="textoRecetas">En este momento no tienes citas proximas...</p>\n                    </div>\n                </div>\n            </mat-expansion-panel>\n\n            <mat-expansion-panel>\n                <mat-expansion-panel-header>\n                    <ion-col col-2>\n                        <ion-icon name="medkit"></ion-icon>\n                    </ion-col>\n                    <ion-col col-8>\n                        <p class="font11">Recetas y Medicamentos</p>\n                    </ion-col>\n                    <ion-col col-2>\n                        <ion-badge *ngIf="recipendiente"\n                                      class="badgeIcon"\n                                      color="verde" item-end>1\n                          </ion-badge>\n                    </ion-col>\n                </mat-expansion-panel-header>\n                <div class="containerExpand">\n                    <p *ngIf="!tasks" class="textoRecetas">Las recetas y médicamentos de sus últimas citas aparecerán aquí , despues de registrado</p>\n                    <div *ngIf="tasks">\n                      <div  *ngFor="let recipe of recipes; index as i; last as isLast">\n                           <div *ngIf="i == 1">\n                                  <ion-list class="contenedorReceta">\n                                    <ion-item *ngFor="let receta of recipe.prescripciones">\n                                      <ion-row>\n                                        <ion-col col-3 class="contenedorIcono">\n                                            <img src="assets/imgs/recipes/{{receta.formasfar_pk}}.png" alt="">\n                                        </ion-col>\n                                        <ion-col col-9 class="contendorNombrePastilla">\n                                            <p class="nombreMedicamento">{{receta.marca_comercial}}</p>\n                                            <p class="vecesXdia"> {{ 24 / receta.cada_x_horas}} veces por día</p>\n                                            <p class="inicioDePrescripcion"> inicio: {{receta.inicio_prescripcion | date}}</p>\n                                            <p class="diasFaltantes"> quedan {{diasFaltantes}} dias de tratamiento.</p>\n                                        </ion-col>\n                                      </ion-row>\n                                    </ion-item>\n                                  </ion-list>\n                           </div>\n                      </div>\n\n                    </div>\n                </div>\n            </mat-expansion-panel>\n\n\n        </mat-accordion>\n\n    </div>\n    <!-- <h1>home</h1>\n    <p (click)="irACard()">Ir a Card</p> -->\n</ion-content>\n'/*ion-inline-end:"/proyectos/IonicPruebas/ApolloIonicVersionOne/src/pages/home/home.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_3_ionic_angular__["j" /* NavController */],
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_3_ionic_angular__["k" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_1__providers_authorization_public_authorization_public__["a" /* AuthorizationPublicProvider */],
             __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["b" /* AlertController */],
             __WEBPACK_IMPORTED_MODULE_0__providers_recipes_recipes__["a" /* RecipesProvider */],
@@ -3371,12 +3432,12 @@ var LoginPage = (function () {
         Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["m" /* Component */])({
             selector: 'page-login',template:/*ion-inline-start:"/proyectos/IonicPruebas/ApolloIonicVersionOne/src/pages/user/login/login.html"*/'\n<ion-content class="gris">\n\n    <!-- <h5 class="bajar textoAzul" text-center> Ahora necesitamos tus datos para iniciar una reserva. Si no tienes cuenta aún, registrate ¡es súper fácil!</h5> -->\n\n\n    <!-- <div class="white">\n        <div padding>\n            <button ion-button (click)="registrarUsuario()" full color="primary" class="alto50">Registrarse</button>\n        </div>\n\n    </div> -->\n\n    <div padding class="containerInputs">\n        <p style="text-align: center">{{msg}}</p>\n\n        <form #formulario="ngForm">\n\n            <ion-item>\n                <ion-label stacked>Email</ion-label>\n                <ion-input type="text"\n                           required\n                           name="email"\n                           ngModel></ion-input>\n            </ion-item>\n\n            <ion-item>\n                <ion-label floating>Contraseña</ion-label>\n                <ion-input [type]="password_type"\n                           name="password"\n                           ngModel>\n                </ion-input>\n                <button ion-button\n                        clear\n                        item-end\n                        (click)="changeType()">\n                  <ion-icon name="eye"></ion-icon>\n                </button>\n            </ion-item>\n        </form>\n        <button ion-button (click)="startSesion(formulario)" block class="inicioSesion">iniciar Sesión</button>\n    </div>\n    <p (click)="goToRecovery()"\n        class="textoOlvido">Olvidé mi contraseña</p>\n\n          <ion-row class="containerBotones">\n            <ion-col col-5>\n              <button ion-button\n                      clear\n                      *ngIf="this.hora == undefined"\n                      class="noLogin"\n                      block\n                (click)="goToHome()">Continuar como invitado\n              </button>\n            </ion-col>\n            <ion-col col-7>\n              <button ion-button\n                     clear\n                      block\n                      class="register"\n                      (click)="registrarUsuario()">\n                registrarme\n              </button>\n            </ion-col>\n          </ion-row>\n\n</ion-content>\n'/*ion-inline-end:"/proyectos/IonicPruebas/ApolloIonicVersionOne/src/pages/user/login/login.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["j" /* NavController */],
-            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["k" /* NavParams */],
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["k" /* NavController */],
+            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["l" /* NavParams */],
             __WEBPACK_IMPORTED_MODULE_5__providers_user_user__["a" /* UserProvider */],
             __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["b" /* AlertController */],
             __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["c" /* Events */],
-            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["n" /* ViewController */],
+            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["o" /* ViewController */],
             __WEBPACK_IMPORTED_MODULE_7__providers_authorization_public_authorization_public__["a" /* AuthorizationPublicProvider */]])
     ], LoginPage);
     return LoginPage;
@@ -3397,7 +3458,7 @@ var LoginPage = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_catch___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_catch__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map__ = __webpack_require__(43);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_Observable_of__ = __webpack_require__(507);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_Observable_of__ = __webpack_require__(508);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_Observable_of___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_rxjs_add_Observable_of__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -3460,7 +3521,7 @@ var AppointmentProvider = (function () {
 
 /***/ }),
 
-/***/ 570:
+/***/ 571:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3525,13 +3586,13 @@ var ExpandableComponent = (function () {
 
 /***/ }),
 
-/***/ 573:
+/***/ 574:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MaterialModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_material__ = __webpack_require__(574);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_material__ = __webpack_require__(575);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -3559,7 +3620,8 @@ var MaterialModule = (function () {
                 __WEBPACK_IMPORTED_MODULE_1__angular_material__["j" /* MatRadioModule */],
                 __WEBPACK_IMPORTED_MODULE_1__angular_material__["b" /* MatCardModule */],
                 __WEBPACK_IMPORTED_MODULE_1__angular_material__["a" /* MatButtonModule */],
-                __WEBPACK_IMPORTED_MODULE_1__angular_material__["d" /* MatExpansionModule */]],
+                __WEBPACK_IMPORTED_MODULE_1__angular_material__["d" /* MatExpansionModule */]
+            ],
             exports: [__WEBPACK_IMPORTED_MODULE_1__angular_material__["a" /* MatButtonModule */],
                 __WEBPACK_IMPORTED_MODULE_1__angular_material__["m" /* MatTabsModule */],
                 __WEBPACK_IMPORTED_MODULE_1__angular_material__["g" /* MatInputModule */],
@@ -3574,7 +3636,8 @@ var MaterialModule = (function () {
                 __WEBPACK_IMPORTED_MODULE_1__angular_material__["j" /* MatRadioModule */],
                 __WEBPACK_IMPORTED_MODULE_1__angular_material__["b" /* MatCardModule */],
                 __WEBPACK_IMPORTED_MODULE_1__angular_material__["a" /* MatButtonModule */],
-                __WEBPACK_IMPORTED_MODULE_1__angular_material__["d" /* MatExpansionModule */]],
+                __WEBPACK_IMPORTED_MODULE_1__angular_material__["d" /* MatExpansionModule */]
+            ],
         })
     ], MaterialModule);
     return MaterialModule;
@@ -3713,7 +3776,7 @@ var UserProvider = (function () {
 
 /***/ }),
 
-/***/ 614:
+/***/ 615:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3833,17 +3896,17 @@ var MasterDetailPage = (function () {
     };
     __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_3__angular_core__["_9" /* ViewChild */])('contenido'),
-        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["j" /* NavController */])
+        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["k" /* NavController */])
     ], MasterDetailPage.prototype, "menu", void 0);
     MasterDetailPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_3__angular_core__["m" /* Component */])({
             selector: 'page-master-detail',template:/*ion-inline-start:"/proyectos/IonicPruebas/ApolloIonicVersionOne/src/pages/appointment/master-detail/master-detail.html"*/'<ion-navbar>\n    <ion-title>Detalle de la cita</ion-title>\n</ion-navbar>\n\n\n\n<ion-content has-header="true">\n    <ion-list>\n\n        <img id="profile-image" src="http://dappapache02.eastus.cloudapp.azure.com:4200/img/professionals/{{appointment.id}}.png">\n\n        <h3 class="nombreDoctor" text-center>\n            {{ appointment.fullName }}\n        </h3>\n\n        <ion-item>\n            <ion-label bold>Sede:</ion-label>\n            <ion-label class="blue" type="text" disabled="true">\n                Mendiola\n            </ion-label>\n        </ion-item>\n        <ion-item>\n            <ion-label>Especialidad:</ion-label>\n            <ion-label item-end class="blue" disabled="true">\n                {{ appointment.service.description }}\n            </ion-label>\n        </ion-item>\n        <ion-item>\n            <ion-label>Fecha:</ion-label>\n            <ion-label item-end class="blue" disabled="true">\n                {{ date | date:\'EEEE d , MMMM \' : \'es\' }}\n            </ion-label>\n        </ion-item>\n        <ion-item>\n            <ion-label>Hora:</ion-label>\n            <ion-label class="blue" type="text" disabled="true">\n                {{ hora.hour | slice:0:5}}\n            </ion-label>\n        </ion-item>\n        <ion-item *ngIf="secure">\n            <ion-label>Cita con Seguro:</ion-label>\n            <ion-label class="blue" disabled="true">\n                {{insurance | lowercase}}\n            </ion-label>\n        </ion-item>\n\n        <ion-item>\n            <ion-label>Tipo de pago:</ion-label>\n            <ion-label class="blue" disabled="true">\n                {{paymentType | lowercase }}\n            </ion-label>\n        </ion-item>\n\n        <ion-item *ngIf="isCard">\n            <ion-label>Titular de la tarjeta:</ion-label>\n            <ion-label class="blue" disabled="true">\n                {{name | lowercase }}\n            </ion-label>\n        </ion-item>\n\n        <div *ngIf="isCard">\n            <ion-item>\n                <ion-label class="blue" type="text" maxlength="16" clearInput disabled="true">\n                    {{numMasCard}}\n                </ion-label>\n                <ion-icon item-end name="card"></ion-icon>\n            </ion-item>\n        </div>\n\n        <ion-item>\n            <ion-label>Costo:</ion-label>\n            <ion-label class="blue" item-end type="text" disabled="true">\n                {{ \'S/. \' + price }}\n            </ion-label>\n        </ion-item>\n\n        <div padding>\n            <button ion-button (click)="gotosave()" block color="secondary" class="heighButton">OK</button>\n        </div>\n        <p class="recomenda" color="secondary">Recuerde que deberá llegar 20 minutos antes para poder cancelar en caja y estar a tiempo en el consultorio.</p>\n\n    </ion-list>\n</ion-content>\n'/*ion-inline-end:"/proyectos/IonicPruebas/ApolloIonicVersionOne/src/pages/appointment/master-detail/master-detail.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["j" /* NavController */],
-            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["k" /* NavParams */],
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["k" /* NavController */],
+            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["l" /* NavParams */],
             __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["b" /* AlertController */],
             __WEBPACK_IMPORTED_MODULE_4__providers_appoinment_appoinment__["a" /* AppointmentProvider */],
-            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["n" /* ViewController */]])
+            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["o" /* ViewController */]])
     ], MasterDetailPage);
     return MasterDetailPage;
 }());
@@ -3852,7 +3915,7 @@ var MasterDetailPage = (function () {
 
 /***/ }),
 
-/***/ 615:
+/***/ 616:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3902,7 +3965,7 @@ var DatosPage = (function () {
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
             selector: 'page-datos',template:/*ion-inline-start:"/proyectos/IonicPruebas/ApolloIonicVersionOne/src/pages/datos/datos.html"*/'<ion-content padding>\n    <h1>Modal de Datos</h1>\n\n    <img class="centrar" src="https://www.trybooking.com/media/3446/login-user-icon.png" alt="">\n    <hr>\n    <p>Para continuar necesitas iniciar Sesión</p>\n    <button ion-button block color="secondary" (click)="goToLogin()" class="botonPrimero">Ir a Login</button>\n    <!-- <button ion-button clear block (click)="goToCard()">Continuar buscando doctor</button> -->\n</ion-content>'/*ion-inline-end:"/proyectos/IonicPruebas/ApolloIonicVersionOne/src/pages/datos/datos.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* ViewController */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavParams */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* ViewController */]])
     ], DatosPage);
     return DatosPage;
 }());
@@ -3911,7 +3974,7 @@ var DatosPage = (function () {
 
 /***/ }),
 
-/***/ 616:
+/***/ 617:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -4117,13 +4180,13 @@ var CardPage = (function () {
         Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["m" /* Component */])({
             selector: 'page-card',template:/*ion-inline-start:"/proyectos/IonicPruebas/ApolloIonicVersionOne/src/pages/card/card.html"*/'<ion-header>\n    <ion-navbar color="primary" hideBackButton="true" persistent="true">\n        <button ion-button menuToggle>\n<ion-icon name="menu"></ion-icon>\n</button>\n        <ion-title>Reservar cita\n        </ion-title>\n    </ion-navbar>\n\n    <cabecera [scrollArea]="mycontent" headerHeight="240">\n      <div id="busqueda">\n        <ion-list padding>\n            <ion-item>\n                <ion-label floating>Busca por especialidad</ion-label>\n                <ion-select [(ngModel)]="id" #specialty (ionChange)="onChangueSpecialty(specialty.value)">\n                    <ion-option [value]="specialty.id" *ngFor="let specialty of servicios">{{specialty.description}}</ion-option>\n                </ion-select>\n            </ion-item>\n\n            <ion-item>\n                <ion-label floating>Busca por doctor</ion-label>\n                <ion-input type="text" (keyup)="buscarDoctor()" [(ngModel)]="search"></ion-input>\n            </ion-item>\n\n            <ion-item>\n                <ion-label floating>Busca por fecha</ion-label>\n                <ion-input type="date" (ionChange)="getDoctorsPerDay()" [(ngModel)]="fromDate"></ion-input>\n            </ion-item>\n        </ion-list>\n    </div>\n    </cabecera>\n</ion-header>\n\n\n<ion-content #mycontent fullscreen>\n\n    <!-- <div id="busqueda">\n        <ion-list padding>\n            <ion-item>\n                <ion-label floating>Busca por especialidad</ion-label>\n                <ion-select [(ngModel)]="id" #specialty (ionChange)="onChangueSpecialty(specialty.value)">\n                    <ion-option [value]="specialty.id" *ngFor="let specialty of servicios">{{specialty.description}}</ion-option>\n                </ion-select>\n            </ion-item>\n\n            <ion-item>\n                <ion-label floating>Busca por doctor</ion-label>\n                <ion-input type="text" (keyup)="buscarDoctor()" [(ngModel)]="search"></ion-input>\n            </ion-item>\n\n\n            <ion-item>\n                <ion-label floating>Busca por fecha</ion-label>\n                <ion-input type="date" (ionChange)="getDoctorsPerDay()" [(ngModel)]="fromDate"></ion-input>\n            </ion-item>\n        </ion-list>\n\n    </div> -->\n\n    <div>\n        <ion-card *ngFor="let doctor of doctors ">\n            <div [ngStyle]="{\'display\': doctor.hasAvailable ? \'block\' : \'none\'}">\n                <ion-row>\n                    <ion-col col-4 class="imageDoctor">\n                        <img src="http://dappapache02.eastus.cloudapp.azure.com:4200/img/professionals/{{doctor.id}}.png" alt="">\n                    </ion-col>\n                    <ion-col col-8 right>\n                        <p class="doctor">{{ doctor.fullName | lowercase}}</p>\n                        <p class="especialidad">{{doctor.service.description | lowercase}}</p>\n                        <p>{{doctor.cmp}}</p>\n                        <p class="centro">Centro: Mendiola</p>\n                    </ion-col>\n\n                    <ion-col col-12>\n                    </ion-col>\n                    <div class="containerDays">\n                        <ion-slides>\n                            <ion-slide *ngFor="let available of doctor.availables">\n                                <div class="centerItemsDays">\n                                    <a (click)="expandedItem(doctor, available)">{{ available.date | date:\'fullDate\' :\'es\' | slice:0:3}}</a>\n                                    <p>{{ available.date | date:\'dd\':\'es\'}}</p>\n                                </div>\n                            </ion-slide>\n                        </ion-slides>\n                    </div>\n                    <ion-col col-12>\n                        <expandable [expandHeight]="itemExpandHeight" [expanded]="doctor.expanded" [doctor]="doctor" [available]="available" [horas]="horas">\n                            <div class="row">\n                                  <ion-slides class="normal">\n                                    <ion-slide class="horariosDisponibles">\n                                        <h3>Primer Turno</h3>\n                                        <ion-grid>\n                                          <ion-row>\n                                              <div *ngFor="let hora of horas" >\n                                                  <ion-col col-3 *ngIf="hora.hour < \'15:20\'" (click)="goToFinancer(doctor,hora)">\n                                                    <div class="horas">\n                                                      <p>{{hora.hour | slice:0:5}}</p>\n                                                    </div>\n                                                    </ion-col>\n                                                </div>\n                                            <!-- <ion-col col-3 *ngFor="let hora of horas" >\n                                              <div  (click)="goToFinancer(doctor, available, hora)" class="horas" >\n                                                <p *ngIf="hora.hour < \'15:20\'" [ngClass]="{\'borrar\' : hora.isAvailable == false}">\n                                                  {{ hora.hour | slice:0:5}}\n                                                </p>\n                                              </div>\n                                            </ion-col> -->\n                                          </ion-row>\n                                        </ion-grid>\n                                      </ion-slide>\n                                    <ion-slide>\n                                    <h3>Segundo turno</h3>\n                                    <ion-row>\n                                      <!-- <ion-col col-3 *ngFor="let hora of horas" >\n                                        <div (click)="goToFinancer(doctor, available, hora)" class="horas" >\n                                          <p *ngIf="hora.hour >= \'15:20\'" [ngClass]="{\'borrar\' : hora.isAvailable == false}">\n                                            {{ hora.hour | slice:0:5}}\n                                          </p>\n                                        </div>\n                                      </ion-col> -->\n                                    <div *ngFor="let hora of horas" >\n                                      <ion-col col-3 *ngIf="hora.hour >= \'15:20\'" (click)="goToFinancer(doctor, hora)">\n                                        <div class="horas">\n                                          <p>{{hora.hour | slice:0:5}}</p>\n                                        </div>\n                                        </ion-col>\n                                    </div>\n                                    </ion-row>\n                                  </ion-slide>\n                              </ion-slides>\n                            </div>\n                        </expandable>\n                    </ion-col>\n                </ion-row>\n            </div>\n        </ion-card>\n\n    </div>\n</ion-content>\n'/*ion-inline-end:"/proyectos/IonicPruebas/ApolloIonicVersionOne/src/pages/card/card.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["j" /* NavController */],
-            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["k" /* NavParams */],
-            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["i" /* ModalController */],
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["k" /* NavController */],
+            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["l" /* NavParams */],
+            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["j" /* ModalController */],
             __WEBPACK_IMPORTED_MODULE_5__providers_hello_hello__["a" /* HelloProvider */],
             __WEBPACK_IMPORTED_MODULE_1__angular_core__["t" /* ElementRef */],
             __WEBPACK_IMPORTED_MODULE_1__angular_core__["X" /* Renderer2 */],
-            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["n" /* ViewController */],
+            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["o" /* ViewController */],
             __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["b" /* AlertController */]])
     ], CardPage);
     return CardPage;
@@ -4133,7 +4196,7 @@ var CardPage = (function () {
 
 /***/ }),
 
-/***/ 71:
+/***/ 72:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -4219,7 +4282,7 @@ var CrudparentProvider = (function () {
 
 /***/ }),
 
-/***/ 72:
+/***/ 73:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -4322,7 +4385,7 @@ var DependentsProvider = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__pay_pay__ = __webpack_require__(159);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__createparent_createparent__ = __webpack_require__(160);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__payu_payu__ = __webpack_require__(395);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__providers_dependents_dependents__ = __webpack_require__(72);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__providers_dependents_dependents__ = __webpack_require__(73);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -4381,20 +4444,23 @@ var FinancerPage = (function () {
         this.ccolor = false;
         this.yes = false;
         this.no = false;
-        this.isAndroid = platform.is('android');
+        this.doctor = this.navParams.get('doctor');
+        this.available = this.navParams.get('available');
+        console.log('available y doctor:', this.doctor);
+        this.hora = this.navParams.get('hora');
         this.dependentsPvr.getDependens().subscribe(function (data) {
             _this.parents = data;
             console.log('this.parents:', _this.parents);
         });
-        this.financierProvider.getFinanciers().subscribe(function (data) { _this.items = data; _this.items.shift(); });
-        this.doctor = this.navParams.get('doctor');
-        this.available = this.navParams.get('available');
-        console.log(this.available);
-        this.hora = this.navParams.get('hora');
+        this.financierProvider.getFinanciers().subscribe(function (data) {
+            _this.items = data;
+            console.log('los financiadores:', data);
+            // this.items.shift();
+        });
+        this.isAndroid = platform.is('android');
         // this.subida = this.hora.listjson;
         var role = localStorage.getItem('role');
         if (role == 'guest') {
-            //  console.log('no hay mail');
             var datos = this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_4__user_login_login__["a" /* LoginPage */], {
                 hora: this.hora,
                 doctor: this.doctor,
@@ -4426,8 +4492,15 @@ var FinancerPage = (function () {
         }
         else if (item == 2) {
             // PARTICULAR
-            this.financierProvider.getPrice(1, this.doctor.service.id, this.doctor.service.id, this.available).subscribe(function (data) {
-                _this.price = Math.round(parseFloat(data[0].prest_precio_val) * 100 + Number.EPSILON) / 100;
+            var servicio_id = this.doctor.service.id;
+            var prestacion_id = 44;
+            var producto_id = 1;
+            var medico_id = this.doctor.service.id;
+            this.financierProvider.getPrice(servicio_id, prestacion_id, producto_id, medico_id, this.available).subscribe(function (data) {
+                _this.prestacion = data;
+                // this.price = Math.round(parseFloat(data[0].prest_precio_val) * 100 + Number.EPSILON) / 100;
+                _this.price = _this.prestacion[0].prest_precio_val;
+                console.log('el precio en particular:', _this.price);
                 _this.isPlace = false;
                 _this.isCard = false;
                 _this.firtClick = false;
@@ -4445,8 +4518,16 @@ var FinancerPage = (function () {
     FinancerPage.prototype.insuranceSelected = function (item, itemName) {
         var _this = this;
         // SEGUROS
-        this.financierProvider.getPrice(1, this.doctor.service.id, this.doctor.service.id, this.available).subscribe(function (data) {
-            _this.price = Math.round(parseFloat(data[0].prest_precio_val) * 100 + Number.EPSILON) / 100;
+        var servicio_id = this.doctor.service.id;
+        var prestacion_id = 44;
+        var producto_id = 1;
+        var medico_id = this.doctor.id;
+        this.financierProvider.getPrice(servicio_id, prestacion_id, producto_id, medico_id, this.available).subscribe(function (data) {
+            console.log('lo que me devuelve la llamada:', data);
+            _this.prestacion = data;
+            // this.price = Math.round(parseFloat(data[0].prest_precio_val) * 100 + Number.EPSILON) / 100;
+            _this.price = _this.prestacion[0].prest_precio_val;
+            console.log('el precio en seguros:', _this.price);
             _this.myEnsuranceName = itemName;
             _this.isInsuranceName = true;
             _this.isInsurance = false;
@@ -4509,7 +4590,8 @@ var FinancerPage = (function () {
             available: this.available,
             hora: this.hora,
             depe: this.depe,
-            price: this.price
+            price: this.price,
+            prestacion: this.prestacion
         });
         console.log('el precio', this.price);
     };
@@ -4527,17 +4609,17 @@ var FinancerPage = (function () {
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
             selector: 'page-financer',template:/*ion-inline-start:"/proyectos/IonicPruebas/ApolloIonicVersionOne/src/pages/appointment/financer/financer.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title>Financiador</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content>\n  <h4 class="parrafoFinanciador">Lo que nos queda es escoger para quien es la cita y el financiador, ya casi terminamos…</h4>\n  <div>\n<ion-row padding>\n  <ion-col class="cuadrado">\n    <button ion-button\n            color="gris"\n            [ngClass]="{verde:vcolor == true}"\n            (click)="passFinancer()">\n              para mi\n    </button>\n  </ion-col>\n\n  <ion-col class="cuadrado">\n    <button ion-button\n            (click)="openParents()"\n            color="gris"\n            [ngClass]="{verde:ccolor == true}">\n              un familiar\n    </button>\n  </ion-col>\n</ion-row>\n<div *ngIf="addFamily">\n    <ion-card *ngFor="let depe of parents"\n              (click)="passFinancerParent(depe)">\n      <ion-row>\n        <ion-col col-3>\n          <ion-avatar>\n            <img src="../assets/imgs/avatars/nino.png" alt="">\n          </ion-avatar>\n        </ion-col>\n        <ion-col col-9>\n            <h3 class="nombrePariente">{{depe.name}}</h3>\n            <p *ngIf="depe.relation"\n                class="parentesco">{{depe.relation.name}}</p>\n            <p class="edad">{{depe.birthdate | date:"Y"}}</p>\n        </ion-col>\n\n      </ion-row>\n    </ion-card>\n  </div>\n\n    <ion-row *ngIf="addFamily" padding>\n      <ion-card ion-button\n                (click)="showDetailCreateParents()"\n                class="buttonAddFamily">\n        <button ion-button clear item-start>\n          <ion-icon ios="ios-add" md="md-add" color="secondary"></ion-icon>\n        </button>\n        <p item-end>Agregar Familiar</p>\n      </ion-card>\n    </ion-row>\n\n    <!-- template que muestra los familiares que estan ya adjuntos -->\n\n  </div>\n  <!-- fin del template de los familiares adjuntos -->\n\n  <div *ngIf="depe">\n    <div *ngIf="personOk === true">\n      <ion-row>\n        <ion-col col-3\n                 class="cardEscogidoImg">\n            <img src="../assets/imgs/avatars/nino.png" alt="">\n        </ion-col>\n        <ion-col col-7\n                  class="containerNombre"\n                  >\n            <h3 class="nombrePariente">escogiste a: {{depe.name}}</h3>\n        </ion-col>\n        <ion-col col-2>\n            <button ion-button\n                    (click)="cleanDepe()"\n                    clear\n                    color="primary">\n              <ion-icon name="close"></ion-icon>\n            </button>\n          </ion-col>\n      </ion-row>\n    </div>\n  </div>\n  <ion-list class="medio" *ngIf="personOk === true">\n    <ion-card class="evaluate">\n      <ion-list>\n        <ion-item color="light" item-start (click)="evaluateEnsurance($event)">\n          <p *ngIf="yes == false && no == false">¿Cuenta con seguro?</p>\n          <p *ngIf="yes == true">Si tengo</p>\n          <p *ngIf="no == true">No tengo</p>\n          <ion-icon item-end name="arrow-dropdown"></ion-icon>\n        </ion-item>\n\n        <ion-list class="nombresLista" *ngIf="firtClick">\n          <button ion-item *ngFor="let quest of questions" (click)="validateSelected(quest.id)">\n            {{ quest.name }}\n          </button>\n        </ion-list>\n      </ion-list>\n    </ion-card>\n\n    <ion-card class="seguroList">\n      <ion-list>\n        <ion-item color="light" *ngIf="isInsuranceName" (click)="selectEnsurance($event)">\n          {{ myEnsuranceName }}\n        </ion-item>\n        <ion-list *ngIf="isInsurance">\n          <button ion-item *ngFor="let item of items" (click)="insuranceSelected(item.cod_pagador_pk, item.nombre_garante)">\n            {{ item.nombre_garante }}\n          </button>\n        </ion-list>\n      </ion-list>\n    </ion-card>\n\n    <div text-right class="precio" *ngIf="price!=undefined">\n      <p>Precio de la Consulta: {{ \'S/. \' + price }}</p>\n    </div>\n  </ion-list>\n\n  <button *ngIf="secureOk === true"\n          color="secondary"\n          ion-button\n          block\n          center\n          class="botonPagar"\n          (click)="goToPay()">\n      hacer el pago\n  </button>\n\n</ion-content>\n'/*ion-inline-end:"/proyectos/IonicPruebas/ApolloIonicVersionOne/src/pages/appointment/financer/financer.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["j" /* NavController */],
-            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["k" /* NavParams */],
-            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["l" /* Platform */],
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["k" /* NavController */],
+            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["l" /* NavParams */],
+            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["m" /* Platform */],
             __WEBPACK_IMPORTED_MODULE_1__angular_forms__["b" /* FormBuilder */],
             __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["b" /* AlertController */],
             __WEBPACK_IMPORTED_MODULE_3__providers_financier_financier__["a" /* FinancierProvider */],
-            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["i" /* ModalController */],
+            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["j" /* ModalController */],
             __WEBPACK_IMPORTED_MODULE_5__providers_appoinment_appoinment__["a" /* AppointmentProvider */],
             __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["a" /* ActionSheetController */],
-            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["n" /* ViewController */],
-            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["g" /* LoadingController */],
+            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["o" /* ViewController */],
+            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["h" /* LoadingController */],
             __WEBPACK_IMPORTED_MODULE_9__providers_dependents_dependents__["a" /* DependentsProvider */]])
     ], FinancerPage);
     return FinancerPage;
@@ -4643,7 +4725,7 @@ var RecipesProvider = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__login_login__ = __webpack_require__(54);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_user_user__ = __webpack_require__(61);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__providers_crudparent_crudparent__ = __webpack_require__(71);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__providers_crudparent_crudparent__ = __webpack_require__(72);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_sha_js__ = __webpack_require__(270);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_sha_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_sha_js__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__code_code__ = __webpack_require__(158);
@@ -4770,8 +4852,8 @@ var RegisterPage = (function () {
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
             selector: 'page-register',template:/*ion-inline-start:"/proyectos/IonicPruebas/ApolloIonicVersionOne/src/pages/user/register/register.html"*/'<ion-header>\n    <ion-navbar class="transparent">\n        <!-- <ion-title> Registro </ion-title> -->\n    </ion-navbar>\n</ion-header>\n\n\n<ion-content padding class="gris">\n    <ion-item *ngIf="msg">\n        <p color="danger" ion-text>{{ msg }}</p>\n    </ion-item>\n\n    <h4 class="registroDeUsuarioTitulo">Completa tu registro para obtener una cuenta...así de facil..</h4>\n\n    <form [formGroup]="registerForm" (ngSubmit)="registerNewUser(registerForm.value)"  novalidate>\n\n        <ion-row>\n            <ion-item>\n                <ion-label floating>Nombres:</ion-label>\n                <ion-input type="text" formControlName="name" name="name"></ion-input>\n                <p color="danger" ion-text *ngIf="registerForm.get(\'name\').hasError(\'required\')">Nombre requerido</p>\n            </ion-item>\n\n            <ion-col col-6>\n                <ion-item>\n                    <ion-label floating>Apellido Paterno</ion-label>\n                    <ion-input type="text" formControlName="surname1" name="paternal_surname"></ion-input>\n                    <p color="danger" ion-text *ngIf="registerForm.get(\'surname1\').hasError(\'required\')">Apellido Paterno requerido</p>\n                </ion-item>\n            </ion-col>\n            <ion-col col-6>\n                <ion-item>\n                    <ion-label floating>Apellido Materno</ion-label>\n                    <ion-input type="text" formControlName="surname2" name="maternal_surname"></ion-input>\n                    <p color="danger" ion-text *ngIf="registerForm.get(\'surname2\').hasError(\'required\')">Apellido Materno requerido</p>\n                </ion-item>\n            </ion-col>\n\n            <ion-col col-6>\n                <ion-item>\n                    <ion-label floating>Sexo:</ion-label>\n                    <ion-select formControlName="gender" name="gender">\n                        <!-- <ion-option value=1>Indistinto</ion-option> -->\n                        <ion-option value="HOMBRE">Hombre</ion-option>\n                        <ion-option value="MUJER">Mujer</ion-option>\n                    </ion-select>\n                    <p color="danger" ion-text *ngIf="registerForm.get(\'gender\').hasError(\'required\')">Genero requerido</p>\n                </ion-item>\n            </ion-col>\n\n            <ion-col col-6>\n                <ion-item class="outpadding">\n                    <ion-label floating>Fecha de nacimiento:</ion-label>\n                    <ion-datetime displayFormat="DD/MM/YYYY"\n                                  formControlName="birthdate"\n                                  name="date_of_birth"\n                                  max="{{actual}}"></ion-datetime>\n                    <!-- <ion-input type="date" formControlName="birthdate" name="date_of_birth" placeholder="Fecha de nacimiento"></ion-input> -->\n                    <p color="danger" ion-text *ngIf="registerForm.get(\'birthdate\').hasError(\'required\')">Fecha de Nacimiento requerido</p>\n                </ion-item>\n            </ion-col>\n        </ion-row>\n\n        <ion-row>\n            <ion-col col-6>\n                <ion-item>\n                    <ion-label stacked>Tipo de documento:</ion-label>\n                    <ion-select [(ngModel)]="change" formControlName="documentType" name="type_document">\n                        <ion-option value=D.N.I>D.N.I</ion-option>\n                        <ion-option value=2>Pasaporte</ion-option>\n                        <ion-option value=3>C.E.</ion-option>\n                    </ion-select>\n                </ion-item>\n            </ion-col>\n\n            <ion-col col-6>\n                <ion-item>\n                    <ion-label stacked>Tipo de documento:</ion-label>\n                    <ion-input *ngIf="change == 3" placeholder="Nº de Carne" type="tel" minlength=12 maxlength=12 formControlName="documentNumber" name="dni" stacked></ion-input>\n                    <ion-input *ngIf="change == \'D.N.I\'" placeholder="Nº de Dni" type="number" formControlName="documentNumber" minlength=8 maxlength=8 name="dni" stacked></ion-input>\n                    <ion-input *ngIf="change == 2" placeholder="Nº de Pasaporte" type="number" formControlName="documentNumber" minlength=12 maxlength=12 name="dni" stacked></ion-input>\n                    <!-- <p color="danger" ion-text *ngIf="registerForm.get(\'dni\').hasError(\'required\')">DNI requerido</p> -->\n                </ion-item>\n            </ion-col>\n\n            <ion-col col-12>\n                <ion-item>\n                    <ion-label stacked>Telefono:</ion-label>\n                    <ion-input type="tel" formControlName="phone" name="phone"></ion-input>\n                    <p color="danger" ion-text *ngIf="registerForm.get(\'phone\').hasError(\'required\')">Teléfono requerido</p>\n                </ion-item>\n            </ion-col>\n\n            <ion-col col-12>\n                <ion-item>\n                    <ion-label stacked>Email:</ion-label>\n                    <ion-input type="email" formControlName="email" name="email"></ion-input>\n                    <p color="danger" ion-text *ngIf="registerForm.get(\'email\').hasError(\'required\')">Email requerido</p>\n                </ion-item>\n            </ion-col>\n        </ion-row>\n\n        <ion-item>\n            <ion-label stacked>Contraseña:</ion-label>\n            <ion-input type="password" required name="password" formControlName="password"></ion-input>\n            <p color="danger" ion-text *ngIf="registerForm.get(\'password\').hasError(\'required\')">Contraseña requerida</p>\n            <p color="danger" ion-text *ngIf="registerForm.get(\'password\').hasError(\'minLength\')">Minimo 8 caracteres</p>\n        </ion-item>\n\n        <ion-item>\n            <ion-label stacked>Repetir contraseña:</ion-label>\n            <ion-input type="password" formControlName="password_confirmation" name="password_confirmation"></ion-input>\n        </ion-item>\n\n\n\n        <button ion-button type="submit" [disabled]="!registerForm.valid || !validacion()" full color="primary" class="alto50">Registro</button>\n\n        <ion-grid>\n            <ion-row>\n                <ion-col col-6>\n                    <button ion-button clear class=" bajas " item-start (click)="seeConditions() ">terminos y condiciones</button>\n                </ion-col>\n                <ion-col col-6 class="derecha ">\n                    <button ion-button clear class="bajas derecha " item-end (click)="goToLogin() ">Tengo una cuenta</button>\n                </ion-col>\n            </ion-row>\n        </ion-grid>\n    </form>\n\n</ion-content>\n'/*ion-inline-end:"/proyectos/IonicPruebas/ApolloIonicVersionOne/src/pages/user/register/register.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */],
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavParams */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */],
             __WEBPACK_IMPORTED_MODULE_2__angular_forms__["b" /* FormBuilder */],
             __WEBPACK_IMPORTED_MODULE_4__providers_user_user__["a" /* UserProvider */],
@@ -4784,5 +4866,5 @@ var RegisterPage = (function () {
 
 /***/ })
 
-},[442]);
+},[443]);
 //# sourceMappingURL=main.js.map

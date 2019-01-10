@@ -89,6 +89,7 @@ import { Camera } from '@ionic-native/camera';
 import { File } from '@ionic-native/file';
 import { FileTransfer } from '@ionic-native/file-transfer';
 import { StartPage } from '../pages/start/start';
+import { FormRegisterPage } from '../pages/form-register/form-register';
 
 
 @NgModule({
@@ -120,7 +121,8 @@ import { StartPage } from '../pages/start/start';
     CabeceraComponent,
     RecoveryPage,
     RecoverycodePage,
-    StartPage
+    StartPage,
+    FormRegisterPage
   ],
   imports: [
     BrowserModule,
@@ -163,7 +165,8 @@ import { StartPage } from '../pages/start/start';
     RecipePage,
     RecoveryPage,
     RecoverycodePage,
-    StartPage
+    StartPage,
+    FormRegisterPage
   ],
   providers: [
     StatusBar,
