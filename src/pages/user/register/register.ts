@@ -119,7 +119,7 @@ cambio:boolean = false;
         console.log(this.resolve);
         if(this.resolve.result == "ok"){
           this.navCtrl.push(CodePage, {
-            datos: datos , hora : this.hora , available: this.available , doctor: this.doctor
+            datos: datos , hora : this.hora , available: this.available , doctor: this.doctor, resolve: this.resolve
           })
         }else {
             let alert = this.alertCtrl.create({

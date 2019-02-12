@@ -1,131 +1,140 @@
-<ion-header>
+<!-- <ion-header>
     <ion-navbar class="transparent">
-        <!-- <ion-title> Registro </ion-title> -->
+
     </ion-navbar>
-</ion-header>
+</ion-header> -->
 
 
-<ion-content padding class="gris">
-    <ion-item *ngIf="msg">
-        <p color="danger" ion-text>{{ msg }}</p>
+<ion-content>
+  <div class="contenedorTextoInicial">
+    <h4 class="registroDeUsuarioTitulo">Completa tu registro para obtener una cuenta...así de facil..</h4>
+  </div>
+
+  <ion-item *ngIf="msg">
+    <p color="danger" ion-text>{{ msg }}</p>
+  </ion-item>
+
+
+  <form [formGroup]="registerForm" (ngSubmit)="registerNewUser(registerForm.value)" novalidate padding class="formulario">
+    <ion-row>
+      <ion-col col-12>
+        <ion-item>
+          <!-- <ion-label floating> Nombres:</ion-label> -->
+          <ion-input type="text" formControlName="name" name="name" placeholder="Nombres"></ion-input>
+          <p color="danger" ion-text *ngIf="registerForm.get('name').hasError('required')">Nombre requerido</p>
+        </ion-item>
+      </ion-col>
+      <ion-col col-6>
+
+        <ion-item>
+          <!-- <ion-label floating>Apellido Paterno</ion-label> -->
+          <ion-input type="text" formControlName="surname1" name="paternal_surname" placeholder="Apellido Paterno"></ion-input>
+          <p color="danger" ion-text *ngIf="registerForm.get('surname1').hasError('required')">Apellido Paterno
+            requerido</p>
+        </ion-item>
+
+      </ion-col>
+      <ion-col col-6>
+
+        <ion-item>
+          <!-- <ion-label floating>Apellido Materno</ion-label> -->
+          <ion-input type="text" formControlName="surname2" name="maternal_surname" placeholder="Apellido Materno"></ion-input>
+          <p color="danger" ion-text *ngIf="registerForm.get('surname2').hasError('required')">Apellido Materno
+            requerido</p>
+        </ion-item>
+      </ion-col>
+      <ion-col col-6>
+        <ion-item>
+          <!-- <ion-label floating>Sexo:</ion-label> -->
+          <ion-select formControlName="gender" name="gender" placeholder="Sexo">
+            <!-- <ion-option value=1>Indistinto</ion-option> -->
+            <ion-option value="HOMBRE">Hombre</ion-option>
+            <ion-option value="MUJER">Mujer</ion-option>
+          </ion-select>
+          <p color="danger" ion-text *ngIf="registerForm.get('gender').hasError('required')">Genero requerido</p>
+        </ion-item>
+      </ion-col>
+
+      <ion-col col-6>
+        <ion-item class="outpadding">
+          <!-- <ion-label floating>Fecha de nacimiento:</ion-label> -->
+          <ion-datetime displayFormat="DD/MM/YYYY" formControlName="birthdate" name="date_of_birth" max="{{actual}}" placeholder="Fecha de nacimiento"></ion-datetime>
+          <!-- <ion-input type="date" formControlName="birthdate" name="date_of_birth" placeholder="Fecha de nacimiento"></ion-input> -->
+          <p color="danger" ion-text *ngIf="registerForm.get('birthdate').hasError('required')">Fecha de Nacimiento
+            requerido</p>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col col-6>
+        <ion-item>
+          <!-- <ion-label floating>Tipo de documento:</ion-label> -->
+          <ion-select [(ngModel)]="change" formControlName="documentType" name="type_document" placeholder="Tipo de dpcumento">
+            <ion-option value=D.N.I>D.N.I</ion-option>
+            <ion-option value=2>Pasaporte</ion-option>
+            <ion-option value=3>C.E.</ion-option>
+          </ion-select>
+        </ion-item>
+      </ion-col>
+
+      <ion-col col-6>
+        <ion-item>
+          <!-- <ion-label floating>Tipo de documento:</ion-label> -->
+          <ion-input *ngIf="change == 3" placeholder="Nº de Carne" type="tel" minlength=12 maxlength=12 formControlName="documentNumber"
+            name="dni" stacked></ion-input>
+          <ion-input *ngIf="change == 'D.N.I'" placeholder="Nº de Dni" type="number" formControlName="documentNumber"
+            minlength=8 maxlength=8 name="dni" stacked></ion-input>
+          <ion-input *ngIf="change == 2" placeholder="Nº de Pasaporte" type="number" formControlName="documentNumber"
+            minlength=12 maxlength=12 name="dni" stacked></ion-input>
+          <!-- <p color="danger" ion-text *ngIf="registerForm.get('dni').hasError('required')">DNI requerido</p> -->
+        </ion-item>
+      </ion-col>
+
+      <ion-col col-6>
+        <ion-item>
+          <!-- <ion-label floating>Telefono:</ion-label> -->
+          <ion-input type="tel" formControlName="phone" name="phone" placeholder="Telefono"></ion-input>
+          <p color="danger" ion-text *ngIf="registerForm.get('phone').hasError('required')">Teléfono requerido</p>
+        </ion-item>
+      </ion-col>
+
+      <ion-col col-6>
+        <ion-item>
+          <!-- <ion-label floating>Email:</ion-label> -->
+          <ion-input type="email" formControlName="email" name="email" placeholder="Email:"></ion-input>
+          <p color="danger" ion-text *ngIf="registerForm.get('email').hasError('required')">Email requerido</p>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+    <ion-item>
+      <!-- <ion-label floating>Contraseña:</ion-label> -->
+      <ion-input type="password" required name="password" formControlName="password" placeholder="Contraseña"></ion-input>
+      <p color="danger" ion-text *ngIf="registerForm.get('password').hasError('required')">Contraseña requerida</p>
+      <p color="danger" ion-text *ngIf="registerForm.get('password').hasError('minLength')">Minimo 8 caracteres</p>
     </ion-item>
 
-    <h4 class="registroDeUsuarioTitulo">Completa tu registro para obtener una cuenta...así de facil..</h4>
-
-    <form [formGroup]="registerForm" (ngSubmit)="registerNewUser(registerForm.value)"  novalidate>
-
-        <ion-row>
-            <ion-item>
-                <ion-label floating>Nombres:</ion-label>
-                <ion-input type="text" formControlName="name" name="name"></ion-input>
-                <p color="danger" ion-text *ngIf="registerForm.get('name').hasError('required')">Nombre requerido</p>
-            </ion-item>
-
-            <ion-col col-6>
-                <ion-item>
-                    <ion-label floating>Apellido Paterno</ion-label>
-                    <ion-input type="text" formControlName="surname1" name="paternal_surname"></ion-input>
-                    <p color="danger" ion-text *ngIf="registerForm.get('surname1').hasError('required')">Apellido Paterno requerido</p>
-                </ion-item>
-            </ion-col>
-            <ion-col col-6>
-                <ion-item>
-                    <ion-label floating>Apellido Materno</ion-label>
-                    <ion-input type="text" formControlName="surname2" name="maternal_surname"></ion-input>
-                    <p color="danger" ion-text *ngIf="registerForm.get('surname2').hasError('required')">Apellido Materno requerido</p>
-                </ion-item>
-            </ion-col>
-
-            <ion-col col-6>
-                <ion-item>
-                    <ion-label floating>Sexo:</ion-label>
-                    <ion-select formControlName="gender" name="gender">
-                        <!-- <ion-option value=1>Indistinto</ion-option> -->
-                        <ion-option value="HOMBRE">Hombre</ion-option>
-                        <ion-option value="MUJER">Mujer</ion-option>
-                    </ion-select>
-                    <p color="danger" ion-text *ngIf="registerForm.get('gender').hasError('required')">Genero requerido</p>
-                </ion-item>
-            </ion-col>
-
-            <ion-col col-6>
-                <ion-item class="outpadding">
-                    <ion-label floating>Fecha de nacimiento:</ion-label>
-                    <ion-datetime displayFormat="DD/MM/YYYY"
-                                  formControlName="birthdate"
-                                  name="date_of_birth"
-                                  max="{{actual}}"></ion-datetime>
-                    <!-- <ion-input type="date" formControlName="birthdate" name="date_of_birth" placeholder="Fecha de nacimiento"></ion-input> -->
-                    <p color="danger" ion-text *ngIf="registerForm.get('birthdate').hasError('required')">Fecha de Nacimiento requerido</p>
-                </ion-item>
-            </ion-col>
-        </ion-row>
-
-        <ion-row>
-            <ion-col col-6>
-                <ion-item>
-                    <ion-label stacked>Tipo de documento:</ion-label>
-                    <ion-select [(ngModel)]="change" formControlName="documentType" name="type_document">
-                        <ion-option value=D.N.I>D.N.I</ion-option>
-                        <ion-option value=2>Pasaporte</ion-option>
-                        <ion-option value=3>C.E.</ion-option>
-                    </ion-select>
-                </ion-item>
-            </ion-col>
-
-            <ion-col col-6>
-                <ion-item>
-                    <ion-label stacked>Tipo de documento:</ion-label>
-                    <ion-input *ngIf="change == 3" placeholder="Nº de Carne" type="tel" minlength=12 maxlength=12 formControlName="documentNumber" name="dni" stacked></ion-input>
-                    <ion-input *ngIf="change == 'D.N.I'" placeholder="Nº de Dni" type="number" formControlName="documentNumber" minlength=8 maxlength=8 name="dni" stacked></ion-input>
-                    <ion-input *ngIf="change == 2" placeholder="Nº de Pasaporte" type="number" formControlName="documentNumber" minlength=12 maxlength=12 name="dni" stacked></ion-input>
-                    <!-- <p color="danger" ion-text *ngIf="registerForm.get('dni').hasError('required')">DNI requerido</p> -->
-                </ion-item>
-            </ion-col>
-
-            <ion-col col-12>
-                <ion-item>
-                    <ion-label stacked>Telefono:</ion-label>
-                    <ion-input type="tel" formControlName="phone" name="phone"></ion-input>
-                    <p color="danger" ion-text *ngIf="registerForm.get('phone').hasError('required')">Teléfono requerido</p>
-                </ion-item>
-            </ion-col>
-
-            <ion-col col-12>
-                <ion-item>
-                    <ion-label stacked>Email:</ion-label>
-                    <ion-input type="email" formControlName="email" name="email"></ion-input>
-                    <p color="danger" ion-text *ngIf="registerForm.get('email').hasError('required')">Email requerido</p>
-                </ion-item>
-            </ion-col>
-        </ion-row>
-
-        <ion-item>
-            <ion-label stacked>Contraseña:</ion-label>
-            <ion-input type="password" required name="password" formControlName="password"></ion-input>
-            <p color="danger" ion-text *ngIf="registerForm.get('password').hasError('required')">Contraseña requerida</p>
-            <p color="danger" ion-text *ngIf="registerForm.get('password').hasError('minLength')">Minimo 8 caracteres</p>
-        </ion-item>
-
-        <ion-item>
-            <ion-label stacked>Repetir contraseña:</ion-label>
-            <ion-input type="password" formControlName="password_confirmation" name="password_confirmation"></ion-input>
-        </ion-item>
+    <ion-item>
+      <!-- <ion-label floating>Repetir contraseña:</ion-label> -->
+      <ion-input type="password" formControlName="password_confirmation" name="password_confirmation" placeholder="repetir contraseña"></ion-input>
+    </ion-item>
 
 
 
-        <button ion-button type="submit" [disabled]="!registerForm.valid || !validacion()" full color="primary" class="alto50">Registro</button>
+    <button ion-button type="submit" [disabled]="!registerForm.valid || !validacion()" full color="primary" class="alto50">Registro</button>
 
-        <ion-grid>
-            <ion-row>
-                <ion-col col-6>
-                    <button ion-button clear class=" bajas " item-start (click)="seeConditions() ">terminos y condiciones</button>
-                </ion-col>
-                <ion-col col-6 class="derecha ">
-                    <button ion-button clear class="bajas derecha " item-end (click)="goToLogin() ">Tengo una cuenta</button>
-                </ion-col>
-            </ion-row>
-        </ion-grid>
-    </form>
+    <ion-grid>
+      <ion-row>
+        <ion-col col-6 class="izquierda">
+          <button ion-button clear class="bajas" (click)="seeConditions() ">terminos y condiciones</button>
+        </ion-col>
+        <ion-col col-6 class="derecha ">
+          <button ion-button clear class="bajas derecha" (click)="goToLogin() ">Tengo una cuenta</button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
 
 </ion-content>
+

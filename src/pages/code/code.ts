@@ -24,6 +24,7 @@ export class CodePage {
   public doctor;
 
   public loginOk;
+  public result;
 
 
   constructor(public navCtrl:     NavController,
@@ -37,6 +38,8 @@ export class CodePage {
       this.available = this.navParams.get('available');
       this.doctor = this.navParams.get('doctor');
 
+      this.datos = this.navParams.get('datos');
+      this.result = this.navParams.get('resolve');
       this.formCode = this.form.group({
           primero : [],
           segundo : [],
@@ -46,7 +49,6 @@ export class CodePage {
       console.log(this.formCode.value);
       console.log(this.formCode.value.primero);
 
-    this.datos = this.navParams.get('datos');
     console.log('los datos que vienen de registro', this.datos);
   }
 
@@ -63,14 +65,14 @@ export class CodePage {
     let code = uno + dos + tres + cuatro;
     console.log(code);
     this.datos.code = code;
-    this.datos.id = this.code.id;
+    this.datos.id = this.result.id;
     console.log('data armada:', this.datos);
     this.crudPvr.createNewUser(this.datos).subscribe(data =>{
       this.createOk = data;
 
       // console.log('data que viene de la creación:', data);
-     let email = this.createOk.data.middleware.email;
-     let password = this.createOk.data.middleware.passwordHash;
+     let email = this.createOk.email;
+     let password = this.createOk.passwordHash;
 
      this.userService.doSignInforNewRegister(email, password).subscribe(data =>{
         this.loginOk = data;

@@ -7,7 +7,6 @@ import 'rxjs/add/operator/catch';
 // import { Http, Headers } from '@angular/http';
 
 
-
 @Injectable()
 export class HelloProvider {
 

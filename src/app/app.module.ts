@@ -90,6 +90,7 @@ import { File } from '@ionic-native/file';
 import { FileTransfer } from '@ionic-native/file-transfer';
 import { StartPage } from '../pages/start/start';
 import { FormRegisterPage } from '../pages/form-register/form-register';
+// import { ComponentsModule } from '../components/components.module';
 
 
 @NgModule({
@@ -135,7 +136,7 @@ import { FormRegisterPage } from '../pages/form-register/form-register';
     HttpLinkModule,
     FormsModule,
     MaterialModule,
-    ReactiveFormsModule,
+    ReactiveFormsModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -166,7 +167,8 @@ import { FormRegisterPage } from '../pages/form-register/form-register';
     RecoveryPage,
     RecoverycodePage,
     StartPage,
-    FormRegisterPage
+    FormRegisterPage,
+    CabeceraComponent
   ],
   providers: [
     StatusBar,
