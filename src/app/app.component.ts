@@ -81,6 +81,7 @@ export class MyApp {
       }else{
         this.menu.setRoot(HomePage);
       }
+
     });
 
     this.userToken = localStorage.getItem('idTokenUser');
